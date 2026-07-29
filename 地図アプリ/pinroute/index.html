@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="description"
+      content="住所や施設名をまとめて地図にピン留めし、並び替えて巡回ルートの距離と所要時間をすぐ確認できる無料ツール。"
+    />
+    <title>PinRoute — 複数地点をピンにして巡回ルートを確認</title>
+  </head>
+  <body>
+    <header id="app-header">
+      <div class="brand">
+        <svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"
+            fill="currentColor"
+          />
+          <circle cx="12" cy="9" r="2.6" fill="#fff" />
+        </svg>
+        <h1>PinRoute</h1>
+      </div>
+      <p class="tagline">住所・施設名をまとめてピンにして、巡回ルートをすぐ確認</p>
+    </header>
+
+    <main id="app-main">
+      <section id="panel" aria-label="操作パネル">
+        <div id="search-row">
+          <div class="search-field">
+            <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M10 4a6 6 0 104.24 10.24l4.26 4.26 1.4-1.4-4.26-4.26A6 6 0 0010 4zm0 2a4 4 0 110 8 4 4 0 010-8z"
+                fill="currentColor"
+              />
+            </svg>
+            <input
+              id="addr-input"
+              type="search"
+              enterkeyhint="search"
+              placeholder="住所・施設名(例: 東京駅)"
+              aria-label="住所・施設名"
+              autocomplete="off"
+              autocapitalize="off"
+              spellcheck="false"
+              role="combobox"
+              aria-expanded="false"
+              aria-controls="candidates"
+              aria-autocomplete="list"
+            />
+            <button id="clear-input-btn" class="icon-btn" type="button" aria-label="入力を消す" hidden>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M12 2a10 10 0 100 20 10 10 0 000-20zm3.5 12.1-1.4 1.4L12 13.4l-2.1 2.1-1.4-1.4L10.6 12 8.5 9.9l1.4-1.4L12 10.6l2.1-2.1 1.4 1.4L13.4 12z"
+                  fill="currentColor"
+                />
+              </svg>
+            </button>
+          </div>
+          <button id="add-btn" type="button">
+            <span class="spinner" aria-hidden="true"></span>
+            <span class="add-btn-label">検索</span>
+          </button>
+        </div>
+
+        <div id="msg-area" role="status" aria-live="polite"></div>
+
+        <ul id="candidates" role="listbox" aria-label="検索候補" hidden></ul>
+
+
+        <details id="bulk-panel">
+          <summary>
+            <span>まとめて入力</span>
+            <span class="hint">Excel・CSVを貼り付け</span>
+          </summary>
+          <div class="panel-body">
+            <p class="help">
+              物件名・住所・駅徒歩などの列を含む表をそのまま貼り付けてください。
+              住所の列から地図にプロットし、ほかの列は情報ブロックに表示します。
+            </p>
+            <textarea
+              id="bulk-input"
+              rows="5"
+              spellcheck="false"
+              placeholder="物件名&#9;住所&#9;駅徒歩&#9;賃料&#10;サンプルマンション&#9;東京都新宿区西新宿2-8-1&#9;徒歩8分&#9;12.5万円"
+              aria-label="貼り付ける表"
+            ></textarea>
+            <label class="check">
+              <input type="checkbox" id="bulk-header" checked />
+              1行目は見出し
+            </label>
+            <div id="bulk-mapping">
+              <label>
+                住所の列
+                <select id="bulk-address" aria-label="住所の列"></select>
+              </label>
+              <label>
+                名称の列
+                <select id="bulk-name" aria-label="名称の列"></select>
+              </label>
+            </div>
+            <div id="bulk-preview"></div>
+            <div id="bulk-actions">
+              <button id="bulk-run" type="button">取り込む</button>
+              <button id="bulk-cancel" type="button" hidden>中止</button>
+            </div>
+            <div id="bulk-progress" role="status" aria-live="polite"></div>
+            <ul id="bulk-failed"></ul>
+          </div>
+        </details>
+
+        <div id="pins-header">
+          <h2>ピン一覧</h2>
+          <span id="pin-count" aria-live="polite"></span>
+        </div>
+
+        <div id="empty-state">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"
+              fill="currentColor"
+            />
+          </svg>
+          <p class="empty-title">ピンがまだありません</p>
+          <p class="empty-sub">
+            上の入力欄に住所や施設名を入れて検索すると、地図にピンが立ちます。<br />2件以上でルートと総距離・所要時間を自動表示します。
+          </p>
+        </div>
+
+        <ol id="pin-list"></ol>
+
+
+        <details id="label-panel" hidden>
+          <summary>
+            <span>情報ブロック</span>
+            <span class="hint">地図の吹き出し</span>
+          </summary>
+          <div class="panel-body">
+            <label class="check">
+              <input type="checkbox" id="labels-visible" checked />
+              地図に情報ブロックを表示する
+            </label>
+            <p class="help">
+              表示する項目と順番を変えられます。ブロックは見出しをつかんでドラッグすると好きな位置に置けます。
+            </p>
+            <div id="field-bulk-actions">
+              <button id="fields-all" type="button">すべて表示</button>
+              <button id="fields-none" type="button">すべて隠す</button>
+            </div>
+            <ul id="field-order"></ul>
+            <div id="label-actions">
+              <button id="labels-reset" type="button">配置を初期化</button>
+            </div>
+          </div>
+        </details>
+
+        <details id="appearance-panel" hidden>
+          <summary>
+            <span>見た目</span>
+            <span class="hint">色と大きさ</span>
+          </summary>
+          <div class="panel-body">
+            <p class="help">
+              ピンと情報ブロックの色・大きさをまとめて変えます。個別に変えたいときは、
+              ピン一覧の各行にある丸いボタンから設定してください。
+            </p>
+            <div class="setting-row">
+              <span>色(全体)</span>
+              <div id="global-colors" class="swatches"></div>
+            </div>
+            <div class="setting-row">
+              <span>大きさ(全体)</span>
+              <div id="global-sizes" class="size-buttons"></div>
+            </div>
+            <button id="style-reset-all" type="button">個別の設定をすべて解除</button>
+          </div>
+        </details>
+
+        <div id="route-control" hidden>
+          <label class="check">
+            <input type="checkbox" id="route-visible" checked />
+            車ルートを表示する
+          </label>
+          <a id="gmap-link" href="#" target="_blank" rel="noopener">
+            Googleマップで開く
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M14 3v2h3.6l-7.8 7.8 1.4 1.4L19 6.4V10h2V3h-7zM5 5h5V3H3v18h18v-7h-2v5H5V5z"
+                fill="currentColor"
+              />
+            </svg>
+          </a>
+        </div>
+
+        <div id="route-bar" hidden>
+          <div class="route-head">
+            <span class="route-mode">車ルート</span>
+            <span id="route-status"></span>
+          </div>
+          <div class="route-figures">
+            <div class="figure">
+              <span class="figure-value" id="route-distance">—</span>
+              <span class="figure-unit">km</span>
+              <span class="figure-label">総距離</span>
+            </div>
+            <div class="figure">
+              <span class="figure-value" id="route-duration">—</span>
+              <span class="figure-unit">分</span>
+              <span class="figure-label">所要時間</span>
+            </div>
+          </div>
+          <span id="route-summary" class="visually-hidden"></span>
+        </div>
+
+        <div id="share-fallback" hidden></div>
+
+        <div id="action-row">
+          <button id="share-btn" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M18 16.1c-.8 0-1.5.3-2 .8l-7-4.1c.1-.3.1-.5.1-.8s0-.5-.1-.8l6.9-4c.5.5 1.3.8 2.1.8a3 3 0 100-6 3 3 0 00-3 3c0 .3 0 .5.1.8l-7 4a3 3 0 100 4.4l7 4.1c-.1.2-.1.5-.1.7a2.9 2.9 0 105.8 0 2.9 2.9 0 00-2.8-2.9z"
+                fill="currentColor"
+              />
+            </svg>
+            共有URLをコピー
+          </button>
+          <button id="clear-btn" type="button">全削除</button>
+        </div>
+
+        <div id="ad-slot" hidden></div>
+      </section>
+
+      <div id="map" aria-label="地図"></div>
+    </main>
+
+    <footer id="app-footer">
+      <p>
+        地図: <a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank" rel="noopener">地理院タイル</a>(国土地理院)
+        / 地点検索:
+        <a href="https://www.gsi.go.jp/" target="_blank" rel="noopener">国土地理院</a>・<a
+          href="https://nominatim.org/"
+          target="_blank"
+          rel="noopener"
+          >Nominatim</a
+        >(&copy;
+        <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener"
+          >OpenStreetMap</a
+        >
+        contributors)
+      </p>
+      <p>
+        検索・ルート計算のため、入力した住所やピンの座標が上記の外部APIに送信されます。ピン情報はお使いのブラウザ(localStorage)と共有URL以外には保存されません。
+      </p>
+    </footer>
+
+    <div id="toast" hidden></div>
+    <script type="module" src="./src/main.ts"></script>
+  </body>
+</html>

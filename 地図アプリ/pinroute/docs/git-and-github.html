@@ -1,0 +1,1112 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Git と GitHub — はじめての人向け図解</title>
+    <style>
+      :root {
+        --accent: #e4572e;
+        --accent-soft: #fdeee9;
+        --blue: #2f6fd0;
+        --blue-soft: #eaf1fb;
+        --green: #1b8a5a;
+        --green-soft: #e8f5ee;
+        --purple: #7b4bc9;
+        --purple-soft: #f1ebfb;
+        --ng: #c62828;
+        --ng-soft: #fdecec;
+        --text: #1f2328;
+        --text-sub: #5b6673;
+        --border: #dfe4ea;
+        --surface: #fff;
+        --bg: #f6f7f9;
+        --mono: 'SFMono-Regular', Consolas, 'Courier New', monospace;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        padding: 0 20px 90px;
+        background: var(--bg);
+        color: var(--text);
+        font-family:
+          'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Noto Sans JP', Meiryo,
+          system-ui, sans-serif;
+        font-size: 15px;
+        line-height: 1.85;
+      }
+      .page {
+        max-width: 860px;
+        margin: 0 auto;
+      }
+      header.title {
+        padding: 52px 0 26px;
+        border-bottom: 3px solid var(--accent);
+        margin-bottom: 30px;
+      }
+      header.title h1 {
+        margin: 0;
+        font-size: 30px;
+        line-height: 1.4;
+      }
+      header.title .lead {
+        margin: 12px 0 0;
+        color: var(--text-sub);
+      }
+      h2 {
+        margin: 62px 0 6px;
+        font-size: 21px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      h2 .num {
+        flex: 0 0 auto;
+        width: 34px;
+        height: 34px;
+        border-radius: 9px;
+        background: var(--accent);
+        color: #fff;
+        font-size: 16px;
+        line-height: 34px;
+        text-align: center;
+      }
+      h2 + .sub {
+        margin: 0 0 18px 46px;
+        color: var(--text-sub);
+        font-size: 13.5px;
+      }
+      h3 {
+        margin: 34px 0 8px;
+        font-size: 16.5px;
+        color: var(--accent);
+      }
+      p {
+        margin: 12px 0;
+      }
+      ul,
+      ol {
+        padding-left: 24px;
+      }
+      li {
+        margin: 5px 0;
+      }
+      code {
+        background: #eceff3;
+        border-radius: 4px;
+        padding: 2px 6px;
+        font-family: var(--mono);
+        font-size: 0.9em;
+      }
+      pre {
+        background: #1f2328;
+        color: #e9ecf1;
+        padding: 14px 16px;
+        border-radius: 9px;
+        overflow-x: auto;
+        font-size: 12.5px;
+        line-height: 1.75;
+        margin: 14px 0;
+      }
+      pre code {
+        background: none;
+        color: inherit;
+        padding: 0;
+      }
+      pre .c {
+        color: #9aa6b2;
+      }
+
+      .diagram {
+        margin: 22px 0;
+        padding: 22px 20px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+      }
+      .diagram > .caption {
+        margin: 0 0 18px;
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--text-sub);
+      }
+      .flow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .flow.v {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .arrow {
+        color: var(--text-sub);
+        font-size: 19px;
+        flex: 0 0 auto;
+        text-align: center;
+      }
+      .arrow small {
+        display: block;
+        font-size: 11px;
+        line-height: 1.4;
+        font-family: var(--mono);
+        color: var(--accent);
+      }
+      .node {
+        flex: 0 1 auto;
+        min-width: 128px;
+        padding: 12px 14px;
+        border: 2px solid var(--border);
+        border-radius: 10px;
+        background: var(--surface);
+        text-align: center;
+        font-size: 13.5px;
+        line-height: 1.6;
+      }
+      .node .t {
+        display: block;
+        font-weight: 700;
+        font-size: 14px;
+      }
+      .node .d {
+        display: block;
+        color: var(--text-sub);
+        font-size: 12px;
+      }
+      .node.accent {
+        border-color: var(--accent);
+        background: var(--accent-soft);
+      }
+      .node.blue {
+        border-color: var(--blue);
+        background: var(--blue-soft);
+      }
+      .node.green {
+        border-color: var(--green);
+        background: var(--green-soft);
+      }
+      .node.purple {
+        border-color: var(--purple);
+        background: var(--purple-soft);
+      }
+      .node.ng {
+        border-color: var(--ng);
+        background: var(--ng-soft);
+      }
+      .node.wide {
+        flex: 1 1 100%;
+      }
+
+      .split {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+      .split > div {
+        padding: 16px;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+        background: var(--surface);
+      }
+      .split h4 {
+        margin: 0 0 10px;
+        font-size: 14px;
+      }
+      .split ul {
+        margin: 0;
+        font-size: 13.5px;
+        padding-left: 20px;
+      }
+      .split .bad {
+        border-color: rgb(198 40 40 / 35%);
+        background: var(--ng-soft);
+      }
+      .split .good {
+        border-color: rgb(27 138 90 / 35%);
+        background: var(--green-soft);
+      }
+
+      /* コミットの並び */
+      .commits {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 0;
+        flex-wrap: wrap;
+      }
+      .commit {
+        text-align: center;
+        min-width: 118px;
+        position: relative;
+      }
+      .commit .dot {
+        display: block;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        background: var(--accent);
+        margin: 0 auto 8px;
+        border: 3px solid var(--surface);
+        box-shadow: 0 0 0 2px var(--accent);
+      }
+      .commit.dim .dot {
+        background: var(--text-sub);
+        box-shadow: 0 0 0 2px var(--text-sub);
+      }
+      .commit .hash {
+        display: block;
+        font-family: var(--mono);
+        font-size: 11px;
+        color: var(--text-sub);
+      }
+      .commit .msg {
+        display: block;
+        font-size: 11.5px;
+        line-height: 1.5;
+        padding: 0 6px;
+      }
+      .link {
+        flex: 0 0 34px;
+        height: 3px;
+        background: var(--border);
+        margin-top: 12px;
+      }
+      .branch-label {
+        display: inline-block;
+        font-size: 11px;
+        font-weight: 700;
+        padding: 2px 9px;
+        border-radius: 999px;
+        margin-top: 6px;
+        font-family: var(--mono);
+      }
+      .branch-label.main {
+        background: var(--blue-soft);
+        color: var(--blue);
+      }
+      .branch-label.feat {
+        background: var(--purple-soft);
+        color: var(--purple);
+      }
+
+      .note-box {
+        margin: 20px 0;
+        padding: 15px 18px;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+        background: var(--surface);
+      }
+      .note-box.warn {
+        border-color: rgb(198 40 40 / 30%);
+        background: var(--ng-soft);
+      }
+      .note-box.tip {
+        border-color: rgb(228 87 46 / 30%);
+        background: var(--accent-soft);
+      }
+      .note-box .label {
+        font-weight: 700;
+        margin-right: 8px;
+      }
+      .note-box.warn .label {
+        color: var(--ng);
+      }
+      .note-box.tip .label {
+        color: var(--accent);
+      }
+      .note-box p {
+        margin: 0;
+      }
+      .note-box p + p {
+        margin-top: 9px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 13.5px;
+        background: var(--surface);
+      }
+      th,
+      td {
+        border: 1px solid var(--border);
+        padding: 9px 12px;
+        text-align: left;
+        vertical-align: top;
+      }
+      th {
+        background: #eef1f5;
+        font-weight: 700;
+      }
+      td code {
+        white-space: nowrap;
+      }
+
+      .toc {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 18px 24px;
+      }
+      .toc ol {
+        margin: 8px 0 0;
+        columns: 2;
+        column-gap: 30px;
+      }
+      .toc a {
+        color: var(--text);
+      }
+
+      dl.glossary {
+        margin: 0;
+        display: grid;
+        grid-template-columns: max-content 1fr;
+        gap: 8px 20px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 20px 24px;
+      }
+      dl.glossary dt {
+        font-weight: 700;
+        font-family: var(--mono);
+        font-size: 13.5px;
+      }
+      dl.glossary dd {
+        margin: 0;
+        color: var(--text-sub);
+      }
+
+      footer.end {
+        margin-top: 64px;
+        padding-top: 20px;
+        border-top: 1px solid var(--border);
+        font-size: 13px;
+        color: var(--text-sub);
+      }
+
+      @media (max-width: 700px) {
+        .split {
+          grid-template-columns: 1fr;
+        }
+        .toc ol {
+          columns: 1;
+        }
+        dl.glossary {
+          grid-template-columns: 1fr;
+        }
+        .link {
+          display: none;
+        }
+      }
+      @media print {
+        body {
+          background: #fff;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="title">
+        <h1>Git と GitHub のきほん</h1>
+        <p class="lead">
+          「コミット」「ブランチ」「push」…… 言葉は聞くけれど何のことか分からない、という方向けの図解です。<br />
+          最後に、<strong>いまお手元のリポジトリがどういう状態なのか</strong>も同じ図で説明します。
+        </p>
+      </header>
+
+      <div class="toc">
+        <strong>もくじ</strong>
+        <ol>
+          <li><a href="#s1">GitとGitHubは別のもの</a></li>
+          <li><a href="#s2">そもそも何が嬉しいのか</a></li>
+          <li><a href="#s3">Gitの3つの場所(最重要)</a></li>
+          <li><a href="#s4">コミット = 記録の1コマ</a></li>
+          <li><a href="#s5">ブランチ = 履歴の枝分かれ</a></li>
+          <li><a href="#s6">マージと「競合」</a></li>
+          <li><a href="#s7">手元とGitHubのやりとり</a></li>
+          <li><a href="#s8">GitHubがしてくれること</a></li>
+          <li><a href="#s9">いまのあなたのリポジトリ</a></li>
+          <li><a href="#s10">コマンド早見表と用語</a></li>
+        </ol>
+      </div>
+
+      <!-- ─────────────────────────────────── -->
+      <h2 id="s1"><span class="num">1</span>GitとGitHubは別のもの</h2>
+      <p class="sub">まずここを分けて考えると、あとが一気に分かりやすくなります。</p>
+
+      <div class="split">
+        <div>
+          <h4>Git — 手元で動く「記録係」</h4>
+          <ul>
+            <li>あなたのパソコンにインストールされているソフト</li>
+            <li>フォルダの中身の<strong>変化を記録し続ける</strong></li>
+            <li>ネットにつながっていなくても動く</li>
+            <li>GitHubがなくても使える</li>
+          </ul>
+        </div>
+        <div>
+          <h4>GitHub — ネット上の「置き場所」</h4>
+          <ul>
+            <li>Gitの記録を<strong>預けて共有できるサービス</strong></li>
+            <li>他の人に見せる・一緒に作業する</li>
+            <li>自動でテストしたり、Webサイトとして公開したりもできる</li>
+            <li>似たサービスにGitLab、Bitbucketなどもある</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="note-box tip">
+        <p>
+          <span class="label">たとえるなら</span>
+          <strong>Git = 手元のノート</strong>、<strong>GitHub = そのノートを置いておく貸金庫</strong>です。
+          ノートは自分だけで使ってもよく、貸金庫に預ければ他の人と共有できます。
+          「Gitを使う=GitHubを使う」ではありません。
+        </p>
+      </div>
+
+      <!-- ─────────────────────────────────── -->
+      <h2 id="s2"><span class="num">2</span>そもそも何が嬉しいのか</h2>
+      <p class="sub">Excelでよくある「最終版問題」を思い浮かべてください。</p>
+
+      <div class="split">
+        <div class="bad">
+          <h4>Gitがないとき</h4>
+          <ul>
+            <li>企画書.xlsx</li>
+            <li>企画書_修正.xlsx</li>
+            <li>企画書_修正_最新.xlsx</li>
+            <li>企画書_最終.xlsx</li>
+            <li>企画書_最終_本当に最終.xlsx</li>
+          </ul>
+          <p style="margin: 10px 0 0; font-size: 12.5px">
+            どれが最新か分からない。誰が何を変えたかも分からない。
+          </p>
+        </div>
+        <div class="good">
+          <h4>Gitがあるとき</h4>
+          <ul>
+            <li>ファイルは<strong>企画書.xlsx だけ</strong></li>
+            <li>変更の履歴はGitが別に持っている</li>
+            <li>「いつ・誰が・どこを・なぜ」変えたかが残る</li>
+            <li>好きな時点の状態に戻せる</li>
+          </ul>
+          <p style="margin: 10px 0 0; font-size: 12.5px">
+            フォルダはいつも1つ。履歴は横に積み上がっていく。
+          </p>
+        </div>
+      </div>
+
+      <!-- ─────────────────────────────────── -->
+      <h2 id="s3"><span class="num">3</span>Gitの3つの場所(最重要)</h2>
+      <p class="sub">ここが分かればGitの8割は分かったようなものです。</p>
+
+      <p>
+        Gitでは、ファイルは<strong>3つの場所</strong>を順に移動していきます。
+        いきなり記録されるのではなく、<strong>「記録するものを選ぶ」段階が間にある</strong>のが特徴です。
+      </p>
+
+      <div class="diagram">
+        <p class="caption">図1 — ファイルが記録されるまでの3段階</p>
+        <div class="flow">
+          <div class="node accent">
+            <span class="t">① 作業フォルダ</span>
+            <span class="d">いま編集している<br />実際のファイル</span>
+          </div>
+          <span class="arrow">→<small>git add</small></span>
+          <div class="node purple">
+            <span class="t">② ステージ</span>
+            <span class="d">次の記録に<br />含めるものの置き場</span>
+          </div>
+          <span class="arrow">→<small>git commit</small></span>
+          <div class="node green">
+            <span class="t">③ 履歴</span>
+            <span class="d">確定した記録<br />(消えない)</span>
+          </div>
+        </div>
+      </div>
+
+      <h3>なぜ「ステージ」があるのか</h3>
+      <p>
+        10個のファイルを直したけれど、<strong>そのうち3個だけを1つの記録にまとめたい</strong>、
+        ということがよくあります。ステージは<strong>「今回の記録に入れるものを選ぶカゴ」</strong>です。
+      </p>
+
+      <div class="diagram">
+        <p class="caption">図2 — 直したもの全部ではなく、選んで記録する</p>
+        <div class="flow">
+          <div class="node" style="text-align: left">
+            <span class="t" style="text-align: center">作業フォルダ</span>
+            <span class="d" style="text-align: left">
+              ・style.css を修正<br />
+              ・main.ts を修正<br />
+              ・メモ.txt を修正
+            </span>
+          </div>
+          <span class="arrow">→<small>git add style.css main.ts</small></span>
+          <div class="node purple" style="text-align: left">
+            <span class="t" style="text-align: center">ステージ</span>
+            <span class="d" style="text-align: left">
+              ・style.css<br />
+              ・main.ts<br />
+              <span style="opacity: 0.45">(メモ.txt は入れない)</span>
+            </span>
+          </div>
+          <span class="arrow">→<small>git commit</small></span>
+          <div class="node green">
+            <span class="t">1つの記録</span>
+            <span class="d">「見た目を調整」<br />として履歴に残る</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="note-box">
+        <p>
+          <span class="label">よくある勘違い</span>
+          <code>git add</code> は「ファイルを追加する」ではなく
+          <strong>「次の記録に含める、と決める」</strong>という意味です。
+          すでにあるファイルを修正したときにも毎回 <code>git add</code> が要ります。
+        </p>
+      </div>
+
+      <!-- ─────────────────────────────────── -->
+      <h2 id="s4"><span class="num">4</span>コミット = 記録の1コマ</h2>
+      <p class="sub">コミットは「セーブポイント」。それが1本につながって履歴になります。</p>
+
+      <p>
+        <strong>コミット(commit)</strong>とは、その時点のフォルダの状態を丸ごと記録したものです。
+        1つ1つに<strong>固有の番号</strong>と<strong>説明文(メッセージ)</strong>が付きます。
+      </p>
+
+      <div class="diagram">
+        <p class="caption">図3 — コミットは古いものから順につながっていく</p>
+        <div class="commits">
+          <div class="commit dim">
+            <span class="dot"></span>
+            <span class="hash">29d4e56</span>
+            <span class="msg">test.md を追加</span>
+          </div>
+          <div class="link"></div>
+          <div class="commit dim">
+            <span class="dot"></span>
+            <span class="hash">6d315cd</span>
+            <span class="msg">brunch.md を置いた</span>
+          </div>
+          <div class="link"></div>
+          <div class="commit">
+            <span class="dot"></span>
+            <span class="hash">8fb97f3</span>
+            <span class="msg">brunch.md に中身を書いた</span>
+            <span class="branch-label feat">いまここ</span>
+          </div>
+        </div>
+        <p style="text-align: center; margin: 18px 0 0; font-size: 12.5px; color: var(--text-sub)">
+          ※ これは実際にお手元のリポジトリにある3つのコミットです
+        </p>
+      </div>
+
+      <p>
+        <code>29d4e56</code> のような文字列は<strong>コミットの名前</strong>です(本当は40文字ありますが、
+        先頭7文字だけで区別できるので短く書きます)。
+        「あの時点に戻したい」というとき、この名前で指定します。
+      </p>
+
+      <div class="note-box tip">
+        <p>
+          <span class="label">メッセージが大事</span>
+          コミットのメッセージは<strong>未来の自分への手紙</strong>です。
+          「修正」ではなく「検索結果が関連度順に並ぶよう修正」のように書いておくと、
+          半年後に履歴を見たときに助かります。
+        </p>
+      </div>
+
+      <!-- ─────────────────────────────────── -->
+      <h2 id="s5"><span class="num">5</span>ブランチ = 履歴の枝分かれ</h2>
+      <p class="sub">本編を壊さずに、別の作業を並行して進めるための仕組みです。</p>
+
+      <p>
+        <strong>ブランチ(branch = 枝)</strong>は、履歴を枝分かれさせる機能です。
+        「今動いているもの」を残したまま、別の場所で新機能を試せます。
+      </p>
+
+      <div class="diagram">
+        <p class="caption">図4 — main から枝を伸ばして作業する</p>
+        <div style="overflow-x: auto">
+          <div class="commits" style="justify-content: flex-start; margin-bottom: 4px">
+            <div class="commit dim">
+              <span class="dot"></span><span class="hash">A</span><span class="msg">最初</span>
+            </div>
+            <div class="link"></div>
+            <div class="commit dim">
+              <span class="dot"></span><span class="hash">B</span><span class="msg">機能1</span>
+              <span class="branch-label main">main</span>
+            </div>
+          </div>
+          <div
+            style="
+              margin-left: 211px;
+              border-left: 3px solid var(--purple);
+              border-bottom: 3px solid var(--purple);
+              width: 40px;
+              height: 26px;
+              border-bottom-left-radius: 10px;
+            "
+          ></div>
+          <div class="commits" style="justify-content: flex-start; margin-left: 192px">
+            <div class="commit">
+              <span class="dot" style="background: var(--purple); box-shadow: 0 0 0 2px var(--purple)"></span>
+              <span class="hash">C</span><span class="msg">試作</span>
+            </div>
+            <div class="link"></div>
+            <div class="commit">
+              <span class="dot" style="background: var(--purple); box-shadow: 0 0 0 2px var(--purple)"></span>
+              <span class="hash">D</span><span class="msg">仕上げ</span>
+              <span class="branch-label feat">test_cc</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p>
+        枝の上でどれだけ作業しても、<code>main</code> の側は<strong>B のまま変わりません</strong>。
+        失敗したら枝ごと捨てればよく、うまくいったら次章の「マージ」で本編に取り込みます。
+      </p>
+
+      <div class="note-box">
+        <p>
+          <span class="label">ブランチ名の慣習</span>
+          <code>main</code> は「本編・完成版」を置く枝として使われるのが一般的です
+          (以前は <code>master</code> と呼ばれていました)。
+          作業用の枝には内容が分かる名前を付けます。
+        </p>
+      </div>
+
+      <!-- ─────────────────────────────────── -->
+      <h2 id="s6"><span class="num">6</span>マージと「競合」</h2>
+      <p class="sub">枝を本編に合流させる作業と、そこで起きるトラブルの話です。</p>
+
+      <p><strong>マージ(merge)</strong>は、枝で行った変更を別の枝に取り込むことです。</p>
+
+      <div class="diagram">
+        <p class="caption">図5 — たいていは自動で合流できる</p>
+        <div class="flow">
+          <div class="node blue">
+            <span class="t">main</span>
+            <span class="d">Aファイルを変更</span>
+          </div>
+          <span class="arrow">＋</span>
+          <div class="node purple">
+            <span class="t">test_cc</span>
+            <span class="d">Bファイルを変更</span>
+          </div>
+          <span class="arrow">→<small>git merge</small></span>
+          <div class="node green">
+            <span class="t">合流できた</span>
+            <span class="d">別の場所を触っているので<br />Gitが自動で判断できる</span>
+          </div>
+        </div>
+      </div>
+
+      <h3>競合(コンフリクト)が起きるとき</h3>
+      <p>
+        <strong>両方が同じファイルの同じ行を変更していた</strong>とき、
+        Gitはどちらを採用すべきか判断できません。これが<strong>競合</strong>です。
+      </p>
+
+      <div class="diagram">
+        <p class="caption">図6 — 同じ行を別々に直すと、人が決めるしかない</p>
+        <div class="flow">
+          <div class="node blue">
+            <span class="t">こちらでは</span>
+            <span class="d">1行目を<br />「testだよ」に</span>
+          </div>
+          <span class="arrow">＋</span>
+          <div class="node purple">
+            <span class="t">あちらでは</span>
+            <span class="d">1行目を<br />「ブランチtest」に</span>
+          </div>
+          <span class="arrow">→</span>
+          <div class="node ng">
+            <span class="t">競合</span>
+            <span class="d">Gitは決められない<br /><strong>人が選ぶ</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <p>
+        競合が起きると、Gitはそのファイルに<strong>両方の案を並べて書き込みます</strong>。
+        実際にこのリポジトリの <code>brunch.md</code> は、しばらくこの状態のままでした。
+      </p>
+
+      <pre><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; Updated upstream   <span class="c">← ここから下が「取り込む前からあった方」</span>
+testだよ
+=======                       <span class="c">← 区切り線</span>
+ブランチtest
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; Stashed changes    <span class="c">← ここまでが「あとから来た方」</span></code></pre>
+
+      <p><strong>直し方は2通りあります。</strong></p>
+      <ol>
+        <li>
+          <strong>どちらかを残す場合</strong>:ファイルをテキストエディタで開き、残したい文だけにして
+          <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code> <code>=======</code> <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>
+          の3行を消す。保存して <code>git add &lt;ファイル&gt;</code>(=「解決しました」の合図)
+        </li>
+        <li>
+          <strong>そのファイル自体が不要な場合</strong>:<code>git rm &lt;ファイル&gt;</code> で削除する。
+          これも「解決した」とみなされる
+        </li>
+      </ol>
+
+      <div class="note-box tip">
+        <p>
+          <span class="label">このリポジトリでは</span>
+          <code>brunch.md</code> はもう使わないファイルだったため、2番目の方法
+          (<code>git rm brunch.md</code>)で削除して解決しました。
+          <strong>削除しても過去のコミットからは消えません。</strong>
+          <code>6d315cd</code> と <code>8fb97f3</code> の時点の内容はいつでも取り出せます。
+        </p>
+      </div>
+
+      <div class="note-box warn">
+        <p>
+          <span class="label">競合が残っているとどうなるか</span>
+          <strong>そのリポジトリでは新しいコミットができません。</strong>
+          「途中で止まっている」状態なので、Gitが先へ進ませてくれないのです。
+          エラーが出て困ったときは、まず <code>git status</code> で
+          <code>Unmerged paths</code> と書かれていないか確認してください。
+        </p>
+      </div>
+
+      <!-- ─────────────────────────────────── -->
+      <h2 id="s7"><span class="num">7</span>手元とGitHubのやりとり</h2>
+      <p class="sub">送る(push)・取ってくる(pull)・複製する(clone)の3つだけです。</p>
+
+      <div class="diagram">
+        <p class="caption">図7 — 同じ履歴が2か所にある</p>
+        <div class="flow">
+          <div class="node accent" style="min-width: 190px">
+            <span class="t">あなたのパソコン</span>
+            <span class="d">ローカルリポジトリ<br />(作業フォルダ + 履歴)</span>
+          </div>
+          <div style="text-align: center">
+            <div class="arrow" style="font-size: 22px">→<small>git push(送る)</small></div>
+            <div class="arrow" style="font-size: 22px; margin-top: 10px">←<small>git pull(取ってくる)</small></div>
+          </div>
+          <div class="node blue" style="min-width: 190px">
+            <span class="t">GitHub</span>
+            <span class="d">リモートリポジトリ<br />通称 <code>origin</code></span>
+          </div>
+        </div>
+      </div>
+
+      <table>
+        <tr>
+          <th>したいこと</th>
+          <th>コマンド</th>
+          <th>意味</th>
+        </tr>
+        <tr>
+          <td>GitHubにあるものを手元に持ってくる(最初の1回)</td>
+          <td><code>git clone &lt;URL&gt;</code></td>
+          <td>丸ごと複製する</td>
+        </tr>
+        <tr>
+          <td>手元の記録をGitHubに送る</td>
+          <td><code>git push</code></td>
+          <td>押し上げる</td>
+        </tr>
+        <tr>
+          <td>GitHub側の新しい記録を手元に取り込む</td>
+          <td><code>git pull</code></td>
+          <td>引っ張ってくる</td>
+        </tr>
+      </table>
+
+      <div class="note-box">
+        <p>
+          <span class="label">origin とは</span>
+          「送り先のGitHubリポジトリ」に付けられた<strong>あだ名</strong>です。
+          毎回 <code>https://github.com/…</code> と打つのは大変なので、
+          <code>origin</code> という短い名前で呼べるようにしてあります。
+          <code>git push origin main</code> は
+          <strong>「originという場所へ、mainという枝を送る」</strong>という意味です。
+        </p>
+      </div>
+
+      <div class="note-box tip">
+        <p>
+          <span class="label">大事な性質</span>
+          <strong>コミットしただけではGitHubには反映されません。</strong>
+          コミットは手元のノートに書くこと、pushは貸金庫に預けること。
+          この2つは別の操作です。
+        </p>
+      </div>
+
+      <!-- ─────────────────────────────────── -->
+      <h2 id="s8"><span class="num">8</span>GitHubがしてくれること</h2>
+      <p class="sub">保管だけではありません。今回の公開もこの機能を使っています。</p>
+
+      <table>
+        <tr>
+          <th>機能</th>
+          <th>できること</th>
+        </tr>
+        <tr>
+          <td>リポジトリ</td>
+          <td>履歴を預かる。誰がいつ何を変えたかをWeb画面で見られる</td>
+        </tr>
+        <tr>
+          <td>Issues</td>
+          <td>「ここを直したい」を課題として登録・管理する</td>
+        </tr>
+        <tr>
+          <td>Pull Request</td>
+          <td>枝の変更を本編に入れる前に、内容を見せて相談する</td>
+        </tr>
+        <tr>
+          <td><strong>Actions</strong></td>
+          <td>pushをきっかけに、テストやビルドを<strong>自動で実行</strong>する</td>
+        </tr>
+        <tr>
+          <td><strong>Pages</strong></td>
+          <td>指定フォルダを<strong>Webサイトとして無料で公開</strong>する</td>
+        </tr>
+      </table>
+
+      <p>
+        PinRoute の公開では、この最後の2つを使っています。
+        <code>git push</code> するとActionsが自動でテストとビルドを行い、
+        できあがったファイルをPagesが配ります。
+      </p>
+
+      <div class="note-box warn">
+        <p>
+          <span class="label">公開のときの注意</span>
+          無料プランでPagesを使う場合、<strong>リポジトリを公開(public)にする必要があります</strong>。
+          公開すると<strong>そのリポジトリの中身と過去の履歴がすべて誰でも見られる状態</strong>になります。
+          一度コミットしたものは履歴に残るため、パスワードや個人情報を含むファイルを
+          過去にコミットしていないか確認してから公開してください。
+        </p>
+      </div>
+
+      <!-- ─────────────────────────────────── -->
+      <h2 id="s9"><span class="num">9</span>いまのあなたのリポジトリ</h2>
+      <p class="sub">ここまでの用語で、現状を読んでみます。</p>
+
+      <div class="diagram">
+        <p class="caption">図8 — 2026年7月時点の test_cc リポジトリ</p>
+        <div style="overflow-x: auto">
+          <div class="commits" style="justify-content: flex-start">
+            <div class="commit dim">
+              <span class="dot"></span><span class="hash">29d4e56</span>
+              <span class="msg">test.md を追加</span>
+            </div>
+            <div class="link"></div>
+            <div class="commit dim">
+              <span class="dot"></span><span class="hash">6d315cd</span>
+              <span class="msg">brunch.md を置いた</span>
+              <span class="branch-label main">main</span>
+            </div>
+            <div class="link"></div>
+            <div class="commit">
+              <span class="dot" style="background: var(--purple); box-shadow: 0 0 0 2px var(--purple)"></span>
+              <span class="hash">8fb97f3</span>
+              <span class="msg">brunch.md に中身</span>
+              <span class="branch-label feat">test_cc ← いまここ</span>
+            </div>
+          </div>
+        </div>
+        <p style="margin: 20px 0 0; font-size: 13px; color: var(--text-sub); text-align: center">
+          GitHub側(origin)も同じ位置にあります。ここまでは手元とGitHubが一致しています。
+        </p>
+      </div>
+
+      <h3>まだ記録されていないもの</h3>
+
+      <div class="flow" style="margin: 18px 0">
+        <div class="node purple">
+          <span class="t">brunch.md</span>
+          <span class="d">削除した<br /><strong>ステージ済み</strong></span>
+        </div>
+        <div class="node accent">
+          <span class="t">test.md</span>
+          <span class="d">手元から消えているが<br />まだステージしていない</span>
+        </div>
+        <div class="node accent">
+          <span class="t">地図アプリ/</span>
+          <span class="d">PinRoute 一式<br />まだ一度も記録していない</span>
+        </div>
+        <div class="node accent">
+          <span class="t">.github/</span>
+          <span class="d">公開の設定<br />まだ一度も記録していない</span>
+        </div>
+      </div>
+
+      <p style="font-size: 13px; color: var(--text-sub)">
+        <code>brunch.md</code> だけ色が違うのは、<strong>すでにステージに入っている</strong>からです
+        (第3章の②の位置)。ほかの3つはまだ作業フォルダにあるだけで、
+        次のコミットには含まれません。
+      </p>
+
+      <p>
+        つまり <strong>PinRoute はまだGitの履歴に一度も入っていません</strong>。
+        あなたのパソコンの中にあるだけの状態です。
+        公開するには、この順に進める必要があります。
+      </p>
+
+      <div class="diagram">
+        <p class="caption">図9 — 公開までに必要な手順</p>
+        <div class="flow v">
+          <div class="node green wide">
+            <span class="t">① brunch.md の競合を解決する ← 済</span>
+            <span class="d">不要なファイルだったので削除した。これでコミットできるようになった</span>
+          </div>
+          <span class="arrow">↓</span>
+          <div class="node accent wide">
+            <span class="t">② 記録するものを選ぶ(git add)</span>
+            <span class="d">地図アプリ/ と .github/ をステージに入れる</span>
+          </div>
+          <span class="arrow">↓</span>
+          <div class="node accent wide">
+            <span class="t">③ 記録する(git commit)</span>
+            <span class="d">説明文を付けて履歴に確定させる</span>
+          </div>
+          <span class="arrow">↓</span>
+          <div class="node purple wide">
+            <span class="t">④ main に取り込む(git merge)</span>
+            <span class="d">公開の設定が main を見ているため</span>
+          </div>
+          <span class="arrow">↓</span>
+          <div class="node blue wide">
+            <span class="t">⑤ GitHubへ送る(git push)</span>
+            <span class="d">ここで初めてGitHub側に届く</span>
+          </div>
+          <span class="arrow">↓</span>
+          <div class="node green wide">
+            <span class="t">⑥ GitHubの画面で公開設定をする</span>
+            <span class="d">リポジトリを公開にし、Pages のSourceを「GitHub Actions」に</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─────────────────────────────────── -->
+      <h2 id="s10"><span class="num">10</span>コマンド早見表と用語</h2>
+      <p class="sub">迷ったら <code>git status</code>。いまの状況と次にすべきことを教えてくれます。</p>
+
+      <table>
+        <tr>
+          <th>コマンド</th>
+          <th>意味</th>
+        </tr>
+        <tr>
+          <td><code>git status</code></td>
+          <td><strong>いまの状態を見る</strong>。何が変更され、何がステージにあるか</td>
+        </tr>
+        <tr>
+          <td><code>git add &lt;ファイル&gt;</code></td>
+          <td>次の記録に含める</td>
+        </tr>
+        <tr>
+          <td><code>git add .</code></td>
+          <td>変更したものを全部含める</td>
+        </tr>
+        <tr>
+          <td><code>git commit -m "説明"</code></td>
+          <td>ステージの内容を履歴に記録する</td>
+        </tr>
+        <tr>
+          <td><code>git log --oneline</code></td>
+          <td>履歴を一覧で見る</td>
+        </tr>
+        <tr>
+          <td><code>git switch &lt;枝名&gt;</code></td>
+          <td>別のブランチに移動する</td>
+        </tr>
+        <tr>
+          <td><code>git switch -c &lt;枝名&gt;</code></td>
+          <td>新しいブランチを作って移動する</td>
+        </tr>
+        <tr>
+          <td><code>git merge &lt;枝名&gt;</code></td>
+          <td>その枝の変更を、いまいる枝に取り込む</td>
+        </tr>
+        <tr>
+          <td><code>git push origin main</code></td>
+          <td>mainブランチをGitHubへ送る</td>
+        </tr>
+        <tr>
+          <td><code>git pull</code></td>
+          <td>GitHub側の新しい記録を取り込む</td>
+        </tr>
+        <tr>
+          <td><code>git diff</code></td>
+          <td>何をどう変えたかを行単位で見る</td>
+        </tr>
+      </table>
+
+      <h3>用語辞典</h3>
+      <dl class="glossary">
+        <dt>リポジトリ</dt>
+        <dd>履歴を含めたプロジェクト一式。「repo(レポ)」とも呼ぶ</dd>
+
+        <dt>コミット</dt>
+        <dd>その時点の状態の記録。1つずつ名前(ハッシュ)と説明文を持つ</dd>
+
+        <dt>ステージ</dt>
+        <dd>次のコミットに含めるものを置く場所。index とも呼ぶ</dd>
+
+        <dt>ブランチ</dt>
+        <dd>履歴の枝。本編を壊さずに別作業を進めるためのもの</dd>
+
+        <dt>main</dt>
+        <dd>本編にあたるブランチの一般的な名前</dd>
+
+        <dt>HEAD</dt>
+        <dd>いま自分がいる位置。「いまここ」を指す印</dd>
+
+        <dt>マージ</dt>
+        <dd>枝の変更を別の枝に取り込むこと</dd>
+
+        <dt>コンフリクト</dt>
+        <dd>同じ行を別々に変更していて、Gitが判断できない状態</dd>
+
+        <dt>origin</dt>
+        <dd>送り先のGitHubリポジトリに付けられたあだ名</dd>
+
+        <dt>push / pull</dt>
+        <dd>GitHubへ送る / GitHubから取ってくる</dd>
+
+        <dt>clone</dt>
+        <dd>GitHubのリポジトリを手元に丸ごと複製すること</dd>
+
+        <dt>.gitignore</dt>
+        <dd>記録しないファイルを書いておく設定。node_modules などを除外する</dd>
+
+        <dt>stash</dt>
+        <dd>作業中の変更を一時的に棚上げする機能。戻すときに競合が起きることがある</dd>
+      </dl>
+
+      <div class="note-box tip">
+        <p>
+          <span class="label">最後に</span>
+          Gitは<strong>壊すのが難しい</strong>ようにできています。一度コミットしたものは、
+          たとえ消したように見えても履歴の中に残っていることがほとんどです。
+          怖がらずに <code>git status</code> と <code>git log</code> で
+          今どうなっているかを確かめながら進めてください。
+        </p>
+      </div>
+
+      <footer class="end">
+        Git と GitHub のきほん / PinRoute のしくみは <code>docs/how-it-works.html</code>、
+        操作方法は <code>docs/manual.html</code> にあります。<br />
+        この資料の図は、実際のリポジトリ(<code>166848pine-cell/test_cc</code>)の状態をもとにしています。
+      </footer>
+    </div>
+  </body>
+</html>

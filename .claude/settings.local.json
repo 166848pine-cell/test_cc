@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Bash(curl -s -i -m 15 \"https://msearch.gsi.go.jp/address-search/AddressSearch?q=%E6%9D%B1%E4%BA%AC%E9%A7%85\" -H \"Origin: http://localhost:5173\")",
+      "Bash(curl -s -m 20 -H \"User-Agent: PinRoute/1.0\" \"https://nominatim.openstreetmap.org/search?format=jsonv2&limit=3&accept-language=ja&q=%E6%9C%AD%E5%B9%8C%E5%B8%82%E6%99%82%E8%A8%88%E5%8F%B0\")",
+      "Bash(python3 -m json.tool --no-ensure-ascii)",
+      "Bash(curl -s -m 20 \"https://router.project-osrm.org/route/v1/driving/139.767,35.681;139.622,35.466?overview=false\")",
+      "Bash(curl -s -m 20 -o /dev/null -w \"muni.js: %{http_code} size=%{size_download}\\\\n\" \"https://maps.gsi.go.jp/js/muni.js\")",
+      "Bash(curl -s -m 20 \"https://maps.gsi.go.jp/js/muni.js\")",
+      "Bash(npx playwright *)",
+      "Bash(npm run *)",
+      "Bash(curl -s -m 30 https://maps.gsi.go.jp/js/muni.js -o muni.js)",
+      "Bash(python3 -c 'import urllib.parse;print\\(urllib.parse.quote\\(\"富士山\"\\)\\)')",
+      "Bash(curl -s -m 20 \"https://msearch.gsi.go.jp/address-search/AddressSearch?q=$\\(python3 -c 'import urllib.parse;print\\(urllib.parse.quote\\(\"富士山\"\\)\\)'\\)\")",
+      "Bash(python3 -c ' *)",
+      "Bash(rm -f livecheck.mjs)",
+      "Bash(node -e ' *)",
+      "Bash(npx vitest *)",
+      "Bash(curl -s -m 25 -o /dev/null -w \"OSRM 3pt: %{http_code} time=%{time_total}\\\\n\" \"https://router.project-osrm.org/route/v1/driving/139.7671,35.6812;139.6221,35.4657;139.5503,35.3192?overview=full&geometries=geojson\")",
+      "Bash(curl -s -m 25 -H \"User-Agent: PinRoute/1.0\" \"https://nominatim.openstreetmap.org/search?format=jsonv2&limit=10&accept-language=ja&q=%E5%AF%8C%E5%A3%AB%E5%B1%B1\")",
+      "Bash(sudo -n true)",
+      "Bash(curl -sfL -O \"http://security.ubuntu.com/ubuntu/pool/main/n/nss/libnss3_3.98-1ubuntu0.2_amd64.deb\")",
+      "Bash(curl -sfL -O \"http://security.ubuntu.com/ubuntu/pool/main/a/alsa-lib/libasound2t64_1.2.11-1ubuntu0.1_amd64.deb\")",
+      "Bash(curl -s -m 30 \"http://security.ubuntu.com/ubuntu/pool/main/a/alsa-lib/\")",
+      "Bash(export LD_LIBRARY_PATH=\"/tmp/claude-1000/-mnt-c-Users-vlad--OneDrive--------test-cc------/a6aa6152-3b27-4262-bb22-9d68cf2e8aa0/scratchpad/libs/root/usr/lib/x86_64-linux-gnu\")",
+      "Bash(node bc.mjs 東京駅 札幌市時計台 富士山 六本木ヒルズ 横浜駅 大阪市北区梅田1丁目)",
+      "Bash(node bc.mjs 東京駅 札幌市時計台 富士山 六本木ヒルズ 横浜駅 大阪市北区梅田1丁目 東京都千代田区丸の内1-9-1)"
+    ]
+  }
+}

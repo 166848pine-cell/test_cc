@@ -1,0 +1,5 @@
+# 生成物(1行の巨大な対応表なので整形しない)
+src/muni.ts
+dist/
+node_modules/
+.smoke/

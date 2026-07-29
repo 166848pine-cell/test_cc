@@ -1,0 +1,887 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PinRoute 操作マニュアル</title>
+    <style>
+      :root {
+        --accent: #e4572e;
+        --accent-soft: #fdeee9;
+        --ok: #1b7f4b;
+        --ok-soft: #e8f5ee;
+        --ng: #c62828;
+        --ng-soft: #fdecec;
+        --text: #1f2328;
+        --text-sub: #5b6673;
+        --border: #e2e6ec;
+        --surface: #fff;
+        --bg: #f6f7f9;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        padding: 0 20px 80px;
+        background: var(--bg);
+        color: var(--text);
+        font-family:
+          'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Noto Sans JP', Meiryo,
+          system-ui, sans-serif;
+        font-size: 15px;
+        line-height: 1.8;
+      }
+      .page {
+        max-width: 840px;
+        margin: 0 auto;
+      }
+      header.title {
+        padding: 48px 0 28px;
+        border-bottom: 3px solid var(--accent);
+        margin-bottom: 36px;
+      }
+      header.title h1 {
+        margin: 0;
+        font-size: 32px;
+        letter-spacing: 0.01em;
+      }
+      header.title p {
+        margin: 8px 0 0;
+        color: var(--text-sub);
+      }
+      h2 {
+        margin: 52px 0 16px;
+        font-size: 21px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid var(--border);
+      }
+      h3 {
+        margin: 34px 0 10px;
+        font-size: 17px;
+        color: var(--accent);
+      }
+      p {
+        margin: 10px 0;
+      }
+      /*
+       * 図は元の大きさに合わせて出す。
+       * パネルの切り出し(幅372px)を本文幅いっぱいに引き伸ばすと、ぼやけて誌面も間延びする。
+       */
+      figure {
+        margin: 20px 0 28px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      figure img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        background: var(--surface);
+        box-shadow: 0 2px 10px rgb(16 24 40 / 8%);
+      }
+      figure figcaption {
+        margin-top: 9px;
+        font-size: 13px;
+        line-height: 1.7;
+        color: var(--text-sub);
+        text-align: center;
+        max-width: 620px;
+      }
+      figure.shot-wide,
+      figure.shot-map {
+        align-items: stretch;
+      }
+      figure.shot-wide figcaption,
+      figure.shot-map figcaption {
+        text-align: left;
+        max-width: none;
+      }
+      figure.shot-panel img {
+        max-width: 360px;
+      }
+      figure.shot-strip img {
+        max-width: 360px;
+      }
+      figure.shot-mobile img {
+        max-width: 330px;
+      }
+      .callout {
+        border-radius: 10px;
+        padding: 14px 18px;
+        margin: 18px 0;
+        border: 1px solid var(--border);
+        background: var(--surface);
+      }
+      .callout.ok {
+        border-color: rgb(27 127 75 / 35%);
+        background: var(--ok-soft);
+      }
+      .callout.ng {
+        border-color: rgb(198 40 40 / 30%);
+        background: var(--ng-soft);
+      }
+      .callout.note {
+        border-color: rgb(228 87 46 / 30%);
+        background: var(--accent-soft);
+      }
+      .callout .label {
+        display: inline-block;
+        font-weight: 700;
+        margin-right: 6px;
+      }
+      .callout.ok .label {
+        color: var(--ok);
+      }
+      .callout.ng .label {
+        color: var(--ng);
+      }
+      .callout.note .label {
+        color: var(--accent);
+      }
+      .callout p:first-child {
+        margin-top: 0;
+      }
+      .callout p:last-child {
+        margin-bottom: 0;
+      }
+      ol.steps {
+        padding-left: 0;
+        list-style: none;
+        counter-reset: step;
+      }
+      ol.steps > li {
+        counter-increment: step;
+        position: relative;
+        padding: 0 0 4px 44px;
+        margin: 20px 0;
+      }
+      ol.steps > li::before {
+        content: counter(step);
+        position: absolute;
+        left: 0;
+        top: 2px;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: var(--accent);
+        color: #fff;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 28px;
+        text-align: center;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 18px 0;
+        font-size: 14px;
+        background: var(--surface);
+      }
+      th,
+      td {
+        border: 1px solid var(--border);
+        padding: 9px 12px;
+        text-align: left;
+        vertical-align: top;
+      }
+      th {
+        background: #eef1f5;
+        font-weight: 700;
+        white-space: nowrap;
+      }
+      code {
+        background: #eceff3;
+        border-radius: 4px;
+        padding: 2px 6px;
+        font-family: 'SFMono-Regular', Consolas, monospace;
+        font-size: 0.92em;
+      }
+      pre {
+        background: #1f2328;
+        color: #e9ecf1;
+        padding: 14px 16px;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-size: 13px;
+        line-height: 1.7;
+      }
+      pre code {
+        background: none;
+        color: inherit;
+        padding: 0;
+      }
+      kbd {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-bottom-width: 2px;
+        border-radius: 5px;
+        padding: 1px 7px;
+        font-size: 0.9em;
+        font-family: inherit;
+      }
+      .toc {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 16px 22px;
+      }
+      .toc ol {
+        margin: 6px 0;
+        padding-left: 22px;
+      }
+      .toc a {
+        color: var(--text);
+      }
+      footer.end {
+        margin-top: 60px;
+        padding-top: 20px;
+        border-top: 1px solid var(--border);
+        font-size: 13px;
+        color: var(--text-sub);
+      }
+      @media print {
+        body {
+          background: #fff;
+        }
+        figure img {
+          box-shadow: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="title">
+        <h1>PinRoute 操作マニュアル</h1>
+        <p>
+          住所や施設名をまとめて地図にピン留めし、巡回ルートの距離と所要時間をすぐ確認するためのツールです。
+        </p>
+      </header>
+
+      <div class="toc">
+        <strong>もくじ</strong>
+        <ol>
+          <li><a href="#open">アプリの開き方</a>(まずここ)</li>
+          <li><a href="#screen">画面の見かた</a></li>
+          <li><a href="#basic">基本の使い方</a></li>
+          <li><a href="#route">ルートを確認する</a></li>
+          <li><a href="#bulk">まとめて入力(物件一覧の貼り付け)</a></li>
+          <li><a href="#callout">情報ブロックを地図に載せる</a></li>
+          <li><a href="#edit">並び替え・名前の変更・削除</a></li>
+          <li><a href="#share">保存と共有</a></li>
+          <li><a href="#mobile">スマートフォンで使う</a></li>
+          <li><a href="#keys">キーボード操作</a></li>
+          <li><a href="#trouble">困ったときは</a></li>
+          <li><a href="#data">データの扱い</a></li>
+        </ol>
+      </div>
+
+      <h2 id="open">1. アプリの開き方</h2>
+
+      <div class="callout ok">
+        <p>
+          <span class="label">これが一番かんたん</span>
+          <code>dist</code> フォルダの中の <strong>PinRoute.html</strong> を
+          <strong>ダブルクリック</strong>してください。それだけで使えます。
+        </p>
+      </div>
+
+      <div class="callout ng">
+        <p>
+          <span class="label">やりがちな失敗</span>
+          いちばん上にある <code>index.html</code> を直接ダブルクリックしても
+          <strong>動きません</strong>。ロゴや入力欄は表示されますが、地図が出ず、検索しても何も起きません。
+        </p>
+        <p>
+          これは不具合ではなく、ブラウザの安全上の決まりです。パソコンのファイルとして開いたページ
+          (アドレスが <code>file://</code> で始まるページ)からは、別ファイルのプログラムや装飾を
+          読み込めないようになっています。<code>PinRoute.html</code>
+          はそれらを1つのファイルにまとめてあるため、そのまま開けます。
+        </p>
+      </div>
+
+      <p>
+        <code>dist</code> フォルダが無い場合は、ターミナルで次を実行すると作られます
+        (Node.js が必要です)。
+      </p>
+      <pre><code>cd pinroute
+npm install
+npm run build</code></pre>
+
+      <h3>そのほかの開き方</h3>
+      <table>
+        <tr>
+          <th>方法</th>
+          <th>手順</th>
+          <th>向いている場面</th>
+        </tr>
+        <tr>
+          <td>1ファイル版</td>
+          <td><code>dist/PinRoute.html</code> をダブルクリック</td>
+          <td>自分のパソコンで使う。人にファイルで渡す</td>
+        </tr>
+        <tr>
+          <td>ローカルサーバー</td>
+          <td>
+            <code>npm run preview</code> を実行し、表示された
+            <code>http://localhost:4173</code> を開く
+          </td>
+          <td>公開時と同じ状態を確かめたいとき</td>
+        </tr>
+        <tr>
+          <td>開発サーバー</td>
+          <td><code>npm run dev</code> を実行し、表示されたURLを開く</td>
+          <td>ソースを書き換えながら試すとき</td>
+        </tr>
+        <tr>
+          <td>Webに公開</td>
+          <td><code>dist</code> の中身を GitHub Pages などに置く</td>
+          <td>誰でも見られるようにするとき</td>
+        </tr>
+      </table>
+
+      <div class="callout note">
+        <p>
+          <span class="label">インターネット接続が必要です</span>
+          地図の画像・地点の検索・ルート計算はインターネット上の無料サービスを使っています。
+          オフラインでは地図が出ません。
+        </p>
+      </div>
+
+      <h2 id="screen">2. 画面の見かた</h2>
+
+      <figure class="shot-wide">
+        <img src="{{01-start}}" alt="PinRouteの起動直後の画面" />
+        <figcaption>起動した直後の画面。左が操作パネル、右が地図です。</figcaption>
+      </figure>
+
+      <table>
+        <tr>
+          <th>場所</th>
+          <th>役割</th>
+        </tr>
+        <tr>
+          <td>上部の入力欄</td>
+          <td>住所や施設名を入力して「検索」を押すと、地図にピンが立ちます</td>
+        </tr>
+        <tr>
+          <td>ピン一覧</td>
+          <td>登録した地点が上から順に並びます。この<strong>並び順がそのまま巡回順</strong>です</td>
+        </tr>
+        <tr>
+          <td>ルート概要</td>
+          <td>ピンが2件以上になると、総距離と所要時間が表示されます</td>
+        </tr>
+        <tr>
+          <td>右の地図</td>
+          <td>番号付きのピンと、ピンを順に結ぶ経路が表示されます</td>
+        </tr>
+        <tr>
+          <td>画面下の注記</td>
+          <td>地図データの提供元と、データの取り扱いについての説明です</td>
+        </tr>
+      </table>
+
+      <h2 id="basic">3. 基本の使い方</h2>
+
+      <h3>地点を追加する</h3>
+
+      <ol class="steps">
+        <li>
+          入力欄に住所か施設名を入力します。「東京駅」のような施設名でも、「大阪市北区梅田1丁目」のような住所でも構いません。
+          <figure class="shot-panel">
+            <img src="{{03-typing}}" alt="入力欄に東京駅と入力した状態" />
+          </figure>
+        </li>
+        <li>
+          「検索」ボタンを押す(または <kbd>Enter</kbd>)と、地点が1つに決まればそのままピンが立ちます。
+          <figure class="shot-wide">
+            <img src="{{04-one-pin}}" alt="東京駅のピンが1件立った画面" />
+            <figcaption>ピンが立つと、地図がその場所に寄ります。</figcaption>
+          </figure>
+        </li>
+        <li>
+          同じ手順で2件目、3件目を追加します。ピンは<strong>最大20件</strong>まで登録できます。
+        </li>
+      </ol>
+
+      <h3>候補が複数出たとき</h3>
+
+      <p>
+        同じ名前の場所が各地にある場合は、候補が一覧で出ます。名前の下に所在地が出ているので、
+        目的の場所を選んでください。
+      </p>
+
+      <figure class="shot-panel">
+        <img src="{{11-candidates}}" alt="富士山で検索して5件の候補が並んだ状態" />
+        <figcaption>
+          「富士山」は全国にあるため、所在地つきで候補が並びます。クリックすると確定します。
+        </figcaption>
+      </figure>
+
+      <div class="callout note">
+        <p>
+          <span class="label">ヒント</span>
+          候補は <kbd>↑</kbd> <kbd>↓</kbd> で選んで <kbd>Enter</kbd> でも確定できます。
+          閉じたいときは <kbd>Esc</kbd> か右上の × を押してください。
+        </p>
+      </div>
+
+      <h2 id="route">4. ルートを確認する</h2>
+
+      <p>
+        ピンが<strong>2件以上</strong>になると、登録した順に結ぶ<strong>車のルート</strong>が自動で計算され、
+        地図に線が引かれます。
+      </p>
+
+      <figure class="shot-wide">
+        <img src="{{05-route}}" alt="3地点を結ぶルートが表示された画面" />
+        <figcaption>東京駅 → 横浜駅 → 鎌倉駅 の順に結んだルート。</figcaption>
+      </figure>
+
+      <h3>総距離と所要時間</h3>
+
+      <figure class="shot-strip">
+        <img src="{{07-route-bar}}" alt="ルート概要の拡大" />
+        <figcaption>ルート全体の距離と所要時間です。順番を変えると自動で計算し直します。</figcaption>
+      </figure>
+
+      <p>
+        「Googleマップで開く」を押すと、同じ順番の経路がGoogleマップで開きます。
+        電車や徒歩での行き方を調べたいときは、こちらを使ってください。
+      </p>
+
+      <h3>ルートが要らないときは消せる</h3>
+
+      <p>
+        物件の比較資料として使うときなど、ルート線が邪魔なときは
+        <strong>「車ルートを表示する」のチェックを外して</strong>ください。
+        線・総距離・区間の表示がまとめて消え、ピンと情報ブロックだけになります。
+      </p>
+      <p>
+        外している間はルートの計算そのものを行いません。並び替えても計算は走らないので、
+        表示を戻したときにあらためて計算します。この設定は次回開いたときも保たれ、共有URLにも含まれます。
+      </p>
+
+      <h3>区間ごとの距離</h3>
+
+      <figure class="shot-panel">
+        <img src="{{06-pin-list}}" alt="ピン一覧と区間の距離" />
+        <figcaption>
+          ピンとピンの間に、その区間だけの距離と所要時間が出ます。どこが遠いのか一目で分かります。
+        </figcaption>
+      </figure>
+
+      <h3>地図で場所を確かめる</h3>
+
+      <p>一覧の番号(オレンジの丸)を押すと、地図がその地点に移動して詳細が表示されます。</p>
+
+      <figure class="shot-map">
+        <img src="{{09-popup}}" alt="ピンをクリックして詳細が表示された地図" />
+        <figcaption>名称・所在地・検索したときの言葉が表示されます。</figcaption>
+      </figure>
+
+      <h2 id="bulk">5. まとめて入力(物件一覧の貼り付け)</h2>
+
+      <p>
+        物件名・住所・駅徒歩などの列が並んだ表を<strong>そのまま貼り付けて一括で登録</strong>できます。
+        ExcelやスプレッドシートからコピーしたものでもCSVでも構いません。
+      </p>
+
+      <div class="callout ok">
+        <p>
+          <span class="label">まず試すなら</span>
+          <code>docs/sample-properties.csv</code>
+          にサンプルを同梱しています(神保町駅から半径500m以内の10件)。
+          中身をコピーして貼り付ければ、この章の画面がそのまま再現できます。
+          物件名・賃料・面積は説明用の<strong>架空の値</strong>で、住所は実在の街区です。
+        </p>
+      </div>
+
+      <ol class="steps">
+        <li>
+          「まとめて入力」を開き、表を貼り付けます。1行目が見出しなら「1行目は見出し」にチェックを入れたままにしてください。
+          <figure class="shot-panel">
+            <img src="{{14-bulk-input}}" alt="表を貼り付けた直後のまとめて入力欄" />
+            <figcaption>
+              住所の列と名称の列は見出しから自動で選ばれます。違っていればプルダウンで変更できます。
+              取り込む前に先頭3件を確認できます。
+            </figcaption>
+          </figure>
+        </li>
+        <li>
+          「取り込む」を押すと、住所を1件ずつ調べて地図にピンを立てます。進み具合が表示されます。
+        </li>
+        <li>
+          住所が見つからなかった行は、理由とともに一覧に残ります。表の住所を直して貼り付け直してください。
+        </li>
+      </ol>
+
+      <div class="callout note">
+        <p>
+          <span class="label">住所の書き方</span>
+          「〒160-0023 東京都新宿区西新宿2-8-1」のように郵便番号が付いていても、
+          「東京都杉並区高円寺南4-26-8 サンライズマンション101」のように建物名や部屋番号が付いていても取り込めます。
+          見つからないときは自動的に住所の部分だけで調べ直します。
+        </p>
+      </div>
+
+      <div class="callout ng">
+        <p>
+          <span class="label">上限があります</span>
+          ピンは全部で20件までです。表がそれより多い場合、超えた分は取り込まれず、その旨が表示されます。
+        </p>
+      </div>
+
+      <h2 id="callout">6. 情報ブロックを地図に載せる</h2>
+
+      <p>
+        まとめて入力で取り込むと、地図のピンから<strong>引き出し線</strong>が伸び、
+        その先のブロックに表の内容が表示されます。競合物件を並べて見せる資料のような使い方ができます。
+      </p>
+
+      <figure class="shot-wide">
+        <img src="{{15-callouts}}" alt="情報ブロックが引き出し線つきで表示された地図" />
+        <figcaption>ピンごとに、物件名を見出しにしたブロックが表示されます。</figcaption>
+      </figure>
+
+      <div class="callout note">
+        <p>
+          <span class="label">重ならないように自動で並びます</span>
+          物件が少なく余裕があるときはピンのすぐ横に、駅の徒歩圏に集まっていて置ききれないときは
+          地図の左右の端に振り分けて縦に並べます。地図を動かすと並べ直します。
+          位置を決めたいブロックはドラッグしてください(動かしたものは自動配置の対象から外れます)。
+        </p>
+      </div>
+
+      <h3>好きな場所に動かす</h3>
+
+      <p>
+        ブロックの<strong>色のついた見出し部分をつかんでドラッグ</strong>すると、好きな位置に置けます。
+        引き出し線は自動でついてきます。位置は保存され、地図を動かしても関係が崩れません。
+      </p>
+
+      <figure class="shot-wide">
+        <img src="{{16-callout-dragged}}" alt="ブロックをドラッグして移動した状態" />
+        <figcaption>重なって読みにくいときは、ドラッグで散らしてください。</figcaption>
+      </figure>
+
+      <h3>表示する項目と順番を変える</h3>
+
+      <figure class="shot-panel">
+        <img src="{{17-field-settings}}" alt="情報ブロックの項目設定" />
+        <figcaption>
+          チェックを外した項目はブロックに出ません。▲▼ で並び順を変えられます。
+        </figcaption>
+      </figure>
+
+      <table>
+        <tr>
+          <th>操作</th>
+          <th>やり方</th>
+        </tr>
+        <tr>
+          <td>項目の順番を変える</td>
+          <td>「情報ブロック」の一覧で ▲ ▼ を押す</td>
+        </tr>
+        <tr>
+          <td>項目を出さない</td>
+          <td>その項目のチェックを外す</td>
+        </tr>
+        <tr>
+          <td>項目をまとめて切り替える</td>
+          <td>「すべて表示」「すべて隠す」を押す</td>
+        </tr>
+        <tr>
+          <td>ブロックを1つだけ隠す</td>
+          <td>そのブロックの右上の × を押す</td>
+        </tr>
+        <tr>
+          <td>ブロックを全部隠す</td>
+          <td>「地図に情報ブロックを表示する」のチェックを外す</td>
+        </tr>
+        <tr>
+          <td>配置を元に戻す</td>
+          <td>「配置を初期化」を押す(隠したブロックも戻ります)</td>
+        </tr>
+      </table>
+
+      <div class="callout note">
+        <p>
+          <span class="label">物件名について</span>
+          名称の列はブロックの見出しに表示されるため、中の項目としては重ねて表示しません。
+        </p>
+      </div>
+
+      <h3>色と大きさを変える</h3>
+
+      <p>
+        「見た目」を開くと、ピン・情報ブロック・引き出し線・ルート線の
+        <strong>色(6色)と大きさ(小・中・大)</strong>をまとめて変えられます。
+      </p>
+      <p>
+        1件だけ目立たせたいときは、<strong>ピン一覧の各行にある丸いボタン</strong>を押してください。
+        その地点だけの色と大きさを設定できます。個別に設定した地点は全体の設定より優先されます。
+        元に戻すときはその場の「全体の設定に戻す」、まとめて戻すときは
+        「見た目」の中の「個別の設定をすべて解除」を押します。
+      </p>
+
+      <div class="callout note">
+        <p>
+          <span class="label">動かしたブロックは動きません</span>
+          ブロックを1つドラッグすると、そのときの他のブロックの位置もそのまま固定されます。
+          1つ動かしたせいで別のブロックが勝手に動くことはありません。
+          自動で並べ直したいときは「配置を初期化」を押してください。
+        </p>
+      </div>
+
+      <h2 id="edit">7. 並び替え・名前の変更・削除</h2>
+
+      <h3>順番を変える</h3>
+
+      <p>
+        ルートは<strong>一覧の並び順どおり</strong>に計算されます。順番を変えると、
+        番号もルートも自動で付け直されます。
+      </p>
+
+      <table>
+        <tr>
+          <th>操作</th>
+          <th>やり方</th>
+        </tr>
+        <tr>
+          <td>1つ上/下へ</td>
+          <td>行の右にある ▲ ▼ ボタンを押す</td>
+        </tr>
+        <tr>
+          <td>好きな位置へ</td>
+          <td>行の<strong>左端の点々</strong>をつまんで、移動したい場所へドラッグする</td>
+        </tr>
+      </table>
+
+      <figure class="shot-panel">
+        <img src="{{08-reordered}}" alt="順番を入れ替えた後のピン一覧" />
+        <figcaption>
+          鎌倉駅を先頭に移した状態。番号と区間の距離が入れ替わっているのが分かります。
+        </figcaption>
+      </figure>
+
+      <div class="callout note">
+        <p>
+          <span class="label">スマートフォンの場合</span>
+          指でのドラッグには対応していません。▲ ▼ ボタンをお使いください。
+        </p>
+      </div>
+
+      <h3>名前を変える</h3>
+
+      <p>
+        一覧の名前をクリックすると、そのまま書き換えられます。<kbd>Enter</kbd>
+        を押すか、ほかの場所をクリックすると確定します。<kbd>Esc</kbd> で取り消せます。
+      </p>
+      <p>
+        「A社」「内見1件目」のように自分に分かりやすい名前にしておくと、順番を考えるときに便利です。
+      </p>
+
+      <h3>削除する</h3>
+
+      <table>
+        <tr>
+          <th>操作</th>
+          <th>やり方</th>
+        </tr>
+        <tr>
+          <td>1件だけ消す</td>
+          <td>その行の右端にある × を押す</td>
+        </tr>
+        <tr>
+          <td>すべて消す</td>
+          <td>「全削除」を押す。確認のメッセージが出るので「OK」を押す</td>
+        </tr>
+      </table>
+
+      <div class="callout note">
+        <p>
+          <span class="label">ルート線だけ消したいとき</span>
+          ピンは残したままルートだけ消すなら「車ルートを表示する」のチェックを外してください
+          (<a href="#route">4章</a>)。
+        </p>
+      </div>
+
+      <h2 id="share">8. 保存と共有</h2>
+
+      <h3>自動で保存されます</h3>
+
+      <p>
+        登録したピンはブラウザに自動保存されます。タブを閉じてもパソコンを再起動しても、
+        次に開いたときに前回の状態が復元されます。保存ボタンはありません。
+      </p>
+
+      <h3>ほかの人に渡す・別の端末で開く</h3>
+
+      <figure class="shot-wide">
+        <img src="{{10-share}}" alt="共有URLをコピーしたときのメッセージ" />
+        <figcaption>「共有URLをコピー」を押すと、URLがコピーされます。</figcaption>
+      </figure>
+
+      <p>
+        このURLにはピンの情報がすべて含まれています。メールやチャットで送れば、
+        相手が開いたときに<strong>同じピンとルートがそのまま再現</strong>されます。
+        どこかのサーバーに保存されるわけではありません。
+      </p>
+
+      <div class="callout note">
+        <p>
+          <span class="label">URLが長いとき</span>
+          ピンが多かったり名前が長かったりすると、URLが長くなり
+          「一部の環境で開けない場合があります」と表示されることがあります。
+          その場合はピンを減らすか、名前を短くしてください。
+        </p>
+      </div>
+
+      <h2 id="mobile">9. スマートフォンで使う</h2>
+
+      <p>
+        画面が狭いときは、上に地図・下に操作パネルの縦並びに切り替わります。機能はパソコンと同じです。
+      </p>
+
+      <figure class="shot-mobile">
+        <img src="{{13-mobile}}" alt="スマートフォンでの表示" />
+        <figcaption>幅375px(iPhoneの標準的な幅)での表示。</figcaption>
+      </figure>
+
+      <h2 id="keys">10. キーボード操作</h2>
+
+      <table>
+        <tr>
+          <th>キー</th>
+          <th>動作</th>
+        </tr>
+        <tr>
+          <td><kbd>Enter</kbd></td>
+          <td>入力欄で検索を実行。候補を選んでいるときはその候補を確定</td>
+        </tr>
+        <tr>
+          <td><kbd>↑</kbd> <kbd>↓</kbd></td>
+          <td>候補を上下に選ぶ</td>
+        </tr>
+        <tr>
+          <td><kbd>Esc</kbd></td>
+          <td>候補を閉じる。名前の編集中なら変更を取り消す</td>
+        </tr>
+        <tr>
+          <td><kbd>Tab</kbd></td>
+          <td>ボタンや入力欄を順に移動する</td>
+        </tr>
+      </table>
+
+      <h2 id="trouble">11. 困ったときは</h2>
+
+      <table>
+        <tr>
+          <th>症状</th>
+          <th>原因と対処</th>
+        </tr>
+        <tr>
+          <td>画面は出るが、地図が表示されず検索しても何も起きない</td>
+          <td>
+            <code>index.html</code> を直接開いています。<code>dist/PinRoute.html</code>
+            を開いてください(<a href="#open">1章</a>)
+          </td>
+        </tr>
+        <tr>
+          <td>「見つかりませんでした」と出る</td>
+          <td>
+            表記を変えてお試しください。施設名なら正式名称、住所なら「都道府県から」入れると見つかりやすくなります
+          </td>
+        </tr>
+        <tr>
+          <td>「検索サーバーに接続できません」と出る</td>
+          <td>インターネットに接続されているか確認してください。しばらく待って再度お試しください</td>
+        </tr>
+        <tr>
+          <td>「ルートを計算できませんでした」と出る</td>
+          <td>
+            ルート計算は無料の公開サーバーを使っており、混雑時に応答しないことがあります。
+            ピンはそのまま残るので、しばらくしてから順番を変えるなどすると再計算されます。
+            離島など道路がつながっていない地点同士でも計算できません
+          </td>
+        </tr>
+        <tr>
+          <td>「ピンは最大20件までです」と出る</td>
+          <td>不要なピンを削除してから追加してください</td>
+        </tr>
+        <tr>
+          <td>思った場所と違うところにピンが立つ</td>
+          <td>
+            そのピンを削除し、より詳しい言葉で検索し直してください。
+            候補が複数出た場合は、所在地を見て選び直せます
+          </td>
+        </tr>
+        <tr>
+          <td>まとめて入力で「住所が見つかりませんでした」と出る</td>
+          <td>
+            住所の列の指定が違っていないか確認してください。ビル名だけ・地名だけの行は見つかりません。
+            都道府県から書いた住所にすると確実です
+          </td>
+        </tr>
+        <tr>
+          <td>情報ブロックが重なって読めない</td>
+          <td>
+            ブロックの見出しをドラッグして離してください。「配置を初期化」で既定の位置に戻せます
+          </td>
+        </tr>
+        <tr>
+          <td>前回のピンが消えている</td>
+          <td>
+            ブラウザの閲覧履歴・サイトデータを消すと、保存内容も消えます。
+            大事な組み合わせは共有URLを控えておくと安全です
+          </td>
+        </tr>
+      </table>
+
+      <figure class="shot-panel">
+        <img src="{{12-not-found}}" alt="見つからなかったときのメッセージ" />
+        <figcaption>見つからなかったときは、このように画面上で知らせます。</figcaption>
+      </figure>
+
+      <h2 id="data">12. データの扱い</h2>
+
+      <ul>
+        <li>ピンの情報は<strong>お使いのブラウザの中</strong>と、発行した共有URLの中にだけ保存されます</li>
+        <li>ログインやアカウント登録は不要です。運営者がピンの内容を見ることはできません</li>
+        <li>
+          入力した住所やピンの座標は、地点の検索とルート計算のために
+          国土地理院・Nominatim・OSRM に送信されます
+        </li>
+        <li>地図の画像は OpenStreetMap から取得しています</li>
+      </ul>
+
+      <h3>この機能はありません</h3>
+      <ul>
+        <li>訪問順を自動で最短に並べ替える機能(順番はご自身で調整してください)</li>
+        <li>徒歩・自転車・電車でのルート計算(「Googleマップで開く」をご利用ください)</li>
+        <li>地図をクリックしてピンを追加する操作(検索から追加してください)</li>
+      </ul>
+
+      <div class="callout note">
+        <p>
+          <span class="label">仕組みを知りたい方へ</span>
+          フォルダの構成、ビルドとは何か、なぜGitHubで公開できるのかを図で説明した
+          <strong>how-it-works.html</strong>
+          を同じ <code>docs</code> フォルダに置いています(ダブルクリックで開けます)。
+        </p>
+      </div>
+
+      <footer class="end">
+        PinRoute 操作マニュアル / 掲載している画面は実際のアプリを撮影したものです。<br />
+        地図データ &copy; OpenStreetMap contributors / 地点検索: 国土地理院・Nominatim / ルート:
+        OSRM
+      </footer>
+    </div>
+  </body>
+</html>

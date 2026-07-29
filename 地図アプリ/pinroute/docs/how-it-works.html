@@ -1,0 +1,1013 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PinRoute のしくみ — はじめての人向け解説</title>
+    <style>
+      :root {
+        --accent: #e4572e;
+        --accent-soft: #fdeee9;
+        --blue: #2f6fd0;
+        --blue-soft: #eaf1fb;
+        --green: #1b8a5a;
+        --green-soft: #e8f5ee;
+        --ng: #c62828;
+        --ng-soft: #fdecec;
+        --text: #1f2328;
+        --text-sub: #5b6673;
+        --border: #dfe4ea;
+        --surface: #fff;
+        --bg: #f6f7f9;
+        --mono: 'SFMono-Regular', Consolas, 'Courier New', monospace;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        padding: 0 20px 90px;
+        background: var(--bg);
+        color: var(--text);
+        font-family:
+          'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Noto Sans JP', Meiryo,
+          system-ui, sans-serif;
+        font-size: 15px;
+        line-height: 1.85;
+      }
+      .page {
+        max-width: 860px;
+        margin: 0 auto;
+      }
+
+      /* ── 見出し ───────────────────── */
+      header.title {
+        padding: 52px 0 26px;
+        border-bottom: 3px solid var(--accent);
+        margin-bottom: 30px;
+      }
+      header.title h1 {
+        margin: 0;
+        font-size: 30px;
+        line-height: 1.4;
+      }
+      header.title .lead {
+        margin: 12px 0 0;
+        color: var(--text-sub);
+      }
+      h2 {
+        margin: 60px 0 6px;
+        font-size: 21px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      h2 .num {
+        flex: 0 0 auto;
+        width: 34px;
+        height: 34px;
+        border-radius: 9px;
+        background: var(--accent);
+        color: #fff;
+        font-size: 16px;
+        line-height: 34px;
+        text-align: center;
+      }
+      h2 + .sub {
+        margin: 0 0 18px 46px;
+        color: var(--text-sub);
+        font-size: 13.5px;
+      }
+      h3 {
+        margin: 34px 0 8px;
+        font-size: 16.5px;
+        color: var(--accent);
+      }
+      p {
+        margin: 12px 0;
+      }
+      ul,
+      ol {
+        padding-left: 24px;
+      }
+      li {
+        margin: 5px 0;
+      }
+      code {
+        background: #eceff3;
+        border-radius: 4px;
+        padding: 2px 6px;
+        font-family: var(--mono);
+        font-size: 0.9em;
+      }
+      strong {
+        font-weight: 700;
+      }
+
+      /* ── 図の共通 ─────────────────── */
+      .diagram {
+        margin: 22px 0;
+        padding: 22px 20px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+      }
+      .diagram > .caption {
+        margin: 0 0 16px;
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--text-sub);
+        letter-spacing: 0.02em;
+      }
+      .flow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .flow.v {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .arrow {
+        color: var(--text-sub);
+        font-size: 20px;
+        line-height: 1;
+        flex: 0 0 auto;
+      }
+      .flow.v .arrow {
+        text-align: center;
+      }
+      .node {
+        flex: 0 1 auto;
+        min-width: 120px;
+        padding: 12px 14px;
+        border: 2px solid var(--border);
+        border-radius: 10px;
+        background: var(--surface);
+        text-align: center;
+        font-size: 13.5px;
+        line-height: 1.6;
+      }
+      .node .t {
+        display: block;
+        font-weight: 700;
+        font-size: 14px;
+      }
+      .node .d {
+        display: block;
+        color: var(--text-sub);
+        font-size: 12px;
+      }
+      .node.accent {
+        border-color: var(--accent);
+        background: var(--accent-soft);
+      }
+      .node.blue {
+        border-color: var(--blue);
+        background: var(--blue-soft);
+      }
+      .node.green {
+        border-color: var(--green);
+        background: var(--green-soft);
+      }
+      .node.ng {
+        border-color: var(--ng);
+        background: var(--ng-soft);
+      }
+      .node.dashed {
+        border-style: dashed;
+      }
+      .node.wide {
+        flex: 1 1 100%;
+      }
+
+      /* 横並びの比較 */
+      .split {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+      .split > div {
+        padding: 16px;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+        background: var(--surface);
+      }
+      .split h4 {
+        margin: 0 0 10px;
+        font-size: 14px;
+      }
+      .split ul {
+        margin: 0;
+        font-size: 13.5px;
+      }
+      .split .bad {
+        border-color: rgb(198 40 40 / 35%);
+        background: var(--ng-soft);
+      }
+      .split .good {
+        border-color: rgb(27 138 90 / 35%);
+        background: var(--green-soft);
+      }
+
+      /* 3つ並び */
+      .cols3 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+      }
+
+      /* フォルダツリー */
+      .tree {
+        font-family: var(--mono);
+        font-size: 12.5px;
+        line-height: 2;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 18px 20px;
+        overflow-x: auto;
+        margin: 22px 0;
+      }
+      .tree .row {
+        display: flex;
+        gap: 14px;
+        white-space: nowrap;
+      }
+      .tree .name {
+        flex: 0 0 300px;
+      }
+      .tree .note {
+        color: var(--text-sub);
+        font-family:
+          'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Noto Sans JP', Meiryo,
+          system-ui, sans-serif;
+        white-space: normal;
+      }
+      .tag {
+        display: inline-block;
+        font-size: 10.5px;
+        font-weight: 700;
+        padding: 1px 7px;
+        border-radius: 999px;
+        vertical-align: 2px;
+        font-family:
+          'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, system-ui, sans-serif;
+      }
+      .tag.write {
+        background: var(--accent-soft);
+        color: var(--accent);
+      }
+      .tag.auto {
+        background: var(--blue-soft);
+        color: var(--blue);
+      }
+      .tag.ext {
+        background: #eceff3;
+        color: var(--text-sub);
+      }
+
+      /* 注記 */
+      .note-box {
+        margin: 20px 0;
+        padding: 15px 18px;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+        background: var(--surface);
+      }
+      .note-box.warn {
+        border-color: rgb(198 40 40 / 30%);
+        background: var(--ng-soft);
+      }
+      .note-box.tip {
+        border-color: rgb(228 87 46 / 30%);
+        background: var(--accent-soft);
+      }
+      .note-box .label {
+        font-weight: 700;
+        margin-right: 8px;
+      }
+      .note-box.warn .label {
+        color: var(--ng);
+      }
+      .note-box.tip .label {
+        color: var(--accent);
+      }
+      .note-box p {
+        margin: 0;
+      }
+      .note-box p + p {
+        margin-top: 9px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 13.5px;
+        background: var(--surface);
+      }
+      th,
+      td {
+        border: 1px solid var(--border);
+        padding: 9px 12px;
+        text-align: left;
+        vertical-align: top;
+      }
+      th {
+        background: #eef1f5;
+        font-weight: 700;
+      }
+
+      .toc {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 18px 24px;
+      }
+      .toc ol {
+        margin: 8px 0 0;
+        columns: 2;
+        column-gap: 30px;
+      }
+      .toc a {
+        color: var(--text);
+      }
+
+      dl.glossary {
+        margin: 0;
+        display: grid;
+        grid-template-columns: max-content 1fr;
+        gap: 8px 20px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 20px 24px;
+      }
+      dl.glossary dt {
+        font-weight: 700;
+      }
+      dl.glossary dd {
+        margin: 0;
+        color: var(--text-sub);
+      }
+
+      footer.end {
+        margin-top: 64px;
+        padding-top: 20px;
+        border-top: 1px solid var(--border);
+        font-size: 13px;
+        color: var(--text-sub);
+      }
+
+      @media (max-width: 700px) {
+        .split,
+        .cols3 {
+          grid-template-columns: 1fr;
+        }
+        .toc ol {
+          columns: 1;
+        }
+        .tree .row {
+          flex-direction: column;
+          gap: 0;
+        }
+        .tree .name {
+          flex: none;
+        }
+        dl.glossary {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media print {
+        body {
+          background: #fff;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="title">
+        <h1>PinRoute のしくみ</h1>
+        <p class="lead">
+          このツールが何をしているのか、フォルダには何が入っているのか、
+          そしてなぜGitHubで世界に公開できるのかを、順番に図で説明します。<br />
+          プログラミングの知識は前提にしていません。
+        </p>
+      </header>
+
+      <div class="toc">
+        <strong>もくじ</strong>
+        <ol>
+          <li><a href="#s1">このアプリは何をしているのか</a></li>
+          <li><a href="#s2">ふつうのWebサービスとの違い</a></li>
+          <li><a href="#s3">フォルダの中身</a></li>
+          <li><a href="#s4">「ビルド」とは何か</a></li>
+          <li><a href="#s5">ファイルを直接開くと動かない理由</a></li>
+          <li><a href="#s6">なぜGitHubで公開できるのか</a></li>
+          <li><a href="#s7">公開までの流れ</a></li>
+          <li><a href="#s8">住所を探すしくみ</a></li>
+          <li><a href="#s9">データはどこにあるのか</a></li>
+          <li><a href="#s10">用語辞典</a></li>
+        </ol>
+      </div>
+
+      <!-- ───────────────────────────── -->
+      <h2 id="s1"><span class="num">1</span>このアプリは何をしているのか</h2>
+      <p class="sub">まず全体像から。実は「自分のサーバー」を1台も持っていません。</p>
+
+      <p>
+        PinRoute は<strong>あなたのブラウザの中だけで動くアプリ</strong>です。
+        地図の絵や住所の情報だけを、外部の無料サービスから借りてきています。
+      </p>
+
+      <div class="diagram">
+        <p class="caption">図1 — 動いている場所と、借りているもの</p>
+        <div class="flow">
+          <div class="node accent" style="min-width: 200px">
+            <span class="t">あなたのブラウザ</span>
+            <span class="d">計算・表示・保存はすべてここ</span>
+          </div>
+          <span class="arrow">⇄</span>
+          <div>
+            <div class="node blue" style="margin-bottom: 8px">
+              <span class="t">地理院タイル</span>
+              <span class="d">地図の絵</span>
+            </div>
+            <div class="node blue" style="margin-bottom: 8px">
+              <span class="t">国土地理院</span>
+              <span class="d">住所 → 緯度経度</span>
+            </div>
+            <div class="node blue">
+              <span class="t">Nominatim</span>
+              <span class="d">施設名 → 緯度経度</span>
+            </div>
+          </div>
+        </div>
+        <p style="text-align: center; margin: 16px 0 0; font-size: 13px; color: var(--text-sub)">
+          この図に<strong>「PinRouteのサーバー」は出てきません</strong>。だから維持費が0円です。
+        </p>
+      </div>
+
+      <p>
+        たとえば「東京駅」と入力したとき、ブラウザは国土地理院に
+        「東京駅の場所を教えて」と聞き、返ってきた緯度経度をもとに、
+        地図の絵の上にピンを描いています。<strong>この一連の作業をしているのは、
+        あなたのパソコンの中のブラウザです。</strong>
+      </p>
+
+      <!-- ───────────────────────────── -->
+      <h2 id="s2"><span class="num">2</span>ふつうのWebサービスとの違い</h2>
+      <p class="sub">「サーバーがある/ない」の違いが、費用と公開のしやすさを決めています。</p>
+
+      <div class="split">
+        <div class="bad">
+          <h4>よくあるWebサービス(動的サイト)</h4>
+          <ul>
+            <li>会員登録やデータ保存のために<strong>サーバーが常に動いている</strong></li>
+            <li>アクセスのたびにサーバーがページを組み立てる</li>
+            <li>サーバー代・データベース代が毎月かかる</li>
+            <li>止まると誰も使えない</li>
+          </ul>
+        </div>
+        <div class="good">
+          <h4>PinRoute(静的サイト)</h4>
+          <ul>
+            <li>置いてあるのは<strong>ただのファイル</strong>(HTML・JavaScript・CSS)</li>
+            <li>アクセスされたらファイルを<strong>そのまま渡すだけ</strong></li>
+            <li>ファイルを置く場所は無料のところがたくさんある</li>
+            <li>組み立てる処理がないので、壊れにくく速い</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="note-box tip">
+        <p>
+          <span class="label">ここが要点</span>
+          「静的サイト」とは<strong>ファイルを配るだけのWebサイト</strong>のことです。
+          料理にたとえると、注文を受けてから調理する店(動的)ではなく、
+          出来上がった弁当を棚に並べて持って行ってもらう店(静的)です。
+          棚を貸してくれるサービスは無料のものが多く、これがGitHubで公開できる理由につながります。
+        </p>
+      </div>
+
+      <!-- ───────────────────────────── -->
+      <h2 id="s3"><span class="num">3</span>フォルダの中身</h2>
+      <p class="sub">「人が書くもの」と「機械が作るもの」の2種類があります。</p>
+
+      <div class="tree">
+        <div class="row">
+          <span class="name">pinroute/</span><span class="note">アプリ本体のフォルダ</span>
+        </div>
+        <div class="row">
+          <span class="name">├── index.html</span
+          ><span class="note"><span class="tag write">書く</span> 画面の骨組み。ボタンや入力欄の置き場所</span>
+        </div>
+        <div class="row">
+          <span class="name">├── src/</span
+          ><span class="note"><span class="tag write">書く</span> プログラム本体(17ファイル・約5,100行)</span>
+        </div>
+        <div class="row">
+          <span class="name">│&nbsp;&nbsp;&nbsp;├── main.ts</span
+          ><span class="note">起動して、部品どうしをつなぐ</span>
+        </div>
+        <div class="row">
+          <span class="name">│&nbsp;&nbsp;&nbsp;├── geocode.ts</span
+          ><span class="note">住所を外部サービスに問い合わせる</span>
+        </div>
+        <div class="row">
+          <span class="name">│&nbsp;&nbsp;&nbsp;├── rank.ts</span
+          ><span class="note">検索結果を「それらしい順」に並べ替える</span>
+        </div>
+        <div class="row">
+          <span class="name">│&nbsp;&nbsp;&nbsp;├── mapview.ts</span
+          ><span class="note">地図とピンを描く</span>
+        </div>
+        <div class="row">
+          <span class="name">│&nbsp;&nbsp;&nbsp;├── callout.ts</span
+          ><span class="note">引き出し線つきの情報ブロックを描く</span>
+        </div>
+        <div class="row">
+          <span class="name">│&nbsp;&nbsp;&nbsp;├── ui.ts</span
+          ><span class="note">左側パネルの表示と操作</span>
+        </div>
+        <div class="row">
+          <span class="name">│&nbsp;&nbsp;&nbsp;└── style.css</span
+          ><span class="note">見た目(色・大きさ・並べ方)</span>
+        </div>
+        <div class="row">
+          <span class="name">├── tests/</span
+          ><span class="note"><span class="tag write">書く</span> 動作を自動で確かめるプログラム(約2,500行)</span>
+        </div>
+        <div class="row">
+          <span class="name">├── docs/</span
+          ><span class="note"><span class="tag write">書く</span> 説明書・サンプルCSV・このページ</span>
+        </div>
+        <div class="row">
+          <span class="name">├── package.json</span
+          ><span class="note"><span class="tag write">書く</span> 使う道具の一覧と、作業の名前(build / test など)</span>
+        </div>
+        <div class="row">
+          <span class="name">├── node_modules/</span
+          ><span class="note"
+            ><span class="tag ext">自動取得</span> 道具の実体。約119MB・129フォルダ。<strong>公開しない</strong></span
+          >
+        </div>
+        <div class="row">
+          <span class="name">└── dist/</span
+          ><span class="note"><span class="tag auto">自動生成</span> <strong>これが公開するもの</strong></span>
+        </div>
+        <div class="row">
+          <span class="name">&nbsp;&nbsp;&nbsp;&nbsp;├── index.html</span
+          ><span class="note">10KB</span>
+        </div>
+        <div class="row">
+          <span class="name">&nbsp;&nbsp;&nbsp;&nbsp;├── assets/</span
+          ><span class="note">JavaScript 250KB + CSS 35KB</span>
+        </div>
+        <div class="row">
+          <span class="name">&nbsp;&nbsp;&nbsp;&nbsp;└── PinRoute.html</span
+          ><span class="note">全部を1つに詰めた版(297KB)。ダブルクリックで開ける</span>
+        </div>
+      </div>
+
+      <div class="cols3">
+        <div class="node accent">
+          <span class="t">書く</span>
+          <span class="d">人が編集する。<br />これが「元」</span>
+        </div>
+        <div class="node ext" style="border-color: var(--border); background: #f4f6f8">
+          <span class="t">自動取得</span>
+          <span class="d">ネットから落としてくる道具。<br />消してもまた入れられる</span>
+        </div>
+        <div class="node blue">
+          <span class="t">自動生成</span>
+          <span class="d">元から機械が作る。<br />消しても作り直せる</span>
+        </div>
+      </div>
+
+      <div class="note-box">
+        <p>
+          <span class="label">なぜ node_modules と dist を公開しないのか</span>
+          どちらも<strong>元のファイルから作り直せる</strong>からです。119MBもあるものを毎回持ち運ぶ必要はなく、
+          「元」と「作り方」さえあれば、必要なときに同じものができます。
+          この考え方が、次の「ビルド」と「GitHubでの公開」の土台になります。
+        </p>
+      </div>
+
+      <!-- ───────────────────────────── -->
+      <h2 id="s4"><span class="num">4</span>「ビルド」とは何か</h2>
+      <p class="sub">人が読みやすい形 → ブラウザが読める形に翻訳・整理する作業です。</p>
+
+      <p>
+        <code>src/</code> の中身は、そのままではブラウザが読めません。理由は3つあります。
+      </p>
+
+      <div class="diagram">
+        <p class="caption">図2 — ビルドで起きていること</p>
+        <div class="flow v">
+          <div class="node accent wide">
+            <span class="t">src/ の17ファイル + index.html</span>
+            <span class="d">TypeScript という書きやすい言語で書かれている。ファイルが多い</span>
+          </div>
+          <span class="arrow">↓ &nbsp;npm run build</span>
+          <div class="node dashed wide" style="text-align: left">
+            <span class="t" style="text-align: center; display: block; margin-bottom: 8px"
+              >ビルドの中でやっていること</span
+            >
+            <span class="d" style="text-align: left">
+              ① <strong>翻訳</strong>:TypeScript → ブラウザが読めるJavaScript<br />
+              ② <strong>まとめる</strong>:17個 + 部品(Leaflet)を1つのファイルに<br />
+              ③ <strong>縮める</strong>:改行や空白、人間用の名前を削って小さくする
+            </span>
+          </div>
+          <span class="arrow">↓</span>
+          <div class="node blue wide">
+            <span class="t">dist/</span>
+            <span class="d">HTML 1つ + JavaScript 1つ + CSS 1つ。これならブラウザがそのまま読める</span>
+          </div>
+        </div>
+      </div>
+
+      <p>
+        <code>npm run build</code> と打つだけでこれが全部行われます。
+        「npm」は道具を管理するしくみ、「run build」は
+        <code>package.json</code> に書いてある<strong>作業の名前</strong>です。
+      </p>
+
+      <table>
+        <tr>
+          <th>打つコマンド</th>
+          <th>やること</th>
+        </tr>
+        <tr>
+          <td><code>npm install</code></td>
+          <td>使う道具(node_modules)をネットから揃える。最初の1回だけ</td>
+        </tr>
+        <tr>
+          <td><code>npm run dev</code></td>
+          <td>編集しながら試すための簡易サーバーを立てる</td>
+        </tr>
+        <tr>
+          <td><code>npm run test</code></td>
+          <td>動作が壊れていないか自動で確かめる(98項目)</td>
+        </tr>
+        <tr>
+          <td><code>npm run build</code></td>
+          <td>公開できる形(dist/)を作る</td>
+        </tr>
+      </table>
+
+      <!-- ───────────────────────────── -->
+      <h2 id="s5"><span class="num">5</span>ファイルを直接開くと動かない理由</h2>
+      <p class="sub">これはPinRouteの不具合ではなく、ブラウザの安全上のルールです。</p>
+
+      <p>
+        <code>dist/index.html</code> をダブルクリックしても、画面は出るのに地図が表示されません。
+        原因は<strong>アドレスの種類</strong>にあります。
+      </p>
+
+      <div class="split">
+        <div class="bad">
+          <h4>file:// で開いたとき</h4>
+          <p style="margin: 0 0 8px; font-size: 13px">
+            <code>file:///C:/.../dist/index.html</code>
+          </p>
+          <ul>
+            <li>ブラウザは「どこの誰のファイルか分からない」と判断する</li>
+            <li>
+              安全のため、<strong>別ファイルのJavaScriptやCSSの読み込みを禁止</strong>する
+            </li>
+            <li>結果:文字だけ出て、地図も検索も動かない</li>
+          </ul>
+        </div>
+        <div class="good">
+          <h4>http:// で開いたとき</h4>
+          <p style="margin: 0 0 8px; font-size: 13px">
+            <code>https://～.github.io/～/</code>
+          </p>
+          <ul>
+            <li>「このサイトのファイル」という所属がはっきりする</li>
+            <li>同じサイトの中のファイルは自由に読み込める</li>
+            <li>結果:すべて正常に動く</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="diagram">
+        <p class="caption">図3 — だから「1ファイル版」を用意している</p>
+        <div class="split">
+          <div>
+            <h4 style="margin-top: 0">dist/index.html(3ファイル構成)</h4>
+            <div class="flow v">
+              <div class="node">index.html</div>
+              <span class="arrow">↓ 読みに行く</span>
+              <div class="node ng">assets/～.js<br />assets/～.css</div>
+            </div>
+            <p style="font-size: 12.5px; color: var(--text-sub); text-align: center; margin: 10px 0 0">
+              file:// ではこの矢印が<strong>禁止される</strong>
+            </p>
+          </div>
+          <div>
+            <h4 style="margin-top: 0">dist/PinRoute.html(1ファイル)</h4>
+            <div class="flow v">
+              <div class="node green" style="padding: 26px 14px">
+                PinRoute.html<br />
+                <span class="d">HTML + JavaScript + CSS<br />すべて中に入っている</span>
+              </div>
+            </div>
+            <p style="font-size: 12.5px; color: var(--text-sub); text-align: center; margin: 10px 0 0">
+              読みに行く必要がないので<strong>どこでも動く</strong>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ───────────────────────────── -->
+      <h2 id="s6"><span class="num">6</span>なぜGitHubで公開できるのか</h2>
+      <p class="sub">GitHub Pages は「ファイルを配るだけの棚」を無料で貸してくれるからです。</p>
+
+      <p>
+        GitHub はもともと<strong>プログラムの保管庫</strong>です。
+        そこに「GitHub Pages」という機能があり、
+        <strong>指定したフォルダの中身を、そのままWebサイトとして配ってくれます</strong>。
+      </p>
+
+      <div class="diagram">
+        <p class="caption">図4 — 公開されるまでの道すじ</p>
+        <div class="flow">
+          <div class="node accent">
+            <span class="t">あなたのPC</span>
+            <span class="d">src/ を編集</span>
+          </div>
+          <span class="arrow">→</span>
+          <div class="node">
+            <span class="t">GitHub</span>
+            <span class="d">保管庫<br />(元のファイル)</span>
+          </div>
+          <span class="arrow">→</span>
+          <div class="node blue">
+            <span class="t">GitHub Actions</span>
+            <span class="d">代わりにビルド<br />→ dist/ を作る</span>
+          </div>
+          <span class="arrow">→</span>
+          <div class="node green">
+            <span class="t">GitHub Pages</span>
+            <span class="d">dist/ を配る棚</span>
+          </div>
+          <span class="arrow">→</span>
+          <div class="node">
+            <span class="t">世界中の<br />ブラウザ</span>
+            <span class="d">URLを開くだけ</span>
+          </div>
+        </div>
+      </div>
+
+      <h3>なぜ無料で成り立つのか</h3>
+      <p>
+        Pages がすることは<strong>ファイルを渡すだけ</strong>だからです。
+        計算もデータベースも必要ありません。
+        しかもPinRouteは全部あわせて300KB程度(写真1枚ぶんくらい)しかないので、
+        配る側の負担がとても小さいのです。
+      </p>
+
+      <div class="note-box">
+        <p>
+          <span class="label">住所検索や地図はどこから来るのか</span>
+          GitHubからではありません。<strong>閲覧者のブラウザが、国土地理院などに直接聞きに行きます</strong>(図1)。
+          つまり利用者が増えても、GitHub側の負担はほとんど変わりません。
+          そのかわり、外部サービスへの問い合わせは増えます。次の注意はそのためのものです。
+        </p>
+      </div>
+
+      <div class="note-box warn">
+        <p>
+          <span class="label">公開版にルート機能が無い理由</span>
+          ルート(道順)の計算に使っていた OSRM というサービスは、提供元が
+          <strong>「非商用かつ合理的な用途に限る」</strong>と定めており、
+          不特定多数に公開するアプリからの利用を認めていません。
+        </p>
+        <p>
+          そこで公開版ではルート計算を外し、代わりに
+          <strong>「Googleマップで開く」</strong>ボタンを残しています。
+          これは普通のリンク(URLを開くだけ)なので、利用制限がありません。
+          手元で使う <code>PinRoute.html</code> にはルート機能が入っています。
+        </p>
+      </div>
+
+      <!-- ───────────────────────────── -->
+      <h2 id="s7"><span class="num">7</span>公開までの流れ</h2>
+      <p class="sub">1回設定すれば、あとは「保存して送る」だけで自動更新されます。</p>
+
+      <div class="diagram">
+        <p class="caption">図5 — GitHub Actions が自動でやること</p>
+        <div class="flow v">
+          <div class="node accent wide">
+            <span class="t">① あなたが GitHub に送る(push)</span>
+            <span class="d">送るのは src/ などの「元」だけ。dist/ も node_modules/ も送らない</span>
+          </div>
+          <span class="arrow">↓ 自動で始まる</span>
+          <div class="node wide">
+            <span class="t">② 作業用のパソコンを1台借りる</span>
+            <span class="d">GitHubが用意する。使い捨て</span>
+          </div>
+          <span class="arrow">↓</span>
+          <div class="node wide">
+            <span class="t">③ 道具を揃える(npm ci)</span>
+            <span class="d">node_modules を作る</span>
+          </div>
+          <span class="arrow">↓</span>
+          <div class="node wide">
+            <span class="t">④ 検査する(npm run lint / npm run test)</span>
+            <span class="d">98項目の自動テスト。1つでも失敗したらここで止まり、公開されない</span>
+          </div>
+          <span class="arrow">↓</span>
+          <div class="node blue wide">
+            <span class="t">⑤ ビルドする(npm run build)</span>
+            <span class="d">dist/ ができる</span>
+          </div>
+          <span class="arrow">↓</span>
+          <div class="node green wide">
+            <span class="t">⑥ dist/ を Pages に配置して公開完了</span>
+            <span class="d">URLはいつも同じ。中身だけ新しくなる</span>
+          </div>
+        </div>
+      </div>
+
+      <p>
+        この手順は <code>.github/workflows/deploy-pinroute.yml</code> というファイルに書いてあります。
+        人がやると忘れがちな「テストしてから公開する」を、機械に必ずやらせるための仕組みです。
+      </p>
+
+      <div class="note-box tip">
+        <p>
+          <span class="label">最初の1回だけ必要な設定</span>
+          GitHubのリポジトリ画面で <strong>Settings → Pages → Source</strong> を
+          「<strong>GitHub Actions</strong>」に切り替えてください。これで棚が有効になります。
+        </p>
+      </div>
+
+      <!-- ───────────────────────────── -->
+      <h2 id="s8"><span class="num">8</span>住所を探すしくみ</h2>
+      <p class="sub">2つのサービスを使い分けて、無駄な問い合わせをしない工夫をしています。</p>
+
+      <div class="diagram">
+        <p class="caption">図6 — 「六本木ヒルズ」と入力してから、ピンが立つまで</p>
+        <div class="flow v">
+          <div class="node accent wide"><span class="t">入力された言葉</span></div>
+          <span class="arrow">↓</span>
+          <div class="node green wide">
+            <span class="t">① 前に調べたことがあるか確認</span>
+            <span class="d">あればそれを使う(外部には聞かない)</span>
+          </div>
+          <span class="arrow">↓ 初めての言葉なら</span>
+          <div class="node blue wide">
+            <span class="t">② 国土地理院に聞く</span>
+            <span class="d">日本の住所に強い。「東京都新宿区西新宿2-8-1」などはここで解決</span>
+          </div>
+          <span class="arrow">↓ 十分な答えが出なければ</span>
+          <div class="node blue wide">
+            <span class="t">③ Nominatim にも聞く</span>
+            <span class="d">施設名に強い。「六本木ヒルズ」のような建物名はここで解決</span>
+          </div>
+          <span class="arrow">↓</span>
+          <div class="node accent wide">
+            <span class="t">④ それらしい順に並べ替えて、重複をまとめる</span>
+            <span class="d">この処理が無いと、まったく関係のない地点が候補の先頭に来てしまう</span>
+          </div>
+          <span class="arrow">↓</span>
+          <div class="node wide"><span class="t">⑤ 候補を表示 / 1件に決まればそのままピン</span></div>
+        </div>
+      </div>
+
+      <p>
+        <strong>①の「前に調べたか確認」は必須の仕組みです。</strong>
+        Nominatim の利用規約に「結果は必ず保存し、同じ問い合わせを繰り返さないこと」と明記されているためです。
+        同じ言葉を2回目に検索したときは、外部への問い合わせが<strong>0件</strong>になります。
+      </p>
+
+      <p>
+        <strong>③をいつ呼ぶかも調整しています。</strong>
+        「東京駅」のようにぴったり一致したときや、住所らしい入力のときは、
+        国土地理院の答えで十分なので Nominatim には聞きません。公開サービスへの負担を減らすためです。
+      </p>
+
+      <!-- ───────────────────────────── -->
+      <h2 id="s9"><span class="num">9</span>データはどこにあるのか</h2>
+      <p class="sub">サーバーが無いので、保存先はあなたのブラウザと、URLの中だけです。</p>
+
+      <div class="diagram">
+        <p class="caption">図7 — 登録したピンの居場所</p>
+        <div class="split">
+          <div>
+            <h4 style="margin-top: 0">ふだんの保存</h4>
+            <div class="flow v">
+              <div class="node accent">ピンの情報</div>
+              <span class="arrow">↓ 自動保存</span>
+              <div class="node green">
+                ブラウザの中の保管場所<br />
+                <span class="d">(localStorage)</span>
+              </div>
+            </div>
+            <p style="font-size: 12.5px; color: var(--text-sub); margin: 12px 0 0">
+              タブを閉じても残ります。ただし<strong>別のパソコンや別のブラウザからは見えません</strong>。
+              閲覧履歴を消すと一緒に消えます。
+            </p>
+          </div>
+          <div>
+            <h4 style="margin-top: 0">人に渡すとき(共有URL)</h4>
+            <div class="flow v">
+              <div class="node accent">ピンの情報</div>
+              <span class="arrow">↓ 文字に変換</span>
+              <div class="node blue" style="word-break: break-all; font-size: 11px">
+                https://…/#s=<span style="color: var(--accent)">eyJ2IjoxLCJwIjpb…</span>
+              </div>
+            </div>
+            <p style="font-size: 12.5px; color: var(--text-sub); margin: 12px 0 0">
+              <strong>URLそのものにピンの中身が入っています。</strong>
+              どこかに預けているわけではないので、リンクを知っている人だけが見られます。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="note-box">
+        <p>
+          <span class="label">つまり</span>
+          運営者がピンの内容を見ることはできません。会員登録も不要です。
+          そのかわり<strong>バックアップも自動では取られません</strong>。
+          大事な組み合わせは共有URLを控えておくのが安全です。
+        </p>
+      </div>
+
+      <!-- ───────────────────────────── -->
+      <h2 id="s10"><span class="num">10</span>用語辞典</h2>
+      <p class="sub">このページと開発まわりでよく出てくる言葉です。</p>
+
+      <dl class="glossary">
+        <dt>静的サイト</dt>
+        <dd>ファイルを配るだけのWebサイト。サーバーで計算しないので安く速い</dd>
+
+        <dt>ビルド</dt>
+        <dd>人が書いた元のファイルを、ブラウザが読める形にまとめ直す作業</dd>
+
+        <dt>TypeScript</dt>
+        <dd>JavaScriptに「型」の仕組みを足した言語。書き間違いを事前に見つけやすい</dd>
+
+        <dt>npm</dt>
+        <dd>部品や道具を集めてくる仕組み。<code>npm install</code> で揃える</dd>
+
+        <dt>node_modules</dt>
+        <dd>集めてきた道具の置き場。作り直せるので公開も保管もしない</dd>
+
+        <dt>dist</dt>
+        <dd>distribution(配布)の略。公開する完成品が入る</dd>
+
+        <dt>リポジトリ</dt>
+        <dd>GitHub上のプロジェクトの保管庫。変更の履歴も残る</dd>
+
+        <dt>push</dt>
+        <dd>手元の変更をGitHubに送ること</dd>
+
+        <dt>GitHub Actions</dt>
+        <dd>pushをきっかけに、検査やビルドを自動で実行してくれる仕組み</dd>
+
+        <dt>GitHub Pages</dt>
+        <dd>指定したフォルダをWebサイトとして無料で配ってくれる機能</dd>
+
+        <dt>API</dt>
+        <dd>他のサービスに機械的に問い合わせるための窓口</dd>
+
+        <dt>ジオコーディング</dt>
+        <dd>住所や施設名から緯度経度を求めること</dd>
+
+        <dt>キャッシュ</dt>
+        <dd>一度得た結果を取っておいて、次は聞き直さずに使うこと</dd>
+
+        <dt>localStorage</dt>
+        <dd>ブラウザがサイトごとに用意する保存場所。閉じても残る</dd>
+
+        <dt>CORS</dt>
+        <dd>「どのサイトのファイルなら読み込んでよいか」を決めるブラウザの安全ルール</dd>
+      </dl>
+
+      <div class="note-box tip">
+        <p>
+          <span class="label">Git や GitHub 自体がよく分からない方へ</span>
+          「コミット」「ブランチ」「push」といった言葉を図で説明した
+          <strong>git-and-github.html</strong> を同じ <code>docs</code> フォルダに置いています。
+        </p>
+      </div>
+
+      <footer class="end">
+        PinRoute のしくみ / 操作方法は <code>docs/manual.html</code>、
+        開発者向けの詳細は <code>README.md</code> にあります。<br />
+        地図: 地理院タイル(国土地理院) / 地点検索: 国土地理院・Nominatim(&copy; OpenStreetMap
+        contributors)
+      </footer>
+    </div>
+  </body>
+</html>
