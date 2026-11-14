@@ -105,6 +105,7 @@ export function writeWav(file: string, pcm: Pcm) {
   header.writeUInt32LE(pcm.sampleRate * pcm.channels * 2, 28);
   header.writeUInt16LE(pcm.channels * 2, 32);
   header.writeUInt16LE(16, 34);
+  header.write('data', 36, 'ascii');
   header.writeUInt32LE(dataBytes, 40);
   const data = Buffer.from(pcm.samples.buffer, pcm.samples.byteOffset, dataBytes);
   writeFileSync(file, Buffer.concat([header, data]));

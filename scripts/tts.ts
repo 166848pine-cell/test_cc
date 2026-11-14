@@ -127,7 +127,7 @@ const main = async () => {
     const durationSec = wavDurationSec(file);
     manifest.lines[id] = {hash, durationSec, speakerId, mode: manifest.mode};
     made++;
-    process.stdout.write(`\r生成 ${made} / 再利用 ${kept}   `);
+    if (process.stdout.isTTY) process.stdout.write(`\r生成 ${made} / 再利用 ${kept}   `);
   }
 
   // 台本から消えたセリフの wav を掃除

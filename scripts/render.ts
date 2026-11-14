@@ -3,7 +3,7 @@
 //   node scripts/render.ts episodes/001-toshiba --stills            … 確認用の静止画だけ（各章 2 枚＋指定シーン）
 //   node scripts/render.ts episodes/001-toshiba --stills=ch1-s2,ch3-s1 … 指定シーンの中ほどの静止画
 // 環境変数 REMOTION_BROWSER_EXECUTABLE があれば、そのブラウザでレンダリングする（Remotion がブラウザを取得できない環境向け）
-import {existsSync, mkdirSync, readFileSync, rmSync} from 'node:fs';
+import {copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync} from 'node:fs';
 import path from 'node:path';
 import {spawnSync} from 'node:child_process';
 import {episodeDirFromArgs, ROOT} from './lib.ts';
@@ -36,25 +36,48 @@ function probeDuration(file: string, stream: 'v:0' | 'a:0'): number {
   return Number(r.stdout.trim());
 }
 
-const stillsArg = process.argv.find((a) => a.startsWith('--stills'));
+const stillsArg = process.argv.findLast((a) => a.startsWith('--stills'));
 if (stillsArg) {
   // 確認用の静止画
+  // --stills=ch1-s2,ch5-s2@last,ch7-s3@2 … シーン ID（@last で最後のセリフ、@N で N 番目のセリフの中ほど）
   const want = stillsArg.includes('=') ? stillsArg.split('=')[1].split(',') : null;
   const picks: {name: string; frame: number}[] = [];
-  for (const s of timeline.scenes) {
-    const first = timeline.scenes.find((x) => x.chapterId === s.chapterId)!;
-    const isPick = want ? want.includes(s.id) : s === first || s.id.endsWith('-s2');
-    if (!isPick) continue;
-    // 2 つ目のセリフの中ほど（アニメーションが進んだ状態）
-    const line = s.lines[Math.min(1, s.lines.length - 1)];
-    const local = line ? line.from + Math.floor(line.durationInFrames / 2) : Math.floor(s.durationInFrames * 0.7);
-    picks.push({name: s.id, frame: s.from + local});
+  const pickFrame = (s: (typeof timeline.scenes)[number], which: string | undefined) => {
+    const idx = which === 'last' ? s.lines.length - 1 : which !== undefined ? Number(which) : Math.min(1, s.lines.length - 1);
+    const line = s.lines[Math.max(0, Math.min(idx, s.lines.length - 1))];
+    return s.from + (line ? line.from + Math.floor(line.durationInFrames / 2) : Math.floor(s.durationInFrames * 0.7));
+  };
+  if (want) {
+    for (const w of want) {
+      const [id, which] = w.split('@');
+      const s = timeline.scenes.find((x) => x.id === id);
+      if (!s) {
+        console.error(`シーンが見つかりません: ${id}`);
+        process.exit(1);
+      }
+      picks.push({name: w.replace('@', '_'), frame: pickFrame(s, which)});
+    }
+  } else {
+    // 各章の最初のシーンと 2 つ目のシーン
+    for (const s of timeline.scenes) {
+      const first = timeline.scenes.find((x) => x.chapterId === s.chapterId)!;
+      if (s === first || s.id.endsWith('-s2')) picks.push({name: s.id, frame: pickFrame(s, undefined)});
+    }
   }
   const outDir = path.join(episodeDir, 'stills');
-  mkdirSync(outDir, {recursive: true});
+  const tmp = path.join(outDir, '_frames');
+  rmSync(tmp, {recursive: true, force: true});
+  mkdirSync(tmp, {recursive: true});
+  const frames = [...new Set(picks.map((p) => p.frame))].sort((a, b) => a - b);
+  // 1 回のレンダリングで全フレームを書き出す
+  run('npx', ['remotion', 'render', 'Episode', tmp, `--frames=${frames.join(',')}`, '--image-format=png', '--sequence', ...common]);
+  const files = readdirSync(tmp).filter((f) => f.endsWith('.png'));
   for (const p of picks) {
-    run('npx', ['remotion', 'still', 'Episode', path.join(outDir, `${p.name}.png`), `--frame=${p.frame}`, ...common]);
+    const f = files.find((x) => Number(x.match(/(\d+)\.png$/)?.[1]) === p.frame);
+    if (f) copyFileSync(path.join(tmp, f), path.join(outDir, `${p.name}.png`));
+    else console.warn(`フレーム ${p.frame} の画像が見つかりません`);
   }
+  rmSync(tmp, {recursive: true, force: true});
   console.log(`静止画 ${picks.length} 枚: ${outDir}`);
   process.exit(0);
 }
