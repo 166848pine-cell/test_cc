@@ -113,7 +113,10 @@ export function writeWav(file: string, pcm: Pcm) {
 /** 文字数から読み上げ時間を見積もる（VOICEVOX 不使用時の代用） */
 export function estimateSpeechSec(text: string, speedScale: number): number {
   const chars = [...text.replace(/[\s「」『』（）()、。！？!?…ー―・]/g, '')].length;
-  // ずんだもん等の標準速度でおおむね 1 文字 0.15 秒程度（数字や英字は多めに読む）
+  // 標準速度でおおむね 1 文字 0.17 秒程度（数字は読みが長いので加算）
   const digits = (text.match(/[0-9０-９]/g) ?? []).length;
-  return (chars * 0.15 + digits * 0.12 + 0.35) / speedScale;
+  return (chars * 0.17 + digits * 0.1 + 0.3) / speedScale;
 }
+
+/** 音声合成に渡す文に整える（数字の桁区切りカンマを外す。例: 4,673 → 4673） */
+export const toSpeech = (text: string) => text.replace(/(\d),(?=\d{3})/g, '$1');

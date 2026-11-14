@@ -1,0 +1,622 @@
+{
+  "series": "やらかした会社",
+  "episode": 1,
+  "title": "売った子どもに養われる親 ― 東芝150年のやらかし史",
+  "company": "東芝",
+  "description": "1875年創業の東芝。日本初の家電、フラッシュメモリの発明、そして不正会計と原子力の大誤算。事業を売って売って、最後に残ったのは「売った子ども」からの仕送り――。公開資料をもとに、東芝150年のやらかしを、ずんだもんと四国めたんが振り返ります。",
+  "bannedWords": [],
+  "tts": {
+    "engineUrl": "http://localhost:50021",
+    "speakers": {"zundamon": {"name": "ずんだもん", "style": "ノーマル"}, "metan": {"name": "四国めたん", "style": "ノーマル"}},
+    "speedScale": 1.2,
+    "intonationScale": 1.1,
+    "volumeScale": 1.0,
+    "gapSec": 0.25,
+    "sceneTailSec": 0.5,
+    "sampleRate": 48000
+  },
+  "bgm": {"src": "bgm/bgm.mp3", "volume": 0.08},
+  "sources": [
+    {"id": "src-01", "short": "東芝「沿革」", "title": "沿革", "publisher": "東芝", "url": "https://www.global.toshiba/jp/outline/corporate/history/chronology.html", "kind": "primary"},
+    {"id": "src-02", "short": "東芝「創業150周年」(2025/6/30)", "title": "東芝グループは創業150周年を迎えます", "publisher": "東芝", "url": "https://www.global.toshiba/jp/news/corporate/2025/06/news-20250630-02.html", "date": "2025-06-30", "kind": "primary"},
+    {"id": "src-03", "short": "東芝 有価証券報告書 第176期", "title": "有価証券報告書 第176期（2014年度）", "publisher": "東芝", "url": "https://www.global.toshiba/content/dam/toshiba/migration/corp/irAssets/about/ir/jp/library/sr/sr2014/tsr2014.pdf", "date": "2015", "kind": "primary"},
+    {"id": "src-04", "short": "東芝ライフスタイル「日本初・世界初」", "title": "日本初・世界初の製品", "publisher": "東芝ライフスタイル", "url": "https://www.toshiba-lifestyle.com/jp/corporate/brand/first/", "kind": "primary"},
+    {"id": "src-05", "short": "キオクシア「技術開発ヒストリー」", "title": "技術開発ヒストリー", "publisher": "キオクシア", "url": "https://www.kioxia.com/ja-jp/rd/technology/history.html", "kind": "primary"},
+    {"id": "src-06", "short": "東芝レビュー Vol.66 No.9", "title": "東芝レビュー Vol.66 No.9「半導体不揮発性メモリ」", "publisher": "東芝", "url": "https://www.global.toshiba/content/dam/toshiba/migration/corp/techReviewAssets/tech/review/2011/09/66_09pdf/a01.pdf", "date": "2011", "kind": "primary"},
+    {"id": "src-07", "short": "東芝「T1100がIEEEマイルストーンに」(2013/10/29)", "title": "ラップトップPC「T1100」が「IEEEマイルストーン」に認定", "publisher": "東芝", "url": "https://www.global.toshiba/jp/news/corporate/2013/10/pr2901.html", "date": "2013-10-29", "kind": "primary"},
+    {"id": "src-08", "short": "Dynabook「dynabook誕生35周年」(2024/6/26)", "title": "世界初のノートPC「dynabook」誕生から、おかげさまで35周年", "publisher": "Dynabook", "url": "https://dynabook.com/press-release/20240626.html", "date": "2024-06-26", "kind": "primary"},
+    {"id": "src-09", "short": "情報処理学会 コンピュータ博物館", "title": "【東芝】DynaBook J-3100SS", "publisher": "情報処理学会", "url": "https://museum.ipsj.or.jp/computer/personal/0034.html", "kind": "other"},
+    {"id": "src-10", "short": "東芝 プレスリリース(2006/2/6)", "title": "ウェスチングハウス社の株式取得契約の締結について", "publisher": "東芝", "url": "https://www.global.toshiba/jp/news/corporate/2006/02/pr0601.html", "date": "2006-02-06", "kind": "primary"},
+    {"id": "src-11", "short": "東芝 プレスリリース(2006/10/17)", "title": "ウェスチングハウス社の株式取得手続きの完了について", "publisher": "東芝", "url": "https://www.global.toshiba/jp/news/corporate/2006/10/pr1702.html", "date": "2006-10-17", "kind": "primary"},
+    {"id": "src-12", "short": "東芝 WH株式取得完了説明会(2006/10/17)", "title": "ウェスチングハウス社株式取得完了説明会", "publisher": "東芝", "url": "https://www.global.toshiba/jp/ir/corporate/pr/others/opr2006/opr20061017.html", "date": "2006-10-17", "kind": "primary"},
+    {"id": "src-13", "short": "東芝 適時開示(2015/7/20)", "title": "第三者委員会の調査報告書の受領について", "publisher": "東芝", "url": "https://www.global.toshiba/content/dam/toshiba/migration/corp/irAssets/about/ir/jp/news/20150720_1.pdf", "date": "2015-07-20", "kind": "primary"},
+    {"id": "src-14", "short": "東芝「株主のみなさまへ」(2015/8)", "title": "株主のみなさまへ", "publisher": "東芝", "url": "https://www.global.toshiba/content/dam/toshiba/migration/corp/irAssets/about/ir/jp/library/or/or2015/ex8/or2015ex8.pdf", "date": "2015-08", "kind": "primary"},
+    {"id": "src-15", "short": "マイナビニュース(2015/7/21)", "title": "東芝、利益水増し1562億円--経営トップら関与、「チャレンジ」と称して圧力", "publisher": "マイナビニュース", "url": "https://news.mynavi.jp/article/20150721-a133/", "date": "2015-07-21", "kind": "press"},
+    {"id": "src-16", "short": "日本経済新聞(2015/7/21)", "title": "東芝に利益至上主義 「チャレンジ」と称する目標値", "publisher": "日本経済新聞", "url": "https://www.nikkei.com/article/DGXLASDZ20HAW_Q5A720C1NN1000/", "date": "2015-07-21", "kind": "press"},
+    {"id": "src-17", "short": "東芝 適時開示(2015/7/21)", "title": "経営責任の明確化及び経営刷新委員会の設置について", "publisher": "東芝", "url": "https://www.global.toshiba/content/dam/toshiba/migration/corp/irAssets/about/ir/jp/news/20150721_1.pdf", "date": "2015-07-21", "kind": "primary"},
+    {"id": "src-18", "short": "東芝 適時開示(2015/9/7)", "title": "過年度決算の訂正等について", "publisher": "東芝", "url": "https://www.global.toshiba/content/dam/toshiba/migration/corp/irAssets/about/ir/jp/news/20150907_5.pdf", "date": "2015-09-07", "kind": "primary"},
+    {"id": "src-19", "short": "日本経済新聞(2015/9/7)", "title": "東芝、決算訂正総額2248億円 15年3月期は378億円の最終赤字", "publisher": "日本経済新聞", "url": "https://www.nikkei.com/article/DGXLASGD07H0P_X00C15A9000000/", "date": "2015-09-07", "kind": "press"},
+    {"id": "src-20", "short": "金融庁(2015/12/25)", "title": "株式会社東芝に係る有価証券報告書等の虚偽記載に対する課徴金納付命令の決定について", "publisher": "金融庁", "url": "https://www.fsa.go.jp/news/27/syouken/20151225-2.html", "date": "2015-12-25", "kind": "primary"},
+    {"id": "src-21", "short": "日本取引所グループ(2015/9/14)", "title": "特設注意市場銘柄の指定及び上場契約違約金の徴求 —（株）東芝—", "publisher": "日本取引所グループ", "url": "https://www.jpx.co.jp/news/1021/20150914-14.html", "date": "2015-09-14", "kind": "primary"},
+    {"id": "src-22", "short": "東芝 適時開示(2017/3/29)", "title": "米国連邦倒産法第11章に基づく再生手続の申立てについて", "publisher": "東芝", "url": "https://www.global.toshiba/content/dam/toshiba/migration/corp/irAssets/about/ir/jp/news/20170329_1.pdf", "date": "2017-03-29", "kind": "primary"},
+    {"id": "src-23", "short": "東芝 有価証券報告書 第178期", "title": "有価証券報告書 第178期（2016年度）", "publisher": "東芝", "url": "https://www.global.toshiba/content/dam/toshiba/migration/corp/irAssets/about/ir/jp/library/sr/sr2016/tsr2016.pdf", "date": "2017-08-10", "kind": "primary"},
+    {"id": "src-24", "short": "東京商工リサーチ(2017/8)", "title": "東芝 2017年3月期決算", "publisher": "東京商工リサーチ", "url": "https://www.tsr-net.co.jp/data/detail/1188847_1527.html", "date": "2017-08", "kind": "press"},
+    {"id": "src-25", "short": "J-CAST(2017/8/11)", "title": "東芝、9656億円の赤字 17年3月期 国内製造業で最大規模", "publisher": "J-CAST", "url": "https://www.j-cast.com/kaisha/2017/08/11305720.html", "date": "2017-08-11", "kind": "press"},
+    {"id": "src-26", "short": "日本取引所グループ(2017/6/23)", "title": "市場第一部銘柄から市場第二部銘柄への指定替え：（株）東芝", "publisher": "日本取引所グループ", "url": "https://www.jpx.co.jp/news/1021/20170623-06.html", "date": "2017-06-23", "kind": "primary"},
+    {"id": "src-27", "short": "東芝 ニュースリリース(2017/11/19)", "title": "新株式の発行による資金調達について", "publisher": "東芝", "url": "https://www.global.toshiba/jp/news/corporate/2017/11/pr1901.html", "date": "2017-11-19", "kind": "primary"},
+    {"id": "src-28", "short": "キヤノン ニュースリリース(2016/3/17)", "title": "東芝メディカルシステムズ株式会社の株式取得について", "publisher": "キヤノン", "url": "https://global.canon/ja/news/2016/p2016mar17j.html", "date": "2016-03-17", "kind": "primary"},
+    {"id": "src-29", "short": "東芝 適時開示(2016/3/30)", "title": "東芝ライフスタイル株式会社の株式譲渡について", "publisher": "東芝", "url": "https://www2.jpx.co.jp/disc/65020/140120160330446720.pdf", "date": "2016-03-30", "kind": "primary"},
+    {"id": "src-30", "short": "東芝 適時開示(2017/11/14)", "title": "東芝映像ソリューション株式会社の株式譲渡について", "publisher": "東芝", "url": "https://www2.jpx.co.jp/disc/65020/140120171114418269.pdf", "date": "2017-11-14", "kind": "primary"},
+    {"id": "src-31", "short": "東芝 適時開示(2018/6/1)", "title": "東芝メモリ株式会社の株式譲渡完了について", "publisher": "東芝", "url": "https://www2.jpx.co.jp/disc/65020/140120180531453738.pdf", "date": "2018-06-01", "kind": "primary"},
+    {"id": "src-32", "short": "東芝 適時開示(2018/6/5)", "title": "東芝クライアントソリューション株式会社の株式譲渡について", "publisher": "東芝", "url": "https://www2.jpx.co.jp/disc/65020/140120180605457207.pdf", "date": "2018-06-05", "kind": "primary"},
+    {"id": "src-33", "short": "キオクシアHD(2019/7/18)", "title": "Toshiba Memory Holdings Corporation to change name to Kioxia Holdings Corporation", "publisher": "キオクシアホールディングス", "url": "https://www.kioxia-holdings.com/en-jp/news/2019/20190718-1.html", "date": "2019-07-18", "kind": "primary"},
+    {"id": "src-34", "short": "日刊工業新聞(2018/3/24)", "title": "東芝、「サザエさん」のスポンサー降板", "publisher": "日刊工業新聞", "url": "https://www.nikkan.co.jp/articles/view/467036", "date": "2018-03-24", "kind": "press"},
+    {"id": "src-35", "short": "The Japan Times(2017/11/22)", "title": "Cash-strapped Toshiba bids farewell to Times Square, 'Sazae-san'", "publisher": "The Japan Times", "url": "https://www.japantimes.co.jp/news/2017/11/22/business/corporate-business/cash-strapped-toshiba-bids-farewell-times-square-sazae-san/", "date": "2017-11-22", "kind": "press"},
+    {"id": "src-36", "short": "東芝 公表の調査報告書(2021/6/10)", "title": "調査報告書（2020年定時株主総会の運営に関する外部調査）", "publisher": "東芝", "url": "https://www.global.toshiba/content/dam/toshiba/migration/corp/irAssets/about/ir/jp/stock/pdf/tsm182_4.pdf", "date": "2021-06-10", "kind": "primary"},
+    {"id": "src-37", "short": "時事通信(2021/6/25)", "title": "東芝株主総会、取締役会議長の再任否決", "publisher": "時事通信（ビジネス+IT 転載）", "url": "https://www.sbbit.jp/article/refers/64117", "date": "2021-06-25", "kind": "press"},
+    {"id": "src-38", "short": "東芝 ニュースリリース(2021/11/12)", "title": "東芝、株主価値向上を目指し３つの独立会社に戦略的再編へ", "publisher": "東芝", "url": "https://www.global.toshiba/jp/news/corporate/2021/11/news-20211112-02.html", "date": "2021-11-12", "kind": "primary"},
+    {"id": "src-39", "short": "東芝 適時開示(2022/2/7)", "title": "戦略的再編（2分割）に関するお知らせ", "publisher": "東芝", "url": "https://www.global.toshiba/content/dam/toshiba/migration/corp/irAssets/about/ir/jp/news/20220207_1.pdf", "date": "2022-02-07", "kind": "primary"},
+    {"id": "src-40", "short": "日本経済新聞(2022/3/24)", "title": "東芝臨時株主総会、2分割案を否決 株主提案も否決", "publisher": "日本経済新聞", "url": "https://www.nikkei.com/article/DGXZQOUC2365I0T20C22A3000000/", "date": "2022-03-24", "kind": "press"},
+    {"id": "src-41", "short": "ブルームバーグ(2023/3/23)", "title": "東芝株反発、ＪＩＰがＴＯＢ実施を発表－１株4620円で非公開化", "publisher": "ブルームバーグ", "url": "https://www.bloomberg.com/jp/news/articles/2023-03-23/RRYZPGT0G1KW01", "date": "2023-03-23", "kind": "press"},
+    {"id": "src-42", "short": "東芝 適時開示(2023/9/21)", "title": "公開買付けの結果並びに親会社及び主要株主である筆頭株主の異動に関するお知らせ", "publisher": "東芝", "url": "https://www.global.toshiba/content/dam/toshiba/jp/ir/corporate/news/20230921_1.pdf", "date": "2023-09-21", "kind": "primary"},
+    {"id": "src-43", "short": "東芝「当社の株式公開買付けについて」", "title": "当社の株式公開買付けについて", "publisher": "東芝", "url": "https://www.global.toshiba/jp/ir/corporate/tender-offer.html", "date": "2023-12", "kind": "primary"},
+    {"id": "src-44", "short": "東芝「東芝再興計画」(2024/5/16)", "title": "東芝再興計画 －社会に求められる東芝のリスタート", "publisher": "東芝", "url": "https://www.global.toshiba/content/dam/toshiba/jp/ir/corporate/finance/pdf/tpr20240516.pdf", "date": "2024-05-16", "kind": "primary"},
+    {"id": "src-46", "short": "キオクシアHD(2024/12/18)", "title": "Kioxia Holdings Lists on the Tokyo Stock Exchange Prime Market", "publisher": "キオクシアホールディングス", "url": "https://www.kioxia-holdings.com/en-jp/news/2024/20241218-1.html", "date": "2024-12-18", "kind": "primary"},
+    {"id": "src-47", "short": "株探（大量保有報告書, 2024/12/24）", "title": "キオクシアについて、東芝は保有割合が5％を超えたと報告［大量保有報告書］", "publisher": "株探", "url": "https://kabutan.jp/news/marketnews/?b=n202412240519", "date": "2024-12-24", "kind": "press"},
+    {"id": "src-48", "short": "株探（変更報告書, 2026/11/4）", "title": "東芝のキオクシア株保有比率 11.80%→10.46%［変更報告書］", "publisher": "株探", "url": "https://kabutan.jp/news/marketnews/?b=n202611041127", "date": "2026-11-04", "kind": "press"},
+    {"id": "src-49", "short": "東芝 2025年度決算(2026/5/15)", "title": "2025年度決算", "publisher": "東芝", "url": "https://www.global.toshiba/content/dam/toshiba/jp/ir/corporate/finance/pdf/tpr2025q4.pdf", "date": "2026-05-15", "kind": "primary"},
+    {"id": "src-50", "short": "東芝 2026年度第1四半期決算(2026/8/7)", "title": "2026年度 第1四半期決算", "publisher": "東芝", "url": "https://www.global.toshiba/content/dam/toshiba/jp/ir/corporate/finance/pdf/tpr2026q1.pdf", "date": "2026-08-07", "kind": "primary"},
+    {"id": "src-51", "short": "日本経済新聞(2026/8/7)", "title": "東芝の純利益4.4兆円 4〜6月、キオクシア株高騰で30倍に急拡大", "publisher": "日本経済新聞", "url": "https://www.nikkei.com/article/DGXZQOUC075KP0X00C26A8000000/", "date": "2026-08-07", "kind": "press"},
+    {"id": "src-52", "short": "東芝 2026年度上期決算(2026/11/13)", "title": "2026年度上期決算", "publisher": "東芝", "url": "https://www.global.toshiba/content/dam/toshiba/jp/ir/corporate/finance/pdf/tpr2026q2.pdf", "date": "2026-11-13", "kind": "primary"},
+    {"id": "src-53", "short": "共同通信(2026/11/13)", "title": "東芝、中間純利益2.5兆円 キオクシア評価益は半減", "publisher": "共同通信（東京新聞）", "url": "https://www.tokyo-np.co.jp/article/527992", "date": "2026-11-13", "kind": "press"},
+    {"id": "src-54", "short": "共同通信(2026/3/6)", "title": "東芝、28年度にも再上場 銀行借り入れに一本化へ", "publisher": "共同通信（Yahoo!ニュース）", "url": "https://news.yahoo.co.jp/articles/7ed80fb96591fce46b4f208d973e1a9b7f851388", "date": "2026-03-06", "kind": "press"},
+    {"id": "src-55", "short": "時事通信(2026/5/15)", "title": "東芝、26年3月期は純利益7倍で過去最高 28年度にも再上場へ", "publisher": "時事通信", "url": "https://www.jiji.com/jc/article?k=2026051501208&g=eco", "date": "2026-05-15", "kind": "press"},
+    {"id": "src-56", "short": "日本食糧新聞(2024/9/25)", "title": "やおきん「うまい棒」価格改定（12円→15円）", "publisher": "日本食糧新聞", "url": "https://news.nissyoku.co.jp/news/aoyagi20240925073211759", "date": "2024-09-25", "kind": "press"},
+    {"id": "src-57", "short": "東芝 有価証券報告書 第177期", "title": "有価証券報告書 第177期（2015年度）", "publisher": "東芝", "url": "https://www.global.toshiba/content/dam/toshiba/migration/corp/irAssets/about/ir/jp/library/sr/sr2015/tsr2015.pdf", "date": "2016", "kind": "primary"},
+    {"id": "src-58", "short": "東芝 2017年度決算(2018/5/15)", "title": "2017年度連結決算", "publisher": "東芝", "url": "https://www.global.toshiba/content/dam/toshiba/migration/corp/irAssets/about/ir/jp/pr/pdf/tpr2017q4.pdf", "date": "2018-05-15", "kind": "primary"},
+    {"id": "src-59", "short": "東芝 2018年度決算(2019/5/13)", "title": "2018年度連結決算", "publisher": "東芝", "url": "https://www.global.toshiba/content/dam/toshiba/migration/corp/irAssets/about/ir/jp/pr/pdf/tpr2018q4.pdf", "date": "2019-05-13", "kind": "primary"},
+    {"id": "src-60", "short": "東芝 有価証券報告書 第181期", "title": "有価証券報告書 第181期（2019年度）", "publisher": "東芝", "url": "https://www.global.toshiba/content/dam/toshiba/migration/corp/irAssets/about/ir/jp/library/sr/sr2019/tsr2019.pdf", "date": "2020", "kind": "primary"},
+    {"id": "src-61", "short": "東芝 決算短信 2021年3月期", "title": "2021年3月期 決算短信〔米国基準〕（連結）", "publisher": "東芝", "url": "https://www2.jpx.co.jp/disc/65020/140120210511412027.pdf", "date": "2021-05", "kind": "primary"},
+    {"id": "src-62", "short": "EE Times Japan(2022/5/13)", "title": "東芝の21年度決算、半導体など好調で増収増益", "publisher": "EE Times Japan", "url": "https://eetimes.itmedia.co.jp/ee/articles/2205/13/news193.html", "date": "2022-05-13", "kind": "press"},
+    {"id": "src-63", "short": "東芝 2022年度決算(2023/5/12)", "title": "2022年度連結決算", "publisher": "東芝", "url": "https://www.global.toshiba/content/dam/toshiba/jp/ir/corporate/pr/pdf/tpr2022q4.pdf", "date": "2023-05-12", "kind": "primary"},
+    {"id": "src-64", "short": "東芝 2023年度決算(2024/5/16)", "title": "2023年度連結決算", "publisher": "東芝", "url": "https://www.global.toshiba/content/dam/toshiba/jp/ir/corporate/finance/pdf/tpr2023q4.pdf", "date": "2024-05-16", "kind": "primary"},
+    {"id": "src-65", "short": "東芝 2024年度決算(2025/5/15)", "title": "2024年度決算", "publisher": "東芝", "url": "https://www.global.toshiba/content/dam/toshiba/jp/ir/corporate/finance/pdf/tpr2024q4.pdf", "date": "2025-05-15", "kind": "primary"}
+  ],
+  "chapters": [
+    {
+      "id": "ch0",
+      "title": "つかみ",
+      "scenes": [
+        {
+          "id": "ch0-s1",
+          "visual": {"type": "title", "props": {"variant": "episode", "kicker": "やらかした会社 #1", "title": "売った子どもに養われる親", "subtitle": "東芝150年のやらかし史"}},
+          "lines": [
+            {"speaker": "zundamon", "text": "めたん、大ニュースなのだ！ 東芝が3か月で4兆円以上もうけたのだ！", "emotion": "surprised"},
+            {"speaker": "metan", "text": "2026年の4月から6月の当期純利益が、4兆4,673億円。過去最高ですわ"}
+          ],
+          "sourceIds": ["src-50", "src-51"],
+          "facts": [
+            {"text": "2026年度第1四半期（2026年4月から6月の3か月）の当期純利益は4兆4,673億円で過去最高（4兆円以上）", "sourceIds": ["src-50", "src-51"]}
+          ]
+        },
+        {
+          "id": "ch0-s2",
+          "visual": {"type": "bigNumber", "props": {"heading": "東芝 2026年度第1四半期（4〜6月）の当期純利益", "value": "4兆4,673億円", "countToOku": 44673, "caption": "営業利益は1,119億円。東芝によれば「キオクシア株の評価益等」で30倍超に", "conversion": {"label": "うまい棒換算（計算上）", "value": "約2,978億本", "note": "1本15円（税抜の希望小売価格）で計算", "atLine": 0}, "tone": "plus"}},
+          "lines": [
+            {"speaker": "zundamon", "text": "うまい棒にしたら、約2,978億本なのだ！", "emotion": "happy"},
+            {"speaker": "metan", "text": "ただ、本業のもうけを示す営業利益は1,119億円だけ"},
+            {"speaker": "metan", "text": "東芝によれば、利益を押し上げたのは「キオクシア株の評価益など」ですわ"},
+            {"speaker": "zundamon", "text": "キオクシアって、だれなのだ？"},
+            {"speaker": "metan", "text": "東芝が2018年に売った、もとのメモリ事業ですの"},
+            {"speaker": "zundamon", "text": "売った子どもに、養われてるのだ！？", "emotion": "surprised"},
+            {"speaker": "metan", "text": "今日は、そんな東芝150年の「やらかし」をたどりますわ", "emotion": "happy"}
+          ],
+          "sourceIds": ["src-50", "src-56", "src-31", "src-33", "src-02"],
+          "facts": [
+            {"text": "2026年度第1四半期の当期純利益は4兆4,673億円（44673億円）、営業利益は1,119億円。東芝は当期純損益が「キオクシア株の評価益等により」前年同期比30倍超になったとしている", "sourceIds": ["src-50"]},
+            {"text": "うまい棒の希望小売価格は税抜15円（2024年10月出荷分から）。4兆4,673億円÷15円＝約2,978億本（計算）", "sourceIds": ["src-56", "src-50"]},
+            {"text": "東芝は2018年6月1日に東芝メモリの株式譲渡を完了し、東芝メモリは2019年10月1日付で「キオクシア」に社名変更", "sourceIds": ["src-31", "src-33"]},
+            {"text": "東芝は1875年創業で、2025年に創業150周年", "sourceIds": ["src-02"]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch1",
+      "title": "創業編",
+      "scenes": [
+        {
+          "id": "ch1-s1",
+          "visual": {"type": "title", "props": {"variant": "chapter", "kicker": "第1章", "title": "創業編", "subtitle": "1875〜1984"}},
+          "lines": [],
+          "sourceIds": [],
+          "minDurationSec": 2.2
+        },
+        {
+          "id": "ch1-s2",
+          "visual": {"type": "timeline", "props": {"heading": "東芝のはじまり", "items": [{"year": "1875", "label": "発明家・田中久重が銀座に工場を創設（東芝の創業）", "atLine": 0}, {"year": "1890", "label": "藤岡市助が白熱舎を創業（電球づくり）", "atLine": 2}, {"year": "1939", "label": "芝浦製作所と東京電気が合併 →「東京芝浦電気」", "atLine": 3}, {"year": "1984", "label": "社名を「東芝」に変更", "atLine": 4, "highlight": true}]}},
+          "lines": [
+            {"speaker": "metan", "text": "始まりは1875年。発明家の田中久重が、銀座に工場を開きました", "yomi": "始まりは1875年。発明家の、たなかひさしげが、銀座に工場を開きました"},
+            {"speaker": "zundamon", "text": "150年前なのだ！", "emotion": "surprised"},
+            {"speaker": "metan", "text": "1890年には、藤岡市助が電球をつくる「白熱舎」を創業", "yomi": "1890年には、ふじおかいちすけが、電球をつくる、はくねつしゃを創業"},
+            {"speaker": "metan", "text": "この2つが1939年に合併して「東京芝浦電気」。略して東芝ですわ"},
+            {"speaker": "metan", "text": "1984年には、それが正式な社名になりましたの"},
+            {"speaker": "zundamon", "text": "あだ名が本名になったのだ", "emotion": "happy"}
+          ],
+          "sourceIds": ["src-01", "src-02", "src-03"],
+          "facts": [
+            {"text": "1875年（明治8年）7月、発明家・田中久重が銀座に工場を創設。東芝はこれを創業としており、2025年で150周年（150年前）", "sourceIds": ["src-01", "src-02", "src-03"]},
+            {"text": "1890年4月、藤岡市助が白熱舎を創業（国産の白熱電球の製造）", "sourceIds": ["src-01", "src-03"]},
+            {"text": "1939年9月、芝浦製作所と東京電気が合併し東京芝浦電気が発足（この2つの流れ）", "sourceIds": ["src-01", "src-03"]},
+            {"text": "1984年4月、商号を株式会社東芝に変更。「東芝」は東京芝浦電気の略称", "sourceIds": ["src-01", "src-03"]}
+          ]
+        },
+        {
+          "id": "ch1-s3",
+          "visual": {"type": "timeline", "props": {"heading": "東芝によれば「日本初」の家電", "items": [{"year": "1930", "label": "電気洗濯機・電気冷蔵庫", "atLine": 0}, {"year": "1931", "label": "電気掃除機（国産第一号）", "atLine": 1}, {"year": "1955", "label": "自動式電気釜", "atLine": 1, "highlight": true}]}},
+          "lines": [
+            {"speaker": "metan", "text": "東芝によれば、1930年に日本初の洗濯機と冷蔵庫"},
+            {"speaker": "metan", "text": "1931年に掃除機、1955年には自動式の電気釜ですわ"},
+            {"speaker": "zundamon", "text": "ご飯が勝手に炊けるのだ！ 未来なのだ！", "emotion": "happy"}
+          ],
+          "sourceIds": ["src-01", "src-04"],
+          "facts": [
+            {"text": "東芝によれば、1930年に日本初の電気洗濯機と電気冷蔵庫を完成・発表（芝浦製作所）", "sourceIds": ["src-01", "src-04"]},
+            {"text": "1931年、電気掃除機 VC-A型（東芝ライフスタイルによれば国産第一号）", "sourceIds": ["src-04"]},
+            {"text": "1955年、東芝によれば日本初の自動式電気釜を発売", "sourceIds": ["src-01"]}
+          ]
+        },
+        {
+          "id": "ch1-s4",
+          "visual": {"type": "meter", "props": {"label": "やらかし度", "level": 5, "from": 0, "caption": "第1章：まだ何もやらかしていない"}},
+          "lines": [
+            {"speaker": "zundamon", "text": "ここまでは、やらかし度ほぼゼロなのだ"},
+            {"speaker": "metan", "text": "優等生ですわね", "emotion": "happy"}
+          ],
+          "sourceIds": []
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "絶頂編",
+      "scenes": [
+        {
+          "id": "ch2-s1",
+          "visual": {"type": "title", "props": {"variant": "chapter", "kicker": "第2章", "title": "絶頂編", "subtitle": "1985〜2006"}},
+          "lines": [],
+          "sourceIds": [],
+          "minDurationSec": 2.2
+        },
+        {
+          "id": "ch2-s2",
+          "visual": {"type": "timeline", "props": {"heading": "世界を驚かせた発明と製品", "items": [{"year": "1985", "label": "欧州でラップトップPC「T1100」を発売", "atLine": 3}, {"year": "1987", "label": "NAND型フラッシュメモリを発明（東芝によれば）", "atLine": 0, "highlight": true}, {"year": "1989", "label": "ノートPC「DynaBook」を発表（約2.7kg・198,000円）", "atLine": 3}]}},
+          "lines": [
+            {"speaker": "metan", "text": "1987年、東芝はNAND型フラッシュメモリを発明。電源を切ってもデータが消えないメモリですわ", "yomi": "1987年、東芝は、ナンドがたフラッシュメモリを発明。電源を切っても、データが消えないメモリですわ"},
+            {"speaker": "zundamon", "text": "データの冷蔵庫みたいなものなのだ？"},
+            {"speaker": "metan", "text": "……まあ、そんな感じですわ", "yomi": "まあ、そんな感じですわ"},
+            {"speaker": "metan", "text": "パソコンでも、1985年に欧州で「T1100」、1989年には「DynaBook」を発表", "yomi": "パソコンでも、1985年に欧州で、ティーせんひゃく。1989年には、ダイナブックを発表"},
+            {"speaker": "zundamon", "text": "約2.7kgで19万8,000円……ボクには重いし高いのだ", "yomi": "約2.7キロで19万8000円。ボクには重いし高いのだ", "emotion": "sad"}
+          ],
+          "sourceIds": ["src-05", "src-06", "src-07", "src-08", "src-09"],
+          "facts": [
+            {"text": "東芝（現キオクシア）は1987年にNAND型フラッシュメモリを発明したとしている。不揮発性（電源を切ってもデータが消えない）メモリ", "sourceIds": ["src-05", "src-06"]},
+            {"text": "1985年、欧州でラップトップPC「T1100」を発売。2013年にIEEEマイルストーンに認定", "sourceIds": ["src-07"]},
+            {"text": "1989年6月、「DynaBook J-3100SS」を発表。約2.7kg、198,000円（19万8,000円）", "sourceIds": ["src-08", "src-09"]}
+          ]
+        },
+        {
+          "id": "ch2-s3",
+          "visual": {"type": "bigNumber", "props": {"heading": "2006年 米ウェスチングハウス（WH）を買収", "value": "54億ドル", "caption": "約6,210億円（1ドル115円換算）／東芝の出資比率77%", "tone": "neutral"}},
+          "lines": [
+            {"speaker": "metan", "text": "そして2006年、米国の原子力の会社ウェスチングハウス、略してWHを買収", "yomi": "そして2006年、米国の原子力の会社、ウェスチングハウス、略して、ダブリューエイチを買収"},
+            {"speaker": "metan", "text": "取得額は54億ドル、約6,210億円。出資比率は77%ですわ"},
+            {"speaker": "zundamon", "text": "爆買いなのだ！", "emotion": "surprised"},
+            {"speaker": "metan", "text": "この買い物が、のちに大事件の火種になりますの", "emotion": "sad"}
+          ],
+          "sourceIds": ["src-10", "src-11", "src-12"],
+          "facts": [
+            {"text": "2006年2月6日、東芝はWH（ウェスチングハウス）の株式取得契約を発表。取得額は54億ドル（約6,210億円、1ドル115円換算）", "sourceIds": ["src-10"]},
+            {"text": "2006年10月16日（米国東部時間）に取得を完了。東芝の出資比率は77%", "sourceIds": ["src-11", "src-12"]}
+          ]
+        },
+        {
+          "id": "ch2-s4",
+          "visual": {"type": "meter", "props": {"label": "やらかし度", "level": 15, "from": 5, "caption": "第2章：嵐の前の静けさ"}},
+          "lines": [
+            {"speaker": "zundamon", "text": "まだセーフなのだ。……まだ、なのだ", "yomi": "まだセーフなのだ。まだ、なのだ"}
+          ],
+          "sourceIds": []
+        }
+      ]
+    },
+    {
+      "id": "ch3",
+      "title": "やらかし① 不正会計",
+      "scenes": [
+        {
+          "id": "ch3-s1",
+          "visual": {"type": "title", "props": {"variant": "chapter", "kicker": "第3章", "title": "やらかし① 不正会計", "subtitle": "2015"}},
+          "lines": [],
+          "sourceIds": [],
+          "minDurationSec": 2.2
+        },
+        {
+          "id": "ch3-s2",
+          "visual": {"type": "bigNumber", "props": {"heading": "第三者委員会が認めた 税引前損益の要修正額（累計）", "value": "1,518億円", "countToOku": 1518, "caption": "2008年度〜2014年度第3四半期。のちの決算訂正では累計2,248億円", "tone": "minus"}},
+          "lines": [
+            {"speaker": "metan", "text": "2015年、東芝で不正会計が発覚しますわ"},
+            {"speaker": "metan", "text": "第三者委員会によれば、2008年度から2014年度第3四半期の税引前損益の修正額は、累計1,518億円"},
+            {"speaker": "zundamon", "text": "利益を盛ってたのだ！？ プリクラの目みたいに？", "emotion": "surprised"},
+            {"speaker": "metan", "text": "9月の決算訂正では、累計2,248億円まで膨らみましたわ"}
+          ],
+          "sourceIds": ["src-13", "src-14", "src-18", "src-19"],
+          "facts": [
+            {"text": "2015年7月20日、東芝は第三者委員会から調査報告書を受領し、要約版を開示", "sourceIds": ["src-13"]},
+            {"text": "第三者委員会によれば、2008年度から2014年度第3四半期までの税引前損益の要修正額は累計▲1,518億円（1518）", "sourceIds": ["src-14"]},
+            {"text": "2015年9月7日、過年度決算を訂正。税引前損益の修正額は累計2,248億円", "sourceIds": ["src-18", "src-19"]}
+          ]
+        },
+        {
+          "id": "ch3-s3",
+          "visual": {"type": "quote", "props": {"text": "チャレンジ", "cite": "報道によれば、第三者委員会の報告書が認めた「過大な目標」の呼び名", "note": "日本経済新聞・マイナビニュース（2015年7月21日）"}},
+          "lines": [
+            {"speaker": "metan", "text": "報道によれば報告書は、経営トップが「チャレンジ」と呼ぶ過大な目標を課していたと認めています"},
+            {"speaker": "zundamon", "text": "チャレンジって、いい言葉じゃないのだ？"},
+            {"speaker": "metan", "text": "見出しは「『チャレンジ』と称して圧力」。中身は前向きではなかったようですわ"},
+            {"speaker": "metan", "text": "調べられたのは、工事の会計やパソコンの部品取引など4つの分野ですの"}
+          ],
+          "sourceIds": ["src-15", "src-16", "src-13"],
+          "facts": [
+            {"text": "報道によれば、第三者委員会の報告書は、経営トップが「チャレンジ」と称する過大な収益目標を課していたと認定", "sourceIds": ["src-15", "src-16"]},
+            {"text": "マイナビニュースの見出しは「東芝、利益水増し1562億円--経営トップら関与、「チャレンジ」と称して圧力」", "sourceIds": ["src-15"]},
+            {"text": "調査対象は工事進行基準、映像事業の経費計上、半導体の在庫評価、パソコン事業の部品取引の4分野", "sourceIds": ["src-13"]}
+          ]
+        },
+        {
+          "id": "ch3-s4",
+          "visual": {"type": "quote", "props": {"text": "同社は内部管理体制等において深刻な問題を抱えており", "cite": "東京証券取引所「特設注意市場銘柄の指定」（2015年9月14日）"}},
+          "lines": [
+            {"speaker": "metan", "text": "7月には社長を含む取締役8人と相談役が辞任。歴代の社長3人がそろって退きました", "yomi": "7月には、社長を含む取締役8人と、相談役が辞任。歴代の社長3人が、そろって退きました"},
+            {"speaker": "zundamon", "text": "トップが総入れ替えなのだ……", "emotion": "sad"},
+            {"speaker": "metan", "text": "東証は東芝株を「特設注意市場銘柄」に指定し、こう書いていますわ"},
+            {"speaker": "metan", "text": "12月には、金融庁が課徴金73億7,350万円の納付を命じましたの"}
+          ],
+          "sourceIds": ["src-17", "src-16", "src-21", "src-20"],
+          "facts": [
+            {"text": "2015年7月21日、社長・副会長を含む取締役8名と相談役が辞任（報道では「歴代3社長が辞任」、社長3人）", "sourceIds": ["src-17", "src-16"]},
+            {"text": "東証は2015年9月14日に、東芝株を9月15日付で特設注意市場銘柄に指定すると発表。「同社は内部管理体制等において深刻な問題を抱えており」", "sourceIds": ["src-21"]},
+            {"text": "金融庁は2015年12月、東芝に課徴金73億7,350万円の納付を命令（報道発表は12月25日）", "sourceIds": ["src-20"]}
+          ]
+        },
+        {
+          "id": "ch3-s5",
+          "visual": {"type": "meter", "props": {"label": "やらかし度", "level": 55, "from": 15, "caption": "第3章：不正会計で信頼が急落"}},
+          "lines": [
+            {"speaker": "zundamon", "text": "一気に跳ね上がったのだ！", "emotion": "surprised"},
+            {"speaker": "metan", "text": "でも、本当の試練はこれからですわ"}
+          ],
+          "sourceIds": []
+        }
+      ]
+    },
+    {
+      "id": "ch4",
+      "title": "やらかし② 原子力の大誤算",
+      "scenes": [
+        {
+          "id": "ch4-s1",
+          "visual": {"type": "title", "props": {"variant": "chapter", "kicker": "第4章", "title": "やらかし② 原子力の大誤算", "subtitle": "2017"}},
+          "lines": [],
+          "sourceIds": [],
+          "minDurationSec": 2.2
+        },
+        {
+          "id": "ch4-s2",
+          "visual": {"type": "bigNumber", "props": {"heading": "WH関連の2016年度業績への影響（純損益ベース）", "value": "約1兆2,400億円", "countToOku": 12400, "caption": "東芝 有価証券報告書（2016年度）による", "tone": "minus"}},
+          "lines": [
+            {"speaker": "metan", "text": "2017年3月29日、WHがアメリカの連邦破産法11章の適用を申請しました", "yomi": "2017年3月29日、ダブリューエイチが、アメリカの連邦破産法11章の適用を申請しました"},
+            {"speaker": "zundamon", "text": "爆買いした会社が、つぶれちゃったのだ！？", "emotion": "surprised"},
+            {"speaker": "metan", "text": "有価証券報告書によれば、WH関連の影響は純損益ベースで約1兆2,400億円", "yomi": "有価証券報告書によれば、ダブリューエイチ関連の影響は、純損益ベースで、約1兆2400億円"},
+            {"speaker": "zundamon", "text": "買った値段の、倍くらいなのだ……", "emotion": "sad"}
+          ],
+          "sourceIds": ["src-22", "src-23", "src-10"],
+          "facts": [
+            {"text": "2017年3月29日（米国時間）、WHが米連邦破産法11章（チャプター11）に基づく再生手続を申し立て", "sourceIds": ["src-22"]},
+            {"text": "WH関連の2016年度業績への影響は純損益ベースで約▲1兆2,400億円（12400億円）。取得額約6,210億円の約2倍（計算）", "sourceIds": ["src-23", "src-10"]}
+          ]
+        },
+        {
+          "id": "ch4-s3",
+          "visual": {"type": "barChart", "props": {"heading": "東芝の当期純損益（億円）", "unit": "億円", "bars": [{"label": "2014年度", "value": -378}, {"label": "2015年度", "value": -4600}, {"label": "2016年度", "value": -9657}], "highlight": ["2016年度"], "footnote": "米国会計基準・株主帰属。2014年度は不正会計の訂正後、2015年度は会社訂正後の値"}},
+          "lines": [
+            {"speaker": "metan", "text": "2016年度の最終赤字は9,657億円。報道では、国内製造業で最大規模とされましたわ"},
+            {"speaker": "zundamon", "text": "棒グラフが、地面にめり込んでるのだ……", "emotion": "sad"}
+          ],
+          "sourceIds": ["src-19", "src-57", "src-23", "src-25"],
+          "facts": [
+            {"text": "当期純損益：2014年度▲378億円（-378、訂正後）、2015年度▲4,600億円（-4600）、2016年度▲9,657億円（-9657、▲965,663百万円）", "sourceIds": ["src-19", "src-57", "src-23"]},
+            {"text": "報道によれば、2016年度（2017年3月期）の赤字は国内製造業で最大規模", "sourceIds": ["src-25"]}
+          ]
+        },
+        {
+          "id": "ch4-s4",
+          "visual": {"type": "timeline", "props": {"heading": "2017年、転落の1年", "items": [{"year": "2017.3", "label": "WHが米連邦破産法11章の適用を申請", "atLine": 0}, {"year": "2017.3", "label": "債務超過（株主資本 ▲5,529億円）", "atLine": 0, "highlight": true}, {"year": "2017.8", "label": "東証1部から2部へ", "atLine": 3}, {"year": "2017.12", "label": "約6,000億円の増資", "atLine": 3}]}},
+          "lines": [
+            {"speaker": "metan", "text": "2017年3月末には株主資本がマイナス5,529億円。債務超過ですわ"},
+            {"speaker": "zundamon", "text": "借金の方が、財産より多いってことなのだ？"},
+            {"speaker": "metan", "text": "ざっくり言えば、そうですわ"},
+            {"speaker": "metan", "text": "8月には東証1部から2部へ。12月に約6,000億円を増資して、資金を確保しましたの"}
+          ],
+          "sourceIds": ["src-22", "src-23", "src-24", "src-26", "src-27"],
+          "facts": [
+            {"text": "2017年3月（2017.3）、WHが米連邦破産法11章の適用を申請", "sourceIds": ["src-22"]},
+            {"text": "2017年3月末（2017.3）の連結株主資本は▲5,529億円で債務超過", "sourceIds": ["src-23", "src-24"]},
+            {"text": "東証は2017年8月1日付（2017.8）で市場第一部から第二部へ指定替え（1部から2部）", "sourceIds": ["src-26"]},
+            {"text": "2017年11月19日に約6,000億円の第三者割当増資を決議し、12月（2017.12）に払込み", "sourceIds": ["src-27"]}
+          ]
+        },
+        {
+          "id": "ch4-s5",
+          "visual": {"type": "meter", "props": {"label": "やらかし度", "level": 85, "from": 55, "caption": "第4章：債務超過で2部へ"}},
+          "lines": [
+            {"speaker": "zundamon", "text": "メーターが真っ赤なのだ！", "emotion": "surprised"}
+          ],
+          "sourceIds": []
+        }
+      ]
+    },
+    {
+      "id": "ch5",
+      "title": "切り売り編",
+      "scenes": [
+        {
+          "id": "ch5-s1",
+          "visual": {"type": "title", "props": {"variant": "chapter", "kicker": "第5章", "title": "切り売り編", "subtitle": "2016〜2018"}},
+          "lines": [],
+          "sourceIds": [],
+          "minDurationSec": 2.2
+        },
+        {
+          "id": "ch5-s2",
+          "visual": {"type": "transferMap", "props": {"heading": "東芝が手放した主な事業", "from": "東芝", "items": [{"what": "医療機器", "to": "キヤノン", "when": "2016年", "detail": "約6,655億円", "atLine": 1}, {"what": "白物家電", "to": "美的集団（中国）", "when": "2016年", "detail": "約537億円・80.1%", "atLine": 3}, {"what": "テレビ", "to": "ハイセンス（中国）", "when": "2018年", "detail": "約129億円・95%", "atLine": 3}, {"what": "メモリ", "to": "ベイン中心の企業連合", "when": "2018年", "detail": "約2兆円", "atLine": 4}, {"what": "パソコン", "to": "シャープ", "when": "2018年", "detail": "約40億円・80.1%", "atLine": 5}]}},
+          "lines": [
+            {"speaker": "metan", "text": "お金をつくるため、東芝は事業を次々と売りましたわ"},
+            {"speaker": "metan", "text": "まず医療機器をキヤノンへ。約6,655億円"},
+            {"speaker": "zundamon", "text": "冷蔵庫や洗濯機は？ 日本初のやつなのだ！"},
+            {"speaker": "metan", "text": "白物家電は中国の美的集団へ。テレビはハイセンスへ", "yomi": "白物家電は、中国の、びてきしゅうだんへ。テレビは、ハイセンスへ"},
+            {"speaker": "metan", "text": "本命のメモリ事業は、ベインキャピタル中心の企業連合へ。約2兆円"},
+            {"speaker": "metan", "text": "パソコンはシャープへ"},
+            {"speaker": "zundamon", "text": "看板商品が、みんなよその家の子になったのだ……", "emotion": "sad"}
+          ],
+          "sourceIds": ["src-28", "src-29", "src-30", "src-31", "src-32"],
+          "facts": [
+            {"text": "2016年、東芝メディカルシステムズ（医療機器）をキヤノンへ約6,655億円で譲渡（2016年3月17日契約）", "sourceIds": ["src-28"]},
+            {"text": "2016年、東芝ライフスタイル（白物家電）の80.1%を美的集団の子会社へ約537億円で譲渡（発表時）", "sourceIds": ["src-29"]},
+            {"text": "東芝映像ソリューション（テレビ）の95%をハイセンスへ約129億円で譲渡（2017年11月契約、2018年2月完了）", "sourceIds": ["src-30"]},
+            {"text": "2018年6月、東芝メモリをベインキャピタル中心の企業連合（Pangea）へ約2兆円で譲渡完了", "sourceIds": ["src-31"]},
+            {"text": "2018年、東芝クライアントソリューション（パソコン）の80.1%をシャープへ40億500万円（約40億円）で譲渡", "sourceIds": ["src-32"]}
+          ]
+        },
+        {
+          "id": "ch5-s3",
+          "visual": {"type": "timeline", "props": {"heading": "売った子ども「キオクシア」", "items": [{"year": "2018", "label": "東芝メモリを売却（東芝は再出資し議決権の40.2%）", "atLine": 1}, {"year": "2019", "label": "社名を「キオクシア」に変更", "atLine": 0, "highlight": true}]}},
+          "lines": [
+            {"speaker": "metan", "text": "このメモリ事業こそ、のちのキオクシア。2019年に社名を変えましたの"},
+            {"speaker": "metan", "text": "東芝は買い手側に再出資して、議決権の40.2%を持ち続けましたわ"},
+            {"speaker": "zundamon", "text": "売ったのに、ちょっと持ってるのだ？"},
+            {"speaker": "metan", "text": "ええ。これが、のちに効いてきますの", "emotion": "happy"}
+          ],
+          "sourceIds": ["src-31", "src-33"],
+          "facts": [
+            {"text": "東芝は2018年の売却時に買い手側（Pangea）へ再出資し、議決権の40.2%を保有", "sourceIds": ["src-31"]},
+            {"text": "東芝メモリは2019年10月1日付で「キオクシア」に社名変更", "sourceIds": ["src-33"]}
+          ]
+        },
+        {
+          "id": "ch5-s4",
+          "visual": {"type": "bigNumber", "props": {"heading": "国民的アニメ「サザエさん」のCM提供", "value": "約半世紀", "caption": "1969年10月の放送開始から 2018年3月25日放送分まで", "tone": "neutral"}},
+          "lines": [
+            {"speaker": "metan", "text": "経費削減で、アニメ「サザエさん」のスポンサーも降板しましたわ"},
+            {"speaker": "metan", "text": "1969年の放送開始からCMを提供し、2018年3月の放送分まで。約半世紀でした"},
+            {"speaker": "zundamon", "text": "おなじみのCMが、見られなくなったのだ……", "emotion": "sad"}
+          ],
+          "sourceIds": ["src-34", "src-35"],
+          "facts": [
+            {"text": "東芝は1969年10月の「サザエさん」放送開始からCMを提供し、経費削減の一環として2018年3月25日放送分で降板（約半世紀）", "sourceIds": ["src-34", "src-35"]}
+          ]
+        },
+        {
+          "id": "ch5-s5",
+          "visual": {"type": "meter", "props": {"label": "やらかし度", "level": 92, "from": 85, "caption": "第5章：家財道具を売り払う"}},
+          "lines": [
+            {"speaker": "zundamon", "text": "針が、もう振り切れそうなのだ"}
+          ],
+          "sourceIds": []
+        }
+      ]
+    },
+    {
+      "id": "ch6",
+      "title": "迷走編",
+      "scenes": [
+        {
+          "id": "ch6-s1",
+          "visual": {"type": "title", "props": {"variant": "chapter", "kicker": "第6章", "title": "迷走編", "subtitle": "2021〜2023"}},
+          "lines": [],
+          "sourceIds": [],
+          "minDurationSec": 2.2
+        },
+        {
+          "id": "ch6-s2",
+          "visual": {"type": "quote", "props": {"text": "公正に運営されたものとはいえない", "cite": "外部調査の報告書（2021年6月10日、東芝が公表）", "note": "2020年の定時株主総会について"}},
+          "lines": [
+            {"speaker": "metan", "text": "2021年6月、前年の株主総会について、外部の調査報告書が出ましたわ"},
+            {"speaker": "metan", "text": "結論は、総会が「公正に運営されたものとはいえない」"},
+            {"speaker": "zundamon", "text": "総会って、会社でいちばん大事な会議じゃないのだ？", "emotion": "surprised"},
+            {"speaker": "metan", "text": "ええ。同じ月の総会では、取締役会の議長の再任が否決されましたの"}
+          ],
+          "sourceIds": ["src-36", "src-37"],
+          "facts": [
+            {"text": "2021年6月10日、2020年定時株主総会に関する外部調査報告書を東芝が公表。総会は「公正に運営されたものとはいえない」と結論", "sourceIds": ["src-36"]},
+            {"text": "2021年6月25日の定時株主総会で、取締役会議長の再任が否決", "sourceIds": ["src-37"]}
+          ]
+        },
+        {
+          "id": "ch6-s3",
+          "visual": {"type": "timeline", "props": {"heading": "分割案から非公開化へ", "items": [{"year": "2021.11", "label": "会社を3つに分ける案を発表", "atLine": 0}, {"year": "2022.2", "label": "2つに分ける案に変更", "atLine": 2}, {"year": "2022.3", "label": "臨時株主総会で否決", "atLine": 2}, {"year": "2023.3", "label": "JIP中心の連合がTOBを公表（1株4,620円）", "atLine": 4}, {"year": "2023.12", "label": "上場廃止", "atLine": 5, "highlight": true}]}},
+          "lines": [
+            {"speaker": "metan", "text": "2021年11月には、会社を3つに分ける案を発表"},
+            {"speaker": "zundamon", "text": "分身の術なのだ！", "emotion": "happy"},
+            {"speaker": "metan", "text": "翌年2月に2つに分ける案へ変えたものの、3月の臨時株主総会で否決"},
+            {"speaker": "zundamon", "text": "3つが2つになって、結局どっちもダメなのだ……", "emotion": "sad"},
+            {"speaker": "metan", "text": "2023年、日本産業パートナーズ中心の連合がTOBを公表。1株4,620円、総額約2兆円", "yomi": "2023年、日本産業パートナーズ中心の連合が、ティーオービーを公表。ひとかぶ4620円、総額、約2兆円"},
+            {"speaker": "metan", "text": "そして12月20日、東芝は上場廃止になりましたわ"}
+          ],
+          "sourceIds": ["src-38", "src-39", "src-40", "src-41", "src-42", "src-43"],
+          "facts": [
+            {"text": "2021年11月12日（2021.11）、会社を3つの独立会社に分ける案を発表", "sourceIds": ["src-38"]},
+            {"text": "2022年2月7日（2022.2）、2つに分ける案に変更", "sourceIds": ["src-39"]},
+            {"text": "2022年3月24日（2022.3）の臨時株主総会で2分割案は否決（3分割案から2分割案へ、3つが2つに）", "sourceIds": ["src-40"]},
+            {"text": "2023年3月23日（2023.3）、日本産業パートナーズ（JIP）中心の連合がTOBを公表。1株4,620円、総額約2兆円", "sourceIds": ["src-41"]},
+            {"text": "2023年9月21日、TOBの成立を開示", "sourceIds": ["src-42"]},
+            {"text": "2023年12月20日（2023.12）、東証プライム市場などで上場廃止", "sourceIds": ["src-43"]}
+          ]
+        },
+        {
+          "id": "ch6-s4",
+          "visual": {"type": "meter", "props": {"label": "やらかし度", "level": 96, "from": 92, "caption": "第6章：上場廃止"}},
+          "lines": [
+            {"speaker": "metan", "text": "やらかし度は、ほぼ限界ですわね", "emotion": "sad"}
+          ],
+          "sourceIds": []
+        }
+      ]
+    },
+    {
+      "id": "ch7",
+      "title": "現在編",
+      "scenes": [
+        {
+          "id": "ch7-s1",
+          "visual": {"type": "title", "props": {"variant": "chapter", "kicker": "第7章", "title": "現在編", "subtitle": "2024〜2026"}},
+          "lines": [],
+          "sourceIds": [],
+          "minDurationSec": 2.2
+        },
+        {
+          "id": "ch7-s2",
+          "visual": {"type": "timeline", "props": {"heading": "立て直しと、子どもの上場", "items": [{"year": "2024.5", "label": "「東芝再興計画」を発表（2026年度にROS 10%目標）", "atLine": 0}, {"year": "2024.12", "label": "キオクシアが東証プライム市場に上場", "atLine": 3, "highlight": true}]}},
+          "lines": [
+            {"speaker": "metan", "text": "非公開になった東芝は、2024年5月に「東芝再興計画」を発表"},
+            {"speaker": "metan", "text": "2026年度に営業利益率10%を目指し、最大4,000人の早期退職などを進めましたの"},
+            {"speaker": "zundamon", "text": "地道に立て直してるのだ"},
+            {"speaker": "metan", "text": "そして2024年12月、あのキオクシアが東証プライム市場に上場しましたわ"}
+          ],
+          "sourceIds": ["src-44", "src-46"],
+          "facts": [
+            {"text": "2024年5月16日（2024.5）、「東芝再興計画」を発表。2026年度に営業利益率（ROS）10%を目標。最大4,000人の早期退職など", "sourceIds": ["src-44"]},
+            {"text": "2024年12月18日（2024.12）、キオクシアHDが東証プライム市場に上場", "sourceIds": ["src-46"]}
+          ]
+        },
+        {
+          "id": "ch7-s3",
+          "visual": {"type": "barChart", "props": {"heading": "東芝の当期純損益（億円）", "unit": "億円", "bars": [{"label": "2014", "value": -378}, {"label": "2015", "value": -4600}, {"label": "2016", "value": -9657}, {"label": "2017", "value": 8040}, {"label": "2018", "value": 10133}, {"label": "2019", "value": -1146}, {"label": "2020", "value": 1140}, {"label": "2021", "value": 1947}, {"label": "2022", "value": 1266}, {"label": "2023", "value": -748}, {"label": "2024", "value": 2790}, {"label": "2025", "value": 19673}], "highlight": ["2025"], "footnote": "年度。米国会計基準・株主帰属。2018年度はメモリ売却益、2025年度はキオクシア株の売却・評価益等を含む"}},
+          "lines": [
+            {"speaker": "metan", "text": "キオクシアの株が値上がりして、東芝の利益は跳ね上がりました"},
+            {"speaker": "metan", "text": "2025年度の当期純利益は1兆9,673億円。過去最高ですわ"},
+            {"speaker": "zundamon", "text": "グラフの右はしだけ、ロケットなのだ！", "emotion": "surprised"}
+          ],
+          "sourceIds": ["src-49", "src-19", "src-57", "src-23", "src-58", "src-59", "src-60", "src-61", "src-62", "src-63", "src-64", "src-65"],
+          "facts": [
+            {"text": "2025年度（2026年3月期）の当期純利益は1兆9,673億円（19673億円）で過去最高。キオクシア株の売却・評価益等による", "sourceIds": ["src-49"]},
+            {"text": "年度別の当期純損益（億円）：2014年度 -378", "sourceIds": ["src-19"]},
+            {"text": "2015年度 -4600", "sourceIds": ["src-57"]},
+            {"text": "2016年度 -9657", "sourceIds": ["src-23"]},
+            {"text": "2017年度 8040", "sourceIds": ["src-58"]},
+            {"text": "2018年度 10133", "sourceIds": ["src-59"]},
+            {"text": "2019年度 -1146", "sourceIds": ["src-60"]},
+            {"text": "2020年度 1140", "sourceIds": ["src-61"]},
+            {"text": "2021年度 1947", "sourceIds": ["src-62"]},
+            {"text": "2022年度 1266", "sourceIds": ["src-63"]},
+            {"text": "2023年度 -748", "sourceIds": ["src-64"]},
+            {"text": "2024年度 2790", "sourceIds": ["src-65"]},
+            {"text": "2025年度 19673", "sourceIds": ["src-49"]}
+          ]
+        },
+        {
+          "id": "ch7-s4",
+          "visual": {"type": "bigNumber", "props": {"heading": "2026年度上期（4〜9月）の当期純利益", "value": "2兆5,283億円", "countToOku": 25283, "caption": "第1四半期（4〜6月）だけの4兆4,673億円より少ない", "tone": "plus"}},
+          "lines": [
+            {"speaker": "metan", "text": "そして冒頭の、4月から6月で4兆4,673億円"},
+            {"speaker": "metan", "text": "ところが11月13日に出た上期、4月から9月は2兆5,283億円", "yomi": "ところが11月13日に出た、かみき、4月から9月は、2兆5283億円"},
+            {"speaker": "zundamon", "text": "半年の方が、3か月より少ないのだ！？", "emotion": "surprised"},
+            {"speaker": "metan", "text": "共同通信によれば、キオクシアの評価益が半減したため"},
+            {"speaker": "metan", "text": "子どもの株価しだいで、親の成績が大きく揺れるのですわ"}
+          ],
+          "sourceIds": ["src-50", "src-52", "src-53"],
+          "facts": [
+            {"text": "2026年度第1四半期（4月から6月、3か月）の当期純利益は4兆4,673億円", "sourceIds": ["src-50"]},
+            {"text": "2026年11月13日発表の2026年度上期（4月から9月）の当期純利益は2兆5,283億円（25283億円）", "sourceIds": ["src-52"]},
+            {"text": "共同通信によれば、上期のキオクシア評価益は第1四半期から半減", "sourceIds": ["src-53"]}
+          ]
+        },
+        {
+          "id": "ch7-s5",
+          "visual": {"type": "bigNumber", "props": {"heading": "東芝のキオクシア株 保有比率", "value": "32.01% → 10.46%", "caption": "上場直後（2024年12月）→ 2026年10月27日時点（大量保有・変更報告書）", "tone": "neutral"}},
+          "lines": [
+            {"speaker": "metan", "text": "東芝はキオクシア株を売り進め、保有比率は上場直後の32.01%から"},
+            {"speaker": "metan", "text": "10月27日時点で10.46%まで下がっていますわ"},
+            {"speaker": "zundamon", "text": "仕送りが、だんだん減っていくのだ……", "emotion": "sad"},
+            {"speaker": "metan", "text": "報道によれば、東芝は早ければ2028年度の再上場を目指すとされますわ"}
+          ],
+          "sourceIds": ["src-47", "src-48", "src-54", "src-55"],
+          "facts": [
+            {"text": "キオクシア上場直後（2024年12月）の東芝の保有比率は32.01%（大量保有報告書）", "sourceIds": ["src-47"]},
+            {"text": "東芝のキオクシア株保有比率は2026年10月27日時点で10.46%（変更報告書）", "sourceIds": ["src-48"]},
+            {"text": "報道によれば、東芝は早ければ2028年度の再上場を目指す", "sourceIds": ["src-54", "src-55"]}
+          ]
+        },
+        {
+          "id": "ch7-s6",
+          "visual": {"type": "meter", "props": {"label": "やらかし度", "level": 70, "from": 96, "caption": "第7章：回復中。ただし子ども頼み"}},
+          "lines": [
+            {"speaker": "zundamon", "text": "メーターが下がったのだ！", "emotion": "happy"},
+            {"speaker": "metan", "text": "ただし、子ども頼みの回復ですけれど"}
+          ],
+          "sourceIds": []
+        }
+      ]
+    },
+    {
+      "id": "ch8",
+      "title": "まとめ",
+      "scenes": [
+        {
+          "id": "ch8-s1",
+          "visual": {"type": "title", "props": {"variant": "chapter", "kicker": "最終章", "title": "まとめ", "subtitle": "今日の教訓はひとつだけ"}},
+          "lines": [],
+          "sourceIds": [],
+          "minDurationSec": 2.2
+        },
+        {
+          "id": "ch8-s2",
+          "visual": {"type": "title", "props": {"variant": "chapter", "kicker": "今日の教訓", "title": "数字の目標が、現場に嘘をつかせる", "subtitle": "「チャレンジ」は、ほどほどに"}},
+          "lines": [
+            {"speaker": "zundamon", "text": "まとめると、売った子どもに養われてるのが、今の東芝なのだ"},
+            {"speaker": "metan", "text": "つまずきの一つは、報告書が認めた「チャレンジ」という過大な目標でした"},
+            {"speaker": "metan", "text": "今日の教訓はひとつ。数字の目標は、ときに現場に嘘をつかせる"},
+            {"speaker": "zundamon", "text": "ボクも、テストの目標点は控えめにしておくのだ", "emotion": "happy"},
+            {"speaker": "metan", "text": "それは努力なさい"},
+            {"speaker": "zundamon", "text": "次回の「やらかした会社」も、お楽しみになのだ！", "emotion": "happy"}
+          ],
+          "sourceIds": ["src-02", "src-15", "src-16"],
+          "facts": [
+            {"text": "東芝は1875年創業で2025年に創業150周年", "sourceIds": ["src-02"]},
+            {"text": "報道によれば、第三者委員会の報告書は「チャレンジ」と称する過大な目標を認定", "sourceIds": ["src-15", "src-16"]}
+          ]
+        }
+      ]
+    }
+  ]
+}

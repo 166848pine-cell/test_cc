@@ -15,6 +15,7 @@ import {
   wavDurationSec,
   writeWav,
   estimateSpeechSec,
+  toSpeech,
 } from './lib.ts';
 import type {Speaker} from '../remotion/src/types.ts';
 
@@ -107,7 +108,7 @@ const main = async () => {
   let made = 0;
   let kept = 0;
   for (const {line, id} of eachLine(script)) {
-    const say = line.yomi ?? line.text;
+    const say = toSpeech(line.yomi ?? line.text);
     const speakerId = speakerIds ? speakerIds[line.speaker] : null;
     const hash = sha1(JSON.stringify([say, line.speaker, speakerId, manifest.mode, tts.speedScale, tts.intonationScale, tts.volumeScale, tts.sampleRate]));
     const file = path.join(audioDir, `${id}.wav`);

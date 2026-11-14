@@ -33,7 +33,6 @@ function numbersIn(text: string): string[] {
     })
     .map((n) => n.replace(/,/g, '').replace(/\.$/, ''));
 }
-const norm = (s: string) => s.replace(/[０-９]/g, (c) => String.fromCharCode(c.charCodeAt(0) - 0xfee0)).replace(/,/g, '');
 
 let estSec = 0;
 let chars = 0;
@@ -58,7 +57,7 @@ for (const chapter of script.chapters) {
         usedSources.add(id);
       }
     }
-    const factText = norm(facts.map((f) => f.text).join(' / '));
+    const factNumbers = new Set(facts.flatMap((f) => numbersIn(f.text)));
 
     // 数値チェック（セリフ＋図）
     const texts: {where: string; text: string}[] = scene.lines.map((l, i) => ({where: lineId(scene, i), text: l.text}));
@@ -67,7 +66,8 @@ for (const chapter of script.chapters) {
       else if (Array.isArray(v)) v.forEach((x) => collect(x, where));
       else if (v && typeof v === 'object') {
         for (const [k, x] of Object.entries(v)) {
-          if (['kicker', 'atLine', 'level', 'from'].includes(k)) continue;
+          if (['kicker', 'atLine', 'level', 'from', 'cite'].includes(k)) continue;
+          if (scene.visual.type === 'quote' && k === 'note') continue; // 引用の出典表記
           if (typeof x === 'number' && k === 'value') texts.push({where: `${where}.${k}`, text: String(x)});
           else if (typeof x === 'number' && k === 'countToOku') texts.push({where: `${where}.${k}`, text: String(x)});
           else collect(x, `${where}`);
@@ -77,7 +77,7 @@ for (const chapter of script.chapters) {
     if (scene.visual.type !== 'meter' && scene.visual.type !== 'title') collect(scene.visual.props, `${scene.id}.visual`);
     for (const {where, text} of texts) {
       for (const n of numbersIn(text)) {
-        if (!factText.includes(n.replace(/^-/, ''))) {
+        if (!factNumbers.has(n)) {
           errors.push(`${where}: 数値「${n}」を含むが、同じ数値を含む facts（出典つき）がない → 「${text}」`);
         }
       }
