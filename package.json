@@ -1,0 +1,19 @@
+{
+  "name": "yarakashita-kaisha",
+  "private": true,
+  "type": "module",
+  "description": "解説動画シリーズ「やらかした会社」の制作パイプライン",
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "setup": "npm --prefix remotion install",
+    "check": "node scripts/check-script.ts",
+    "tts": "node scripts/tts.ts",
+    "timeline": "node scripts/build-timeline.ts",
+    "render": "node scripts/render.ts",
+    "stills": "node scripts/render.ts --stills",
+    "docs": "node scripts/make-docs.ts",
+    "studio": "node scripts/studio.ts"
+  }
+}

@@ -1,0 +1,6 @@
+node_modules/
+remotion/dist/
+remotion/out/
+# 生成物（作り直せるもの）
+episodes/*/audio/*.wav
+episodes/*/stills/
