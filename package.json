@@ -14,6 +14,7 @@
     "render": "node scripts/render.ts",
     "stills": "node scripts/render.ts --stills",
     "docs": "node scripts/make-docs.ts",
-    "studio": "node scripts/studio.ts"
+    "studio": "node scripts/studio.ts",
+    "make": "node scripts/make.ts"
   }
 }

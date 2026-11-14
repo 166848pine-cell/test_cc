@@ -41,12 +41,15 @@ scripts/
   build-timeline.ts        wav の長さから timeline.json と narration.wav を作る
   render.ts                Remotion で out.mp4 を作り、映像のみ版 out_no_audio.mp4 も作る
   make-docs.ts             sources.md・credits.json の概要欄テキスト・読みやすい台本（script.md）を生成
+  make.ts                  上の手順を順に全部実行
+  studio.ts                Remotion Studio でプレビュー
 episodes/<NNN-company>/
   research.md              調べた事実と出典 URL（一次情報優先）
   script.json              台本（回ごとに書き換えるのはこれだけ）
   sources.md               動画内で使った事実と出典の対応表（make-docs.ts が生成）
   script.md                人間が読む用の台本（make-docs.ts が生成）
-  credits.json             クレジットと YouTube 概要欄用テキスト
+  credits.json             クレジットと YouTube 概要欄用テキスト（description.txt にも同じ内容）
+  factcheck.md             事実確認サブエージェントの報告
   audio/                   セリフごとの wav と narration.wav（全セリフを 1 本にしたもの）
   timeline.json            各シーン・各セリフの開始フレームと長さ（build-timeline.ts が生成）
   out.mp4 / out_no_audio.mp4
@@ -66,7 +69,13 @@ episodes/<NNN-company>/
 8. 書き出し：`npm run render -- episodes/<回>`
 9. 文書：`npm run docs -- episodes/<回>`（sources.md・script.md・概要欄テキスト）
 
-プレビューは `npm run studio -- episodes/<回>`。
+一括実行は `npm run make -- episodes/<回>`（`--silent` で VOICEVOX なしの通し確認、`--no-render` で書き出し以外）。
+プレビューは `npm run studio -- episodes/<回>`。確認用の静止画は `npm run stills -- episodes/<回>`（`--stills=ch5-s2@last,ch7-s3@2` のように、シーンと何番目のセリフかを指定できる）。
+
+### 書き出し環境のメモ
+
+- Remotion は初回に専用ブラウザ（Chrome Headless Shell）を remotion.media から取得する。取得できない環境では、環境変数 `REMOTION_BROWSER_EXECUTABLE` にブラウザのパスを入れると、それを使う（このクラウド環境では `/opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell`）
+- 1080p・30fps で、4 コアのマシンなら 1 秒あたり 15 フレーム前後（8 分の動画で 15 分ほど）
 
 ## script.json の書き方（要点）
 
