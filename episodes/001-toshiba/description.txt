@@ -1,4 +1,15 @@
-1875年創業の東芝。日本初の家電、フラッシュメモリの発明、そして不正会計と原子力の大誤算。事業を売って売って、最後に残ったのは「売った子ども」からの仕送り――。公開資料をもとに、東芝150年のやらかしを、ずんだもんと四国めたんが振り返ります。
+1875年創業の東芝。東芝によれば「日本初」の家電、フラッシュメモリの発明、そして不適切会計と原子力の大誤算。事業を次々と手放した末に、いま利益を押し上げているのは「売った子ども」の株――。公開資料と報道をもとに、東芝150年のやらかしを、ずんだもんと四国めたんが振り返ります。
+
+■ 目次
+0:00 つかみ
+0:40 創業編
+1:27 絶頂編
+2:13 やらかし① 不正会計
+3:26 やらかし② 原子力の大誤算
+4:15 切り売り編
+5:21 迷走編
+6:10 現在編
+7:34 まとめ
 
 ■ 主な出典（一次情報）
 ・東芝「沿革」 https://www.global.toshiba/jp/outline/corporate/history/chronology.html
@@ -46,6 +57,7 @@
 ・東芝「2022年度連結決算」（2023-05-12） https://www.global.toshiba/content/dam/toshiba/jp/ir/corporate/pr/pdf/tpr2022q4.pdf
 ・東芝「2023年度連結決算」（2024-05-16） https://www.global.toshiba/content/dam/toshiba/jp/ir/corporate/finance/pdf/tpr2023q4.pdf
 ・東芝「2024年度決算」（2025-05-15） https://www.global.toshiba/content/dam/toshiba/jp/ir/corporate/finance/pdf/tpr2024q4.pdf
+・東芝「適時開示（2022年3月24日の臨時株主総会でスピンオフ計画が否決された経緯の記載）」（2023-08-07） https://www.global.toshiba/content/dam/toshiba/jp/ir/corporate/news/20230807_4.pdf
 
 ■ 補強に使った報道など
 ・情報処理学会「【東芝】DynaBook J-3100SS」 https://museum.ipsj.or.jp/computer/personal/0034.html
@@ -67,6 +79,8 @@
 ・時事通信「東芝、26年3月期は純利益7倍で過去最高 28年度にも再上場へ」（2026-05-15） https://www.jiji.com/jc/article?k=2026051501208&g=eco
 ・日本食糧新聞「やおきん「うまい棒」価格改定（12円→15円）」（2024-09-25） https://news.nissyoku.co.jp/news/aoyagi20240925073211759
 ・EE Times Japan「東芝の21年度決算、半導体など好調で増収増益」（2022-05-13） https://eetimes.itmedia.co.jp/ee/articles/2205/13/news193.html
+・日本経済新聞「東芝、キオクシア株を売却 保有比率10.46%に」（2026-11-04） https://www.nikkei.com/article/DGXZQOUB047UA0U6A101C2000000/
+・MONOist（アイティメディア）「東芝の営業利益は約3倍の1119億円、純利益はキオクシアの評価益で30倍以上に」（2026-08-10） https://monoist.itmedia.co.jp/mn/articles/2608/10/news051.html
 
 ※ 本動画は公開資料と報道をもとに構成しています。評価や推測を含む部分は「〜とされる」「報道によれば」と区別しています。
 ※ 社名・番組名などはテキストで記載しており、各社のロゴや画像は使用していません。

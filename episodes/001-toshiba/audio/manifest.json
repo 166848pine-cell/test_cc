@@ -24,13 +24,13 @@
       "mode": "silent"
     },
     "ch0-s2-02": {
-      "hash": "04e50c4906d38802",
-      "durationSec": 3.9833333333333334,
+      "hash": "e77aaddf22c556bc",
+      "durationSec": 7.266666666666667,
       "speakerId": null,
       "mode": "silent"
     },
     "ch0-s2-03": {
-      "hash": "c247a8fa00667c3b",
+      "hash": "254a1f58850ba1d8",
       "durationSec": 4.641666666666667,
       "speakerId": null,
       "mode": "silent"
@@ -66,20 +66,20 @@
       "mode": "silent"
     },
     "ch1-s2-02": {
-      "hash": "a3f7741e4159de84",
-      "durationSec": 1.6333333333333333,
+      "hash": "f087c0e8ed5d7246",
+      "durationSec": 1.9166666666666667,
       "speakerId": null,
       "mode": "silent"
     },
     "ch1-s2-03": {
-      "hash": "e521cc3743c77721",
-      "durationSec": 4.975,
+      "hash": "71687e2475c965c9",
+      "durationSec": 6.391666666666667,
       "speakerId": null,
       "mode": "silent"
     },
     "ch1-s2-04": {
-      "hash": "6fdc5e35f2b5931a",
-      "durationSec": 4.775,
+      "hash": "6ba4f928cad4b0f4",
+      "durationSec": 5.541666666666667,
       "speakerId": null,
       "mode": "silent"
     },
@@ -126,8 +126,8 @@
       "mode": "silent"
     },
     "ch2-s2-01": {
-      "hash": "f3453c488c02087a",
-      "durationSec": 6.816666666666666,
+      "hash": "b7aa9e2a2550db4a",
+      "durationSec": 7.241666666666666,
       "speakerId": null,
       "mode": "silent"
     },
@@ -162,8 +162,8 @@
       "mode": "silent"
     },
     "ch2-s3-02": {
-      "hash": "17d38b0768c4cb98",
-      "durationSec": 4.741666666666666,
+      "hash": "802665a356922616",
+      "durationSec": 5.166666666666667,
       "speakerId": null,
       "mode": "silent"
     },
@@ -186,24 +186,30 @@
       "mode": "silent"
     },
     "ch3-s2-01": {
-      "hash": "b50df4758761d6b6",
-      "durationSec": 3.275,
+      "hash": "cb85e0159c0085ee",
+      "durationSec": 5.258333333333334,
       "speakerId": null,
       "mode": "silent"
     },
     "ch3-s2-02": {
-      "hash": "68cbc0a2d4a64477",
-      "durationSec": 8.133333333333333,
+      "hash": "009f22d0e727bc65",
+      "durationSec": 5.533333333333333,
       "speakerId": null,
       "mode": "silent"
     },
     "ch3-s2-03": {
+      "hash": "4e816f3026f6cd28",
+      "durationSec": 3.1333333333333333,
+      "speakerId": null,
+      "mode": "silent"
+    },
+    "ch3-s2-04": {
       "hash": "5bd57dc418ba8878",
       "durationSec": 2.941666666666667,
       "speakerId": null,
       "mode": "silent"
     },
-    "ch3-s2-04": {
+    "ch3-s2-05": {
       "hash": "9c89f1e8766f39ec",
       "durationSec": 4.35,
       "speakerId": null,
@@ -222,8 +228,8 @@
       "mode": "silent"
     },
     "ch3-s3-03": {
-      "hash": "c75f3a64dcc2ace4",
-      "durationSec": 4.783333333333333,
+      "hash": "8c29907a78308c92",
+      "durationSec": 6.2,
       "speakerId": null,
       "mode": "silent"
     },
@@ -246,14 +252,20 @@
       "mode": "silent"
     },
     "ch3-s4-03": {
-      "hash": "3dff37e2a34a79a8",
-      "durationSec": 4.216666666666667,
+      "hash": "6750515f9948b05c",
+      "durationSec": 3.45,
       "speakerId": null,
       "mode": "silent"
     },
     "ch3-s4-04": {
       "hash": "f4711dfb94743080",
       "durationSec": 5.308333333333334,
+      "speakerId": null,
+      "mode": "silent"
+    },
+    "ch3-s4-05": {
+      "hash": "8d1683aa2614b903",
+      "durationSec": 1.95,
       "speakerId": null,
       "mode": "silent"
     },
@@ -276,26 +288,26 @@
       "mode": "silent"
     },
     "ch4-s2-02": {
-      "hash": "55bdac4503bf3e3d",
-      "durationSec": 2.658333333333333,
+      "hash": "329bec3dd94fa567",
+      "durationSec": 2.941666666666667,
       "speakerId": null,
       "mode": "silent"
     },
     "ch4-s2-03": {
-      "hash": "408ed842eeed8439",
-      "durationSec": 6.191666666666666,
+      "hash": "92c82c37b16af899",
+      "durationSec": 3.8916666666666666,
       "speakerId": null,
       "mode": "silent"
     },
     "ch4-s2-04": {
-      "hash": "473a58471b2cc2d1",
-      "durationSec": 2.091666666666667,
+      "hash": "135b5f18f1460358",
+      "durationSec": 3.225,
       "speakerId": null,
       "mode": "silent"
     },
     "ch4-s3-01": {
-      "hash": "46a3e1b8c6d3e1f5",
-      "durationSec": 6.441666666666666,
+      "hash": "507457384fc275e2",
+      "durationSec": 4.633333333333334,
       "speakerId": null,
       "mode": "silent"
     },
@@ -336,8 +348,8 @@
       "mode": "silent"
     },
     "ch5-s2-01": {
-      "hash": "b38ac32eb638ed7d",
-      "durationSec": 3.5083333333333333,
+      "hash": "78c6e70ec59dbfe5",
+      "durationSec": 3.3666666666666667,
       "speakerId": null,
       "mode": "silent"
     },
@@ -348,8 +360,8 @@
       "mode": "silent"
     },
     "ch5-s2-03": {
-      "hash": "3ca39d54e4b255d5",
-      "durationSec": 2.658333333333333,
+      "hash": "cbb5638d8fa34031",
+      "durationSec": 3.7916666666666665,
       "speakerId": null,
       "mode": "silent"
     },
@@ -384,26 +396,26 @@
       "mode": "silent"
     },
     "ch5-s3-02": {
-      "hash": "9325da2bb7af565d",
-      "durationSec": 4.891666666666667,
+      "hash": "be540cbf90fb9c05",
+      "durationSec": 5.316666666666666,
       "speakerId": null,
       "mode": "silent"
     },
     "ch5-s3-03": {
-      "hash": "edbaeb05e01c3099",
-      "durationSec": 2.375,
+      "hash": "9474f3ddb4086e76",
+      "durationSec": 2.091666666666667,
       "speakerId": null,
       "mode": "silent"
     },
     "ch5-s3-04": {
-      "hash": "5992d3d931083ecc",
-      "durationSec": 2.375,
+      "hash": "2c2695f1a1442efa",
+      "durationSec": 4.016666666666667,
       "speakerId": null,
       "mode": "silent"
     },
     "ch5-s4-01": {
-      "hash": "344610592fc5f965",
-      "durationSec": 3.933333333333333,
+      "hash": "084d1bb52b200fa7",
+      "durationSec": 5.208333333333333,
       "speakerId": null,
       "mode": "silent"
     },
@@ -498,8 +510,8 @@
       "mode": "silent"
     },
     "ch7-s2-02": {
-      "hash": "ffd97f598e1e9b06",
-      "durationSec": 6.75,
+      "hash": "e72e9b3d8ad82abf",
+      "durationSec": 7.033333333333333,
       "speakerId": null,
       "mode": "silent"
     },
@@ -552,8 +564,8 @@
       "mode": "silent"
     },
     "ch7-s4-04": {
-      "hash": "f711bccd63cd3c63",
-      "durationSec": 3.65,
+      "hash": "1c677998a37e53e7",
+      "durationSec": 5.375,
       "speakerId": null,
       "mode": "silent"
     },
@@ -564,8 +576,8 @@
       "mode": "silent"
     },
     "ch7-s5-01": {
-      "hash": "94ce496bad68c71c",
-      "durationSec": 5.116666666666666,
+      "hash": "42b069153632657e",
+      "durationSec": 5.966666666666667,
       "speakerId": null,
       "mode": "silent"
     },
@@ -600,14 +612,14 @@
       "mode": "silent"
     },
     "ch8-s2-01": {
-      "hash": "3ceebeacbb421b26",
-      "durationSec": 3.933333333333333,
+      "hash": "d66f007f52fb98a8",
+      "durationSec": 4.5,
       "speakerId": null,
       "mode": "silent"
     },
     "ch8-s2-02": {
-      "hash": "a5770f1a1ab67e87",
-      "durationSec": 4.641666666666667,
+      "hash": "40c0f206960a7069",
+      "durationSec": 5.491666666666666,
       "speakerId": null,
       "mode": "silent"
     },

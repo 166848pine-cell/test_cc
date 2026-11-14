@@ -119,5 +119,5 @@ writeJson(path.join(episodeDir, 'timeline.json'), timeline);
 
 const lineCount = scenes.reduce((a, s) => a + s.lines.length, 0);
 console.log(
-  `timeline.json: ${scenes.length} シーン / ${lineCount} セリフ / ${durationInFrames} フレーム = ${(durationInFrames / FPS).toFixed(1)} 秒（${Math.floor(durationInFrames / FPS / 60)}分${Math.round((durationInFrames / FPS) % 60)}秒） / 音声 ${manifest.mode}`,
+  `timeline.json: ${scenes.length} シーン / ${lineCount} セリフ / ${durationInFrames} フレーム = ${(durationInFrames / FPS).toFixed(1)} 秒（${Math.floor(durationInFrames / FPS / 60)}分${Math.floor((durationInFrames / FPS) % 60)}秒） / 音声 ${manifest.mode}`,
 );
