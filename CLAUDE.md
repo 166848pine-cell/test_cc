@@ -51,6 +51,7 @@ episodes/<NNN-company>/
   sources.md               動画内で使った事実と出典の対応表（make-docs.ts が生成）
   script.md                人間が読む用の台本（make-docs.ts が生成）
   credits.json             クレジットと YouTube 概要欄用テキスト（description.txt にも同じ内容）
+  subtitles.srt            YouTube 用の字幕ファイル（make-docs.ts が timeline.json から生成）
   factcheck.md             事実確認サブエージェントの報告
   audio/                   セリフごとの wav と narration.wav（全セリフを 1 本にしたもの）
   timeline.json            各シーン・各セリフの開始フレームと長さ（build-timeline.ts が生成）
@@ -83,17 +84,28 @@ episodes/<NNN-company>/
 ## script.json の書き方（要点）
 
 - `chapters[].scenes[]` に `visual`（`title | timeline | bigNumber | barChart | transferMap | quote | meter`）と `lines` を書く
-- `lines[].text` は字幕にそのまま出る。読み間違いが心配な語は `yomi` に読み（カタカナ・ひらがな）を書くと、音声だけそちらを使う
+- `lines[].text` は字幕にそのまま出る。`{ }` で囲んだ部分は黄色の強調テロップになる（音声では読まない）
+- 読み間違いが心配な語は `yomi` に読み（カタカナ・ひらがな）を書くと、音声だけそちらを使う。回をまたいで使う読み替えは `scripts/lib.ts` の `SERIES_READINGS`、その回だけのものは `tts.readings` に書く。合成前に `audio_query` の `kana` で全セリフの読みを点検すること
+- 事実の主張を含まない冗談（ずんだもんのおやつの数など）には `"joke": true` を付ける（数値チェックの対象外。出典表にも載らない）
+- 画面のハンコは `scene.stamp`（`{"text": "過去最高", "atLine": 1}`）。言い過ぎにならない文言にする
+- 章の色は `chapter.color`（省略時はシリーズ既定の色）。メーターの `level` が 100 を超えると「測定不能」で壊れる演出になる
 - 字幕は 1 セリフ 60 文字以内を目安（2 行に収まる）。長いときは分ける
 - 数値・日付を言うシーンには必ず `sourceIds` と `facts` を付ける（`check-script.ts` が検査する）
 - 個人名を入れない。経営者は「当時の社長」などと書く
 
 ## VOICEVOX
 
-- エンジン：`http://localhost:50021`。起動例：`docker run --rm -p 50021:50021 voicevox/voicevox_engine:cpu-latest`
+- エンジン：`http://localhost:50021`。起動例：`docker run -d --rm --name voicevox -p 50021:50021 voicevox/voicevox_engine:cpu-latest`（イメージは約 2GB。このクラウド環境では先に `dockerd &` で Docker デーモンを起動する）
 - 話者 ID は `/speakers` から名前とスタイル名（ずんだもん／ノーマル、四国めたん／ノーマル）で引く
 - エンジンが使えないときは `npm run tts -- episodes/<回> --silent`（文字数から尺を見積もった無音 wav で代用）。この場合は動画に音声が入らないので、本番前に必ず作り直す
 - 利用規約に従い、クレジット「VOICEVOX:ずんだもん」「VOICEVOX:四国めたん」を概要欄に記載する
+- 第1回の実測：読み上げ速度 1.33 で 1 秒あたり約 7 文字。字幕の合計 2,900 文字前後で約 7 分 40 秒になる（尺の目安）
+
+## 音（BGM・効果音）
+
+- BGM：既定は `assets/bgm/yarakashi-theme.wav`（`scripts/make-bgm.ts` が合成する 124BPM・約 62 秒のループ）。build-timeline.ts がエピソードの `bgm/` に写す。セリフの間は自動で音量が下がる（ダッキング）
+- 効果音：`assets/sfx/*.wav`（`scripts/make-sfx.ts`）。ハンコ・数字の着地・年表の項目・章扉などに自動で付く。`script.json` の `"sfx": false` で無効、`{"volume": 0.5}` で音量
+- 書き出しの最後に loudnorm で音量を -16 LUFS 前後にそろえる
 
 ## Remotion
 

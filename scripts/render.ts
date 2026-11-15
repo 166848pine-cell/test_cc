@@ -21,6 +21,7 @@ const remotionDir = path.join(ROOT, 'remotion');
 const common = [`--props=${timelinePath}`, `--public-dir=${episodeDir}`, '--log=warn'];
 if (process.env.REMOTION_BROWSER_EXECUTABLE) common.push(`--browser-executable=${process.env.REMOTION_BROWSER_EXECUTABLE}`);
 if (process.env.REMOTION_LICENSE_KEY) common.push(`--license-key=${process.env.REMOTION_LICENSE_KEY}`);
+if (process.env.REMOTION_CONCURRENCY) common.push(`--concurrency=${process.env.REMOTION_CONCURRENCY}`);
 
 function run(cmd: string, args: string[], cwd = remotionDir) {
   console.log(`$ ${cmd} ${args.join(' ')}`);

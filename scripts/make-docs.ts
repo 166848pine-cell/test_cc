@@ -5,6 +5,7 @@
 //   script.md    … 人間が読む用の台本
 //   credits.json … クレジットと YouTube 概要欄用テキスト（bgm・extra は手で書いた内容を保持）
 //   description.txt … 概要欄テキスト（credits.json の youtubeDescription と同じ）
+//   subtitles.srt   … YouTube にアップロードできる字幕（timeline.json があるとき）
 import {existsSync, readFileSync, writeFileSync} from 'node:fs';
 import path from 'node:path';
 import {episodeDirFromArgs, loadScript, writeJson} from './lib.ts';
@@ -151,6 +152,27 @@ writeJson(creditsPath, {
   youtubeDescription: desc,
 });
 writeFileSync(path.join(episodeDir, 'description.txt'), desc + '\n');
+
+// ---------- subtitles.srt（YouTube の字幕用） ----------
+if (timeline) {
+  const ts = (f: number) => {
+    const ms = Math.round((f / timeline.fps) * 1000);
+    const h = Math.floor(ms / 3600000);
+    const m = Math.floor((ms % 3600000) / 60000);
+    const sec = Math.floor((ms % 60000) / 1000);
+    return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(sec).padStart(2, '0')},${String(ms % 1000).padStart(3, '0')}`;
+  };
+  const srt: string[] = [];
+  let n = 0;
+  for (const sc of timeline.scenes) {
+    for (const l of sc.lines) {
+      const start = sc.from + l.from;
+      const end = start + l.durationInFrames;
+      srt.push(String(++n), `${ts(start)} --> ${ts(end)}`, `${NAME[l.speaker]}：${l.text.replace(/[{}]/g, '')}`, '');
+    }
+  }
+  writeFileSync(path.join(episodeDir, 'subtitles.srt'), srt.join('\n'));
+}
 
 console.log(`script.md（${lines} セリフ）、sources.md（facts ${script.chapters.flatMap((c) => c.scenes).reduce((a, s) => a + (s.facts?.length ?? 0), 0)} 件）、credits.json、description.txt を作成`);
 if (problems.length) {
