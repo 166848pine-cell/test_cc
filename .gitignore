@@ -6,3 +6,5 @@ episodes/*/audio/*.wav
 episodes/*/stills/
 episodes/*/sfx/
 episodes/*/preview_*.mp4
+episodes/*/sample.mp4
+episodes/*/_sample/

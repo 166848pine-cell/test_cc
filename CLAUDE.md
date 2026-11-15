@@ -43,6 +43,8 @@ scripts/
   make-docs.ts             sources.md・credits.json の概要欄テキスト・読みやすい台本（script.md）を生成
   make.ts                  上の手順を順に全部実行
   studio.ts                Remotion Studio でプレビュー
+  highlight.ts             見せ場だけをつないだサンプル動画（sample.mp4）
+  make-sfx.ts              効果音を ffmpeg で合成（assets/sfx、第三者素材なし）
 episodes/<NNN-company>/
   research.md              調べた事実と出典 URL（一次情報優先）
   script.json              台本（回ごとに書き換えるのはこれだけ）
@@ -69,6 +71,7 @@ episodes/<NNN-company>/
 8. 書き出し：`npm run render -- episodes/<回>`
 9. 文書：`npm run docs -- episodes/<回>`（sources.md・script.md・概要欄テキスト）
 
+見せ場だけのサンプル動画は `npm run sample -- episodes/<回>`（`--clips=ch0-s1:0-6,ch5-s2:12-24` で場面と秒を指定）。
 一括実行は `npm run make -- episodes/<回>`（`--silent` で VOICEVOX なしの通し確認、`--no-render` で書き出し以外）。
 プレビューは `npm run studio -- episodes/<回>`。確認用の静止画は `npm run stills -- episodes/<回>`（`--stills=ch5-s2@last,ch7-s3@2` のように、シーンと何番目のセリフかを指定できる）。
 
