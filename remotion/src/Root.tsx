@@ -35,6 +35,7 @@ export const RemotionRoot: React.FC = () => {
         audioMode: 'silent',
         narration: null,
         bgm: null,
+        sfx: null,
         sources: {},
         fontText: '',
         scenes: [],

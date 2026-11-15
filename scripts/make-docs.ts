@@ -7,7 +7,7 @@
 //   description.txt … 概要欄テキスト（credits.json の youtubeDescription と同じ）
 import {existsSync, readFileSync, writeFileSync} from 'node:fs';
 import path from 'node:path';
-import {episodeDirFromArgs, loadScript, lineId, writeJson} from './lib.ts';
+import {episodeDirFromArgs, loadScript, writeJson} from './lib.ts';
 import type {Timeline, Visual} from '../remotion/src/types.ts';
 
 const episodeDir = episodeDirFromArgs();
@@ -53,10 +53,11 @@ for (const ch of script.chapters) {
   md.push(`## ${ch.title}`, '');
   for (const sc of ch.scenes) {
     const t = sceneStart.get(sc.id);
-    md.push(`**[${sc.id}]${t !== undefined ? ` ${mmss(t)}` : ''}** 画面：${describeVisual(sc.visual)}`, '');
+    md.push(`**[${sc.id}]${t !== undefined ? ` ${mmss(t)}` : ''}** 画面：${describeVisual(sc.visual)}${sc.stamp ? ` ／ ハンコ「${sc.stamp.text}」` : ''}`, '');
     for (const [i, l] of sc.lines.entries()) {
-      md.push(`- **${NAME[l.speaker]}**${EMO[l.emotion ?? 'normal']}：${l.text}${l.yomi ? `　〔読み：${l.yomi}〕` : ''}`);
-      chars += [...l.text].length;
+      const plain = l.text.replace(/[{}]/g, '');
+      md.push(`- **${NAME[l.speaker]}**${EMO[l.emotion ?? 'normal']}：${l.text.replace(/\{([^}]*)\}/g, '**$1**')}${l.yomi ? `　〔読み：${l.yomi}〕` : ''}`);
+      chars += [...plain].length;
       lines++;
       void i;
     }

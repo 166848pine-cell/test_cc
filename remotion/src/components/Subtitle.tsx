@@ -1,15 +1,15 @@
 import {interpolate, useCurrentFrame} from 'remotion';
-import {C, FONT_BODY, LAYOUT} from '../theme';
+import {C, FONT_BODY, LAYOUT, parseMarks} from '../theme';
 import {clamp} from '../timing';
 import {findLine, type FlatLine} from './Characters';
 
-const BOX_TEXT_W = 1290;
-const MAX_FONT = 50;
+const BOX_TEXT_W = 1240;
+const MAX_FONT = 58;
 
-/** 字幕を 1〜2 行に分ける。句読点・かぎかっこの切れ目のうち、真ん中に近い所で改行する */
-export function splitSubtitle(text: string): string[] {
-  const chars = [...text.trim()];
-  if (chars.length * MAX_FONT <= BOX_TEXT_W) return [chars.join('')];
+/** 字幕を 1〜2 行に分ける位置（強調記号を除いた文字数で数える）。分けないときは -1 */
+export function splitPoint(plain: string): number {
+  const chars = [...plain.trim()];
+  if (chars.length * MAX_FONT <= BOX_TEXT_W) return -1;
   const mid = chars.length / 2;
   const isKana = (c: string | undefined) => !!c && /[ぁ-ゖー]/.test(c);
   let best = Math.round(mid);
@@ -33,83 +33,87 @@ export function splitSubtitle(text: string): string[] {
       best = cut;
     }
   }
-  return [chars.slice(0, best).join('').trim(), chars.slice(best).join('').trim()];
+  return best;
 }
 
+/** {強調} 記法を保ったまま 1〜2 行に分ける */
+export function splitMarked(text: string): string[] {
+  const plain = text.replace(/[{}]/g, '').trim();
+  const cut = splitPoint(plain);
+  if (cut < 0) return [text.trim()];
+  const chars = [...text.trim()];
+  let count = 0;
+  let inEm = false;
+  for (let i = 0; i < chars.length; i++) {
+    const c = chars[i];
+    if (c === '{') inEm = true;
+    else if (c === '}') inEm = false;
+    else {
+      if (count === cut) {
+        const a = chars.slice(0, i).join('') + (inEm ? '}' : '');
+        const b = (inEm ? '{' : '') + chars.slice(i).join('');
+        return [a.trim(), b.trim()];
+      }
+      count++;
+    }
+  }
+  return [text.trim()];
+}
+
+/** 縁取りテロップの字幕。強調部分は黄色 */
 export const Subtitle: React.FC<{lines: FlatLine[]}> = ({lines}) => {
   const frame = useCurrentFrame();
   const line = findLine(lines, frame);
   if (!line) return null;
-  const color = line.speaker === 'zundamon' ? C.zundamon : C.metan;
-  const name = line.speaker === 'zundamon' ? 'ずんだもん' : '四国めたん';
-  const rows = splitSubtitle(line.text);
-  const longest = Math.max(...rows.map((r) => [...r].length));
+  const color = line.speaker === 'zundamon' ? C.zundamonDark : C.metanDark;
+  const rows = splitMarked(line.text);
+  const longest = Math.max(...rows.map((r) => [...r.replace(/[{}]/g, '')].length));
   const fontSize = Math.min(MAX_FONT, Math.floor(BOX_TEXT_W / longest));
   const t = frame - line.start;
   return (
     <div
       style={{
         position: 'absolute',
-        left: 270,
-        width: 1380,
-        top: LAYOUT.bottomTop + 26,
-        height: 214,
+        left: 300,
+        width: 1320,
+        top: LAYOUT.bottomTop + 34,
+        height: 230,
         display: 'flex',
+        flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
+        fontFamily: FONT_BODY,
+        fontWeight: 800,
+        fontSize,
+        lineHeight: 1.32,
+        whiteSpace: 'nowrap',
+        scale: String(interpolate(t, [0, 3, 6], [0.92, 1.03, 1], clamp)),
+        opacity: interpolate(t, [0, 2], [0.4, 1], clamp),
       }}
     >
-      <div
-        style={{
-          position: 'relative',
-          width: '100%',
-          minHeight: 150,
-          boxSizing: 'border-box',
-          padding: '30px 40px 26px',
-          background: C.card,
-          border: `5px solid ${color}`,
-          borderRadius: 28,
-          boxShadow: '0 10px 0 rgba(43,42,51,0.12)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          opacity: interpolate(t, [0, 4], [0.6, 1], clamp),
-          translate: `0px ${interpolate(t, [0, 5], [8, 0], clamp)}px`,
-        }}
-      >
-        <div
-          style={{
-            position: 'absolute',
-            top: -24,
-            left: line.speaker === 'metan' ? 36 : undefined,
-            right: line.speaker === 'zundamon' ? 36 : undefined,
-            padding: '2px 18px',
-            borderRadius: 12,
-            background: color,
-            color: '#fff',
-            fontFamily: FONT_BODY,
-            fontWeight: 800,
-            fontSize: 26,
-          }}
-        >
-          {name}
-        </div>
-        <div
-          style={{
-            fontFamily: FONT_BODY,
-            fontWeight: 800,
-            fontSize,
-            lineHeight: 1.38,
-            color: C.ink,
-            textAlign: 'center',
-            whiteSpace: 'nowrap',
-          }}
-        >
-          {rows.map((r, i) => (
-            <div key={i}>{r}</div>
-          ))}
-        </div>
-      </div>
+      {rows.map((r, i) => {
+        const segs = parseMarks(r);
+        const layers = [
+          (em: boolean) => ({color: C.ink, WebkitTextStroke: `22px ${C.ink}`}),
+          (em: boolean) => ({color: em ? C.red : color, WebkitTextStroke: `12px ${em ? C.red : color}`}),
+        ];
+        const row = (style: (em: boolean) => React.CSSProperties) =>
+          segs.map((seg, j) => (
+            <span key={j} style={{fontSize: seg.em ? fontSize * 1.06 : fontSize, ...style(seg.em)}}>
+              {seg.t}
+            </span>
+          ));
+        return (
+          <div key={i} style={{position: 'relative'}}>
+            {layers.map((l, k) => (
+              <div key={k} aria-hidden style={{position: 'absolute', inset: 0}}>
+                {row(l)}
+              </div>
+            ))}
+            <div style={{position: 'relative'}}>{row((em) => ({color: em ? C.yellow : '#fff'}))}</div>
+          </div>
+        );
+      })}
     </div>
   );
 };

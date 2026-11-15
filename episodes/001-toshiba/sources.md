@@ -11,6 +11,7 @@
 | ch0-s2 | うまい棒の希望小売価格は税抜15円（2024年10月出荷分から）。4兆4,673億円÷15円＝約2,978億本（計算） | [src-56](https://news.nissyoku.co.jp/news/aoyagi20240925073211759)<br>[src-50](https://www.global.toshiba/content/dam/toshiba/jp/ir/corporate/finance/pdf/tpr2026q1.pdf) |
 | ch0-s2 | 東芝は2018年6月1日に東芝メモリの株式譲渡を完了し、東芝メモリは2019年10月1日付で「キオクシア」に社名変更 | [src-31](https://www2.jpx.co.jp/disc/65020/140120180531453738.pdf)<br>[src-33](https://www.kioxia-holdings.com/en-jp/news/2019/20190718-1.html) |
 | ch0-s2 | 東芝は1875年創業で、2025年に創業150周年 | [src-02](https://www.global.toshiba/jp/news/corporate/2025/06/news-20250630-02.html) |
+| ch0-s2 | 2026年度第1四半期の税引前利益6兆4,608億円のうち、キオクシア関連損益が6兆3,294億円（利益の大部分） | [src-50](https://www.global.toshiba/content/dam/toshiba/jp/ir/corporate/finance/pdf/tpr2026q1.pdf) |
 | ch1-s2 | 1875年（明治8年）7月、発明家・田中久重が銀座に工場を創設。東芝はこれを創業としており、2025年に創業150周年（2026年時点で150年以上前） | [src-01](https://www.global.toshiba/jp/outline/corporate/history/chronology.html)<br>[src-02](https://www.global.toshiba/jp/news/corporate/2025/06/news-20250630-02.html)<br>[src-03](https://www.global.toshiba/content/dam/toshiba/migration/corp/irAssets/about/ir/jp/library/sr/sr2014/tsr2014.pdf) |
 | ch1-s2 | 1890年4月、藤岡市助が白熱舎を創業（国産の白熱電球の製造）。1899年に東京電気へ改称 | [src-01](https://www.global.toshiba/jp/outline/corporate/history/chronology.html)<br>[src-03](https://www.global.toshiba/content/dam/toshiba/migration/corp/irAssets/about/ir/jp/library/sr/sr2014/tsr2014.pdf) |
 | ch1-s2 | 1939年9月、芝浦製作所と東京電気が合併し東京芝浦電気が発足 | [src-01](https://www.global.toshiba/jp/outline/corporate/history/chronology.html)<br>[src-03](https://www.global.toshiba/content/dam/toshiba/migration/corp/irAssets/about/ir/jp/library/sr/sr2014/tsr2014.pdf) |
@@ -23,19 +24,23 @@
 | ch2-s2 | 1989年6月、「DynaBook J-3100SS」を発表。約2.7kg、198,000円（19万8,000円） | [src-08](https://dynabook.com/press-release/20240626.html)<br>[src-09](https://museum.ipsj.or.jp/computer/personal/0034.html) |
 | ch2-s3 | 2006年2月6日、東芝はWH（ウェスチングハウス）の株式取得契約を発表。取得額は54億ドル（約6,210億円、1ドル115円換算） | [src-10](https://www.global.toshiba/jp/news/corporate/2006/02/pr0601.html) |
 | ch2-s3 | 2006年10月16日（米国東部時間）に取得を完了。出資比率は東芝77%、Shaw 20%、IHI 3%（3社合計で54億ドル） | [src-11](https://www.global.toshiba/jp/news/corporate/2006/10/pr1702.html)<br>[src-12](https://www.global.toshiba/jp/ir/corporate/pr/others/opr2006/opr20061017.html) |
+| ch2-s3 | 約6,210億円÷15円＝約414億本（うまい棒の今の価格で計算） | [src-10](https://www.global.toshiba/jp/news/corporate/2006/02/pr0601.html)<br>[src-56](https://news.nissyoku.co.jp/news/aoyagi20240925073211759) |
 | ch3-s2 | 2015年7月20日、東芝は第三者委員会から調査報告書を受領し、要約版を開示。報道はこの問題を「不正会計」と報じた | [src-13](https://www.global.toshiba/content/dam/toshiba/migration/corp/irAssets/about/ir/jp/news/20150720_1.pdf)<br>[src-15](https://news.mynavi.jp/article/20150721-a133/) |
 | ch3-s2 | 第三者委員会の調査結果の範囲で、2008年度から2014年度第3四半期までの税引前損益の要修正額は累計▲1,518億円（1518） | [src-13](https://www.global.toshiba/content/dam/toshiba/migration/corp/irAssets/about/ir/jp/news/20150720_1.pdf)<br>[src-14](https://www.global.toshiba/content/dam/toshiba/migration/corp/irAssets/about/ir/jp/library/or/or2015/ex8/or2015ex8.pdf) |
 | ch3-s2 | 2015年9月7日、過年度決算を訂正。税引前損益の修正額は累計2,248億円 | [src-18](https://www.global.toshiba/content/dam/toshiba/migration/corp/irAssets/about/ir/jp/news/20150907_5.pdf)<br>[src-19](https://www.nikkei.com/article/DGXLASGD07H0P_X00C15A9000000/) |
 | ch3-s3 | 報道によれば、第三者委員会の報告書は、経営トップが「チャレンジ」と称する過大な収益目標を課していたと認定 | [src-15](https://news.mynavi.jp/article/20150721-a133/)<br>[src-16](https://www.nikkei.com/article/DGXLASDZ20HAW_Q5A720C1NN1000/) |
 | ch3-s3 | 日本経済新聞とマイナビニュースが2015年7月21日に報道 | [src-15](https://news.mynavi.jp/article/20150721-a133/)<br>[src-16](https://www.nikkei.com/article/DGXLASDZ20HAW_Q5A720C1NN1000/) |
+| ch3-s3 | 報道によれば、報告書には「3日で120億円」の利益改善を求めた場面も記載されていたとされる | [src-69](https://www.nikkei.com/article/DGXLASDZ20HCA_Q5A720C1TJC001/) |
 | ch3-s3 | マイナビニュースの見出しは「東芝、利益水増し1562億円--経営トップら関与、「チャレンジ」と称して圧力」 | [src-15](https://news.mynavi.jp/article/20150721-a133/) |
 | ch3-s3 | 調査対象は工事進行基準、映像事業の経費計上、半導体の在庫評価、パソコン事業の部品取引の4分野 | [src-13](https://www.global.toshiba/content/dam/toshiba/migration/corp/irAssets/about/ir/jp/news/20150720_1.pdf) |
 | ch3-s4 | 2015年7月21日（2015.7）、社長・副会長を含む取締役8名と相談役が辞任（報道では「歴代3社長が辞任」、社長3人） | [src-17](https://www.global.toshiba/content/dam/toshiba/migration/corp/irAssets/about/ir/jp/news/20150721_1.pdf)<br>[src-16](https://www.nikkei.com/article/DGXLASDZ20HAW_Q5A720C1NN1000/) |
 | ch3-s4 | 東証は2015年9月14日に、東芝株を9月15日付（2015.9）で特設注意市場銘柄に指定すると発表 | [src-21](https://www.jpx.co.jp/news/1021/20150914-14.html) |
 | ch3-s4 | 金融庁は2015年12月（2015.12）、東芝に課徴金73億7,350万円の納付を命令（報道発表は12月25日） | [src-20](https://www.fsa.go.jp/news/27/syouken/20151225-2.html) |
+| ch3-s4 | 73億7,350万円÷15円＝約4.9億本（うまい棒の今の価格で計算） | [src-20](https://www.fsa.go.jp/news/27/syouken/20151225-2.html)<br>[src-56](https://news.nissyoku.co.jp/news/aoyagi20240925073211759) |
 | ch4-s2 | 2017年3月29日（米国時間）、WHが米連邦破産法11章（チャプター11）に基づく再生手続を申し立て | [src-22](https://www.global.toshiba/content/dam/toshiba/migration/corp/irAssets/about/ir/jp/news/20170329_1.pdf) |
 | ch4-s2 | 2016年度の当期純損失（株主帰属）は965,663百万円＝約9,657億円（9657） | [src-23](https://www.global.toshiba/content/dam/toshiba/migration/corp/irAssets/about/ir/jp/library/sr/sr2016/tsr2016.pdf) |
 | ch4-s2 | 報道によれば、2016年度（2017年3月期）の赤字は国内製造業で最大規模 | [src-25](https://www.j-cast.com/kaisha/2017/08/11305720.html) |
+| ch4-s2 | 9,657億円÷15円＝約644億本（うまい棒の今の価格で計算） | [src-23](https://www.global.toshiba/content/dam/toshiba/migration/corp/irAssets/about/ir/jp/library/sr/sr2016/tsr2016.pdf)<br>[src-56](https://news.nissyoku.co.jp/news/aoyagi20240925073211759) |
 | ch4-s3 | 当期純損益：2014年度▲378億円（-378、訂正後）、2015年度▲4,600億円（-4600）、2016年度▲9,657億円（-9657、▲965,663百万円）。2014年度から3年続けて赤字が拡大 | [src-18](https://www.global.toshiba/content/dam/toshiba/migration/corp/irAssets/about/ir/jp/news/20150907_5.pdf)<br>[src-19](https://www.nikkei.com/article/DGXLASGD07H0P_X00C15A9000000/)<br>[src-57](https://www.global.toshiba/content/dam/toshiba/migration/corp/irAssets/about/ir/jp/library/sr/sr2015/tsr2015.pdf)<br>[src-23](https://www.global.toshiba/content/dam/toshiba/migration/corp/irAssets/about/ir/jp/library/sr/sr2016/tsr2016.pdf) |
 | ch4-s4 | 2017年3月（2017.3）、WHが米連邦破産法11章の適用を申請 | [src-22](https://www.global.toshiba/content/dam/toshiba/migration/corp/irAssets/about/ir/jp/news/20170329_1.pdf) |
 | ch4-s4 | 2017年3月末（2017.3）の連結株主資本は▲5,529億円で債務超過 | [src-23](https://www.global.toshiba/content/dam/toshiba/migration/corp/irAssets/about/ir/jp/library/sr/sr2016/tsr2016.pdf)<br>[src-24](https://www.tsr-net.co.jp/data/detail/1188847_1527.html) |
@@ -46,6 +51,7 @@
 | ch5-s2 | 東芝映像ソリューション（テレビ）の95%をハイセンスへ約129億円で譲渡（2017年11月契約、2018年2月完了） | [src-30](https://www2.jpx.co.jp/disc/65020/140120171114418269.pdf) |
 | ch5-s2 | 2018年6月、東芝メモリをベインキャピタル中心の企業連合（Pangea）へ約2兆円で譲渡完了 | [src-31](https://www2.jpx.co.jp/disc/65020/140120180531453738.pdf) |
 | ch5-s2 | 2018年、東芝クライアントソリューション（パソコン）の80.1%をシャープへ40億500万円（約40億円）で譲渡 | [src-32](https://www2.jpx.co.jp/disc/65020/140120180605457207.pdf) |
+| ch5-s2 | 約2兆円÷15円＝約1,333億本（うまい棒の今の価格で計算） | [src-31](https://www2.jpx.co.jp/disc/65020/140120180531453738.pdf)<br>[src-56](https://news.nissyoku.co.jp/news/aoyagi20240925073211759) |
 | ch5-s3 | 東芝は2018年の売却時に買い手側（Pangea）へ再出資し、議決権の40.2%（約4割）を保有 | [src-31](https://www2.jpx.co.jp/disc/65020/140120180531453738.pdf) |
 | ch5-s3 | 東芝メモリは2019年10月1日付で「キオクシア」に社名変更 | [src-33](https://www.kioxia-holdings.com/en-jp/news/2019/20190718-1.html) |
 | ch5-s4 | 報道によれば、東芝は1969年10月の「サザエさん」放送開始からCMを提供し、経費削減の一環として2018年3月25日放送分で降板（約半世紀） | [src-34](https://www.nikkan.co.jp/articles/view/467036)<br>[src-35](https://www.japantimes.co.jp/news/2017/11/22/business/corporate-business/cash-strapped-toshiba-bids-farewell-times-square-sazae-san/) |
@@ -152,6 +158,7 @@
 | src-66 | 報道 | 日本経済新聞 | 東芝、キオクシア株を売却 保有比率10.46%に | 2026-11-04 | https://www.nikkei.com/article/DGXZQOUB047UA0U6A101C2000000/ |
 | src-67 | 報道 | MONOist（アイティメディア） | 東芝の営業利益は約3倍の1119億円、純利益はキオクシアの評価益で30倍以上に | 2026-08-10 | https://monoist.itmedia.co.jp/mn/articles/2608/10/news051.html |
 | src-68 | 一次 | 東芝 | 適時開示（2022年3月24日の臨時株主総会でスピンオフ計画が否決された経緯の記載） | 2023-08-07 | https://www.global.toshiba/content/dam/toshiba/jp/ir/corporate/news/20230807_4.pdf |
+| src-69 | 報道 | 日本経済新聞 | 「3日で120億円利益出せ」 東芝、上意下達激しく | 2015-07 | https://www.nikkei.com/article/DGXLASDZ20HCA_Q5A720C1TJC001/ |
 
 ## 検査結果
 

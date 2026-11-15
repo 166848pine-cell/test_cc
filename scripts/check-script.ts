@@ -4,7 +4,7 @@
 // - 数値（年・金額・割合など）を含むセリフや図に、同じ数値を含む facts（出典つき）があるか
 // - 字幕の長さ、禁止語（個人名など）、話者・感情・図の種類
 // - 文字数からの尺の見積もり
-import {episodeDirFromArgs, loadScript, lineId, estimateSpeechSec} from './lib.ts';
+import {episodeDirFromArgs, loadScript, lineId, estimateSpeechSec, stripMarks} from './lib.ts';
 
 const VISUALS = ['title', 'timeline', 'bigNumber', 'barChart', 'transferMap', 'quote', 'meter'];
 const SPEAKERS = ['zundamon', 'metan'];
@@ -60,7 +60,8 @@ for (const chapter of script.chapters) {
     const factNumbers = new Set(facts.flatMap((f) => numbersIn(f.text)));
 
     // 数値チェック（セリフ＋図）
-    const texts: {where: string; text: string}[] = scene.lines.map((l, i) => ({where: lineId(scene, i), text: l.text}));
+    const texts: {where: string; text: string}[] = scene.lines.map((l, i) => ({where: lineId(scene, i), text: stripMarks(l.text)}));
+    if (scene.stamp) texts.push({where: `${scene.id}.stamp`, text: scene.stamp.text});
     const collect = (v: unknown, where: string) => {
       if (typeof v === 'string') texts.push({where, text: v});
       else if (Array.isArray(v)) v.forEach((x) => collect(x, where));
@@ -86,11 +87,13 @@ for (const chapter of script.chapters) {
     for (const [i, line] of scene.lines.entries()) {
       const id = lineId(scene, i);
       lineCount++;
-      chars += [...line.text].length;
+      chars += [...stripMarks(line.text)].length;
       estSec += estimateSpeechSec(line.yomi ?? line.text, script.tts.speedScale) + (line.pauseAfterSec ?? script.tts.gapSec);
       if (!SPEAKERS.includes(line.speaker)) errors.push(`${id}: 不明な話者 ${line.speaker}`);
       if (line.emotion && !EMOTIONS.includes(line.emotion)) errors.push(`${id}: 不明な emotion ${line.emotion}`);
-      if ([...line.text].length > MAX_SUBTITLE) warnings.push(`${id}: 字幕が ${[...line.text].length} 文字（${MAX_SUBTITLE} 文字以内推奨）`);
+      const len = [...stripMarks(line.text)].length;
+      if (len > MAX_SUBTITLE) warnings.push(`${id}: 字幕が ${len} 文字（${MAX_SUBTITLE} 文字以内推奨）`);
+      if ((line.text.match(/\{/g) ?? []).length !== (line.text.match(/\}/g) ?? []).length) errors.push(`${id}: 強調の { } の対応がとれていない`);
     }
     estSec += script.tts.sceneTailSec + 0.3;
     if (scene.lines.length === 0) estSec += scene.minDurationSec ?? 0;

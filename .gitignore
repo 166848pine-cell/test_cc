@@ -4,3 +4,5 @@ remotion/out/
 # 生成物（作り直せるもの）
 episodes/*/audio/*.wav
 episodes/*/stills/
+episodes/*/sfx/
+episodes/*/preview_*.mp4

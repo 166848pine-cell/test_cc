@@ -19,6 +19,11 @@ export function staggered<T extends {atLine?: number}>(scene: TimelineScene, ite
   });
 }
 
+/** 大きな数字のカウントアップが着地するまでの秒数 */
+export const COUNT_END_SEC = 1.1;
+/** メーターが振り切れるまでの秒数（針が動き出してから） */
+export const METER_BREAK_SEC = 0.6;
+
 export const clamp = {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'} as const;
 
 /** 0→1 の入場（ふわっと） */

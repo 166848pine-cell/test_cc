@@ -1,8 +1,8 @@
 // audio/manifest.json（各セリフの長さ）から timeline.json と audio/narration.wav を作る。
 //   node scripts/build-timeline.ts episodes/001-toshiba
-import {existsSync, readFileSync} from 'node:fs';
+import {copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync} from 'node:fs';
 import path from 'node:path';
-import {episodeDirFromArgs, loadScript, lineId, readWav, writeWav, writeJson} from './lib.ts';
+import {episodeDirFromArgs, loadScript, lineId, readWav, writeWav, writeJson, ROOT} from './lib.ts';
 import type {Timeline, TimelineScene, TimelineLine} from '../remotion/src/types.ts';
 
 const FPS = 30;
@@ -23,6 +23,7 @@ const manifest = JSON.parse(readFileSync(manifestPath, 'utf8')) as {
 };
 
 const sec = (s: number) => Math.round(s * FPS);
+const DEFAULT_COLORS = ['#FFC93C', '#F4A261', '#2EC4B6', '#FF4D4D', '#C1121F', '#FFB703', '#9B5DE5', '#3A86FF', '#FF4D9A'];
 const scenes: TimelineScene[] = [];
 let cursor = 0;
 
@@ -46,6 +47,8 @@ script.chapters.forEach((chapter, chapterIndex) => {
       chapterId: chapter.id,
       chapterTitle: chapter.title,
       chapterIndex,
+      accent: chapter.color ?? DEFAULT_COLORS[chapterIndex % DEFAULT_COLORS.length],
+      ...(scene.stamp ? {stamp: scene.stamp} : {}),
       from: cursor,
       durationInFrames,
       visual: scene.visual,
@@ -84,6 +87,20 @@ if (script.bgm) {
   }
 }
 
+// ---- 効果音（assets/sfx の自作音をエピソードの sfx/ に写す）----
+let sfx: Timeline['sfx'] = null;
+if (script.sfx !== false) {
+  const from = path.join(ROOT, 'assets', 'sfx');
+  if (existsSync(from)) {
+    const to = path.join(episodeDir, 'sfx');
+    mkdirSync(to, {recursive: true});
+    for (const f of readdirSync(from)) if (f.endsWith('.wav')) copyFileSync(path.join(from, f), path.join(to, f));
+    sfx = {volume: script.sfx?.volume ?? 0.5};
+  } else {
+    console.warn('効果音なし: assets/sfx がありません（node scripts/make-sfx.ts で作れます）');
+  }
+}
+
 // ---- フォント先読み用の文字集合 ----
 const strings: string[] = [script.series, script.title, '第章出典：・、。0123456789,.%−-+▲億兆円万年度約'];
 const collect = (v: unknown) => {
@@ -94,6 +111,7 @@ const collect = (v: unknown) => {
 for (const s of scenes) {
   strings.push(s.chapterTitle);
   s.lines.forEach((l) => strings.push(l.text));
+  if (s.stamp) strings.push(s.stamp.text);
   collect(s.visual.props);
 }
 script.sources.forEach((s) => strings.push(s.short));
@@ -111,6 +129,7 @@ const timeline: Timeline = {
   audioMode: manifest.mode,
   narration: {src: 'audio/narration.wav', durationSec: totalSamples / sampleRate},
   bgm,
+  sfx,
   sources: Object.fromEntries(script.sources.map((s) => [s.id, {short: s.short}])),
   fontText,
   scenes,

@@ -2,7 +2,8 @@ import {Audio} from '@remotion/media';
 import {useMemo} from 'react';
 import {AbsoluteFill, Sequence, staticFile} from 'remotion';
 import {Characters, type FlatLine} from './components/Characters';
-import {Background, Header, SourceFooter} from './components/Chrome';
+import {Background, Board, Header, SourceFooter} from './components/Chrome';
+import {Stamp} from './components/Fx';
 import {FontLoader} from './components/FontLoader';
 import {Subtitle} from './components/Subtitle';
 import {BarChartScene} from './scenes/BarChartScene';
@@ -13,6 +14,8 @@ import {TimelineScene} from './scenes/TimelineScene';
 import {TitleScene} from './scenes/TitleScene';
 import {TransferMapScene} from './scenes/TransferMapScene';
 import {C, FONT_BODY} from './theme';
+import {sfxEvents} from './sfx';
+import {revealFrame} from './timing';
 import type {Timeline, TimelineScene as TScene} from './types';
 
 /** visual.type に応じたシーン部品を選ぶ */
@@ -20,20 +23,33 @@ const SceneVisual: React.FC<{scene: TScene}> = ({scene}) => {
   const v = scene.visual;
   switch (v.type) {
     case 'title':
-      return <TitleScene props={v.props} />;
+      return <TitleScene scene={scene} props={v.props} />;
     case 'timeline':
       return <TimelineScene scene={scene} props={v.props} />;
     case 'bigNumber':
       return <BigNumberScene scene={scene} props={v.props} />;
     case 'barChart':
-      return <BarChartScene props={v.props} />;
+      return <BarChartScene scene={scene} props={v.props} />;
     case 'transferMap':
       return <TransferMapScene scene={scene} props={v.props} />;
     case 'quote':
-      return <QuoteScene props={v.props} />;
+      return <QuoteScene scene={scene} props={v.props} />;
     case 'meter':
-      return <MeterScene props={v.props} />;
+      return <MeterScene scene={scene} props={v.props} />;
   }
+};
+
+/** シーンごとのハンコ（フリップの右上に押される） */
+const SceneStamp: React.FC<{scene: TScene}> = ({scene}) => {
+  if (!scene.stamp) return null;
+  // 図の種類ごとに、中身と重ならない位置に押す
+  const pos: Record<string, React.CSSProperties> = {
+    bigNumber: {right: 70, top: 96, scale: '0.78'},
+    barChart: {right: 640, top: 150},
+    transferMap: {right: 70, top: 112, scale: '0.85'},
+    timeline: {right: 90, top: 128},
+  };
+  return <Stamp text={scene.stamp.text} start={revealFrame(scene, scene.stamp.atLine, 0, 1) + 4} style={pos[scene.visual.type] ?? {right: 110, top: 130}} />;
 };
 
 /**
@@ -63,19 +79,21 @@ export const Episode: React.FC<Timeline> = (timeline) => {
 
   if (timeline.scenes.length === 0) {
     return (
-      <AbsoluteFill style={{backgroundColor: C.bg, alignItems: 'center', justifyContent: 'center', fontFamily: FONT_BODY, fontSize: 48, color: C.ink}}>
+      <AbsoluteFill style={{backgroundColor: C.stage, alignItems: 'center', justifyContent: 'center', fontFamily: FONT_BODY, fontSize: 48, color: '#fff'}}>
         timeline.json を --props で渡してください（npm run studio -- episodes/＜回＞）
       </AbsoluteFill>
     );
   }
 
   return (
-    <AbsoluteFill style={{backgroundColor: C.bg}}>
+    <AbsoluteFill style={{backgroundColor: C.stage}}>
       <FontLoader text={timeline.fontText} />
-      <Background />
+      <Background timeline={timeline} />
+      <Board timeline={timeline} />
       {timeline.scenes.map((s) => (
         <Sequence key={s.id} name={s.id} from={s.from} durationInFrames={s.durationInFrames} layout="none">
           <SceneVisual scene={s} />
+          <SceneStamp scene={s} />
         </Sequence>
       ))}
       <Header timeline={timeline} />
@@ -84,6 +102,13 @@ export const Episode: React.FC<Timeline> = (timeline) => {
       <SourceFooter timeline={timeline} />
       {timeline.narration ? <Audio name="ナレーション" src={staticFile(timeline.narration.src)} /> : null}
       {timeline.bgm ? <Audio name="BGM" src={staticFile(timeline.bgm.src)} volume={timeline.bgm.volume} loop /> : null}
+      {timeline.sfx
+        ? sfxEvents(timeline).map((e, i) => (
+            <Sequence key={`sfx-${i}`} name={`効果音 ${e.name}`} from={e.frame} durationInFrames={timeline.fps} layout="none">
+              <Audio src={staticFile(`sfx/${e.name}.wav`)} volume={e.volume * (timeline.sfx?.volume ?? 0.5)} />
+            </Sequence>
+          ))
+        : null}
     </AbsoluteFill>
   );
 };

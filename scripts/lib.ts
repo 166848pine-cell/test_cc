@@ -120,4 +120,10 @@ export function estimateSpeechSec(text: string, speedScale: number): number {
 }
 
 /** 音声合成に渡す文に整える（数字の桁区切りカンマを外す。例: 4,673 → 4673） */
-export const toSpeech = (text: string) => text.replace(/(\d),(?=\d{3})/g, '$1');
+export const toSpeech = (text: string) =>
+  stripMarks(text)
+    .replace(/(\d),(?=\d{3})/g, '$1')
+    .replace(/…+/g, '、');
+
+/** 字幕の強調記号 { } を外す */
+export const stripMarks = (text: string) => text.replace(/[{}]/g, '');
