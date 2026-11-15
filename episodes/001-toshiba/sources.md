@@ -30,13 +30,12 @@
 | ch3-s2 | 2015年9月7日、過年度決算を訂正。税引前損益の修正額は累計2,248億円 | [src-18](https://www.global.toshiba/content/dam/toshiba/migration/corp/irAssets/about/ir/jp/news/20150907_5.pdf)<br>[src-19](https://www.nikkei.com/article/DGXLASGD07H0P_X00C15A9000000/) |
 | ch3-s3 | 報道によれば、第三者委員会の報告書は、経営トップが「チャレンジ」と称する過大な収益目標を課していたと認定 | [src-15](https://news.mynavi.jp/article/20150721-a133/)<br>[src-16](https://www.nikkei.com/article/DGXLASDZ20HAW_Q5A720C1NN1000/) |
 | ch3-s3 | 日本経済新聞とマイナビニュースが2015年7月21日に報道 | [src-15](https://news.mynavi.jp/article/20150721-a133/)<br>[src-16](https://www.nikkei.com/article/DGXLASDZ20HAW_Q5A720C1NN1000/) |
-| ch3-s3 | 報道によれば、報告書には「3日で120億円」の利益改善を求めた場面も記載されていたとされる | [src-69](https://www.nikkei.com/article/DGXLASDZ20HCA_Q5A720C1TJC001/) |
 | ch3-s3 | マイナビニュースの見出しは「東芝、利益水増し1562億円--経営トップら関与、「チャレンジ」と称して圧力」 | [src-15](https://news.mynavi.jp/article/20150721-a133/) |
-| ch3-s3 | 調査対象は工事進行基準、映像事業の経費計上、半導体の在庫評価、パソコン事業の部品取引の4分野 | [src-13](https://www.global.toshiba/content/dam/toshiba/migration/corp/irAssets/about/ir/jp/news/20150720_1.pdf) |
 | ch3-s4 | 2015年7月21日（2015.7）、社長・副会長を含む取締役8名と相談役が辞任（報道では「歴代3社長が辞任」、社長3人） | [src-17](https://www.global.toshiba/content/dam/toshiba/migration/corp/irAssets/about/ir/jp/news/20150721_1.pdf)<br>[src-16](https://www.nikkei.com/article/DGXLASDZ20HAW_Q5A720C1NN1000/) |
 | ch3-s4 | 東証は2015年9月14日に、東芝株を9月15日付（2015.9）で特設注意市場銘柄に指定すると発表 | [src-21](https://www.jpx.co.jp/news/1021/20150914-14.html) |
 | ch3-s4 | 金融庁は2015年12月（2015.12）、東芝に課徴金73億7,350万円の納付を命令（報道発表は12月25日） | [src-20](https://www.fsa.go.jp/news/27/syouken/20151225-2.html) |
 | ch3-s4 | 73億7,350万円÷15円＝約4.9億本（うまい棒の今の価格で計算） | [src-20](https://www.fsa.go.jp/news/27/syouken/20151225-2.html)<br>[src-56](https://news.nissyoku.co.jp/news/aoyagi20240925073211759) |
+| ch3-s4 | 報道によれば、73億7,350万円の課徴金は当時の過去最高額 | [src-70](https://toyokeizai.net/articles/-/96168) |
 | ch4-s2 | 2017年3月29日（米国時間）、WHが米連邦破産法11章（チャプター11）に基づく再生手続を申し立て | [src-22](https://www.global.toshiba/content/dam/toshiba/migration/corp/irAssets/about/ir/jp/news/20170329_1.pdf) |
 | ch4-s2 | 2016年度の当期純損失（株主帰属）は965,663百万円＝約9,657億円（9657） | [src-23](https://www.global.toshiba/content/dam/toshiba/migration/corp/irAssets/about/ir/jp/library/sr/sr2016/tsr2016.pdf) |
 | ch4-s2 | 報道によれば、2016年度（2017年3月期）の赤字は国内製造業で最大規模 | [src-25](https://www.j-cast.com/kaisha/2017/08/11305720.html) |
@@ -56,7 +55,6 @@
 | ch5-s3 | 東芝メモリは2019年10月1日付で「キオクシア」に社名変更 | [src-33](https://www.kioxia-holdings.com/en-jp/news/2019/20190718-1.html) |
 | ch5-s4 | 報道によれば、東芝は1969年10月の「サザエさん」放送開始からCMを提供し、経費削減の一環として2018年3月25日放送分で降板（約半世紀） | [src-34](https://www.nikkan.co.jp/articles/view/467036)<br>[src-35](https://www.japantimes.co.jp/news/2017/11/22/business/corporate-business/cash-strapped-toshiba-bids-farewell-times-square-sazae-san/) |
 | ch6-s2 | 2021年6月10日、2020年定時株主総会に関する外部調査報告書を東芝が公表。総会は「公正に運営されたものとはいえない」と結論 | [src-36](https://www.global.toshiba/content/dam/toshiba/migration/corp/irAssets/about/ir/jp/stock/pdf/tsm182_4.pdf) |
-| ch6-s2 | 2021年6月25日の定時株主総会で、取締役会議長の再任が否決 | [src-37](https://www.sbbit.jp/article/refers/64117) |
 | ch6-s3 | 2021年11月12日（2021.11）、会社を3つの独立会社に分ける案を発表 | [src-38](https://www.global.toshiba/jp/news/corporate/2021/11/news-20211112-02.html) |
 | ch6-s3 | 2022年2月7日（2022.2）、2つに分ける案に変更 | [src-39](https://www.global.toshiba/content/dam/toshiba/migration/corp/irAssets/about/ir/jp/news/20220207_1.pdf) |
 | ch6-s3 | 2022年3月24日（2022.3）の臨時株主総会で2分割案（スピンオフ計画）は否決（3分割案から2分割案へ、3つが2つに） | [src-68](https://www.global.toshiba/content/dam/toshiba/jp/ir/corporate/news/20230807_4.pdf)<br>[src-40](https://www.nikkei.com/article/DGXZQOUC2365I0T20C22A3000000/) |
@@ -127,7 +125,6 @@
 | src-34 | 報道 | 日刊工業新聞 | 東芝、「サザエさん」のスポンサー降板 | 2018-03-24 | https://www.nikkan.co.jp/articles/view/467036 |
 | src-35 | 報道 | The Japan Times | Cash-strapped Toshiba bids farewell to Times Square, 'Sazae-san' | 2017-11-22 | https://www.japantimes.co.jp/news/2017/11/22/business/corporate-business/cash-strapped-toshiba-bids-farewell-times-square-sazae-san/ |
 | src-36 | 一次 | 東芝 | 調査報告書（2020年定時株主総会の運営に関する外部調査） | 2021-06-10 | https://www.global.toshiba/content/dam/toshiba/migration/corp/irAssets/about/ir/jp/stock/pdf/tsm182_4.pdf |
-| src-37 | 報道 | 時事通信（ビジネス+IT 転載） | 東芝株主総会、取締役会議長の再任否決 | 2021-06-25 | https://www.sbbit.jp/article/refers/64117 |
 | src-38 | 一次 | 東芝 | 東芝、株主価値向上を目指し３つの独立会社に戦略的再編へ | 2021-11-12 | https://www.global.toshiba/jp/news/corporate/2021/11/news-20211112-02.html |
 | src-39 | 一次 | 東芝 | 戦略的再編（2分割）に関するお知らせ | 2022-02-07 | https://www.global.toshiba/content/dam/toshiba/migration/corp/irAssets/about/ir/jp/news/20220207_1.pdf |
 | src-40 | 報道 | 日本経済新聞 | 東芝臨時株主総会、2分割案を否決 株主提案も否決 | 2022-03-24 | https://www.nikkei.com/article/DGXZQOUC2365I0T20C22A3000000/ |
@@ -158,7 +155,7 @@
 | src-66 | 報道 | 日本経済新聞 | 東芝、キオクシア株を売却 保有比率10.46%に | 2026-11-04 | https://www.nikkei.com/article/DGXZQOUB047UA0U6A101C2000000/ |
 | src-67 | 報道 | MONOist（アイティメディア） | 東芝の営業利益は約3倍の1119億円、純利益はキオクシアの評価益で30倍以上に | 2026-08-10 | https://monoist.itmedia.co.jp/mn/articles/2608/10/news051.html |
 | src-68 | 一次 | 東芝 | 適時開示（2022年3月24日の臨時株主総会でスピンオフ計画が否決された経緯の記載） | 2023-08-07 | https://www.global.toshiba/content/dam/toshiba/jp/ir/corporate/news/20230807_4.pdf |
-| src-69 | 報道 | 日本経済新聞 | 「3日で120億円利益出せ」 東芝、上意下達激しく | 2015-07 | https://www.nikkei.com/article/DGXLASDZ20HCA_Q5A720C1TJC001/ |
+| src-70 | 報道 | 東洋経済オンライン | 東芝､過去最高額となる課徴金73億円の意味 | 2015-12 | https://toyokeizai.net/articles/-/96168 |
 
 ## 検査結果
 

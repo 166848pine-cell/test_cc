@@ -60,7 +60,7 @@ for (const chapter of script.chapters) {
     const factNumbers = new Set(facts.flatMap((f) => numbersIn(f.text)));
 
     // 数値チェック（セリフ＋図）
-    const texts: {where: string; text: string}[] = scene.lines.map((l, i) => ({where: lineId(scene, i), text: stripMarks(l.text)}));
+    const texts: {where: string; text: string}[] = scene.lines.flatMap((l, i) => (l.joke ? [] : [{where: lineId(scene, i), text: stripMarks(l.text)}]));
     if (scene.stamp) texts.push({where: `${scene.id}.stamp`, text: scene.stamp.text});
     const collect = (v: unknown, where: string) => {
       if (typeof v === 'string') texts.push({where, text: v});

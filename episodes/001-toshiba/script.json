@@ -4,7 +4,7 @@
   "title": "売った子どもに養われる親 ― 東芝150年のやらかし史",
   "company": "東芝",
   "description": "1875年創業の東芝。東芝によれば「日本初」の家電、フラッシュメモリの発明、そして不適切会計と原子力の大誤算。事業を次々と手放した末に、いま利益を押し上げているのは「売った子ども」の株――。公開資料と報道をもとに、東芝150年のやらかしを、ずんだもんと四国めたんが振り返ります。",
-  "bannedWords": [],
+  "bannedWords": ["西田厚聰", "佐々木則夫", "田中久雄", "綱川智", "車谷暢昭", "島田太郎", "永山治"],
   "tts": {
     "engineUrl": "http://localhost:50021",
     "speakers": {"zundamon": {"name": "ずんだもん", "style": "ノーマル"}, "metan": {"name": "四国めたん", "style": "ノーマル"}},
@@ -53,7 +53,6 @@
     {"id": "src-34", "short": "日刊工業新聞(2018/3/24)", "title": "東芝、「サザエさん」のスポンサー降板", "publisher": "日刊工業新聞", "url": "https://www.nikkan.co.jp/articles/view/467036", "date": "2018-03-24", "kind": "press"},
     {"id": "src-35", "short": "The Japan Times(2017/11/22)", "title": "Cash-strapped Toshiba bids farewell to Times Square, 'Sazae-san'", "publisher": "The Japan Times", "url": "https://www.japantimes.co.jp/news/2017/11/22/business/corporate-business/cash-strapped-toshiba-bids-farewell-times-square-sazae-san/", "date": "2017-11-22", "kind": "press"},
     {"id": "src-36", "short": "東芝 公表の調査報告書(2021/6/10)", "title": "調査報告書（2020年定時株主総会の運営に関する外部調査）", "publisher": "東芝", "url": "https://www.global.toshiba/content/dam/toshiba/migration/corp/irAssets/about/ir/jp/stock/pdf/tsm182_4.pdf", "date": "2021-06-10", "kind": "primary"},
-    {"id": "src-37", "short": "時事通信(2021/6/25)", "title": "東芝株主総会、取締役会議長の再任否決", "publisher": "時事通信（ビジネス+IT 転載）", "url": "https://www.sbbit.jp/article/refers/64117", "date": "2021-06-25", "kind": "press"},
     {"id": "src-38", "short": "東芝 ニュースリリース(2021/11/12)", "title": "東芝、株主価値向上を目指し３つの独立会社に戦略的再編へ", "publisher": "東芝", "url": "https://www.global.toshiba/jp/news/corporate/2021/11/news-20211112-02.html", "date": "2021-11-12", "kind": "primary"},
     {"id": "src-39", "short": "東芝 適時開示(2022/2/7)", "title": "戦略的再編（2分割）に関するお知らせ", "publisher": "東芝", "url": "https://www.global.toshiba/content/dam/toshiba/migration/corp/irAssets/about/ir/jp/news/20220207_1.pdf", "date": "2022-02-07", "kind": "primary"},
     {"id": "src-40", "short": "日本経済新聞(2022/3/24)", "title": "東芝臨時株主総会、2分割案を否決 株主提案も否決", "publisher": "日本経済新聞", "url": "https://www.nikkei.com/article/DGXZQOUC2365I0T20C22A3000000/", "date": "2022-03-24", "kind": "press"},
@@ -84,7 +83,7 @@
     {"id": "src-66", "short": "日本経済新聞(2026/11/4)", "title": "東芝、キオクシア株を売却 保有比率10.46%に", "publisher": "日本経済新聞", "url": "https://www.nikkei.com/article/DGXZQOUB047UA0U6A101C2000000/", "date": "2026-11-04", "kind": "press"},
     {"id": "src-67", "short": "MONOist(2026/8/10)", "title": "東芝の営業利益は約3倍の1119億円、純利益はキオクシアの評価益で30倍以上に", "publisher": "MONOist（アイティメディア）", "url": "https://monoist.itmedia.co.jp/mn/articles/2608/10/news051.html", "date": "2026-08-10", "kind": "press"},
     {"id": "src-68", "short": "東芝 適時開示(2023/8/7)", "title": "適時開示（2022年3月24日の臨時株主総会でスピンオフ計画が否決された経緯の記載）", "publisher": "東芝", "url": "https://www.global.toshiba/content/dam/toshiba/jp/ir/corporate/news/20230807_4.pdf", "date": "2023-08-07", "kind": "primary"},
-    {"id": "src-69", "short": "日本経済新聞(2015/7)", "title": "「3日で120億円利益出せ」 東芝、上意下達激しく", "publisher": "日本経済新聞", "url": "https://www.nikkei.com/article/DGXLASDZ20HCA_Q5A720C1TJC001/", "date": "2015-07", "kind": "press"}
+    {"id": "src-70", "short": "東洋経済オンライン(2015/12)", "title": "東芝､過去最高額となる課徴金73億円の意味", "publisher": "東洋経済オンライン", "url": "https://toyokeizai.net/articles/-/96168", "date": "2015-12", "kind": "press"}
   ],
   "chapters": [
     {
@@ -114,7 +113,7 @@
             {"speaker": "zundamon", "text": "キオクシア？ 新しいお菓子なのだ？"},
             {"speaker": "metan", "text": "東芝が{2018年に売った}、もとのメモリ事業ですわ"},
             {"speaker": "zundamon", "text": "つまり……{売った子どもからの仕送り}で暮らしてるのだ！？", "emotion": "surprised"},
-            {"speaker": "metan", "text": "言い方。……でも、利益の大部分はそうですわね"},
+            {"speaker": "metan", "text": "言い方。仕送りというより、持っている株の値上がりですわ。でも純利益の大部分は、それ"},
             {"speaker": "metan", "text": "今日は東芝150年の「やらかし」を、たどりますわ", "emotion": "happy"}
           ],
           "sourceIds": ["src-50", "src-67", "src-56", "src-31", "src-33", "src-02"],
@@ -220,7 +219,7 @@
         },
         {
           "id": "ch2-s3",
-          "visual": {"type": "bigNumber", "props": {"heading": "2006年 米ウェスチングハウス（WH）を買収", "value": "54億ドル", "caption": "取得額（3社合計）約6,210億円（1ドル115円換算）／東芝の出資比率77%", "tone": "neutral", "conversion": {"label": "うまい棒換算（計算上）", "value": "約414億本", "note": "今の値段（税抜15円）で計算", "atLine": 2}}},
+          "visual": {"type": "bigNumber", "props": {"heading": "2006年 米ウェスチングハウス（WH）を買収", "value": "54億ドル", "caption": "取得額（3社合計）約6,210億円（1ドル115円換算）／東芝の出資比率77%", "tone": "neutral", "conversion": {"label": "うまい棒換算（計算上）", "value": "約414億本", "note": "取得額（3社合計）を今の値段（税抜15円）で計算", "atLine": 2}}},
           "lines": [
             {"speaker": "metan", "text": "そして2006年、米国の原子力の会社ウェスチングハウス、略して{WH}を買収", "yomi": "そして2006年、米国の原子力の会社、ウェスチングハウス、略して、ダブリューエイチを買収"},
             {"speaker": "metan", "text": "取得額は{54億ドル}、約6,210億円。東芝の出資比率は77%ですわ"},
@@ -288,16 +287,15 @@
           "lines": [
             {"speaker": "metan", "text": "報道によれば報告書は、経営トップが{「チャレンジ」}と呼ぶ過大な目標を課していたと認めています"},
             {"speaker": "zundamon", "text": "チャレンジ！ 前向きでいい言葉なのだ！", "emotion": "happy"},
-            {"speaker": "metan", "text": "報道によれば、{「3日で120億円」}の利益改善を求めた場面もあったとされますわ", "yomi": "報道によれば、3日で120億円の、利益改善を求めた場面もあったとされますわ"},
-            {"speaker": "zundamon", "text": "3日で120億円……ボクの貯金箱は、3日で120円なのだ", "emotion": "sad"}
+            {"speaker": "metan", "text": "報道の見出しは「『チャレンジ』と称して圧力」。言葉は前向きでも、中身は違ったようですわ"},
+            {"speaker": "zundamon", "text": "じゃあボクのチャレンジは、おやつを3個から5個に増やすことなのだ", "emotion": "happy", "joke": true},
+            {"speaker": "metan", "text": "それは、ただの食べすぎですわ"}
           ],
-          "sourceIds": ["src-15", "src-16", "src-69", "src-13"],
+          "sourceIds": ["src-15", "src-16", "src-13"],
           "facts": [
             {"text": "報道によれば、第三者委員会の報告書は、経営トップが「チャレンジ」と称する過大な収益目標を課していたと認定", "sourceIds": ["src-15", "src-16"]},
             {"text": "日本経済新聞とマイナビニュースが2015年7月21日に報道", "sourceIds": ["src-15", "src-16"]},
-            {"text": "報道によれば、報告書には「3日で120億円」の利益改善を求めた場面も記載されていたとされる", "sourceIds": ["src-69"]},
-            {"text": "マイナビニュースの見出しは「東芝、利益水増し1562億円--経営トップら関与、「チャレンジ」と称して圧力」", "sourceIds": ["src-15"]},
-            {"text": "調査対象は工事進行基準、映像事業の経費計上、半導体の在庫評価、パソコン事業の部品取引の4分野", "sourceIds": ["src-13"]}
+            {"text": "マイナビニュースの見出しは「東芝、利益水増し1562億円--経営トップら関与、「チャレンジ」と称して圧力」", "sourceIds": ["src-15"]}
           ]
         },
         {
@@ -308,14 +306,16 @@
             {"speaker": "zundamon", "text": "トップが、一気に入れ替わったのだ……", "emotion": "sad"},
             {"speaker": "metan", "text": "9月には東証が、東芝株を「特設注意市場銘柄」に指定"},
             {"speaker": "metan", "text": "12月には、金融庁が課徴金{73億7,350万円}の納付を命じましたの"},
-            {"speaker": "zundamon", "text": "うまい棒で約4.9億本……あれ、小さく感じるのだ。マヒしてきたのだ", "emotion": "sad"}
+            {"speaker": "zundamon", "text": "うまい棒で約4.9億本……あれ、小さく感じるのだ。マヒしてきたのだ", "emotion": "sad"},
+            {"speaker": "metan", "text": "課徴金としては当時、過去最高額と報じられましたのよ"}
           ],
-          "sourceIds": ["src-17", "src-16", "src-21", "src-20", "src-56"],
+          "sourceIds": ["src-17", "src-16", "src-21", "src-20", "src-56", "src-70"],
           "facts": [
             {"text": "2015年7月21日（2015.7）、社長・副会長を含む取締役8名と相談役が辞任（報道では「歴代3社長が辞任」、社長3人）", "sourceIds": ["src-17", "src-16"]},
             {"text": "東証は2015年9月14日に、東芝株を9月15日付（2015.9）で特設注意市場銘柄に指定すると発表", "sourceIds": ["src-21"]},
             {"text": "金融庁は2015年12月（2015.12）、東芝に課徴金73億7,350万円の納付を命令（報道発表は12月25日）", "sourceIds": ["src-20"]},
-            {"text": "73億7,350万円÷15円＝約4.9億本（うまい棒の今の価格で計算）", "sourceIds": ["src-20", "src-56"]}
+            {"text": "73億7,350万円÷15円＝約4.9億本（うまい棒の今の価格で計算）", "sourceIds": ["src-20", "src-56"]},
+            {"text": "報道によれば、73億7,350万円の課徴金は当時の過去最高額", "sourceIds": ["src-70"]}
           ]
         },
         {
@@ -383,7 +383,7 @@
             {"speaker": "metan", "text": "2017年3月末には株主資本がマイナス5,529億円。債務超過ですわ"},
             {"speaker": "zundamon", "text": "借金の方が、財産より多いってことなのだ？"},
             {"speaker": "metan", "text": "ざっくり言えば、そうですわ"},
-            {"speaker": "metan", "text": "8月には東証1部から2部へ。12月の約6,000億円の増資で、なんとかしのぎましたの"}
+            {"speaker": "metan", "text": "8月には東証1部から2部へ。12月には約6,000億円の増資をしましたの"}
           ],
           "sourceIds": ["src-22", "src-23", "src-24", "src-26", "src-27"],
           "facts": [
@@ -439,7 +439,7 @@
             {"text": "約2兆円÷15円＝約1,333億本（うまい棒の今の価格で計算）", "sourceIds": ["src-31", "src-56"]}
           ],
           "stamp": {
-            "text": "在庫一掃",
+            "text": "売却ラッシュ",
             "atLine": 6
           }
         },
@@ -500,20 +500,18 @@
           "lines": [
             {"speaker": "metan", "text": "2021年6月、前年の株主総会について、外部の調査報告書が出ましたわ"},
             {"speaker": "metan", "text": "結論は、総会が{「公正に運営されたものとはいえない」}"},
-            {"speaker": "zundamon", "text": "総会って、会社でいちばん大事な会議じゃないのだ？", "emotion": "surprised"},
-            {"speaker": "metan", "text": "ええ。同じ月の総会では、取締役会の議長の再任まで否決されましたの"}
+            {"speaker": "zundamon", "text": "株主総会が、公正じゃなかったのだ！？", "emotion": "surprised"}
           ],
-          "sourceIds": ["src-36", "src-37"],
+          "sourceIds": ["src-36"],
           "facts": [
-            {"text": "2021年6月10日、2020年定時株主総会に関する外部調査報告書を東芝が公表。総会は「公正に運営されたものとはいえない」と結論", "sourceIds": ["src-36"]},
-            {"text": "2021年6月25日の定時株主総会で、取締役会議長の再任が否決", "sourceIds": ["src-37"]}
+            {"text": "2021年6月10日、2020年定時株主総会に関する外部調査報告書を東芝が公表。総会は「公正に運営されたものとはいえない」と結論", "sourceIds": ["src-36"]}
           ]
         },
         {
           "id": "ch6-s3",
           "visual": {"type": "timeline", "props": {"heading": "分割案から非公開化へ", "items": [{"year": "2021.11", "label": "会社を3つに分ける案を発表", "atLine": 0}, {"year": "2022.2", "label": "2つに分ける案に変更", "atLine": 2}, {"year": "2022.3", "label": "臨時株主総会で否決", "atLine": 2}, {"year": "2023.3", "label": "JIP中心の連合がTOBを公表（1株4,620円）", "atLine": 4}, {"year": "2023.12", "label": "上場廃止", "atLine": 5, "highlight": true}]}},
           "lines": [
-            {"speaker": "metan", "text": "打開策として2021年11月、会社を3つに分ける案を発表"},
+            {"speaker": "metan", "text": "2021年11月には、会社を3つに分ける案を発表"},
             {"speaker": "zundamon", "text": "分身の術なのだ！", "emotion": "happy"},
             {"speaker": "metan", "text": "翌年2月に2つに分ける案へ変えたものの、3月の臨時株主総会で否決"},
             {"speaker": "zundamon", "text": "3つが2つになって、結局どっちもダメなのだ……", "emotion": "sad"},
@@ -560,7 +558,7 @@
             {"speaker": "metan", "text": "非公開になった東芝は、2024年5月に「東芝再興計画」を発表"},
             {"speaker": "metan", "text": "2026年度に営業利益率10%を目指し、最大4,000人規模の人員削減などを進めましたの"},
             {"speaker": "metan", "text": "そして2024年12月、あのキオクシアが東証プライム市場に上場しましたわ"},
-            {"speaker": "zundamon", "text": "売った子どもが、立派になって帰ってきたのだ！", "emotion": "happy"}
+            {"speaker": "zundamon", "text": "売った子どもが、立派に上場したのだ！", "emotion": "happy"}
           ],
           "sourceIds": ["src-44", "src-46"],
           "facts": [
@@ -604,7 +602,8 @@
             {"speaker": "metan", "text": "そして冒頭の、4月から6月で{4兆4,673億円}"},
             {"speaker": "metan", "text": "ところが11月13日に出た上期、4月から9月は{2兆5,283億円}", "yomi": "ところが11月13日に出た、かみき、4月から9月は、2兆5283億円"},
             {"speaker": "zundamon", "text": "半年の方が、3か月より少ないのだ！？ 算数が壊れたのだ！", "emotion": "surprised"},
-            {"speaker": "metan", "text": "共同通信によれば、キオクシアの評価益が4〜6月の時点から半減。親の成績は子どもの株価しだいですわ", "yomi": "共同通信によれば、キオクシアの評価益が、4月から6月の時点から半減。親の成績は、子どもの株価しだいですわ"}
+            {"speaker": "metan", "text": "共同通信によれば、キオクシアの評価益が4〜6月の時点から半減したため", "yomi": "共同通信によれば、キオクシアの評価益が、4月から6月の時点から半減したため"},
+            {"speaker": "metan", "text": "親の純利益は、子どもの株価しだいで大きく揺れますの"}
           ],
           "sourceIds": ["src-50", "src-52", "src-53"],
           "facts": [
@@ -657,11 +656,9 @@
           "id": "ch8-s2",
           "visual": {"type": "title", "props": {"variant": "chapter", "kicker": "今日の教訓", "title": "数字の目標は、ときに現場に嘘をつかせる", "subtitle": "「チャレンジ」は、ほどほどに"}},
           "lines": [
-            {"speaker": "zundamon", "text": "まとめると、本業も持ち直してきたけど、利益の大部分は売った子ども頼みなのだ"},
+            {"speaker": "zundamon", "text": "まとめると、本業も持ち直してきたけど、純利益の大部分は売った子どもの株頼みなのだ"},
             {"speaker": "metan", "text": "報道によれば、報告書が認めた「チャレンジ」という過大な目標も、つまずきの一つでした"},
             {"speaker": "metan", "text": "今日の教訓はひとつ。{数字の目標は、ときに現場に嘘をつかせる}"},
-            {"speaker": "zundamon", "text": "ボクも、テストの目標点は控えめにしておくのだ", "emotion": "happy"},
-            {"speaker": "metan", "text": "それは努力なさい"},
             {"speaker": "zundamon", "text": "……決めたのだ。ボク、東芝じゃなくてキオクシアに就職するのだ！", "emotion": "happy"},
             {"speaker": "metan", "text": "そういうところですわよ"},
             {"speaker": "zundamon", "text": "次回の「やらかした会社」も、お楽しみになのだ！", "emotion": "happy"}

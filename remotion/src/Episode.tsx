@@ -46,7 +46,7 @@ const SceneStamp: React.FC<{scene: TScene}> = ({scene}) => {
   const pos: Record<string, React.CSSProperties> = {
     bigNumber: {right: 70, top: 96, scale: '0.78'},
     barChart: {right: 640, top: 150},
-    transferMap: {right: 70, top: 112, scale: '0.85'},
+    transferMap: {right: 20, top: 610, scale: '0.62'},
     timeline: {right: 90, top: 128},
   };
   return <Stamp text={scene.stamp.text} start={revealFrame(scene, scene.stamp.atLine, 0, 1) + 4} style={pos[scene.visual.type] ?? {right: 110, top: 130}} />;

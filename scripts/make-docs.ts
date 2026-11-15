@@ -56,7 +56,7 @@ for (const ch of script.chapters) {
     md.push(`**[${sc.id}]${t !== undefined ? ` ${mmss(t)}` : ''}** 画面：${describeVisual(sc.visual)}${sc.stamp ? ` ／ ハンコ「${sc.stamp.text}」` : ''}`, '');
     for (const [i, l] of sc.lines.entries()) {
       const plain = l.text.replace(/[{}]/g, '');
-      md.push(`- **${NAME[l.speaker]}**${EMO[l.emotion ?? 'normal']}：${l.text.replace(/\{([^}]*)\}/g, '**$1**')}${l.yomi ? `　〔読み：${l.yomi}〕` : ''}`);
+      md.push(`- **${NAME[l.speaker]}**${EMO[l.emotion ?? 'normal']}${l.joke ? '〔冗談〕' : ''}：${l.text.replace(/\{([^}]*)\}/g, '**$1**')}${l.yomi ? `　〔読み：${l.yomi}〕` : ''}`);
       chars += [...plain].length;
       lines++;
       void i;

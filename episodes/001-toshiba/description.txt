@@ -2,14 +2,14 @@
 
 ■ 目次
 0:00 つかみ
-0:44 創業編
-1:27 絶頂編
-2:15 やらかし① 不正会計
-3:25 やらかし② 原子力の大誤算
-4:20 切り売り編
-5:31 迷走編
-6:21 現在編
-7:43 まとめ
+0:46 創業編
+1:29 絶頂編
+2:18 やらかし① 不正会計
+3:34 やらかし② 原子力の大誤算
+4:29 切り売り編
+5:39 迷走編
+6:23 現在編
+7:46 まとめ
 
 ■ 主な出典（一次情報）
 ・東芝「沿革」 https://www.global.toshiba/jp/outline/corporate/history/chronology.html
@@ -68,7 +68,6 @@
 ・J-CAST「東芝、9656億円の赤字 17年3月期 国内製造業で最大規模」（2017-08-11） https://www.j-cast.com/kaisha/2017/08/11305720.html
 ・日刊工業新聞「東芝、「サザエさん」のスポンサー降板」（2018-03-24） https://www.nikkan.co.jp/articles/view/467036
 ・The Japan Times「Cash-strapped Toshiba bids farewell to Times Square, 'Sazae-san'」（2017-11-22） https://www.japantimes.co.jp/news/2017/11/22/business/corporate-business/cash-strapped-toshiba-bids-farewell-times-square-sazae-san/
-・時事通信（ビジネス+IT 転載）「東芝株主総会、取締役会議長の再任否決」（2021-06-25） https://www.sbbit.jp/article/refers/64117
 ・日本経済新聞「東芝臨時株主総会、2分割案を否決 株主提案も否決」（2022-03-24） https://www.nikkei.com/article/DGXZQOUC2365I0T20C22A3000000/
 ・ブルームバーグ「東芝株反発、ＪＩＰがＴＯＢ実施を発表－１株4620円で非公開化」（2023-03-23） https://www.bloomberg.com/jp/news/articles/2023-03-23/RRYZPGT0G1KW01
 ・株探「キオクシアについて、東芝は保有割合が5％を超えたと報告［大量保有報告書］」（2024-12-24） https://kabutan.jp/news/marketnews/?b=n202412240519
@@ -81,7 +80,7 @@
 ・EE Times Japan「東芝の21年度決算、半導体など好調で増収増益」（2022-05-13） https://eetimes.itmedia.co.jp/ee/articles/2205/13/news193.html
 ・日本経済新聞「東芝、キオクシア株を売却 保有比率10.46%に」（2026-11-04） https://www.nikkei.com/article/DGXZQOUB047UA0U6A101C2000000/
 ・MONOist（アイティメディア）「東芝の営業利益は約3倍の1119億円、純利益はキオクシアの評価益で30倍以上に」（2026-08-10） https://monoist.itmedia.co.jp/mn/articles/2608/10/news051.html
-・日本経済新聞「「3日で120億円利益出せ」 東芝、上意下達激しく」（2015-07） https://www.nikkei.com/article/DGXLASDZ20HCA_Q5A720C1TJC001/
+・東洋経済オンライン「東芝､過去最高額となる課徴金73億円の意味」（2015-12） https://toyokeizai.net/articles/-/96168
 
 ※ 本動画は公開資料と報道をもとに構成しています。評価や推測を含む部分は「〜とされる」「報道によれば」と区別しています。
 ※ 社名・番組名などはテキストで記載しており、各社のロゴや画像は使用していません。

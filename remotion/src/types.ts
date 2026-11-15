@@ -83,6 +83,8 @@ export type ScriptLine = {
   /** 音声合成に使う読み（省略時は text） */
   yomi?: string;
   emotion?: Emotion;
+  /** 事実の主張を含まない冗談（数値チェックの対象外。例：ずんだもんのおやつの数） */
+  joke?: boolean;
   /** このセリフの後の間（秒）。省略時は tts.gapSec */
   pauseAfterSec?: number;
 };
