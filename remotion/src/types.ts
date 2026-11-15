@@ -136,6 +136,8 @@ export type TtsSettings = {
   /** シーン末尾の余白（秒） */
   sceneTailSec: number;
   sampleRate: number;
+  /** この回だけの読み替え（音声だけに効く）。例：{"右はし": "みぎはし"} */
+  readings?: Record<string, string>;
 };
 
 export type Script = {

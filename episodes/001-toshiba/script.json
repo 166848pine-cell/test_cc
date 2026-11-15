@@ -8,14 +8,18 @@
   "tts": {
     "engineUrl": "http://localhost:50021",
     "speakers": {"zundamon": {"name": "ずんだもん", "style": "ノーマル"}, "metan": {"name": "四国めたん", "style": "ノーマル"}},
-    "speedScale": 1.25,
+    "speedScale": 1.33,
     "intonationScale": 1.1,
     "volumeScale": 1.0,
-    "gapSec": 0.2,
-    "sceneTailSec": 0.4,
-    "sampleRate": 48000
+    "gapSec": 0.15,
+    "sceneTailSec": 0.3,
+    "sampleRate": 48000,
+    "readings": {
+      "右はし": "みぎはし",
+      "銘柄」に指定": "銘柄」に、してい"
+    }
   },
-  "bgm": {"src": "bgm/bgm.mp3", "volume": 0.08},
+  "bgm": {"src": "bgm/yarakashi-theme.wav", "volume": 0.25},
   "sources": [
     {"id": "src-01", "short": "東芝「沿革」", "title": "沿革", "publisher": "東芝", "url": "https://www.global.toshiba/jp/outline/corporate/history/chronology.html", "kind": "primary"},
     {"id": "src-02", "short": "東芝「創業150周年」(2025/6/30)", "title": "東芝グループは創業150周年を迎えます", "publisher": "東芝", "url": "https://www.global.toshiba/jp/news/corporate/2025/06/news-20250630-02.html", "date": "2025-06-30", "kind": "primary"},
@@ -142,14 +146,13 @@
           "visual": {"type": "title", "props": {"variant": "chapter", "kicker": "第1章", "title": "創業編", "subtitle": "1875〜1984"}},
           "lines": [],
           "sourceIds": [],
-          "minDurationSec": 1.8
+          "minDurationSec": 1.5
         },
         {
           "id": "ch1-s2",
-          "visual": {"type": "timeline", "props": {"heading": "東芝のはじまり", "items": [{"year": "1875", "label": "発明家・田中久重が銀座に工場を創設（東芝の創業）", "atLine": 0}, {"year": "1890", "label": "藤岡市助が白熱舎を創業（電球づくり）", "atLine": 2}, {"year": "1939", "label": "芝浦製作所と東京電気が合併 →「東京芝浦電気」", "atLine": 3}, {"year": "1984", "label": "社名を「東芝」に変更", "atLine": 4, "highlight": true}]}},
+          "visual": {"type": "timeline", "props": {"heading": "東芝のはじまり", "items": [{"year": "1875", "label": "発明家・田中久重が銀座に工場を創設（東芝の創業）", "atLine": 0}, {"year": "1890", "label": "藤岡市助が白熱舎を創業（電球づくり）", "atLine": 1}, {"year": "1939", "label": "芝浦製作所と東京電気が合併 →「東京芝浦電気」", "atLine": 2}, {"year": "1984", "label": "社名を「東芝」に変更", "atLine": 3, "highlight": true}]}},
           "lines": [
             {"speaker": "metan", "text": "始まりは1875年。発明家の田中久重が、銀座に工場を開きました", "yomi": "始まりは1875年。発明家の、たなかひさしげが、銀座に工場を開きました"},
-            {"speaker": "zundamon", "text": "150年以上前！ ご先祖さまなのだ", "emotion": "surprised"},
             {"speaker": "metan", "text": "1890年には藤岡市助が、電球をつくる「白熱舎」を創業。のちの東京電気ですわ", "yomi": "1890年には、ふじおかいちすけが、電球をつくる、はくねつしゃを創業。のちの東京電気ですわ"},
             {"speaker": "metan", "text": "そして1939年、芝浦製作所と東京電気が合併して「東京芝浦電気」。略して{東芝}"},
             {"speaker": "zundamon", "text": "1984年に、あだ名がそのまま本名になったのだ！", "emotion": "happy"}
@@ -168,7 +171,7 @@
           "lines": [
             {"speaker": "metan", "text": "東芝によれば、1930年に日本初の電気洗濯機と冷蔵庫"},
             {"speaker": "metan", "text": "1931年に掃除機、1955年には{自動式の電気釜}"},
-            {"speaker": "zundamon", "text": "ご飯が勝手に炊けるのだ！ 昭和の人、うらやましいのだ", "emotion": "happy"}
+            {"speaker": "zundamon", "text": "ご飯が勝手に炊けるのだ！ 未来なのだ！", "emotion": "happy"}
           ],
           "sourceIds": ["src-01", "src-04"],
           "facts": [
@@ -198,15 +201,13 @@
           "visual": {"type": "title", "props": {"variant": "chapter", "kicker": "第2章", "title": "絶頂編", "subtitle": "1985〜2006"}},
           "lines": [],
           "sourceIds": [],
-          "minDurationSec": 1.8
+          "minDurationSec": 1.5
         },
         {
           "id": "ch2-s2",
-          "visual": {"type": "timeline", "props": {"heading": "世界を驚かせた発明と製品", "items": [{"year": "1985", "label": "欧州でラップトップPC「T1100」を発売", "atLine": 3}, {"year": "1987", "label": "NAND型フラッシュメモリを発明（東芝によれば）", "atLine": 0, "highlight": true}, {"year": "1989", "label": "ノートPC「DynaBook」を発表（約2.7kg・198,000円）", "atLine": 3}]}},
+          "visual": {"type": "timeline", "props": {"heading": "世界を驚かせた発明と製品", "items": [{"year": "1985", "label": "欧州でラップトップPC「T1100」を発売", "atLine": 1}, {"year": "1987", "label": "NAND型フラッシュメモリを発明（東芝によれば）", "atLine": 0, "highlight": true}, {"year": "1989", "label": "ノートPC「DynaBook」を発表（約2.7kg・198,000円）", "atLine": 1}]}},
           "lines": [
             {"speaker": "metan", "text": "東芝によれば1987年、{NAND型フラッシュメモリ}を発明。電源を切ってもデータが消えないメモリですわ", "yomi": "東芝によれば1987年、ナンドがたフラッシュメモリを発明。電源を切っても、データが消えないメモリですわ"},
-            {"speaker": "zundamon", "text": "データの冷蔵庫みたいなものなのだ？"},
-            {"speaker": "metan", "text": "……まあ、そう覚えてもいいですわ", "yomi": "まあ、そう覚えてもいいですわ"},
             {"speaker": "metan", "text": "パソコンでも1985年に欧州で「T1100」、1989年には「DynaBook」を発表", "yomi": "パソコンでも1985年に欧州で、ティーせんひゃく。1989年には、ダイナブックを発表"},
             {"speaker": "zundamon", "text": "約2.7kgで19万8,000円……ボクのおこづかい何年分なのだ", "yomi": "約2.7キロで19万8000円。ボクのおこづかい何年分なのだ", "emotion": "sad"}
           ],
@@ -258,7 +259,7 @@
           "visual": {"type": "title", "props": {"variant": "chapter", "kicker": "第3章", "title": "やらかし① 不正会計", "subtitle": "2015"}},
           "lines": [],
           "sourceIds": [],
-          "minDurationSec": 1.8
+          "minDurationSec": 1.5
         },
         {
           "id": "ch3-s2",
@@ -287,7 +288,7 @@
           "lines": [
             {"speaker": "metan", "text": "報道によれば報告書は、経営トップが{「チャレンジ」}と呼ぶ過大な目標を課していたと認めています"},
             {"speaker": "zundamon", "text": "チャレンジ！ 前向きでいい言葉なのだ！", "emotion": "happy"},
-            {"speaker": "metan", "text": "報道の見出しは「『チャレンジ』と称して圧力」。言葉は前向きでも、中身は違ったようですわ"},
+            {"speaker": "metan", "text": "報道の見出しは「『チャレンジ』と称して圧力」でしたわ"},
             {"speaker": "zundamon", "text": "じゃあボクのチャレンジは、おやつを3個から5個に増やすことなのだ", "emotion": "happy", "joke": true},
             {"speaker": "metan", "text": "それは、ただの食べすぎですわ"}
           ],
@@ -300,10 +301,9 @@
         },
         {
           "id": "ch3-s4",
-          "visual": {"type": "timeline", "props": {"heading": "2015年、責任と処分", "items": [{"year": "2015.7", "label": "社長を含む取締役8人と相談役が辞任", "atLine": 0}, {"year": "2015.9", "label": "東証が「特設注意市場銘柄」に指定", "atLine": 2}, {"year": "2015.12", "label": "金融庁が課徴金73億7,350万円の納付を命令", "atLine": 3, "highlight": true}]}},
+          "visual": {"type": "timeline", "props": {"heading": "2015年、責任と処分", "items": [{"year": "2015.7", "label": "社長を含む取締役8人と相談役が辞任", "atLine": 0}, {"year": "2015.9", "label": "東証が「特設注意市場銘柄」に指定", "atLine": 1}, {"year": "2015.12", "label": "金融庁が課徴金73億7,350万円の納付を命令", "atLine": 2, "highlight": true}]}},
           "lines": [
             {"speaker": "metan", "text": "7月には社長を含む取締役8人と相談役が辞任。歴代の社長3人がそろって退きました", "yomi": "7月には、社長を含む取締役8人と、相談役が辞任。歴代の社長3人が、そろって退きました"},
-            {"speaker": "zundamon", "text": "トップが、一気に入れ替わったのだ……", "emotion": "sad"},
             {"speaker": "metan", "text": "9月には東証が、東芝株を「特設注意市場銘柄」に指定"},
             {"speaker": "metan", "text": "12月には、金融庁が課徴金{73億7,350万円}の納付を命じましたの"},
             {"speaker": "zundamon", "text": "うまい棒で約4.9億本……あれ、小さく感じるのだ。マヒしてきたのだ", "emotion": "sad"},
@@ -339,7 +339,7 @@
           "visual": {"type": "title", "props": {"variant": "chapter", "kicker": "第4章", "title": "やらかし② 原子力の大誤算", "subtitle": "2017"}},
           "lines": [],
           "sourceIds": [],
-          "minDurationSec": 1.8
+          "minDurationSec": 1.5
         },
         {
           "id": "ch4-s2",
@@ -369,7 +369,7 @@
           "visual": {"type": "barChart", "props": {"heading": "東芝の当期純損益（億円）", "unit": "億円", "bars": [{"label": "2014年度", "value": -378}, {"label": "2015年度", "value": -4600}, {"label": "2016年度", "value": -9657}], "highlight": ["2016年度"], "footnote": "米国会計基準・株主帰属。2014年度は不正会計の訂正後、2015年度は会社訂正後の値"}},
           "lines": [
             {"speaker": "metan", "text": "2014年度から3年続けて、赤字がどんどん深くなりましたの"},
-            {"speaker": "zundamon", "text": "棒グラフが地面にめり込んで、地下に帰っていくのだ……", "emotion": "sad"}
+            {"speaker": "zundamon", "text": "棒グラフが、地面にめり込んでるのだ……", "emotion": "sad"}
           ],
           "sourceIds": ["src-18", "src-19", "src-57", "src-23"],
           "facts": [
@@ -414,7 +414,7 @@
           "visual": {"type": "title", "props": {"variant": "chapter", "kicker": "第5章", "title": "切り売り編", "subtitle": "2016〜2018"}},
           "lines": [],
           "sourceIds": [],
-          "minDurationSec": 1.8
+          "minDurationSec": 1.5
         },
         {
           "id": "ch5-s2",
@@ -463,7 +463,7 @@
           "visual": {"type": "bigNumber", "props": {"heading": "国民的アニメ「サザエさん」のCM提供", "value": "約半世紀", "caption": "1969年10月の放送開始から 2018年3月25日放送分まで", "tone": "neutral"}},
           "lines": [
             {"speaker": "metan", "text": "報道によれば経費削減の一環で、アニメ「サザエさん」のスポンサーも降板"},
-            {"speaker": "metan", "text": "1969年の放送開始からCMを提供し、2018年3月の放送分まで。約半世紀でしたわ"},
+            {"speaker": "metan", "text": "1969年の放送開始から、約半世紀続いたCM提供でしたわ"},
             {"speaker": "zundamon", "text": "おなじみのCMまで……ボク、ちょっと泣いてるのだ", "emotion": "sad"}
           ],
           "sourceIds": ["src-34", "src-35"],
@@ -492,7 +492,7 @@
           "visual": {"type": "title", "props": {"variant": "chapter", "kicker": "第6章", "title": "迷走編", "subtitle": "2021〜2023"}},
           "lines": [],
           "sourceIds": [],
-          "minDurationSec": 1.8
+          "minDurationSec": 1.5
         },
         {
           "id": "ch6-s2",
@@ -509,13 +509,12 @@
         },
         {
           "id": "ch6-s3",
-          "visual": {"type": "timeline", "props": {"heading": "分割案から非公開化へ", "items": [{"year": "2021.11", "label": "会社を3つに分ける案を発表", "atLine": 0}, {"year": "2022.2", "label": "2つに分ける案に変更", "atLine": 2}, {"year": "2022.3", "label": "臨時株主総会で否決", "atLine": 2}, {"year": "2023.3", "label": "JIP中心の連合がTOBを公表（1株4,620円）", "atLine": 4}, {"year": "2023.12", "label": "上場廃止", "atLine": 5, "highlight": true}]}},
+          "visual": {"type": "timeline", "props": {"heading": "分割案から非公開化へ", "items": [{"year": "2021.11", "label": "会社を3つに分ける案を発表", "atLine": 0}, {"year": "2022.2", "label": "2つに分ける案に変更", "atLine": 1}, {"year": "2022.3", "label": "臨時株主総会で否決", "atLine": 1}, {"year": "2023.3", "label": "JIP中心の連合がTOBを公表（1株4,620円）", "atLine": 3}, {"year": "2023.12", "label": "上場廃止", "atLine": 4, "highlight": true}]}},
           "lines": [
             {"speaker": "metan", "text": "2021年11月には、会社を3つに分ける案を発表"},
-            {"speaker": "zundamon", "text": "分身の術なのだ！", "emotion": "happy"},
             {"speaker": "metan", "text": "翌年2月に2つに分ける案へ変えたものの、3月の臨時株主総会で否決"},
             {"speaker": "zundamon", "text": "3つが2つになって、結局どっちもダメなのだ……", "emotion": "sad"},
-            {"speaker": "metan", "text": "2023年、日本産業パートナーズ中心の連合がTOBを公表。1株4,620円、総額{約2兆円}", "yomi": "2023年、日本産業パートナーズ中心の連合が、ティーオービーを公表。ひとかぶ4620円、総額、約2兆円"},
+            {"speaker": "metan", "text": "2023年、日本産業パートナーズ中心の連合が、総額{約2兆円}のTOBを公表", "yomi": "2023年、日本産業パートナーズ中心の連合が、総額約2兆円の、ティーオービーを公表"},
             {"speaker": "metan", "text": "そして12月20日、東芝は{上場廃止}。非公開の会社になりましたわ"},
             {"speaker": "zundamon", "text": "株式市場を、卒業しちゃったのだ"}
           ],
@@ -549,7 +548,7 @@
           "visual": {"type": "title", "props": {"variant": "chapter", "kicker": "第7章", "title": "現在編", "subtitle": "2024〜2026"}},
           "lines": [],
           "sourceIds": [],
-          "minDurationSec": 1.8
+          "minDurationSec": 1.5
         },
         {
           "id": "ch7-s2",
@@ -650,7 +649,7 @@
           "visual": {"type": "title", "props": {"variant": "chapter", "kicker": "最終章", "title": "まとめ", "subtitle": "今日の教訓はひとつだけ"}},
           "lines": [],
           "sourceIds": [],
-          "minDurationSec": 1.8
+          "minDurationSec": 1.5
         },
         {
           "id": "ch8-s2",

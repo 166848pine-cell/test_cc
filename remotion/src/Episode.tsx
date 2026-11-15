@@ -1,6 +1,6 @@
 import {Audio} from '@remotion/media';
 import {useMemo} from 'react';
-import {AbsoluteFill, Sequence, staticFile} from 'remotion';
+import {AbsoluteFill, interpolate, Sequence, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import {Characters, type FlatLine} from './components/Characters';
 import {Background, Board, Header, SourceFooter} from './components/Chrome';
 import {Stamp} from './components/Fx';
@@ -37,6 +37,21 @@ const SceneVisual: React.FC<{scene: TScene}> = ({scene}) => {
     case 'meter':
       return <MeterScene scene={scene} props={v.props} />;
   }
+};
+
+/** BGM。セリフの間は音量を下げ（ダッキング）、頭と終わりはフェードする */
+const BgmTrack: React.FC<{src: string; volume: number; lines: FlatLine[]; total: number}> = ({src, volume, lines, total}) => {
+  const frame = useCurrentFrame();
+  const {fps} = useVideoConfig();
+  // いま喋っているか（前後 6 フレームでなめらかに）
+  let speech = 0;
+  for (const l of lines) {
+    if (l.start - 6 > frame) break;
+    if (frame <= l.end + 6) speech = Math.max(speech, interpolate(frame, [l.start - 6, l.start, l.end, l.end + 6], [0, 1, 1, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'}));
+  }
+  const duck = 1 - 0.45 * speech;
+  const fade = interpolate(frame, [0, fps, total - 2 * fps, total], [0, 1, 1, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
+  return <Audio name="BGM" src={staticFile(src)} volume={volume * duck * fade} loop />;
 };
 
 /** シーンごとのハンコ（フリップの右上に押される） */
@@ -101,7 +116,7 @@ export const Episode: React.FC<Timeline> = (timeline) => {
       <Subtitle lines={lines} />
       <SourceFooter timeline={timeline} />
       {timeline.narration ? <Audio name="ナレーション" src={staticFile(timeline.narration.src)} /> : null}
-      {timeline.bgm ? <Audio name="BGM" src={staticFile(timeline.bgm.src)} volume={timeline.bgm.volume} loop /> : null}
+      {timeline.bgm ? <BgmTrack src={timeline.bgm.src} volume={timeline.bgm.volume} lines={lines} total={timeline.durationInFrames} /> : null}
       {timeline.sfx
         ? sfxEvents(timeline).map((e, i) => (
             <Sequence key={`sfx-${i}`} name={`効果音 ${e.name}`} from={e.frame} durationInFrames={timeline.fps} layout="none">

@@ -2,13 +2,14 @@
 //   node scripts/build-timeline.ts episodes/001-toshiba
 import {copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync} from 'node:fs';
 import path from 'node:path';
+import {spawnSync} from 'node:child_process';
 import {episodeDirFromArgs, loadScript, lineId, readWav, writeWav, writeJson, ROOT} from './lib.ts';
 import type {Timeline, TimelineScene, TimelineLine} from '../remotion/src/types.ts';
 
 const FPS = 30;
 const WIDTH = 1920;
 const HEIGHT = 1080;
-const SCENE_HEAD_SEC = 0.3;
+const SCENE_HEAD_SEC = 0.2;
 
 const episodeDir = episodeDirFromArgs();
 const script = loadScript(episodeDir);
@@ -77,10 +78,24 @@ for (const scene of scenes) {
 }
 writeWav(path.join(episodeDir, 'audio', 'narration.wav'), {sampleRate, channels: 1, samples: mix});
 
-// ---- BGM（ファイルがあるときだけ有効）----
+// ---- BGM ----
+// 既定はシリーズの自作 BGM（assets/bgm、scripts/make-bgm.ts で合成）。script.json の bgm.src に
+// エピソード内の別のファイルを書けば、そちらを使う（人間が用意した曲に差し替える場合）。
 let bgm: Timeline['bgm'] = null;
 if (script.bgm) {
-  if (existsSync(path.join(episodeDir, script.bgm.src))) {
+  const shared = path.join(ROOT, 'assets', 'bgm');
+  const want = path.join(episodeDir, script.bgm.src);
+  if (!existsSync(want) && script.bgm.src.startsWith('bgm/')) {
+    const name = path.basename(script.bgm.src);
+    if (!existsSync(path.join(shared, name)) && name === 'yarakashi-theme.wav') {
+      spawnSync('node', [path.join(ROOT, 'scripts', 'make-bgm.ts')], {stdio: 'inherit'});
+    }
+    if (existsSync(path.join(shared, name))) {
+      mkdirSync(path.dirname(want), {recursive: true});
+      copyFileSync(path.join(shared, name), want);
+    }
+  }
+  if (existsSync(want)) {
     bgm = script.bgm;
   } else {
     console.warn(`BGM なし: ${script.bgm.src} が見つからないので無音で進めます（置けば次回から入ります。音量 ${script.bgm.volume}）`);

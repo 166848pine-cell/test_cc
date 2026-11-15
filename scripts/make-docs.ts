@@ -134,7 +134,7 @@ const desc = [
   '',
   '■ クレジット',
   ...voices,
-  ...(bgm.length ? bgm.map((b) => `BGM：${b}`) : ['BGM：（素材を入れたらここに記載）']),
+  ...(bgm.length ? bgm.map((b) => `BGM：${b}`) : script.bgm?.src.endsWith('yarakashi-theme.wav') ? ['BGM：自作（コードで合成）'] : ['BGM：（素材を入れたらここに記載）']),
   ...extra,
   '効果音：自作（ffmpeg で波形から合成）',
   `フォント：${fonts.join('、')}`,

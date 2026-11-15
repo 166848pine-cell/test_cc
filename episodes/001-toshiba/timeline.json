@@ -6,13 +6,16 @@
   "series": "やらかした会社",
   "episode": 1,
   "title": "売った子どもに養われる親 ― 東芝150年のやらかし史",
-  "durationInFrames": 14797,
-  "audioMode": "silent",
+  "durationInFrames": 13939,
+  "audioMode": "voicevox",
   "narration": {
     "src": "audio/narration.wav",
-    "durationSec": 493.23333333333335
+    "durationSec": 464.6333333333333
   },
-  "bgm": null,
+  "bgm": {
+    "src": "bgm/yarakashi-theme.wav",
+    "volume": 0.25
+  },
   "sfx": {
     "volume": 0.5
   },
@@ -219,7 +222,7 @@
       "short": "東洋経済オンライン(2015/12)"
     }
   },
-  "fontText": " #%()+,-./0123456789ABCDEHIJMNOPRSTVWabcdeghiklmnoprstuy{}―…→−①②▲、。々「」『』〜あいうえおかがきぎくけげこごさざしじすずせそただちっつづてでとどなにねのはばひびぶへべほぼまみむめもゃやょよらりるれろわをんアイウェエオキクグケコサザシジスズセゼソタダチッテデトドナニノハバパヒビピフブプベボポマムメモャヤュラリルレロン・ー一万三上下不世中主久了事交京人今仕付代令以件任企会何作併供価保信修個倍借値側債億優兆先入公共典内円再冒冷処出分切刊初利券削前割創力助効動務勝化医半卒博却原去収取史右号合同名向否含告周呼命和品員商問営嘘器四回団国圧在地型基報場増壊売変外多大失始委子字学完定家射小少就局属岡嵐州工市帰年庁度座庫廃式引当役後得復徴心急情意感所手技抜押持指振掃探提換揺損放教数新方日早明昭時暮更書替最月有期末本東板柄査株案棒業楽標模権機次欧止正歴段比民気決沿法泣注洋洗派浦消深済減測源準濯火炊点熱爆物特率現球理環生産用田申画界略療発白的益盛目直相看真着短破示社祖称税種立章第等算米糧紀約納純累終経結絶続綻総締編練美翌者聞職能膨臨自興舎芝菓落葉蔵藤融術表製要見規覚親言訂計訓設証評試認誕誤説課調談請論議財責買費資赤走超跳身転辞込迷追退送通造連進運過道違適邦部重量金釜銀銘長開降限除集電静非面革頂頭頼題額食飯養館驚高！（）／：？",
+  "fontText": " #%()+,-./0123456789ABCDEHIJMNOPRSTVWabcdeghiklmnoprstuy{}―…→−①②▲、。々「」『』〜あいうえおかがきぎくけげこごさざしじすずせそただちっつづてでとどなにねのはばひびぶへべほぼまみむめもゃやょよらりるれろわをんアイウェエオキクグケコサザシジスズセゼソタダチッテデトドナニノハバパヒビピフブプベボポマムメモャヤュラリルレロン・ー一万三上下不世中主久了事交京人今仕付代令以件任企会何作併供価保信修個倍借値側債億優兆入公共典内円再冒冷処出分切刊初利券削前割創力助効動務勝化医半卒博却原去収取史右号合同名向否含告周呼命品員商問営嘘器四回団国圧在地型基報場増壊売変外多大失始委子字学完定家射小少就局属岡嵐州工市帰年庁度座庫廃式引当役後得復徴心急情意感所手技抜押持指振掃探提換揺損放教数新方日早明時暮更書最月有期未末本来東板柄査株案棒業楽標模権機次欧止正歴段比民気決沿法泣注洋洗派浦消深済減測源準濯火炊点熱爆物特率現球理環生産用田申画界略療発白的益盛目直相看真着短破示社称税種立章第等算米糧紀約納純累終経結絶続綻総締編練美翌者聞職能膨臨自興舎芝菓落葉蔵藤融術表製要見規覚親言訂計訓設証評試認誕誤説課調談請論議財責買費資赤走超跳転辞込迷追退送通造連進運過道適邦部重量金釜銀銘長開降限除集電静非面革頂頭頼題額食飯養館驚高！（）／：？",
   "scenes": [
     {
       "id": "ch0-s1",
@@ -228,7 +231,7 @@
       "chapterIndex": 0,
       "accent": "#FFC93C",
       "from": 0,
-      "durationInFrames": 418,
+      "durationInFrames": 442,
       "visual": {
         "type": "title",
         "props": {
@@ -248,8 +251,8 @@
           "text": "めたん、大変なのだ！ 東芝が{3か月で4兆円以上}もうけたのだ！",
           "emotion": "surprised",
           "id": "ch0-s1-01",
-          "from": 9,
-          "durationInFrames": 119,
+          "from": 6,
+          "durationInFrames": 133,
           "audio": "audio/ch0-s1-01.wav"
         },
         {
@@ -257,16 +260,16 @@
           "text": "ボク、今日から東芝に就職するのだ！",
           "emotion": "happy",
           "id": "ch0-s1-02",
-          "from": 134,
-          "durationInFrames": 69,
+          "from": 144,
+          "durationInFrames": 76,
           "audio": "audio/ch0-s1-02.wav"
         },
         {
           "speaker": "metan",
           "text": "落ち着きなさい。2026年4月から6月の当期純利益は、{4兆4,673億円}。過去最高ですわ",
           "id": "ch0-s1-03",
-          "from": 209,
-          "durationInFrames": 197,
+          "from": 225,
+          "durationInFrames": 208,
           "audio": "audio/ch0-s1-03.wav"
         }
       ]
@@ -281,8 +284,8 @@
         "text": "過去最高",
         "atLine": 0
       },
-      "from": 418,
-      "durationInFrames": 991,
+      "from": 442,
+      "durationInFrames": 973,
       "visual": {
         "type": "bigNumber",
         "props": {
@@ -313,40 +316,40 @@
           "text": "うまい棒にしたら{約2,978億本}なのだ！",
           "emotion": "happy",
           "id": "ch0-s2-01",
-          "from": 9,
-          "durationInFrames": 91,
+          "from": 6,
+          "durationInFrames": 99,
           "audio": "audio/ch0-s2-01.wav"
         },
         {
           "speaker": "metan",
           "text": "でも本業のもうけ、営業利益は1,119億円。4〜6月では、これも過去最高ですけれど",
           "id": "ch0-s2-02",
-          "from": 106,
-          "durationInFrames": 173,
+          "from": 110,
+          "durationInFrames": 184,
           "audio": "audio/ch0-s2-02.wav"
         },
         {
           "speaker": "metan",
           "text": "押し上げたのは、東芝の説明では{キオクシア株の評価益など}ですわ",
           "id": "ch0-s2-03",
-          "from": 285,
-          "durationInFrames": 126,
+          "from": 299,
+          "durationInFrames": 110,
           "audio": "audio/ch0-s2-03.wav"
         },
         {
           "speaker": "zundamon",
           "text": "キオクシア？ 新しいお菓子なのだ？",
           "id": "ch0-s2-04",
-          "from": 417,
-          "durationInFrames": 65,
+          "from": 414,
+          "durationInFrames": 70,
           "audio": "audio/ch0-s2-04.wav"
         },
         {
           "speaker": "metan",
           "text": "東芝が{2018年に売った}、もとのメモリ事業ですわ",
           "id": "ch0-s2-05",
-          "from": 488,
-          "durationInFrames": 111,
+          "from": 489,
+          "durationInFrames": 92,
           "audio": "audio/ch0-s2-05.wav"
         },
         {
@@ -354,16 +357,16 @@
           "text": "つまり……{売った子どもからの仕送り}で暮らしてるのだ！？",
           "emotion": "surprised",
           "id": "ch0-s2-06",
-          "from": 605,
-          "durationInFrames": 102,
+          "from": 586,
+          "durationInFrames": 96,
           "audio": "audio/ch0-s2-06.wav"
         },
         {
           "speaker": "metan",
           "text": "言い方。仕送りというより、持っている株の値上がりですわ。でも純利益の大部分は、それ",
           "id": "ch0-s2-07",
-          "from": 713,
-          "durationInFrames": 159,
+          "from": 687,
+          "durationInFrames": 152,
           "audio": "audio/ch0-s2-07.wav"
         },
         {
@@ -371,8 +374,8 @@
           "text": "今日は東芝150年の「やらかし」を、たどりますわ",
           "emotion": "happy",
           "id": "ch0-s2-08",
-          "from": 878,
-          "durationInFrames": 101,
+          "from": 844,
+          "durationInFrames": 120,
           "audio": "audio/ch0-s2-08.wav"
         }
       ]
@@ -383,8 +386,8 @@
       "chapterTitle": "創業編",
       "chapterIndex": 1,
       "accent": "#F4A261",
-      "from": 1409,
-      "durationInFrames": 54,
+      "from": 1415,
+      "durationInFrames": 45,
       "visual": {
         "type": "title",
         "props": {
@@ -403,8 +406,8 @@
       "chapterTitle": "創業編",
       "chapterIndex": 1,
       "accent": "#F4A261",
-      "from": 1463,
-      "durationInFrames": 717,
+      "from": 1460,
+      "durationInFrames": 685,
       "visual": {
         "type": "timeline",
         "props": {
@@ -418,17 +421,17 @@
             {
               "year": "1890",
               "label": "藤岡市助が白熱舎を創業（電球づくり）",
-              "atLine": 2
+              "atLine": 1
             },
             {
               "year": "1939",
               "label": "芝浦製作所と東京電気が合併 →「東京芝浦電気」",
-              "atLine": 3
+              "atLine": 2
             },
             {
               "year": "1984",
               "label": "社名を「東芝」に変更",
-              "atLine": 4,
+              "atLine": 3,
               "highlight": true
             }
           ]
@@ -445,44 +448,35 @@
           "text": "始まりは1875年。発明家の田中久重が、銀座に工場を開きました",
           "yomi": "始まりは1875年。発明家の、たなかひさしげが、銀座に工場を開きました",
           "id": "ch1-s2-01",
-          "from": 9,
-          "durationInFrames": 148,
+          "from": 6,
+          "durationInFrames": 158,
           "audio": "audio/ch1-s2-01.wav"
-        },
-        {
-          "speaker": "zundamon",
-          "text": "150年以上前！ ご先祖さまなのだ",
-          "emotion": "surprised",
-          "id": "ch1-s2-02",
-          "from": 163,
-          "durationInFrames": 76,
-          "audio": "audio/ch1-s2-02.wav"
         },
         {
           "speaker": "metan",
           "text": "1890年には藤岡市助が、電球をつくる「白熱舎」を創業。のちの東京電気ですわ",
           "yomi": "1890年には、ふじおかいちすけが、電球をつくる、はくねつしゃを創業。のちの東京電気ですわ",
-          "id": "ch1-s2-03",
-          "from": 245,
-          "durationInFrames": 185,
-          "audio": "audio/ch1-s2-03.wav"
+          "id": "ch1-s2-02",
+          "from": 169,
+          "durationInFrames": 184,
+          "audio": "audio/ch1-s2-02.wav"
         },
         {
           "speaker": "metan",
           "text": "そして1939年、芝浦製作所と東京電気が合併して「東京芝浦電気」。略して{東芝}",
-          "id": "ch1-s2-04",
-          "from": 436,
-          "durationInFrames": 156,
-          "audio": "audio/ch1-s2-04.wav"
+          "id": "ch1-s2-03",
+          "from": 358,
+          "durationInFrames": 196,
+          "audio": "audio/ch1-s2-03.wav"
         },
         {
           "speaker": "zundamon",
           "text": "1984年に、あだ名がそのまま本名になったのだ！",
           "emotion": "happy",
-          "id": "ch1-s2-05",
-          "from": 598,
-          "durationInFrames": 107,
-          "audio": "audio/ch1-s2-05.wav"
+          "id": "ch1-s2-04",
+          "from": 559,
+          "durationInFrames": 117,
+          "audio": "audio/ch1-s2-04.wav"
         }
       ]
     },
@@ -492,8 +486,8 @@
       "chapterTitle": "創業編",
       "chapterIndex": 1,
       "accent": "#F4A261",
-      "from": 2180,
-      "durationInFrames": 375,
+      "from": 2145,
+      "durationInFrames": 356,
       "visual": {
         "type": "timeline",
         "props": {
@@ -527,8 +521,8 @@
           "speaker": "metan",
           "text": "東芝によれば、1930年に日本初の電気洗濯機と冷蔵庫",
           "id": "ch1-s3-01",
-          "from": 9,
-          "durationInFrames": 119,
+          "from": 6,
+          "durationInFrames": 123,
           "audio": "audio/ch1-s3-01.wav"
         },
         {
@@ -536,16 +530,16 @@
           "text": "1931年に掃除機、1955年には{自動式の電気釜}",
           "id": "ch1-s3-02",
           "from": 134,
-          "durationInFrames": 121,
+          "durationInFrames": 136,
           "audio": "audio/ch1-s3-02.wav"
         },
         {
           "speaker": "zundamon",
-          "text": "ご飯が勝手に炊けるのだ！ 昭和の人、うらやましいのだ",
+          "text": "ご飯が勝手に炊けるのだ！ 未来なのだ！",
           "emotion": "happy",
           "id": "ch1-s3-03",
-          "from": 261,
-          "durationInFrames": 102,
+          "from": 275,
+          "durationInFrames": 72,
           "audio": "audio/ch1-s3-03.wav"
         }
       ]
@@ -556,8 +550,8 @@
       "chapterTitle": "創業編",
       "chapterIndex": 1,
       "accent": "#F4A261",
-      "from": 2555,
-      "durationInFrames": 140,
+      "from": 2501,
+      "durationInFrames": 142,
       "visual": {
         "type": "meter",
         "props": {
@@ -574,16 +568,16 @@
           "text": "やらかし度、ほぼゼロ。優等生なのだ",
           "emotion": "happy",
           "id": "ch1-s4-01",
-          "from": 9,
-          "durationInFrames": 69,
+          "from": 6,
+          "durationInFrames": 82,
           "audio": "audio/ch1-s4-01.wav"
         },
         {
           "speaker": "metan",
           "text": "……今のところは、ですわ",
           "id": "ch1-s4-02",
-          "from": 84,
-          "durationInFrames": 44,
+          "from": 93,
+          "durationInFrames": 40,
           "audio": "audio/ch1-s4-02.wav"
         }
       ]
@@ -594,8 +588,8 @@
       "chapterTitle": "絶頂編",
       "chapterIndex": 2,
       "accent": "#2EC4B6",
-      "from": 2695,
-      "durationInFrames": 54,
+      "from": 2643,
+      "durationInFrames": 45,
       "visual": {
         "type": "title",
         "props": {
@@ -614,8 +608,8 @@
       "chapterTitle": "絶頂編",
       "chapterIndex": 2,
       "accent": "#2EC4B6",
-      "from": 2749,
-      "durationInFrames": 711,
+      "from": 2688,
+      "durationInFrames": 553,
       "visual": {
         "type": "timeline",
         "props": {
@@ -624,7 +618,7 @@
             {
               "year": "1985",
               "label": "欧州でラップトップPC「T1100」を発売",
-              "atLine": 3
+              "atLine": 1
             },
             {
               "year": "1987",
@@ -635,7 +629,7 @@
             {
               "year": "1989",
               "label": "ノートPC「DynaBook」を発表（約2.7kg・198,000円）",
-              "atLine": 3
+              "atLine": 1
             }
           ]
         }
@@ -653,45 +647,28 @@
           "text": "東芝によれば1987年、{NAND型フラッシュメモリ}を発明。電源を切ってもデータが消えないメモリですわ",
           "yomi": "東芝によれば1987年、ナンドがたフラッシュメモリを発明。電源を切っても、データが消えないメモリですわ",
           "id": "ch2-s2-01",
-          "from": 9,
-          "durationInFrames": 209,
+          "from": 6,
+          "durationInFrames": 201,
           "audio": "audio/ch2-s2-01.wav"
-        },
-        {
-          "speaker": "zundamon",
-          "text": "データの冷蔵庫みたいなものなのだ？",
-          "id": "ch2-s2-02",
-          "from": 224,
-          "durationInFrames": 69,
-          "audio": "audio/ch2-s2-02.wav"
-        },
-        {
-          "speaker": "metan",
-          "text": "……まあ、そう覚えてもいいですわ",
-          "yomi": "まあ、そう覚えてもいいですわ",
-          "id": "ch2-s2-03",
-          "from": 299,
-          "durationInFrames": 61,
-          "audio": "audio/ch2-s2-03.wav"
         },
         {
           "speaker": "metan",
           "text": "パソコンでも1985年に欧州で「T1100」、1989年には「DynaBook」を発表",
           "yomi": "パソコンでも1985年に欧州で、ティーせんひゃく。1989年には、ダイナブックを発表",
-          "id": "ch2-s2-04",
-          "from": 366,
-          "durationInFrames": 182,
-          "audio": "audio/ch2-s2-04.wav"
+          "id": "ch2-s2-02",
+          "from": 212,
+          "durationInFrames": 190,
+          "audio": "audio/ch2-s2-02.wav"
         },
         {
           "speaker": "zundamon",
           "text": "約2.7kgで19万8,000円……ボクのおこづかい何年分なのだ",
           "yomi": "約2.7キロで19万8000円。ボクのおこづかい何年分なのだ",
           "emotion": "sad",
-          "id": "ch2-s2-05",
-          "from": 554,
-          "durationInFrames": 145,
-          "audio": "audio/ch2-s2-05.wav"
+          "id": "ch2-s2-03",
+          "from": 407,
+          "durationInFrames": 137,
+          "audio": "audio/ch2-s2-03.wav"
         }
       ]
     },
@@ -705,8 +682,8 @@
         "text": "爆買い",
         "atLine": 2
       },
-      "from": 3460,
-      "durationInFrames": 605,
+      "from": 3241,
+      "durationInFrames": 600,
       "visual": {
         "type": "bigNumber",
         "props": {
@@ -734,16 +711,16 @@
           "text": "そして2006年、米国の原子力の会社ウェスチングハウス、略して{WH}を買収",
           "yomi": "そして2006年、米国の原子力の会社、ウェスチングハウス、略して、ダブリューエイチを買収",
           "id": "ch2-s3-01",
-          "from": 9,
-          "durationInFrames": 176,
+          "from": 6,
+          "durationInFrames": 174,
           "audio": "audio/ch2-s3-01.wav"
         },
         {
           "speaker": "metan",
           "text": "取得額は{54億ドル}、約6,210億円。東芝の出資比率は77%ですわ",
           "id": "ch2-s3-02",
-          "from": 191,
-          "durationInFrames": 149,
+          "from": 185,
+          "durationInFrames": 172,
           "audio": "audio/ch2-s3-02.wav"
         },
         {
@@ -751,7 +728,7 @@
           "text": "うまい棒なら{約414億本}なのだ！",
           "emotion": "happy",
           "id": "ch2-s3-03",
-          "from": 346,
+          "from": 362,
           "durationInFrames": 76,
           "audio": "audio/ch2-s3-03.wav"
         },
@@ -759,8 +736,8 @@
           "speaker": "metan",
           "text": "その換算、まだ続けますの？",
           "id": "ch2-s3-04",
-          "from": 428,
-          "durationInFrames": 53,
+          "from": 443,
+          "durationInFrames": 56,
           "audio": "audio/ch2-s3-04.wav"
         },
         {
@@ -768,8 +745,8 @@
           "text": "……この大きな買い物が、のちに大事件の火種になりますの",
           "emotion": "sad",
           "id": "ch2-s3-05",
-          "from": 487,
-          "durationInFrames": 106,
+          "from": 504,
+          "durationInFrames": 87,
           "audio": "audio/ch2-s3-05.wav"
         }
       ]
@@ -780,8 +757,8 @@
       "chapterTitle": "絶頂編",
       "chapterIndex": 2,
       "accent": "#2EC4B6",
-      "from": 4065,
-      "durationInFrames": 78,
+      "from": 3841,
+      "durationInFrames": 82,
       "visual": {
         "type": "meter",
         "props": {
@@ -798,8 +775,8 @@
           "text": "まだセーフなのだ。……まだ、なのだ",
           "yomi": "まだセーフなのだ。まだ、なのだ",
           "id": "ch2-s4-01",
-          "from": 9,
-          "durationInFrames": 57,
+          "from": 6,
+          "durationInFrames": 67,
           "audio": "audio/ch2-s4-01.wav"
         }
       ]
@@ -810,8 +787,8 @@
       "chapterTitle": "やらかし① 不正会計",
       "chapterIndex": 3,
       "accent": "#FF4D4D",
-      "from": 4143,
-      "durationInFrames": 54,
+      "from": 3923,
+      "durationInFrames": 45,
       "visual": {
         "type": "title",
         "props": {
@@ -834,8 +811,8 @@
         "text": "盛りすぎ",
         "atLine": 3
       },
-      "from": 4197,
-      "durationInFrames": 651,
+      "from": 3968,
+      "durationInFrames": 648,
       "visual": {
         "type": "bigNumber",
         "props": {
@@ -858,24 +835,24 @@
           "speaker": "metan",
           "text": "2015年、東芝の会計問題が発覚。報道では「不正会計」と呼ばれましたわ",
           "id": "ch3-s2-01",
-          "from": 9,
-          "durationInFrames": 144,
+          "from": 6,
+          "durationInFrames": 160,
           "audio": "audio/ch3-s2-01.wav"
         },
         {
           "speaker": "metan",
           "text": "第三者委員会によれば、2008年度から2014年度第3四半期までの",
           "id": "ch3-s2-02",
-          "from": 159,
-          "durationInFrames": 160,
+          "from": 171,
+          "durationInFrames": 127,
           "audio": "audio/ch3-s2-02.wav"
         },
         {
           "speaker": "metan",
           "text": "税引前損益の修正額は、累計{1,518億円}",
           "id": "ch3-s2-03",
-          "from": 325,
-          "durationInFrames": 91,
+          "from": 303,
+          "durationInFrames": 110,
           "audio": "audio/ch3-s2-03.wav"
         },
         {
@@ -883,16 +860,16 @@
           "text": "利益を盛ってたのだ！？ プリクラの目みたいに？",
           "emotion": "surprised",
           "id": "ch3-s2-04",
-          "from": 422,
-          "durationInFrames": 85,
+          "from": 418,
+          "durationInFrames": 84,
           "audio": "audio/ch3-s2-04.wav"
         },
         {
           "speaker": "metan",
           "text": "9月の決算訂正では、累計{2,248億円}まで膨らみましたわ",
           "id": "ch3-s2-05",
-          "from": 513,
-          "durationInFrames": 126,
+          "from": 507,
+          "durationInFrames": 132,
           "audio": "audio/ch3-s2-05.wav"
         }
       ]
@@ -903,8 +880,8 @@
       "chapterTitle": "やらかし① 不正会計",
       "chapterIndex": 3,
       "accent": "#FF4D4D",
-      "from": 4848,
-      "durationInFrames": 656,
+      "from": 4616,
+      "durationInFrames": 535,
       "visual": {
         "type": "bigNumber",
         "props": {
@@ -924,8 +901,8 @@
           "speaker": "metan",
           "text": "報道によれば報告書は、経営トップが{「チャレンジ」}と呼ぶ過大な目標を課していたと認めています",
           "id": "ch3-s3-01",
-          "from": 9,
-          "durationInFrames": 179,
+          "from": 6,
+          "durationInFrames": 166,
           "audio": "audio/ch3-s3-01.wav"
         },
         {
@@ -933,16 +910,16 @@
           "text": "チャレンジ！ 前向きでいい言葉なのだ！",
           "emotion": "happy",
           "id": "ch3-s3-02",
-          "from": 194,
-          "durationInFrames": 73,
+          "from": 177,
+          "durationInFrames": 72,
           "audio": "audio/ch3-s3-02.wav"
         },
         {
           "speaker": "metan",
-          "text": "報道の見出しは「『チャレンジ』と称して圧力」。言葉は前向きでも、中身は違ったようですわ",
+          "text": "報道の見出しは「『チャレンジ』と称して圧力」でしたわ",
           "id": "ch3-s3-03",
-          "from": 273,
-          "durationInFrames": 159,
+          "from": 254,
+          "durationInFrames": 101,
           "audio": "audio/ch3-s3-03.wav"
         },
         {
@@ -951,16 +928,16 @@
           "emotion": "happy",
           "joke": true,
           "id": "ch3-s3-04",
-          "from": 438,
-          "durationInFrames": 139,
+          "from": 360,
+          "durationInFrames": 113,
           "audio": "audio/ch3-s3-04.wav"
         },
         {
           "speaker": "metan",
           "text": "それは、ただの食べすぎですわ",
           "id": "ch3-s3-05",
-          "from": 583,
-          "durationInFrames": 61,
+          "from": 478,
+          "durationInFrames": 48,
           "audio": "audio/ch3-s3-05.wav"
         }
       ]
@@ -971,8 +948,8 @@
       "chapterTitle": "やらかし① 不正会計",
       "chapterIndex": 3,
       "accent": "#FF4D4D",
-      "from": 5504,
-      "durationInFrames": 780,
+      "from": 5151,
+      "durationInFrames": 782,
       "visual": {
         "type": "timeline",
         "props": {
@@ -986,12 +963,12 @@
             {
               "year": "2015.9",
               "label": "東証が「特設注意市場銘柄」に指定",
-              "atLine": 2
+              "atLine": 1
             },
             {
               "year": "2015.12",
               "label": "金融庁が課徴金73億7,350万円の納付を命令",
-              "atLine": 3,
+              "atLine": 2,
               "highlight": true
             }
           ]
@@ -1011,51 +988,42 @@
           "text": "7月には社長を含む取締役8人と相談役が辞任。歴代の社長3人がそろって退きました",
           "yomi": "7月には、社長を含む取締役8人と、相談役が辞任。歴代の社長3人が、そろって退きました",
           "id": "ch3-s4-01",
-          "from": 9,
-          "durationInFrames": 170,
+          "from": 6,
+          "durationInFrames": 201,
           "audio": "audio/ch3-s4-01.wav"
-        },
-        {
-          "speaker": "zundamon",
-          "text": "トップが、一気に入れ替わったのだ……",
-          "emotion": "sad",
-          "id": "ch3-s4-02",
-          "from": 185,
-          "durationInFrames": 69,
-          "audio": "audio/ch3-s4-02.wav"
         },
         {
           "speaker": "metan",
           "text": "9月には東証が、東芝株を「特設注意市場銘柄」に指定",
-          "id": "ch3-s4-03",
-          "from": 260,
-          "durationInFrames": 100,
-          "audio": "audio/ch3-s4-03.wav"
+          "id": "ch3-s4-02",
+          "from": 212,
+          "durationInFrames": 135,
+          "audio": "audio/ch3-s4-02.wav"
         },
         {
           "speaker": "metan",
           "text": "12月には、金融庁が課徴金{73億7,350万円}の納付を命じましたの",
-          "id": "ch3-s4-04",
-          "from": 366,
-          "durationInFrames": 153,
-          "audio": "audio/ch3-s4-04.wav"
+          "id": "ch3-s4-03",
+          "from": 352,
+          "durationInFrames": 158,
+          "audio": "audio/ch3-s4-03.wav"
         },
         {
           "speaker": "zundamon",
           "text": "うまい棒で約4.9億本……あれ、小さく感じるのだ。マヒしてきたのだ",
           "emotion": "sad",
-          "id": "ch3-s4-05",
-          "from": 525,
-          "durationInFrames": 131,
-          "audio": "audio/ch3-s4-05.wav"
+          "id": "ch3-s4-04",
+          "from": 515,
+          "durationInFrames": 155,
+          "audio": "audio/ch3-s4-04.wav"
         },
         {
           "speaker": "metan",
           "text": "課徴金としては当時、過去最高額と報じられましたのよ",
-          "id": "ch3-s4-06",
-          "from": 662,
-          "durationInFrames": 106,
-          "audio": "audio/ch3-s4-06.wav"
+          "id": "ch3-s4-05",
+          "from": 675,
+          "durationInFrames": 98,
+          "audio": "audio/ch3-s4-05.wav"
         }
       ]
     },
@@ -1065,8 +1033,8 @@
       "chapterTitle": "やらかし① 不正会計",
       "chapterIndex": 3,
       "accent": "#FF4D4D",
-      "from": 6284,
-      "durationInFrames": 149,
+      "from": 5933,
+      "durationInFrames": 121,
       "visual": {
         "type": "meter",
         "props": {
@@ -1083,16 +1051,16 @@
           "text": "一気に跳ね上がったのだ！",
           "emotion": "surprised",
           "id": "ch3-s5-01",
-          "from": 9,
-          "durationInFrames": 53,
+          "from": 6,
+          "durationInFrames": 42,
           "audio": "audio/ch3-s5-01.wav"
         },
         {
           "speaker": "metan",
           "text": "でも、本当の試練はこれからですわ",
           "id": "ch3-s5-02",
-          "from": 68,
-          "durationInFrames": 69,
+          "from": 53,
+          "durationInFrames": 59,
           "audio": "audio/ch3-s5-02.wav"
         }
       ]
@@ -1103,8 +1071,8 @@
       "chapterTitle": "やらかし② 原子力の大誤算",
       "chapterIndex": 4,
       "accent": "#C1121F",
-      "from": 6433,
-      "durationInFrames": 54,
+      "from": 6054,
+      "durationInFrames": 45,
       "visual": {
         "type": "title",
         "props": {
@@ -1127,8 +1095,8 @@
         "text": "大赤字",
         "atLine": 2
       },
-      "from": 6487,
-      "durationInFrames": 687,
+      "from": 6099,
+      "durationInFrames": 690,
       "visual": {
         "type": "bigNumber",
         "props": {
@@ -1157,8 +1125,8 @@
           "text": "2017年3月29日、あのWHが、米国の連邦破産法11章の適用を申請",
           "yomi": "2017年3月29日、あの、ダブリューエイチが、米国の連邦破産法11章の適用を申請",
           "id": "ch4-s2-01",
-          "from": 9,
-          "durationInFrames": 180,
+          "from": 6,
+          "durationInFrames": 188,
           "audio": "audio/ch4-s2-01.wav"
         },
         {
@@ -1166,24 +1134,24 @@
           "text": "爆買いした会社が、経営破綻しちゃったのだ！？",
           "emotion": "surprised",
           "id": "ch4-s2-02",
-          "from": 195,
-          "durationInFrames": 85,
+          "from": 199,
+          "durationInFrames": 89,
           "audio": "audio/ch4-s2-02.wav"
         },
         {
           "speaker": "metan",
           "text": "東芝の2016年度の最終赤字は{9,657億円}",
           "id": "ch4-s2-03",
-          "from": 286,
-          "durationInFrames": 113,
+          "from": 293,
+          "durationInFrames": 115,
           "audio": "audio/ch4-s2-03.wav"
         },
         {
           "speaker": "metan",
           "text": "報道では、国内製造業で最大規模とされましたわ",
           "id": "ch4-s2-04",
-          "from": 405,
-          "durationInFrames": 93,
+          "from": 413,
+          "durationInFrames": 90,
           "audio": "audio/ch4-s2-04.wav"
         },
         {
@@ -1191,16 +1159,16 @@
           "text": "うまい棒、約644億本ぶんの赤字なのだ……",
           "emotion": "sad",
           "id": "ch4-s2-05",
-          "from": 504,
-          "durationInFrames": 88,
+          "from": 508,
+          "durationInFrames": 104,
           "audio": "audio/ch4-s2-05.wav"
         },
         {
           "speaker": "metan",
           "text": "その換算、すっかり気に入ってますのね",
           "id": "ch4-s2-06",
-          "from": 598,
-          "durationInFrames": 77,
+          "from": 617,
+          "durationInFrames": 64,
           "audio": "audio/ch4-s2-06.wav"
         }
       ]
@@ -1211,8 +1179,8 @@
       "chapterTitle": "やらかし② 原子力の大誤算",
       "chapterIndex": 4,
       "accent": "#C1121F",
-      "from": 7174,
-      "durationInFrames": 263,
+      "from": 6789,
+      "durationInFrames": 195,
       "visual": {
         "type": "barChart",
         "props": {
@@ -1249,17 +1217,17 @@
           "speaker": "metan",
           "text": "2014年度から3年続けて、赤字がどんどん深くなりましたの",
           "id": "ch4-s3-01",
-          "from": 9,
-          "durationInFrames": 134,
+          "from": 6,
+          "durationInFrames": 104,
           "audio": "audio/ch4-s3-01.wav"
         },
         {
           "speaker": "zundamon",
-          "text": "棒グラフが地面にめり込んで、地下に帰っていくのだ……",
+          "text": "棒グラフが、地面にめり込んでるのだ……",
           "emotion": "sad",
           "id": "ch4-s3-02",
-          "from": 149,
-          "durationInFrames": 102,
+          "from": 115,
+          "durationInFrames": 71,
           "audio": "audio/ch4-s3-02.wav"
         }
       ]
@@ -1270,8 +1238,8 @@
       "chapterTitle": "やらかし② 原子力の大誤算",
       "chapterIndex": 4,
       "accent": "#C1121F",
-      "from": 7437,
-      "durationInFrames": 505,
+      "from": 6984,
+      "durationInFrames": 466,
       "visual": {
         "type": "timeline",
         "props": {
@@ -1313,7 +1281,7 @@
           "speaker": "metan",
           "text": "2017年3月末には株主資本がマイナス5,529億円。債務超過ですわ",
           "id": "ch4-s4-01",
-          "from": 9,
+          "from": 6,
           "durationInFrames": 160,
           "audio": "audio/ch4-s4-01.wav"
         },
@@ -1321,24 +1289,24 @@
           "speaker": "zundamon",
           "text": "借金の方が、財産より多いってことなのだ？",
           "id": "ch4-s4-02",
-          "from": 175,
-          "durationInFrames": 81,
+          "from": 171,
+          "durationInFrames": 91,
           "audio": "audio/ch4-s4-02.wav"
         },
         {
           "speaker": "metan",
           "text": "ざっくり言えば、そうですわ",
           "id": "ch4-s4-03",
-          "from": 262,
-          "durationInFrames": 57,
+          "from": 267,
+          "durationInFrames": 45,
           "audio": "audio/ch4-s4-03.wav"
         },
         {
           "speaker": "metan",
           "text": "8月には東証1部から2部へ。12月には約6,000億円の増資をしましたの",
           "id": "ch4-s4-04",
-          "from": 325,
-          "durationInFrames": 168,
+          "from": 317,
+          "durationInFrames": 140,
           "audio": "audio/ch4-s4-04.wav"
         }
       ]
@@ -1349,8 +1317,8 @@
       "chapterTitle": "やらかし② 原子力の大誤算",
       "chapterIndex": 4,
       "accent": "#C1121F",
-      "from": 7942,
-      "durationInFrames": 128,
+      "from": 7450,
+      "durationInFrames": 142,
       "visual": {
         "type": "meter",
         "props": {
@@ -1367,8 +1335,8 @@
           "text": "メーターが……振り切れて、壊れたのだ！",
           "emotion": "surprised",
           "id": "ch4-s5-01",
-          "from": 9,
-          "durationInFrames": 61,
+          "from": 6,
+          "durationInFrames": 76,
           "audio": "audio/ch4-s5-01.wav"
         },
         {
@@ -1376,8 +1344,8 @@
           "text": "測定不能、ですわね",
           "emotion": "sad",
           "id": "ch4-s5-02",
-          "from": 76,
-          "durationInFrames": 40,
+          "from": 87,
+          "durationInFrames": 46,
           "audio": "audio/ch4-s5-02.wav"
         }
       ]
@@ -1388,8 +1356,8 @@
       "chapterTitle": "切り売り編",
       "chapterIndex": 5,
       "accent": "#FFB703",
-      "from": 8070,
-      "durationInFrames": 54,
+      "from": 7592,
+      "durationInFrames": 45,
       "visual": {
         "type": "title",
         "props": {
@@ -1412,8 +1380,8 @@
         "text": "売却ラッシュ",
         "atLine": 6
       },
-      "from": 8124,
-      "durationInFrames": 931,
+      "from": 7637,
+      "durationInFrames": 935,
       "visual": {
         "type": "transferMap",
         "props": {
@@ -1471,15 +1439,15 @@
           "speaker": "metan",
           "text": "立て直しのため、東芝は事業を次々と売りましたわ",
           "id": "ch5-s2-01",
-          "from": 9,
-          "durationInFrames": 97,
+          "from": 6,
+          "durationInFrames": 88,
           "audio": "audio/ch5-s2-01.wav"
         },
         {
           "speaker": "metan",
           "text": "まず医療機器をキヤノンへ。{約6,655億円}",
           "id": "ch5-s2-02",
-          "from": 112,
+          "from": 99,
           "durationInFrames": 95,
           "audio": "audio/ch5-s2-02.wav"
         },
@@ -1487,8 +1455,8 @@
           "speaker": "zundamon",
           "text": "冷蔵庫や洗濯機は？ 東芝が日本初って言ってたやつなのだ！",
           "id": "ch5-s2-03",
-          "from": 213,
-          "durationInFrames": 110,
+          "from": 199,
+          "durationInFrames": 118,
           "audio": "audio/ch5-s2-03.wav"
         },
         {
@@ -1496,16 +1464,16 @@
           "text": "白物家電は中国の美的集団へ。テレビは中国のハイセンスへ",
           "yomi": "白物家電は、中国の、びてきしゅうだんへ。テレビは、中国のハイセンスへ",
           "id": "ch5-s2-04",
-          "from": 329,
-          "durationInFrames": 130,
+          "from": 322,
+          "durationInFrames": 140,
           "audio": "audio/ch5-s2-04.wav"
         },
         {
           "speaker": "metan",
           "text": "そして本命のメモリ事業は、ベインキャピタル中心の企業連合へ。{約2兆円}",
           "id": "ch5-s2-05",
-          "from": 465,
-          "durationInFrames": 141,
+          "from": 467,
+          "durationInFrames": 138,
           "audio": "audio/ch5-s2-05.wav"
         },
         {
@@ -1513,16 +1481,16 @@
           "text": "うまい棒、約1,333億本……もう計算が追いつかないのだ",
           "emotion": "surprised",
           "id": "ch5-s2-06",
-          "from": 612,
-          "durationInFrames": 115,
+          "from": 610,
+          "durationInFrames": 138,
           "audio": "audio/ch5-s2-06.wav"
         },
         {
           "speaker": "metan",
           "text": "とどめに2018年、パソコンもシャープへ",
           "id": "ch5-s2-07",
-          "from": 733,
-          "durationInFrames": 91,
+          "from": 753,
+          "durationInFrames": 77,
           "audio": "audio/ch5-s2-07.wav"
         },
         {
@@ -1530,8 +1498,8 @@
           "text": "看板商品が、みんなよその家の子になったのだ……",
           "emotion": "sad",
           "id": "ch5-s2-08",
-          "from": 830,
-          "durationInFrames": 89,
+          "from": 835,
+          "durationInFrames": 91,
           "audio": "audio/ch5-s2-08.wav"
         }
       ]
@@ -1542,8 +1510,8 @@
       "chapterTitle": "切り売り編",
       "chapterIndex": 5,
       "accent": "#FFB703",
-      "from": 9055,
-      "durationInFrames": 518,
+      "from": 8572,
+      "durationInFrames": 453,
       "visual": {
         "type": "timeline",
         "props": {
@@ -1572,24 +1540,24 @@
           "speaker": "metan",
           "text": "このメモリ事業こそ、のちのキオクシア。2019年に社名を変えましたの",
           "id": "ch5-s3-01",
-          "from": 9,
-          "durationInFrames": 148,
+          "from": 6,
+          "durationInFrames": 126,
           "audio": "audio/ch5-s3-01.wav"
         },
         {
           "speaker": "metan",
           "text": "東芝は買い手側に再出資して、議決権の40.2%を持つことになりましたわ",
           "id": "ch5-s3-02",
-          "from": 163,
-          "durationInFrames": 154,
+          "from": 137,
+          "durationInFrames": 137,
           "audio": "audio/ch5-s3-02.wav"
         },
         {
           "speaker": "zundamon",
           "text": "売ったのに、まだ持ってるのだ？",
           "id": "ch5-s3-03",
-          "from": 323,
-          "durationInFrames": 61,
+          "from": 279,
+          "durationInFrames": 60,
           "audio": "audio/ch5-s3-03.wav"
         },
         {
@@ -1597,8 +1565,8 @@
           "text": "ちょっとどころか、4割ですわ。これが、のちに効いてきますの",
           "emotion": "happy",
           "id": "ch5-s3-04",
-          "from": 390,
-          "durationInFrames": 116,
+          "from": 344,
+          "durationInFrames": 100,
           "audio": "audio/ch5-s3-04.wav"
         }
       ]
@@ -1609,8 +1577,8 @@
       "chapterTitle": "切り売り編",
       "chapterIndex": 5,
       "accent": "#FFB703",
-      "from": 9573,
-      "durationInFrames": 444,
+      "from": 9025,
+      "durationInFrames": 397,
       "visual": {
         "type": "bigNumber",
         "props": {
@@ -1629,16 +1597,16 @@
           "speaker": "metan",
           "text": "報道によれば経費削減の一環で、アニメ「サザエさん」のスポンサーも降板",
           "id": "ch5-s4-01",
-          "from": 9,
-          "durationInFrames": 130,
+          "from": 6,
+          "durationInFrames": 136,
           "audio": "audio/ch5-s4-01.wav"
         },
         {
           "speaker": "metan",
-          "text": "1969年の放送開始からCMを提供し、2018年3月の放送分まで。約半世紀でしたわ",
+          "text": "1969年の放送開始から、約半世紀続いたCM提供でしたわ",
           "id": "ch5-s4-02",
-          "from": 145,
-          "durationInFrames": 188,
+          "from": 147,
+          "durationInFrames": 141,
           "audio": "audio/ch5-s4-02.wav"
         },
         {
@@ -1646,8 +1614,8 @@
           "text": "おなじみのCMまで……ボク、ちょっと泣いてるのだ",
           "emotion": "sad",
           "id": "ch5-s4-03",
-          "from": 339,
-          "durationInFrames": 93,
+          "from": 293,
+          "durationInFrames": 95,
           "audio": "audio/ch5-s4-03.wav"
         }
       ]
@@ -1658,8 +1626,8 @@
       "chapterTitle": "切り売り編",
       "chapterIndex": 5,
       "accent": "#FFB703",
-      "from": 10017,
-      "durationInFrames": 165,
+      "from": 9422,
+      "durationInFrames": 154,
       "visual": {
         "type": "meter",
         "props": {
@@ -1675,8 +1643,8 @@
           "speaker": "metan",
           "text": "メーターは、新しいのに交換しましたわ",
           "id": "ch5-s5-01",
-          "from": 9,
-          "durationInFrames": 69,
+          "from": 6,
+          "durationInFrames": 67,
           "audio": "audio/ch5-s5-01.wav"
         },
         {
@@ -1684,8 +1652,8 @@
           "text": "新品なのに、いきなり真っ赤なのだ！",
           "emotion": "surprised",
           "id": "ch5-s5-02",
-          "from": 84,
-          "durationInFrames": 69,
+          "from": 78,
+          "durationInFrames": 67,
           "audio": "audio/ch5-s5-02.wav"
         }
       ]
@@ -1696,8 +1664,8 @@
       "chapterTitle": "迷走編",
       "chapterIndex": 6,
       "accent": "#9B5DE5",
-      "from": 10182,
-      "durationInFrames": 54,
+      "from": 9576,
+      "durationInFrames": 45,
       "visual": {
         "type": "title",
         "props": {
@@ -1716,8 +1684,8 @@
       "chapterTitle": "迷走編",
       "chapterIndex": 6,
       "accent": "#9B5DE5",
-      "from": 10236,
-      "durationInFrames": 349,
+      "from": 9621,
+      "durationInFrames": 356,
       "visual": {
         "type": "quote",
         "props": {
@@ -1734,16 +1702,16 @@
           "speaker": "metan",
           "text": "2021年6月、前年の株主総会について、外部の調査報告書が出ましたわ",
           "id": "ch6-s2-01",
-          "from": 9,
-          "durationInFrames": 150,
+          "from": 6,
+          "durationInFrames": 152,
           "audio": "audio/ch6-s2-01.wav"
         },
         {
           "speaker": "metan",
           "text": "結論は、総会が{「公正に運営されたものとはいえない」}",
           "id": "ch6-s2-02",
-          "from": 165,
-          "durationInFrames": 97,
+          "from": 163,
+          "durationInFrames": 99,
           "audio": "audio/ch6-s2-02.wav"
         },
         {
@@ -1751,8 +1719,8 @@
           "text": "株主総会が、公正じゃなかったのだ！？",
           "emotion": "surprised",
           "id": "ch6-s2-03",
-          "from": 268,
-          "durationInFrames": 69,
+          "from": 267,
+          "durationInFrames": 80,
           "audio": "audio/ch6-s2-03.wav"
         }
       ]
@@ -1763,8 +1731,8 @@
       "chapterTitle": "迷走編",
       "chapterIndex": 6,
       "accent": "#9B5DE5",
-      "from": 10585,
-      "durationInFrames": 844,
+      "from": 9977,
+      "durationInFrames": 746,
       "visual": {
         "type": "timeline",
         "props": {
@@ -1778,22 +1746,22 @@
             {
               "year": "2022.2",
               "label": "2つに分ける案に変更",
-              "atLine": 2
+              "atLine": 1
             },
             {
               "year": "2022.3",
               "label": "臨時株主総会で否決",
-              "atLine": 2
+              "atLine": 1
             },
             {
               "year": "2023.3",
               "label": "JIP中心の連合がTOBを公表（1株4,620円）",
-              "atLine": 4
+              "atLine": 3
             },
             {
               "year": "2023.12",
               "label": "上場廃止",
-              "atLine": 5,
+              "atLine": 4,
               "highlight": true
             }
           ]
@@ -1813,60 +1781,51 @@
           "speaker": "metan",
           "text": "2021年11月には、会社を3つに分ける案を発表",
           "id": "ch6-s3-01",
-          "from": 9,
-          "durationInFrames": 118,
+          "from": 6,
+          "durationInFrames": 107,
           "audio": "audio/ch6-s3-01.wav"
-        },
-        {
-          "speaker": "zundamon",
-          "text": "分身の術なのだ！",
-          "emotion": "happy",
-          "id": "ch6-s3-02",
-          "from": 133,
-          "durationInFrames": 36,
-          "audio": "audio/ch6-s3-02.wav"
         },
         {
           "speaker": "metan",
           "text": "翌年2月に2つに分ける案へ変えたものの、3月の臨時株主総会で否決",
-          "id": "ch6-s3-03",
-          "from": 175,
-          "durationInFrames": 141,
-          "audio": "audio/ch6-s3-03.wav"
+          "id": "ch6-s3-02",
+          "from": 118,
+          "durationInFrames": 131,
+          "audio": "audio/ch6-s3-02.wav"
         },
         {
           "speaker": "zundamon",
           "text": "3つが2つになって、結局どっちもダメなのだ……",
           "emotion": "sad",
+          "id": "ch6-s3-03",
+          "from": 254,
+          "durationInFrames": 90,
+          "audio": "audio/ch6-s3-03.wav"
+        },
+        {
+          "speaker": "metan",
+          "text": "2023年、日本産業パートナーズ中心の連合が、総額{約2兆円}のTOBを公表",
+          "yomi": "2023年、日本産業パートナーズ中心の連合が、総額約2兆円の、ティーオービーを公表",
           "id": "ch6-s3-04",
-          "from": 322,
-          "durationInFrames": 94,
+          "from": 349,
+          "durationInFrames": 182,
           "audio": "audio/ch6-s3-04.wav"
         },
         {
           "speaker": "metan",
-          "text": "2023年、日本産業パートナーズ中心の連合がTOBを公表。1株4,620円、総額{約2兆円}",
-          "yomi": "2023年、日本産業パートナーズ中心の連合が、ティーオービーを公表。ひとかぶ4620円、総額、約2兆円",
-          "id": "ch6-s3-05",
-          "from": 422,
-          "durationInFrames": 197,
-          "audio": "audio/ch6-s3-05.wav"
-        },
-        {
-          "speaker": "metan",
           "text": "そして12月20日、東芝は{上場廃止}。非公開の会社になりましたわ",
-          "id": "ch6-s3-06",
-          "from": 625,
-          "durationInFrames": 136,
-          "audio": "audio/ch6-s3-06.wav"
+          "id": "ch6-s3-05",
+          "from": 536,
+          "durationInFrames": 125,
+          "audio": "audio/ch6-s3-05.wav"
         },
         {
           "speaker": "zundamon",
           "text": "株式市場を、卒業しちゃったのだ",
-          "id": "ch6-s3-07",
-          "from": 767,
-          "durationInFrames": 65,
-          "audio": "audio/ch6-s3-07.wav"
+          "id": "ch6-s3-06",
+          "from": 666,
+          "durationInFrames": 71,
+          "audio": "audio/ch6-s3-06.wav"
         }
       ]
     },
@@ -1876,8 +1835,8 @@
       "chapterTitle": "迷走編",
       "chapterIndex": 6,
       "accent": "#9B5DE5",
-      "from": 11429,
-      "durationInFrames": 86,
+      "from": 10723,
+      "durationInFrames": 80,
       "visual": {
         "type": "meter",
         "props": {
@@ -1894,7 +1853,7 @@
           "text": "新品のメーターも、もう限界ですわね",
           "emotion": "sad",
           "id": "ch6-s4-01",
-          "from": 9,
+          "from": 6,
           "durationInFrames": 65,
           "audio": "audio/ch6-s4-01.wav"
         }
@@ -1906,8 +1865,8 @@
       "chapterTitle": "現在編",
       "chapterIndex": 7,
       "accent": "#3A86FF",
-      "from": 11515,
-      "durationInFrames": 54,
+      "from": 10803,
+      "durationInFrames": 45,
       "visual": {
         "type": "title",
         "props": {
@@ -1926,8 +1885,8 @@
       "chapterTitle": "現在編",
       "chapterIndex": 7,
       "accent": "#3A86FF",
-      "from": 11569,
-      "durationInFrames": 610,
+      "from": 10848,
+      "durationInFrames": 559,
       "visual": {
         "type": "timeline",
         "props": {
@@ -1956,24 +1915,24 @@
           "speaker": "metan",
           "text": "非公開になった東芝は、2024年5月に「東芝再興計画」を発表",
           "id": "ch7-s2-01",
-          "from": 9,
-          "durationInFrames": 130,
+          "from": 6,
+          "durationInFrames": 144,
           "audio": "audio/ch7-s2-01.wav"
         },
         {
           "speaker": "metan",
           "text": "2026年度に営業利益率10%を目指し、最大4,000人規模の人員削減などを進めましたの",
           "id": "ch7-s2-02",
-          "from": 145,
-          "durationInFrames": 203,
+          "from": 155,
+          "durationInFrames": 179,
           "audio": "audio/ch7-s2-02.wav"
         },
         {
           "speaker": "metan",
           "text": "そして2024年12月、あのキオクシアが東証プライム市場に上場しましたわ",
           "id": "ch7-s2-03",
-          "from": 354,
-          "durationInFrames": 165,
+          "from": 339,
+          "durationInFrames": 134,
           "audio": "audio/ch7-s2-03.wav"
         },
         {
@@ -1981,8 +1940,8 @@
           "text": "売った子どもが、立派に上場したのだ！",
           "emotion": "happy",
           "id": "ch7-s2-04",
-          "from": 525,
-          "durationInFrames": 73,
+          "from": 478,
+          "durationInFrames": 72,
           "audio": "audio/ch7-s2-04.wav"
         }
       ]
@@ -1997,8 +1956,8 @@
         "text": "過去最高",
         "atLine": 1
       },
-      "from": 12179,
-      "durationInFrames": 376,
+      "from": 11407,
+      "durationInFrames": 351,
       "visual": {
         "type": "barChart",
         "props": {
@@ -2080,16 +2039,16 @@
           "speaker": "metan",
           "text": "キオクシア株が値上がりして、東芝の利益は跳ね上がりました",
           "id": "ch7-s3-01",
-          "from": 9,
-          "durationInFrames": 118,
+          "from": 6,
+          "durationInFrames": 97,
           "audio": "audio/ch7-s3-01.wav"
         },
         {
           "speaker": "metan",
           "text": "2025年度の当期純利益は{1兆9,673億円}。過去最高ですわ",
           "id": "ch7-s3-02",
-          "from": 133,
-          "durationInFrames": 144,
+          "from": 108,
+          "durationInFrames": 150,
           "audio": "audio/ch7-s3-02.wav"
         },
         {
@@ -2097,8 +2056,8 @@
           "text": "グラフの右はしだけ、ロケット発射なのだ！",
           "emotion": "surprised",
           "id": "ch7-s3-03",
-          "from": 283,
-          "durationInFrames": 81,
+          "from": 263,
+          "durationInFrames": 79,
           "audio": "audio/ch7-s3-03.wav"
         }
       ]
@@ -2109,8 +2068,8 @@
       "chapterTitle": "現在編",
       "chapterIndex": 7,
       "accent": "#3A86FF",
-      "from": 12555,
-      "durationInFrames": 681,
+      "from": 11758,
+      "durationInFrames": 684,
       "visual": {
         "type": "bigNumber",
         "props": {
@@ -2131,8 +2090,8 @@
           "speaker": "metan",
           "text": "そして冒頭の、4月から6月で{4兆4,673億円}",
           "id": "ch7-s4-01",
-          "from": 9,
-          "durationInFrames": 110,
+          "from": 6,
+          "durationInFrames": 119,
           "audio": "audio/ch7-s4-01.wav"
         },
         {
@@ -2140,8 +2099,8 @@
           "text": "ところが11月13日に出た上期、4月から9月は{2兆5,283億円}",
           "yomi": "ところが11月13日に出た、かみき、4月から9月は、2兆5283億円",
           "id": "ch7-s4-02",
-          "from": 125,
-          "durationInFrames": 161,
+          "from": 130,
+          "durationInFrames": 169,
           "audio": "audio/ch7-s4-02.wav"
         },
         {
@@ -2149,8 +2108,8 @@
           "text": "半年の方が、3か月より少ないのだ！？ 算数が壊れたのだ！",
           "emotion": "surprised",
           "id": "ch7-s4-03",
-          "from": 292,
-          "durationInFrames": 104,
+          "from": 304,
+          "durationInFrames": 127,
           "audio": "audio/ch7-s4-03.wav"
         },
         {
@@ -2158,16 +2117,16 @@
           "text": "共同通信によれば、キオクシアの評価益が4〜6月の時点から半減したため",
           "yomi": "共同通信によれば、キオクシアの評価益が、4月から6月の時点から半減したため",
           "id": "ch7-s4-04",
-          "from": 402,
-          "durationInFrames": 155,
+          "from": 436,
+          "durationInFrames": 145,
           "audio": "audio/ch7-s4-04.wav"
         },
         {
           "speaker": "metan",
           "text": "親の純利益は、子どもの株価しだいで大きく揺れますの",
           "id": "ch7-s4-05",
-          "from": 563,
-          "durationInFrames": 106,
+          "from": 586,
+          "durationInFrames": 89,
           "audio": "audio/ch7-s4-05.wav"
         }
       ]
@@ -2178,8 +2137,8 @@
       "chapterTitle": "現在編",
       "chapterIndex": 7,
       "accent": "#3A86FF",
-      "from": 13236,
-      "durationInFrames": 632,
+      "from": 12442,
+      "durationInFrames": 601,
       "visual": {
         "type": "bigNumber",
         "props": {
@@ -2201,16 +2160,16 @@
           "speaker": "metan",
           "text": "報道によれば、東芝はキオクシア株を一部売却。保有比率は上場直後の32.01%から",
           "id": "ch7-s5-01",
-          "from": 9,
-          "durationInFrames": 172,
+          "from": 6,
+          "durationInFrames": 185,
           "audio": "audio/ch7-s5-01.wav"
         },
         {
           "speaker": "metan",
           "text": "10月27日時点で{10.46%}まで下がっていますわ",
           "id": "ch7-s5-02",
-          "from": 187,
-          "durationInFrames": 129,
+          "from": 196,
+          "durationInFrames": 105,
           "audio": "audio/ch7-s5-02.wav"
         },
         {
@@ -2218,24 +2177,24 @@
           "text": "仕送りが、だんだん減っていくのだ……",
           "emotion": "sad",
           "id": "ch7-s5-03",
-          "from": 322,
-          "durationInFrames": 69,
+          "from": 306,
+          "durationInFrames": 65,
           "audio": "audio/ch7-s5-03.wav"
         },
         {
           "speaker": "metan",
           "text": "報道によれば、東芝は早ければ{2028年度の再上場}を目指すとされますわ",
           "id": "ch7-s5-04",
-          "from": 397,
-          "durationInFrames": 152,
+          "from": 376,
+          "durationInFrames": 135,
           "audio": "audio/ch7-s5-04.wav"
         },
         {
           "speaker": "zundamon",
           "text": "卒業したのに、また入学するのだ？",
           "id": "ch7-s5-05",
-          "from": 555,
-          "durationInFrames": 65,
+          "from": 516,
+          "durationInFrames": 76,
           "audio": "audio/ch7-s5-05.wav"
         }
       ]
@@ -2246,8 +2205,8 @@
       "chapterTitle": "現在編",
       "chapterIndex": 7,
       "accent": "#3A86FF",
-      "from": 13868,
-      "durationInFrames": 132,
+      "from": 13043,
+      "durationInFrames": 116,
       "visual": {
         "type": "meter",
         "props": {
@@ -2264,16 +2223,16 @@
           "text": "メーターが下がったのだ！",
           "emotion": "happy",
           "id": "ch7-s6-01",
-          "from": 9,
-          "durationInFrames": 44,
+          "from": 6,
+          "durationInFrames": 40,
           "audio": "audio/ch7-s6-01.wav"
         },
         {
           "speaker": "metan",
           "text": "子ども頼みの回復、ですけれど",
           "id": "ch7-s6-02",
-          "from": 59,
-          "durationInFrames": 61,
+          "from": 51,
+          "durationInFrames": 56,
           "audio": "audio/ch7-s6-02.wav"
         }
       ]
@@ -2284,8 +2243,8 @@
       "chapterTitle": "まとめ",
       "chapterIndex": 8,
       "accent": "#FF4D9A",
-      "from": 14000,
-      "durationInFrames": 54,
+      "from": 13159,
+      "durationInFrames": 45,
       "visual": {
         "type": "title",
         "props": {
@@ -2304,8 +2263,8 @@
       "chapterTitle": "まとめ",
       "chapterIndex": 8,
       "accent": "#FF4D9A",
-      "from": 14054,
-      "durationInFrames": 743,
+      "from": 13204,
+      "durationInFrames": 735,
       "visual": {
         "type": "title",
         "props": {
@@ -2326,16 +2285,16 @@
           "speaker": "zundamon",
           "text": "まとめると、本業も持ち直してきたけど、純利益の大部分は売った子どもの株頼みなのだ",
           "id": "ch8-s2-01",
-          "from": 9,
-          "durationInFrames": 163,
+          "from": 6,
+          "durationInFrames": 169,
           "audio": "audio/ch8-s2-01.wav"
         },
         {
           "speaker": "metan",
           "text": "報道によれば、報告書が認めた「チャレンジ」という過大な目標も、つまずきの一つでした",
           "id": "ch8-s2-02",
-          "from": 178,
-          "durationInFrames": 159,
+          "from": 180,
+          "durationInFrames": 158,
           "audio": "audio/ch8-s2-02.wav"
         },
         {
@@ -2343,7 +2302,7 @@
           "text": "今日の教訓はひとつ。{数字の目標は、ときに現場に嘘をつかせる}",
           "id": "ch8-s2-03",
           "from": 343,
-          "durationInFrames": 118,
+          "durationInFrames": 111,
           "audio": "audio/ch8-s2-03.wav"
         },
         {
@@ -2351,16 +2310,16 @@
           "text": "……決めたのだ。ボク、東芝じゃなくてキオクシアに就職するのだ！",
           "emotion": "happy",
           "id": "ch8-s2-04",
-          "from": 467,
-          "durationInFrames": 114,
+          "from": 459,
+          "durationInFrames": 115,
           "audio": "audio/ch8-s2-04.wav"
         },
         {
           "speaker": "metan",
           "text": "そういうところですわよ",
           "id": "ch8-s2-05",
-          "from": 587,
-          "durationInFrames": 53,
+          "from": 579,
+          "durationInFrames": 36,
           "audio": "audio/ch8-s2-05.wav"
         },
         {
@@ -2368,8 +2327,8 @@
           "text": "次回の「やらかした会社」も、お楽しみになのだ！",
           "emotion": "happy",
           "id": "ch8-s2-06",
-          "from": 646,
-          "durationInFrames": 85,
+          "from": 620,
+          "durationInFrames": 106,
           "audio": "audio/ch8-s2-06.wav"
         }
       ]

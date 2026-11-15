@@ -120,10 +120,23 @@ export function estimateSpeechSec(text: string, speedScale: number): number {
 }
 
 /** 音声合成に渡す文に整える（数字の桁区切りカンマを外す。例: 4,673 → 4673） */
-export const toSpeech = (text: string) =>
-  stripMarks(text)
+/** シリーズ共通の読み替え（音声だけに効く。字幕はそのまま） */
+export const SERIES_READINGS: Record<string, string> = {
+  やらかし度: 'やらかしど',
+  電気釜: 'デンキガマ',
+  日本初: 'にほんはつ',
+  ダブリューエイチ: 'ダブリュエイチ',
+};
+
+export const toSpeech = (text: string, readings: Record<string, string> = {}) => {
+  let s = stripMarks(text)
     .replace(/(\d),(?=\d{3})/g, '$1')
-    .replace(/…+/g, '、');
+    .replace(/(\d+)〜(\d+)月/g, '$1月から$2月')
+    .replace(/…+/g, '、')
+    .replace(/^[、。\s]+/, '');
+  for (const [from, to] of Object.entries({...SERIES_READINGS, ...readings})) s = s.split(from).join(to);
+  return s;
+};
 
 /** 字幕の強調記号 { } を外す */
 export const stripMarks = (text: string) => text.replace(/[{}]/g, '');

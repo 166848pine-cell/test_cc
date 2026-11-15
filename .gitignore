@@ -5,6 +5,8 @@ remotion/out/
 episodes/*/audio/*.wav
 episodes/*/stills/
 episodes/*/sfx/
+episodes/*/bgm/
+assets/bgm/*.wav
 episodes/*/preview_*.mp4
 episodes/*/sample.mp4
 episodes/*/_sample/

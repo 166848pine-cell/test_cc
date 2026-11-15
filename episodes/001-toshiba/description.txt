@@ -2,14 +2,14 @@
 
 ■ 目次
 0:00 つかみ
-0:46 創業編
-1:29 絶頂編
-2:18 やらかし① 不正会計
-3:34 やらかし② 原子力の大誤算
-4:29 切り売り編
-5:39 迷走編
-6:23 現在編
-7:46 まとめ
+0:47 創業編
+1:28 絶頂編
+2:10 やらかし① 不正会計
+3:21 やらかし② 原子力の大誤算
+4:13 切り売り編
+5:19 迷走編
+6:00 現在編
+7:18 まとめ
 
 ■ 主な出典（一次情報）
 ・東芝「沿革」 https://www.global.toshiba/jp/outline/corporate/history/chronology.html
@@ -88,7 +88,7 @@
 ■ クレジット
 VOICEVOX:ずんだもん
 VOICEVOX:四国めたん
-BGM：（素材を入れたらここに記載）
+BGM：自作（コードで合成）
 効果音：自作（ffmpeg で波形から合成）
 フォント：M PLUS Rounded 1c（SIL Open Font License 1.1）、Dela Gothic One（SIL Open Font License 1.1）
 制作ツール：Remotion、VOICEVOX

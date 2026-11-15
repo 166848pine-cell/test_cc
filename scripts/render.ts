@@ -3,7 +3,7 @@
 //   node scripts/render.ts episodes/001-toshiba --stills            … 確認用の静止画だけ（各章 2 枚＋指定シーン）
 //   node scripts/render.ts episodes/001-toshiba --stills=ch1-s2,ch3-s1 … 指定シーンの中ほどの静止画
 // 環境変数 REMOTION_BROWSER_EXECUTABLE があれば、そのブラウザでレンダリングする（Remotion がブラウザを取得できない環境向け）
-import {copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync} from 'node:fs';
+import {copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, renameSync, rmSync} from 'node:fs';
 import path from 'node:path';
 import {spawnSync} from 'node:child_process';
 import {episodeDirFromArgs, ROOT} from './lib.ts';
@@ -86,6 +86,11 @@ const out = path.join(episodeDir, 'out.mp4');
 const outNoAudio = path.join(episodeDir, 'out_no_audio.mp4');
 const started = Date.now();
 run('npx', ['remotion', 'render', 'Episode', out, '--codec=h264', '--crf=20', '--audio-codec=aac', '--audio-bitrate=192k', ...common]);
+
+// 音量をそろえる（YouTube の基準に近い -16 LUFS 前後。映像は再エンコードしない）
+const tmpOut = path.join(episodeDir, 'out.tmp.mp4');
+run('ffmpeg', ['-hide_banner', '-loglevel', 'error', '-y', '-i', out, '-c:v', 'copy', '-af', 'loudnorm=I=-16:TP=-1.5:LRA=11', '-ar', '48000', '-c:a', 'aac', '-b:a', '192k', '-movflags', '+faststart', tmpOut], ROOT);
+renameSync(tmpOut, out);
 
 // 映像のみ版（再エンコードせず音声トラックだけ外す）
 if (existsSync(outNoAudio)) rmSync(outNoAudio);

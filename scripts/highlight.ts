@@ -60,7 +60,7 @@ for (const [i, c] of clips.entries()) {
 const list = path.join(work, 'list.txt');
 writeFileSync(list, parts.map((p) => `file '${p}'`).join('\n') + '\n');
 const sample = path.join(episodeDir, 'sample.mp4');
-const r = spawnSync('ffmpeg', ['-hide_banner', '-loglevel', 'error', '-y', '-f', 'concat', '-safe', '0', '-i', list, '-c', 'copy', '-movflags', '+faststart', sample], {stdio: 'inherit'});
+const r = spawnSync('ffmpeg', ['-hide_banner', '-loglevel', 'error', '-y', '-f', 'concat', '-safe', '0', '-i', list, '-c:v', 'copy', '-af', 'loudnorm=I=-16:TP=-1.5:LRA=11', '-ar', '48000', '-c:a', 'aac', '-b:a', '192k', '-movflags', '+faststart', sample], {stdio: 'inherit'});
 if (r.status !== 0) process.exit(r.status ?? 1);
 rmSync(work, {recursive: true, force: true});
 const total = clips.reduce((a, c) => a + (c.to - c.from + 1), 0) / fps;
