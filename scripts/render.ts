@@ -33,8 +33,13 @@ function run(cmd: string, args: string[], cwd = remotionDir) {
 }
 
 function probeDuration(file: string, stream: 'v:0' | 'a:0'): number {
+  if (stream === 'v:0') {
+    // 映像はフレーム数から計算する（再多重化した mp4 では stream の duration が取れないことがある）
+    const r = spawnSync('ffprobe', ['-v', 'error', '-count_packets', '-select_streams', 'v:0', '-show_entries', 'stream=nb_read_packets', '-of', 'csv=p=0', file], {encoding: 'utf8'});
+    return parseFloat(r.stdout) / timeline.fps;
+  }
   const r = spawnSync('ffprobe', ['-v', 'error', '-select_streams', stream, '-show_entries', 'stream=duration', '-of', 'csv=p=0', file], {encoding: 'utf8'});
-  return Number(r.stdout.trim());
+  return parseFloat(r.stdout); // csv 出力の末尾のカンマを無視する
 }
 
 const stillsArg = process.argv.findLast((a) => a.startsWith('--stills'));
@@ -113,7 +118,7 @@ console.log(
   ].join('\n'),
 );
 const tol = 1 / timeline.fps + 0.05;
-if (Math.abs(v - expected) > tol || Math.abs(a - v) > 0.1 || Math.abs(n - expected) > tol) {
+if (![v, a, n, v2].every(Number.isFinite) || Math.abs(v - expected) > tol || Math.abs(v2 - expected) > tol || Math.abs(a - v) > 0.1 || Math.abs(n - expected) > tol) {
   console.error('警告: 尺が一致していません');
   process.exit(3);
 }

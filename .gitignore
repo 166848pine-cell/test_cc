@@ -10,3 +10,7 @@ assets/bgm/*.wav
 episodes/*/preview_*.mp4
 episodes/*/sample.mp4
 episodes/*/_sample/
+# 完成動画は 100MB を超えるので Git には入れない（GitHub の上限）
+episodes/*/out.mp4
+episodes/*/out_no_audio.mp4
+episodes/*/out.tmp.mp4
