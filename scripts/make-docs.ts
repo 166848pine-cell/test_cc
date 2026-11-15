@@ -136,6 +136,7 @@ const desc = [
   ...voices,
   ...(bgm.length ? bgm.map((b) => `BGM：${b}`) : ['BGM：（素材を入れたらここに記載）']),
   ...extra,
+  '効果音：自作（ffmpeg で波形から合成）',
   `フォント：${fonts.join('、')}`,
   `制作ツール：${tools.join('、')}`,
 ].join('\n');

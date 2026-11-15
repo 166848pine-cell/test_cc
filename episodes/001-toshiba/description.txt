@@ -90,5 +90,6 @@
 VOICEVOX:ずんだもん
 VOICEVOX:四国めたん
 BGM：（素材を入れたらここに記載）
+効果音：自作（ffmpeg で波形から合成）
 フォント：M PLUS Rounded 1c（SIL Open Font License 1.1）、Dela Gothic One（SIL Open Font License 1.1）
 制作ツール：Remotion、VOICEVOX
