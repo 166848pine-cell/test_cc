@@ -3,7 +3,7 @@ import {C, FONT_BODY, LAYOUT, parseMarks} from '../theme';
 import {clamp} from '../timing';
 import {findLine, type FlatLine} from './Characters';
 
-const BOX_TEXT_W = 1240;
+const BOX_TEXT_W = 1120;
 const MAX_FONT = 58;
 
 /** 字幕を 1〜2 行に分ける位置（強調記号を除いた文字数で数える）。分けないときは -1 */
@@ -74,8 +74,8 @@ export const Subtitle: React.FC<{lines: FlatLine[]}> = ({lines}) => {
     <div
       style={{
         position: 'absolute',
-        left: 300,
-        width: 1320,
+        left: 370,
+        width: 1180,
         top: LAYOUT.bottomTop + 34,
         height: 230,
         display: 'flex',

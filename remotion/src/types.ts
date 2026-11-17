@@ -195,6 +195,8 @@ export type Timeline = {
   audioMode: 'voicevox' | 'silent';
   narration: {src: string; durationSec: number} | null;
   bgm: {src: string; volume: number} | null;
+  /** 立ち絵の画像（null なら自作の丸いキャラクター） */
+  characters?: {zundamon: string; metan: string} | null;
   /** 効果音の全体音量（null なら効果音なし） */
   sfx: {volume: number} | null;
   sources: Record<string, {short: string}>;

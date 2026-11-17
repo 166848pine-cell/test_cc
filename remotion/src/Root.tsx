@@ -36,6 +36,7 @@ export const RemotionRoot: React.FC = () => {
         narration: null,
         bgm: null,
         sfx: null,
+        characters: null,
         sources: {},
         fontText: '',
         scenes: [],

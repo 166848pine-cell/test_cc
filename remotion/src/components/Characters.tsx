@@ -1,4 +1,4 @@
-import {interpolate, useCurrentFrame, useVideoConfig} from 'remotion';
+import {Img, interpolate, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import {C, FONT_DISPLAY, LAYOUT} from '../theme';
 import {clamp} from '../timing';
 import type {Emotion, Speaker} from '../types';
@@ -183,9 +183,100 @@ const Character: React.FC<{speaker: Speaker; line: FlatLine | undefined; side: '
   );
 };
 
-export const Characters: React.FC<{lines: FlatLine[]}> = ({lines}) => {
+/** 立ち絵（公式イラスト）。話している側が明るくなって弾み、もう一方は少し暗く沈む */
+const STAND_W = 380;
+const STAND_H = 440;
+const IMG_H = 820;
+const Standing: React.FC<{speaker: Speaker; src: string; line: FlatLine | undefined; side: 'left' | 'right'}> = ({speaker, src, line, side}) => {
+  const frame = useCurrentFrame();
+  const {fps} = useVideoConfig();
+  const isSpeaker = line?.speaker === speaker;
+  const talking = Boolean(isSpeaker && line && frame >= line.start && frame < line.end);
+  const since = line ? frame - line.start : 0;
+  const emotion: Emotion = isSpeaker && line ? line.emotion : 'normal';
+  const name = speaker === 'zundamon' ? 'ずんだもん' : '四国めたん';
+  const dark = speaker === 'zundamon' ? C.zundamonDark : C.metanDark;
+  // 喋り出しでぴょこっと跳ね、喋っている間は小さく上下する
+  const hop = isSpeaker ? interpolate(since, [0, 4, 9], [0, -30, 0], clamp) : 0;
+  const bob = talking ? -Math.abs(Math.sin((frame / fps) * Math.PI * 3.2)) * 7 : Math.sin(frame / 24) * 2;
+  // 驚いたときは大きく跳ね、しょんぼりは少し沈む
+  const extra = emotion === 'surprised' ? interpolate(since, [0, 5, 12], [0, -40, 0], clamp) : emotion === 'sad' ? 18 : 0;
+  const scale = isSpeaker ? 1.04 : 0.97;
+  return (
+    <div
+      style={{
+        position: 'absolute',
+        left: side === 'left' ? -10 : undefined,
+        right: side === 'right' ? -10 : undefined,
+        bottom: 0,
+        width: STAND_W,
+        height: STAND_H,
+        overflow: 'visible',
+      }}
+    >
+      <div
+        style={{
+          position: 'absolute',
+          left: 0,
+          right: 0,
+          bottom: 0,
+          height: STAND_H + 60,
+          overflow: 'hidden',
+          display: 'flex',
+          justifyContent: 'center',
+        }}
+      >
+        <Img
+          src={staticFile(src)}
+          style={{
+            height: IMG_H,
+            marginTop: 60,
+            translate: `0px ${hop + bob + extra}px`,
+            scale: String(scale),
+            transformOrigin: 'top center',
+            filter: isSpeaker || !line ? 'drop-shadow(0 0 0 #fff) drop-shadow(6px 0 0 #fff) drop-shadow(-6px 0 0 #fff) drop-shadow(0 -6px 0 #fff)' : 'brightness(0.62) saturate(0.7)',
+          }}
+        />
+      </div>
+      {isSpeaker ? (
+        <div style={{position: 'absolute', top: 10, left: side === 'left' ? 230 : 40, width: 240, height: 200}}>
+          <EmotionFx emotion={emotion} since={since} side={side} />
+        </div>
+      ) : null}
+      <div
+        style={{
+          position: 'absolute',
+          left: '50%',
+          bottom: 18,
+          translate: '-50% 0px',
+          padding: '2px 18px 4px',
+          borderRadius: 999,
+          background: dark,
+          border: `4px solid ${C.ink}`,
+          color: '#fff',
+          fontFamily: FONT_DISPLAY,
+          fontSize: 26,
+          whiteSpace: 'nowrap',
+          opacity: isSpeaker || !line ? 1 : 0.75,
+        }}
+      >
+        {name}
+      </div>
+    </div>
+  );
+};
+
+export const Characters: React.FC<{lines: FlatLine[]; images?: {zundamon: string; metan: string} | null}> = ({lines, images}) => {
   const frame = useCurrentFrame();
   const current = findLine(lines, frame);
+  if (images) {
+    return (
+      <>
+        <Standing speaker="metan" src={images.metan} line={current} side="left" />
+        <Standing speaker="zundamon" src={images.zundamon} line={current} side="right" />
+      </>
+    );
+  }
   return (
     <>
       <Character speaker="metan" line={current} side="left" />

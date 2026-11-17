@@ -66,8 +66,8 @@
       "mode": "voicevox"
     },
     "ch0-s2-08": {
-      "hash": "6a9aee7aa7120f0a",
-      "durationSec": 3.978666666666667,
+      "hash": "624008c67e5ff6fb",
+      "durationSec": 5.013333333333334,
       "speakerId": 2,
       "mode": "voicevox"
     },
@@ -288,8 +288,8 @@
       "mode": "voicevox"
     },
     "ch4-s2-02": {
-      "hash": "2b4c5a709edf8c7c",
-      "durationSec": 2.944,
+      "hash": "91abd0e2860ff574",
+      "durationSec": 3.424,
       "speakerId": 3,
       "mode": "voicevox"
     },
@@ -660,18 +660,24 @@
       "mode": "voicevox"
     },
     "ch8-s2-04": {
+      "hash": "02f71c80feae5ed2",
+      "durationSec": 4.8853333333333335,
+      "speakerId": 2,
+      "mode": "voicevox"
+    },
+    "ch8-s2-05": {
       "hash": "bf6dec00750620e4",
       "durationSec": 3.808,
       "speakerId": 3,
       "mode": "voicevox"
     },
-    "ch8-s2-05": {
+    "ch8-s2-06": {
       "hash": "75e06bf148ab8cf4",
       "durationSec": 1.1733333333333333,
       "speakerId": 2,
       "mode": "voicevox"
     },
-    "ch8-s2-06": {
+    "ch8-s2-07": {
       "hash": "c4389e00fe55226f",
       "durationSec": 3.530666666666667,
       "speakerId": 3,

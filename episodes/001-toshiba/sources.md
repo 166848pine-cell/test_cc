@@ -84,6 +84,7 @@
 | ch7-s5 | 報道によれば、東芝は早ければ2028年度の再上場を目指す | [src-54](https://news.yahoo.co.jp/articles/7ed80fb96591fce46b4f208d973e1a9b7f851388)<br>[src-55](https://www.jiji.com/jc/article?k=2026051501208&g=eco) |
 | ch8-s2 | 2025年度の営業利益は3,008億円（ROS 8.1%）で、2026年度第1四半期の営業利益1,119億円は第1四半期として過去最高。一方、第1四半期の税引前利益6兆4,608億円のうちキオクシア関連損益が6兆3,294億円 | [src-49](https://www.global.toshiba/content/dam/toshiba/jp/ir/corporate/finance/pdf/tpr2025q4.pdf)<br>[src-50](https://www.global.toshiba/content/dam/toshiba/jp/ir/corporate/finance/pdf/tpr2026q1.pdf) |
 | ch8-s2 | 報道によれば、第三者委員会の報告書は「チャレンジ」と称する過大な目標を認定 | [src-15](https://news.mynavi.jp/article/20150721-a133/)<br>[src-16](https://www.nikkei.com/article/DGXLASDZ20HAW_Q5A720C1NN1000/) |
+| ch8-s2 | 東芝は1875年創業で、2025年に創業150周年（150年の歩み） | [src-02](https://www.global.toshiba/jp/news/corporate/2025/06/news-20250630-02.html) |
 
 ## 出典一覧
 

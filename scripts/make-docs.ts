@@ -137,6 +137,7 @@ const desc = [
   ...voices,
   ...(bgm.length ? bgm.map((b) => `BGM：${b}`) : script.bgm?.src.endsWith('yarakashi-theme.wav') ? ['BGM：自作（コードで合成）'] : ['BGM：（素材を入れたらここに記載）']),
   ...extra,
+  ...(existsSync(path.join(episodeDir, 'characters')) ? ['イラスト：東北ずん子・ずんだもんプロジェクト 公式イラスト（https://zunko.jp/con_illust.html）'] : []),
   '効果音：自作（ffmpeg で波形から合成）',
   `フォント：${fonts.join('、')}`,
   `制作ツール：${tools.join('、')}`,

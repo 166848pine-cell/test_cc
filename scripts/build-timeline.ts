@@ -116,6 +116,20 @@ if (script.sfx !== false) {
   }
 }
 
+// ---- 立ち絵（assets/characters の公式イラスト。scripts/fetch-characters.ts で取得）----
+let characters: Timeline['characters'] = null;
+{
+  const from = path.join(ROOT, 'assets', 'characters');
+  if (existsSync(path.join(from, 'zundamon.png')) && existsSync(path.join(from, 'metan.png'))) {
+    const to = path.join(episodeDir, 'characters');
+    mkdirSync(to, {recursive: true});
+    for (const n of ['zundamon', 'metan']) copyFileSync(path.join(from, `${n}.png`), path.join(to, `${n}.png`));
+    characters = {zundamon: 'characters/zundamon.png', metan: 'characters/metan.png'};
+  } else {
+    console.warn('立ち絵なし: assets/characters に画像がないので、自作の丸いキャラクターで描きます（node scripts/fetch-characters.ts で取得）');
+  }
+}
+
 // ---- フォント先読み用の文字集合 ----
 const strings: string[] = [script.series, script.title, '第章出典：・、。0123456789,.%−-+▲億兆円万年度約'];
 const collect = (v: unknown) => {
@@ -145,6 +159,7 @@ const timeline: Timeline = {
   narration: {src: 'audio/narration.wav', durationSec: totalSamples / sampleRate},
   bgm,
   sfx,
+  characters,
   sources: Object.fromEntries(script.sources.map((s) => [s.id, {short: s.short}])),
   fontText,
   scenes,

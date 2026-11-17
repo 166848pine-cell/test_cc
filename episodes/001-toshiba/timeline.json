@@ -6,11 +6,11 @@
   "series": "やらかした会社",
   "episode": 1,
   "title": "売った子どもに養われる親 ― 東芝150年のやらかし史",
-  "durationInFrames": 13939,
+  "durationInFrames": 14136,
   "audioMode": "voicevox",
   "narration": {
     "src": "audio/narration.wav",
-    "durationSec": 464.6333333333333
+    "durationSec": 471.2
   },
   "bgm": {
     "src": "bgm/yarakashi-theme.wav",
@@ -18,6 +18,10 @@
   },
   "sfx": {
     "volume": 0.5
+  },
+  "characters": {
+    "zundamon": "characters/zundamon.png",
+    "metan": "characters/metan.png"
   },
   "sources": {
     "src-01": {
@@ -222,7 +226,7 @@
       "short": "東洋経済オンライン(2015/12)"
     }
   },
-  "fontText": " #%()+,-./0123456789ABCDEHIJMNOPRSTVWabcdeghiklmnoprstuy{}―…→−①②▲、。々「」『』〜あいうえおかがきぎくけげこごさざしじすずせそただちっつづてでとどなにねのはばひびぶへべほぼまみむめもゃやょよらりるれろわをんアイウェエオキクグケコサザシジスズセゼソタダチッテデトドナニノハバパヒビピフブプベボポマムメモャヤュラリルレロン・ー一万三上下不世中主久了事交京人今仕付代令以件任企会何作併供価保信修個倍借値側債億優兆入公共典内円再冒冷処出分切刊初利券削前割創力助効動務勝化医半卒博却原去収取史右号合同名向否含告周呼命品員商問営嘘器四回団国圧在地型基報場増壊売変外多大失始委子字学完定家射小少就局属岡嵐州工市帰年庁度座庫廃式引当役後得復徴心急情意感所手技抜押持指振掃探提換揺損放教数新方日早明時暮更書最月有期未末本来東板柄査株案棒業楽標模権機次欧止正歴段比民気決沿法泣注洋洗派浦消深済減測源準濯火炊点熱爆物特率現球理環生産用田申画界略療発白的益盛目直相看真着短破示社称税種立章第等算米糧紀約納純累終経結絶続綻総締編練美翌者聞職能膨臨自興舎芝菓落葉蔵藤融術表製要見規覚親言訂計訓設証評試認誕誤説課調談請論議財責買費資赤走超跳転辞込迷追退送通造連進運過道適邦部重量金釜銀銘長開降限除集電静非面革頂頭頼題額食飯養館驚高！（）／：？",
+  "fontText": " #%()+,-./0123456789ABCDEHIJMNOPRSTVWabcdeghiklmnoprstuy{}―…→−①②▲、。々「」『』〜あいうえおかがきぎくけげこごさざしじすずせそただちっつづてでとどなにねのはばひびぶへべほぼまみむめもゃやょよらりるれろわをんアイウェエオキクグケコサザシジスズセゼソタダチッテデトドナニノハバパヒビピフブプベボポマムメモャヤュラリルレロン・ー一万三上下不世中主久了事交京人今仕付代令以件任企会何作併供価保信修個倍借値側債億優兆入公共典内円再冒冷処出分切刊初利券削前割創力助効動務勝化医半卒博却原去収取史右号合同名向否含告周呼命品員商問営嘘器四回団国圧在地型基報場増壊売変外多大失始委子字学完定家射小少就局属岡嵐州工市帰年庁度座庫廃式引当役後得復徴心急情意感所手技抜押持指振掃探提換揺損放教数料新方日早明時暮更書最月有期未末本来東板柄査株案棒業楽標模権機次欧止正歩歴段比民気決沿法泣注洋洗派浦消深済減測源準濯火炊点熱物特率現球理環生産用田申画界略療発白的益盛目直相看真着短破示社称税種立章第等算米糧紀約納純累終経結絶続綻総締編練美翌者聞職能膨臨自興舎芝菓落葉蔵藤融術表製要見規覚親言訂計訓設証評試認誕誤説課調談請論議財責買費資赤走超跳転辞込迷追退送途通造連進運過道適邦部重量金釜銀銘長開降限除集電静非面革頂頭頼題額食飯養館驚高！（）／：？",
   "scenes": [
     {
       "id": "ch0-s1",
@@ -285,7 +289,7 @@
         "atLine": 0
       },
       "from": 442,
-      "durationInFrames": 973,
+      "durationInFrames": 1004,
       "visual": {
         "type": "bigNumber",
         "props": {
@@ -371,11 +375,11 @@
         },
         {
           "speaker": "metan",
-          "text": "今日は東芝150年の「やらかし」を、たどりますわ",
+          "text": "今日は公開資料をもとに、東芝150年の歩みと「やらかし」から学びますわ",
           "emotion": "happy",
           "id": "ch0-s2-08",
           "from": 844,
-          "durationInFrames": 120,
+          "durationInFrames": 151,
           "audio": "audio/ch0-s2-08.wav"
         }
       ]
@@ -386,7 +390,7 @@
       "chapterTitle": "創業編",
       "chapterIndex": 1,
       "accent": "#F4A261",
-      "from": 1415,
+      "from": 1446,
       "durationInFrames": 45,
       "visual": {
         "type": "title",
@@ -406,7 +410,7 @@
       "chapterTitle": "創業編",
       "chapterIndex": 1,
       "accent": "#F4A261",
-      "from": 1460,
+      "from": 1491,
       "durationInFrames": 685,
       "visual": {
         "type": "timeline",
@@ -486,7 +490,7 @@
       "chapterTitle": "創業編",
       "chapterIndex": 1,
       "accent": "#F4A261",
-      "from": 2145,
+      "from": 2176,
       "durationInFrames": 356,
       "visual": {
         "type": "timeline",
@@ -550,7 +554,7 @@
       "chapterTitle": "創業編",
       "chapterIndex": 1,
       "accent": "#F4A261",
-      "from": 2501,
+      "from": 2532,
       "durationInFrames": 142,
       "visual": {
         "type": "meter",
@@ -588,7 +592,7 @@
       "chapterTitle": "絶頂編",
       "chapterIndex": 2,
       "accent": "#2EC4B6",
-      "from": 2643,
+      "from": 2674,
       "durationInFrames": 45,
       "visual": {
         "type": "title",
@@ -608,7 +612,7 @@
       "chapterTitle": "絶頂編",
       "chapterIndex": 2,
       "accent": "#2EC4B6",
-      "from": 2688,
+      "from": 2719,
       "durationInFrames": 553,
       "visual": {
         "type": "timeline",
@@ -679,10 +683,10 @@
       "chapterIndex": 2,
       "accent": "#2EC4B6",
       "stamp": {
-        "text": "爆買い",
+        "text": "大型買収",
         "atLine": 2
       },
-      "from": 3241,
+      "from": 3272,
       "durationInFrames": 600,
       "visual": {
         "type": "bigNumber",
@@ -757,7 +761,7 @@
       "chapterTitle": "絶頂編",
       "chapterIndex": 2,
       "accent": "#2EC4B6",
-      "from": 3841,
+      "from": 3872,
       "durationInFrames": 82,
       "visual": {
         "type": "meter",
@@ -787,7 +791,7 @@
       "chapterTitle": "やらかし① 不正会計",
       "chapterIndex": 3,
       "accent": "#FF4D4D",
-      "from": 3923,
+      "from": 3954,
       "durationInFrames": 45,
       "visual": {
         "type": "title",
@@ -808,10 +812,10 @@
       "chapterIndex": 3,
       "accent": "#FF4D4D",
       "stamp": {
-        "text": "盛りすぎ",
+        "text": "要修正",
         "atLine": 3
       },
-      "from": 3968,
+      "from": 3999,
       "durationInFrames": 648,
       "visual": {
         "type": "bigNumber",
@@ -880,7 +884,7 @@
       "chapterTitle": "やらかし① 不正会計",
       "chapterIndex": 3,
       "accent": "#FF4D4D",
-      "from": 4616,
+      "from": 4647,
       "durationInFrames": 535,
       "visual": {
         "type": "bigNumber",
@@ -948,7 +952,7 @@
       "chapterTitle": "やらかし① 不正会計",
       "chapterIndex": 3,
       "accent": "#FF4D4D",
-      "from": 5151,
+      "from": 5182,
       "durationInFrames": 782,
       "visual": {
         "type": "timeline",
@@ -1033,7 +1037,7 @@
       "chapterTitle": "やらかし① 不正会計",
       "chapterIndex": 3,
       "accent": "#FF4D4D",
-      "from": 5933,
+      "from": 5964,
       "durationInFrames": 121,
       "visual": {
         "type": "meter",
@@ -1071,7 +1075,7 @@
       "chapterTitle": "やらかし② 原子力の大誤算",
       "chapterIndex": 4,
       "accent": "#C1121F",
-      "from": 6054,
+      "from": 6085,
       "durationInFrames": 45,
       "visual": {
         "type": "title",
@@ -1092,11 +1096,11 @@
       "chapterIndex": 4,
       "accent": "#C1121F",
       "stamp": {
-        "text": "大赤字",
+        "text": "最終赤字",
         "atLine": 2
       },
-      "from": 6099,
-      "durationInFrames": 690,
+      "from": 6130,
+      "durationInFrames": 704,
       "visual": {
         "type": "bigNumber",
         "props": {
@@ -1131,18 +1135,18 @@
         },
         {
           "speaker": "zundamon",
-          "text": "爆買いした会社が、経営破綻しちゃったのだ！？",
+          "text": "あの大きな買い物の相手が、経営破綻しちゃったのだ！？",
           "emotion": "surprised",
           "id": "ch4-s2-02",
           "from": 199,
-          "durationInFrames": 89,
+          "durationInFrames": 103,
           "audio": "audio/ch4-s2-02.wav"
         },
         {
           "speaker": "metan",
           "text": "東芝の2016年度の最終赤字は{9,657億円}",
           "id": "ch4-s2-03",
-          "from": 293,
+          "from": 307,
           "durationInFrames": 115,
           "audio": "audio/ch4-s2-03.wav"
         },
@@ -1150,7 +1154,7 @@
           "speaker": "metan",
           "text": "報道では、国内製造業で最大規模とされましたわ",
           "id": "ch4-s2-04",
-          "from": 413,
+          "from": 427,
           "durationInFrames": 90,
           "audio": "audio/ch4-s2-04.wav"
         },
@@ -1159,7 +1163,7 @@
           "text": "うまい棒、約644億本ぶんの赤字なのだ……",
           "emotion": "sad",
           "id": "ch4-s2-05",
-          "from": 508,
+          "from": 522,
           "durationInFrames": 104,
           "audio": "audio/ch4-s2-05.wav"
         },
@@ -1167,7 +1171,7 @@
           "speaker": "metan",
           "text": "その換算、すっかり気に入ってますのね",
           "id": "ch4-s2-06",
-          "from": 617,
+          "from": 631,
           "durationInFrames": 64,
           "audio": "audio/ch4-s2-06.wav"
         }
@@ -1179,7 +1183,7 @@
       "chapterTitle": "やらかし② 原子力の大誤算",
       "chapterIndex": 4,
       "accent": "#C1121F",
-      "from": 6789,
+      "from": 6834,
       "durationInFrames": 195,
       "visual": {
         "type": "barChart",
@@ -1238,7 +1242,7 @@
       "chapterTitle": "やらかし② 原子力の大誤算",
       "chapterIndex": 4,
       "accent": "#C1121F",
-      "from": 6984,
+      "from": 7029,
       "durationInFrames": 466,
       "visual": {
         "type": "timeline",
@@ -1317,7 +1321,7 @@
       "chapterTitle": "やらかし② 原子力の大誤算",
       "chapterIndex": 4,
       "accent": "#C1121F",
-      "from": 7450,
+      "from": 7495,
       "durationInFrames": 142,
       "visual": {
         "type": "meter",
@@ -1356,7 +1360,7 @@
       "chapterTitle": "切り売り編",
       "chapterIndex": 5,
       "accent": "#FFB703",
-      "from": 7592,
+      "from": 7637,
       "durationInFrames": 45,
       "visual": {
         "type": "title",
@@ -1380,7 +1384,7 @@
         "text": "売却ラッシュ",
         "atLine": 6
       },
-      "from": 7637,
+      "from": 7682,
       "durationInFrames": 935,
       "visual": {
         "type": "transferMap",
@@ -1510,7 +1514,7 @@
       "chapterTitle": "切り売り編",
       "chapterIndex": 5,
       "accent": "#FFB703",
-      "from": 8572,
+      "from": 8617,
       "durationInFrames": 453,
       "visual": {
         "type": "timeline",
@@ -1577,7 +1581,7 @@
       "chapterTitle": "切り売り編",
       "chapterIndex": 5,
       "accent": "#FFB703",
-      "from": 9025,
+      "from": 9070,
       "durationInFrames": 397,
       "visual": {
         "type": "bigNumber",
@@ -1626,7 +1630,7 @@
       "chapterTitle": "切り売り編",
       "chapterIndex": 5,
       "accent": "#FFB703",
-      "from": 9422,
+      "from": 9467,
       "durationInFrames": 154,
       "visual": {
         "type": "meter",
@@ -1664,7 +1668,7 @@
       "chapterTitle": "迷走編",
       "chapterIndex": 6,
       "accent": "#9B5DE5",
-      "from": 9576,
+      "from": 9621,
       "durationInFrames": 45,
       "visual": {
         "type": "title",
@@ -1684,7 +1688,7 @@
       "chapterTitle": "迷走編",
       "chapterIndex": 6,
       "accent": "#9B5DE5",
-      "from": 9621,
+      "from": 9666,
       "durationInFrames": 356,
       "visual": {
         "type": "quote",
@@ -1731,7 +1735,7 @@
       "chapterTitle": "迷走編",
       "chapterIndex": 6,
       "accent": "#9B5DE5",
-      "from": 9977,
+      "from": 10022,
       "durationInFrames": 746,
       "visual": {
         "type": "timeline",
@@ -1835,7 +1839,7 @@
       "chapterTitle": "迷走編",
       "chapterIndex": 6,
       "accent": "#9B5DE5",
-      "from": 10723,
+      "from": 10768,
       "durationInFrames": 80,
       "visual": {
         "type": "meter",
@@ -1865,7 +1869,7 @@
       "chapterTitle": "現在編",
       "chapterIndex": 7,
       "accent": "#3A86FF",
-      "from": 10803,
+      "from": 10848,
       "durationInFrames": 45,
       "visual": {
         "type": "title",
@@ -1885,7 +1889,7 @@
       "chapterTitle": "現在編",
       "chapterIndex": 7,
       "accent": "#3A86FF",
-      "from": 10848,
+      "from": 10893,
       "durationInFrames": 559,
       "visual": {
         "type": "timeline",
@@ -1956,7 +1960,7 @@
         "text": "過去最高",
         "atLine": 1
       },
-      "from": 11407,
+      "from": 11452,
       "durationInFrames": 351,
       "visual": {
         "type": "barChart",
@@ -2068,7 +2072,7 @@
       "chapterTitle": "現在編",
       "chapterIndex": 7,
       "accent": "#3A86FF",
-      "from": 11758,
+      "from": 11803,
       "durationInFrames": 684,
       "visual": {
         "type": "bigNumber",
@@ -2137,7 +2141,7 @@
       "chapterTitle": "現在編",
       "chapterIndex": 7,
       "accent": "#3A86FF",
-      "from": 12442,
+      "from": 12487,
       "durationInFrames": 601,
       "visual": {
         "type": "bigNumber",
@@ -2205,7 +2209,7 @@
       "chapterTitle": "現在編",
       "chapterIndex": 7,
       "accent": "#3A86FF",
-      "from": 13043,
+      "from": 13088,
       "durationInFrames": 116,
       "visual": {
         "type": "meter",
@@ -2243,7 +2247,7 @@
       "chapterTitle": "まとめ",
       "chapterIndex": 8,
       "accent": "#FF4D9A",
-      "from": 13159,
+      "from": 13204,
       "durationInFrames": 45,
       "visual": {
         "type": "title",
@@ -2263,8 +2267,8 @@
       "chapterTitle": "まとめ",
       "chapterIndex": 8,
       "accent": "#FF4D9A",
-      "from": 13204,
-      "durationInFrames": 735,
+      "from": 13249,
+      "durationInFrames": 887,
       "visual": {
         "type": "title",
         "props": {
@@ -2278,7 +2282,8 @@
         "src-49",
         "src-50",
         "src-15",
-        "src-16"
+        "src-16",
+        "src-02"
       ],
       "lines": [
         {
@@ -2306,30 +2311,38 @@
           "audio": "audio/ch8-s2-03.wav"
         },
         {
+          "speaker": "metan",
+          "text": "東芝はいまも立て直しの途中。150年の歩みから学べることは、まだまだありますわ",
+          "id": "ch8-s2-04",
+          "from": 459,
+          "durationInFrames": 147,
+          "audio": "audio/ch8-s2-04.wav"
+        },
+        {
           "speaker": "zundamon",
           "text": "……決めたのだ。ボク、東芝じゃなくてキオクシアに就職するのだ！",
           "emotion": "happy",
-          "id": "ch8-s2-04",
-          "from": 459,
+          "id": "ch8-s2-05",
+          "from": 611,
           "durationInFrames": 115,
-          "audio": "audio/ch8-s2-04.wav"
+          "audio": "audio/ch8-s2-05.wav"
         },
         {
           "speaker": "metan",
           "text": "そういうところですわよ",
-          "id": "ch8-s2-05",
-          "from": 579,
+          "id": "ch8-s2-06",
+          "from": 731,
           "durationInFrames": 36,
-          "audio": "audio/ch8-s2-05.wav"
+          "audio": "audio/ch8-s2-06.wav"
         },
         {
           "speaker": "zundamon",
           "text": "次回の「やらかした会社」も、お楽しみになのだ！",
           "emotion": "happy",
-          "id": "ch8-s2-06",
-          "from": 620,
+          "id": "ch8-s2-07",
+          "from": 772,
           "durationInFrames": 106,
-          "audio": "audio/ch8-s2-06.wav"
+          "audio": "audio/ch8-s2-07.wav"
         }
       ]
     }

@@ -124,8 +124,8 @@ export const SourceFooter: React.FC<{timeline: Timeline}> = ({timeline}) => {
     <div
       style={{
         position: 'absolute',
-        left: 300,
-        right: 300,
+        left: 380,
+        right: 380,
         top: LAYOUT.footerY,
         height: 30,
         display: 'flex',

@@ -6,6 +6,7 @@ episodes/*/audio/*.wav
 episodes/*/stills/
 episodes/*/sfx/
 episodes/*/bgm/
+episodes/*/characters/
 assets/bgm/*.wav
 episodes/*/preview_*.mp4
 episodes/*/sample.mp4
@@ -14,3 +15,4 @@ episodes/*/_sample/
 episodes/*/out.mp4
 episodes/*/out_no_audio.mp4
 episodes/*/out.tmp.mp4
+assets/characters/*.png
