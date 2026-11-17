@@ -24,6 +24,28 @@ const manifest = JSON.parse(readFileSync(manifestPath, 'utf8')) as {
 };
 
 const sec = (s: number) => Math.round(s * FPS);
+
+/** 口パク：1 フレームごとの音量（RMS）を 0〜3 の 4 段階にする */
+function mouthTrack(file: string, frames: number): string {
+  const {sampleRate, samples} = readWav(file);
+  const per = Math.round(sampleRate / FPS);
+  const rms: number[] = [];
+  for (let f = 0; f < frames; f++) {
+    let sum = 0;
+    let n = 0;
+    for (let i = f * per; i < Math.min(samples.length, (f + 1) * per); i++) {
+      sum += (samples[i] / 32768) ** 2;
+      n++;
+    }
+    rms.push(n ? Math.sqrt(sum / n) : 0);
+  }
+  const sorted = [...rms].sort((x, y) => x - y);
+  const ref = sorted[Math.floor(sorted.length * 0.9)] || 1;
+  return rms.map((v) => {
+    const r = v / ref;
+    return r < 0.15 ? '0' : r < 0.4 ? '1' : r < 0.7 ? '2' : '3';
+  }).join('');
+}
 const DEFAULT_COLORS = ['#FFC93C', '#F4A261', '#2EC4B6', '#FF4D4D', '#C1121F', '#FFB703', '#9B5DE5', '#3A86FF', '#FF4D9A'];
 const scenes: TimelineScene[] = [];
 let cursor = 0;
@@ -36,7 +58,7 @@ script.chapters.forEach((chapter, chapterIndex) => {
       const m = manifest.lines[id];
       if (!m) throw new Error(`音声がありません: ${id}（tts.ts を再実行してください）`);
       const durationInFrames = Math.ceil(m.durationSec * FPS);
-      const out: TimelineLine = {...line, id, from: t, durationInFrames, audio: `audio/${id}.wav`};
+      const out: TimelineLine = {...line, id, from: t, durationInFrames, audio: `audio/${id}.wav`, mouth: mouthTrack(path.join(episodeDir, 'audio', `${id}.wav`), durationInFrames)};
       t += durationInFrames;
       if (i < scene.lines.length - 1) t += sec(line.pauseAfterSec ?? script.tts.gapSec);
       return out;
@@ -160,6 +182,7 @@ const timeline: Timeline = {
   bgm,
   sfx,
   characters,
+  characterStyle: script.characterStyle ?? 'chibi',
   sources: Object.fromEntries(script.sources.map((s) => [s.id, {short: s.short}])),
   fontText,
   scenes,

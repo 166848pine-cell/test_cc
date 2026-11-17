@@ -151,6 +151,8 @@ export type Script = {
   bannedWords?: string[];
   tts: TtsSettings;
   bgm?: {src: string; volume: number};
+  /** キャラクターの描き方（既定 chibi） */
+  characterStyle?: 'chibi' | 'image' | 'icon';
   /** 効果音（assets/sfx の自作音）。false で無効、数値で全体の音量 */
   sfx?: false | {volume: number};
   sources: Source[];
@@ -165,6 +167,8 @@ export type TimelineLine = ScriptLine & {
   from: number;
   durationInFrames: number;
   audio: string;
+  /** 口の開き（1 フレーム 1 文字、0〜3）。音声の大きさから作る */
+  mouth?: string;
 };
 
 export type TimelineScene = {
@@ -197,6 +201,8 @@ export type Timeline = {
   bgm: {src: string; volume: number} | null;
   /** 立ち絵の画像（null なら自作の丸いキャラクター） */
   characters?: {zundamon: string; metan: string} | null;
+  /** キャラクターの描き方：chibi=自作の立ち絵（既定） image=画像の立ち絵 icon=丸アイコン */
+  characterStyle?: 'chibi' | 'image' | 'icon';
   /** 効果音の全体音量（null なら効果音なし） */
   sfx: {volume: number} | null;
   sources: Record<string, {short: string}>;

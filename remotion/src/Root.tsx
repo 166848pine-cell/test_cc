@@ -1,4 +1,5 @@
-import {Composition, type CalculateMetadataFunction} from 'remotion';
+import {Composition, Still, type CalculateMetadataFunction} from 'remotion';
+import {CharacterSheet} from './CharacterSheet';
 import {Episode} from './Episode';
 import type {Timeline} from './types';
 
@@ -15,6 +16,8 @@ const calculateMetadata: CalculateMetadataFunction<Timeline> = ({props}) => {
 
 export const RemotionRoot: React.FC = () => {
   return (
+    <>
+    <Still id="CharacterSheet" component={CharacterSheet} width={1920} height={1080} />
     <Composition
       id="Episode"
       component={Episode}
@@ -42,5 +45,6 @@ export const RemotionRoot: React.FC = () => {
         scenes: [],
       }}
     />
+    </>
   );
 };

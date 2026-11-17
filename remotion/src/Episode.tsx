@@ -86,6 +86,7 @@ export const Episode: React.FC<Timeline> = (timeline) => {
           start,
           end: start + l.durationInFrames,
           holdUntil: next ? s.from + next.from : s.from + s.durationInFrames,
+          mouth: l.mouth,
         });
       });
     }
@@ -112,7 +113,7 @@ export const Episode: React.FC<Timeline> = (timeline) => {
         </Sequence>
       ))}
       <Header timeline={timeline} />
-      <Characters lines={lines} images={timeline.characters} />
+      <Characters lines={lines} images={timeline.characters} style={timeline.characterStyle ?? (timeline.characters ? 'image' : 'icon')} />
       <Subtitle lines={lines} />
       <SourceFooter timeline={timeline} />
       {timeline.narration ? <Audio name="ナレーション" src={staticFile(timeline.narration.src)} /> : null}

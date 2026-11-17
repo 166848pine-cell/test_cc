@@ -1,6 +1,7 @@
 import {Img, interpolate, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import {C, FONT_DISPLAY, LAYOUT} from '../theme';
 import {clamp} from '../timing';
+import {ChibiFigure, type Mouth} from './Chibi';
 import type {Emotion, Speaker} from '../types';
 
 export type FlatLine = {
@@ -12,6 +13,8 @@ export type FlatLine = {
   end: number;
   /** 次のセリフが始まる（または シーンが終わる）フレーム。字幕はここまで残す */
   holdUntil: number;
+  /** 口の開き（1 フレーム 1 文字） */
+  mouth?: string;
 };
 
 const S = 240;
@@ -266,10 +269,82 @@ const Standing: React.FC<{speaker: Speaker; src: string; line: FlatLine | undefi
   );
 };
 
-export const Characters: React.FC<{lines: FlatLine[]; images?: {zundamon: string; metan: string} | null}> = ({lines, images}) => {
+/** 自作の立ち絵（二次創作）。口は音声の大きさで動き、まばたきし、セリフの感情で表情が変わる */
+const CHIBI_W = 400;
+const ChibiStanding: React.FC<{speaker: Speaker; line: FlatLine | undefined; side: 'left' | 'right'}> = ({speaker, line, side}) => {
+  const frame = useCurrentFrame();
+  const {fps} = useVideoConfig();
+  const isSpeaker = line?.speaker === speaker;
+  const talking = Boolean(isSpeaker && line && frame >= line.start && frame < line.end);
+  const since = line ? frame - line.start : 0;
+  const emotion: Emotion = isSpeaker && line ? line.emotion : 'normal';
+  const mouth = (talking && line?.mouth ? Number(line.mouth[frame - line.start] ?? '0') : 0) as Mouth;
+  // まばたき：キャラごとにずらして 3〜4 秒おき
+  const period = speaker === 'zundamon' ? 101 : 119;
+  const offset = speaker === 'zundamon' ? 0 : 47;
+  const blink = (frame + offset) % period < 4;
+  const hop = isSpeaker ? interpolate(since, [0, 4, 9], [0, -22, 0], clamp) : 0;
+  const bob = talking ? -Math.abs(Math.sin((frame / fps) * Math.PI * 3)) * 5 : Math.sin(frame / 26) * 2;
+  const extra = emotion === 'surprised' ? interpolate(since, [0, 5, 12], [0, -34, 0], clamp) : emotion === 'sad' ? 14 : 0;
+  const dark = speaker === 'zundamon' ? C.zundamonDark : C.metanDark;
+  const name = speaker === 'zundamon' ? 'ずんだもん' : '四国めたん';
+  return (
+    <div
+      style={{
+        position: 'absolute',
+        left: side === 'left' ? -6 : undefined,
+        right: side === 'right' ? -6 : undefined,
+        bottom: -70,
+        width: CHIBI_W,
+        translate: `0px ${hop + bob + extra}px`,
+        scale: String(isSpeaker ? 1.03 : 0.97),
+        transformOrigin: 'bottom center',
+        filter: isSpeaker || !line ? 'none' : 'brightness(0.78) saturate(0.85)',
+      }}
+    >
+      <div style={{transform: side === 'right' ? 'scaleX(-1)' : undefined}}>
+        <ChibiFigure speaker={speaker} emotion={emotion} mouth={mouth} blink={blink} width={CHIBI_W} />
+      </div>
+      {isSpeaker ? (
+        <div style={{position: 'absolute', top: 30, left: side === 'left' ? 250 : 0, width: 240, height: 200}}>
+          <EmotionFx emotion={emotion} since={since} side={side} />
+        </div>
+      ) : null}
+      <div
+        style={{
+          position: 'absolute',
+          left: '50%',
+          bottom: 92,
+          translate: '-50% 0px',
+          padding: '2px 18px 4px',
+          borderRadius: 999,
+          background: dark,
+          border: `3px solid #fff`,
+          color: '#fff',
+          fontFamily: FONT_DISPLAY,
+          fontSize: 24,
+          whiteSpace: 'nowrap',
+          opacity: isSpeaker || !line ? 1 : 0.8,
+        }}
+      >
+        {name}
+      </div>
+    </div>
+  );
+};
+
+export const Characters: React.FC<{lines: FlatLine[]; images?: {zundamon: string; metan: string} | null; style?: 'chibi' | 'image' | 'icon'}> = ({lines, images, style = 'chibi'}) => {
   const frame = useCurrentFrame();
   const current = findLine(lines, frame);
-  if (images) {
+  if (style === 'chibi') {
+    return (
+      <>
+        <ChibiStanding speaker="metan" line={current} side="left" />
+        <ChibiStanding speaker="zundamon" line={current} side="right" />
+      </>
+    );
+  }
+  if (images && style === 'image') {
     return (
       <>
         <Standing speaker="metan" src={images.metan} line={current} side="left" />
