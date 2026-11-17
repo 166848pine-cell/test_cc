@@ -1,82 +1,162 @@
 // ずんだもん・四国めたんの立ち絵（自作の二次創作。東北ずん子・ずんだもんプロジェクトのガイドラインに従う）。
 // 部品（髪・目・口・眉など）を SVG で描き分け、口パク・まばたき・表情差分に対応する。
+// セル塗り風の影・グラデーション・ハイライトで立体感を出している。
 import type {Emotion, Speaker} from '../types';
 
 export type Mouth = 0 | 1 | 2 | 3; // 0=閉じ 1=少し 2=開き 3=大きく
 
-const LINE = '#4A3540';
-const SKIN = '#FFF1E6';
-const SKIN_SHADE = '#F7D9C8';
-
-type Palette = {hair: string; hairShade: string; hairLight: string; iris: string; irisDark: string};
+type Palette = {
+  hairTop: string;
+  hairBottom: string;
+  hairShade: string;
+  hairLight: string;
+  hairLine: string;
+  irisTop: string;
+  iris: string;
+  irisLight: string;
+  skinLine: string;
+};
 const PAL: Record<Speaker, Palette> = {
-  zundamon: {hair: '#8EE04F', hairShade: '#5DB32C', hairLight: '#C8F58C', iris: '#F4B83A', irisDark: '#B8661A'},
-  metan: {hair: '#F37AB6', hairShade: '#C9468D', hairLight: '#FFC0DE', iris: '#45A6E6', irisDark: '#1E5E9E'},
+  zundamon: {
+    hairTop: '#B4F06E',
+    hairBottom: '#6FCB38',
+    hairShade: '#4FA826',
+    hairLight: '#E9FFC4',
+    hairLine: '#2F7419',
+    irisTop: '#A8521A',
+    iris: '#F2A62E',
+    irisLight: '#FFE07A',
+    skinLine: '#8C5A4A',
+  },
+  metan: {
+    hairTop: '#FFB1D6',
+    hairBottom: '#EE6AA9',
+    hairShade: '#C7427F',
+    hairLight: '#FFE3F1',
+    hairLine: '#8E2858',
+    irisTop: '#1C4E93',
+    iris: '#3E9BE4',
+    irisLight: '#A6E2FF',
+    skinLine: '#8C5A4A',
+  },
 };
 
-const Eye: React.FC<{x: number; y: number; p: Palette; emotion: Emotion; blink: boolean; id: string}> = ({x, y, p, emotion, blink, id}) => {
+const SKIN_LIGHT = '#FFF7F0';
+const SKIN = '#FFE9DC';
+const SKIN_SHADOW = '#F4C9B6';
+
+const FACE = 'M 98 196 C 98 124 142 90 200 90 C 258 90 302 124 302 196 C 302 254 268 300 200 308 C 132 300 98 254 98 196 Z';
+
+const Defs: React.FC<{s: Speaker; p: Palette}> = ({s, p}) => (
+  <defs>
+    <linearGradient id={`${s}-hair`} x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stopColor={p.hairTop} />
+      <stop offset="1" stopColor={p.hairBottom} />
+    </linearGradient>
+    <linearGradient id={`${s}-hairBack`} x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stopColor={p.hairBottom} />
+      <stop offset="1" stopColor={p.hairShade} />
+    </linearGradient>
+    <radialGradient id={`${s}-skin`} cx="0.5" cy="0.45" r="0.6">
+      <stop offset="0.55" stopColor={SKIN_LIGHT} />
+      <stop offset="1" stopColor={SKIN} />
+    </radialGradient>
+    <linearGradient id={`${s}-iris`} x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stopColor={p.irisTop} />
+      <stop offset="0.45" stopColor={p.iris} />
+      <stop offset="1" stopColor={p.irisLight} />
+    </linearGradient>
+    <radialGradient id={`${s}-blush`} cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stopColor="#FF8FA8" stopOpacity="0.75" />
+      <stop offset="1" stopColor="#FF8FA8" stopOpacity="0" />
+    </radialGradient>
+    <clipPath id={`${s}-face`}>
+      <path d={FACE} />
+    </clipPath>
+  </defs>
+);
+
+const Eye: React.FC<{s: Speaker; x: number; y: number; p: Palette; emotion: Emotion; blink: boolean; right?: boolean}> = ({s, x, y, p, emotion, blink, right}) => {
+  const dir = right ? 1 : -1; // 目尻の向き
   if (emotion === 'happy') {
-    return <path d={`M ${x - 28} ${y + 6} Q ${x} ${y - 22} ${x + 28} ${y + 6}`} stroke={LINE} strokeWidth={8} fill="none" strokeLinecap="round" />;
+    return <path d={`M ${x - 28} ${y + 8} Q ${x} ${y - 22} ${x + 28} ${y + 8}`} stroke={p.skinLine} strokeWidth={7} fill="none" strokeLinecap="round" />;
   }
   if (blink) {
-    return <path d={`M ${x - 30} ${y + 2} Q ${x} ${y + 16} ${x + 30} ${y + 2}`} stroke={LINE} strokeWidth={7} fill="none" strokeLinecap="round" />;
+    return (
+      <g>
+        <path d={`M ${x - 32} ${y + 2} Q ${x} ${y + 18} ${x + 32} ${y + 2}`} stroke="#3B2630" strokeWidth={6.5} fill="none" strokeLinecap="round" />
+        <path d={`M ${x + dir * 30} ${y + 2} L ${x + dir * 40} ${y - 4}`} stroke="#3B2630" strokeWidth={4} strokeLinecap="round" />
+      </g>
+    );
   }
   const surprised = emotion === 'surprised';
   const sad = emotion === 'sad';
-  const irisR = surprised ? 17 : 23;
-  const iy = y + (sad ? 6 : 4);
+  const irx = surprised ? 18 : 25;
+  const iry = surprised ? 22 : 31;
+  const iy = y + (sad ? 8 : 5);
+  const clip = `${s}-eye-${right ? 'r' : 'l'}`;
   return (
     <g>
-      <ellipse cx={x} cy={y} rx={29} ry={35} fill="#fff" />
       <defs>
-        <linearGradient id={id} x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor={p.irisDark} />
-          <stop offset="0.55" stopColor={p.iris} />
-          <stop offset="1" stopColor={p.iris} />
-        </linearGradient>
+        <clipPath id={clip}>
+          <ellipse cx={x} cy={y} rx={31} ry={37} />
+        </clipPath>
       </defs>
-      <ellipse cx={x} cy={iy} rx={irisR} ry={irisR * 1.25} fill={`url(#${id})`} />
-      <ellipse cx={x} cy={iy + 2} rx={irisR * 0.45} ry={irisR * 0.62} fill="#2A1A22" />
-      <circle cx={x - 8} cy={iy - 11} r={surprised ? 5 : 8} fill="#fff" />
-      <circle cx={x + 9} cy={iy + 13} r={3.5} fill="#fff" opacity={0.9} />
-      {/* 上まつげ */}
-      <path d={`M ${x - 34} ${y - 20} Q ${x - 4} ${y - (sad ? 34 : 44)} ${x + 34} ${y - 24}`} stroke={LINE} strokeWidth={8} fill="none" strokeLinecap="round" />
-      <path d={`M ${x + 30} ${y - 24} L ${x + 40} ${y - 30}`} stroke={LINE} strokeWidth={5} strokeLinecap="round" />
-      {sad ? <path d={`M ${x - 30} ${y - 22} L ${x + 30} ${y - 26}`} stroke={LINE} strokeWidth={0} /> : null}
+      <ellipse cx={x} cy={y} rx={31} ry={37} fill="#fff" />
+      <g clipPath={`url(#${clip})`}>
+        {/* 白目の上の影 */}
+        <ellipse cx={x} cy={y - 30} rx={36} ry={16} fill="#DCD6EC" />
+        <ellipse cx={x} cy={iy} rx={irx} ry={iry} fill={`url(#${s}-iris)`} stroke={p.irisTop} strokeWidth={2.5} />
+        <ellipse cx={x} cy={iy + 3} rx={irx * 0.44} ry={iry * 0.5} fill="#24121C" opacity={0.9} />
+        {/* 瞳の下の照り返し */}
+        <ellipse cx={x} cy={iy + iry * 0.55} rx={irx * 0.7} ry={iry * 0.28} fill={p.irisLight} opacity={0.75} />
+        {/* ハイライト */}
+        <ellipse cx={x - irx * 0.38} cy={iy - iry * 0.38} rx={surprised ? 5 : 9} ry={surprised ? 6 : 11} fill="#fff" />
+        <circle cx={x + irx * 0.45} cy={iy + iry * 0.42} r={3.6} fill="#fff" />
+        <circle cx={x + irx * 0.2} cy={iy - iry * 0.55} r={2.4} fill="#fff" opacity={0.9} />
+      </g>
+      {/* 上まつげ（目尻を太く） */}
+      <path
+        d={`M ${x - dir * 34} ${y - 18} Q ${x - dir * 8} ${y - (sad ? 32 : 44)} ${x + dir * 36} ${y - 22} L ${x + dir * 44} ${y - 28} L ${x + dir * 36} ${y - 14} Q ${x - dir * 6} ${y - (sad ? 26 : 36)} ${x - dir * 34} ${y - 12} Z`}
+        fill="#3B2630"
+      />
+      {/* 二重のライン */}
+      <path d={`M ${x - dir * 26} ${y - 42} Q ${x} ${y - 52} ${x + dir * 28} ${y - 40}`} stroke={p.skinLine} strokeWidth={2.2} fill="none" opacity={0.6} strokeLinecap="round" />
+      {/* 下まつげ */}
+      <path d={`M ${x + dir * 18} ${y + 34} Q ${x + dir * 26} ${y + 28} ${x + dir * 30} ${y + 20}`} stroke={p.skinLine} strokeWidth={2.4} fill="none" strokeLinecap="round" opacity={0.7} />
     </g>
   );
 };
 
-const MouthShape: React.FC<{emotion: Emotion; open: Mouth}> = ({emotion, open}) => {
+const MouthShape: React.FC<{emotion: Emotion; open: Mouth; line: string}> = ({emotion, open, line}) => {
   const x = 200;
-  const y = 270;
+  const y = 276;
   if (open === 0) {
-    if (emotion === 'surprised') return <ellipse cx={x} cy={y + 2} rx={10} ry={12} fill="#9A3B47" stroke={LINE} strokeWidth={4} />;
-    if (emotion === 'sad') return <path d={`M ${x - 16} ${y + 8} Q ${x} ${y - 6} ${x + 16} ${y + 8}`} stroke={LINE} strokeWidth={5} fill="none" strokeLinecap="round" />;
-    if (emotion === 'happy') return <path d={`M ${x - 20} ${y - 4} Q ${x} ${y + 22} ${x + 20} ${y - 4} Z`} fill="#9A3B47" stroke={LINE} strokeWidth={4} strokeLinejoin="round" />;
-    return <path d={`M ${x - 14} ${y - 2} Q ${x} ${y + 10} ${x + 14} ${y - 2}`} stroke={LINE} strokeWidth={5} fill="none" strokeLinecap="round" />;
+    if (emotion === 'surprised') return <ellipse cx={x} cy={y + 2} rx={8} ry={10} fill="#B5414F" stroke={line} strokeWidth={3} />;
+    if (emotion === 'sad') return <path d={`M ${x - 12} ${y + 6} Q ${x} ${y - 4} ${x + 12} ${y + 6}`} stroke={line} strokeWidth={4} fill="none" strokeLinecap="round" />;
+    if (emotion === 'happy') {
+      return (
+        <g>
+          <path d={`M ${x - 17} ${y - 4} Q ${x} ${y + 20} ${x + 17} ${y - 4} Z`} fill="#B5414F" stroke={line} strokeWidth={3} strokeLinejoin="round" />
+          <path d={`M ${x - 9} ${y + 7} Q ${x} ${y + 3} ${x + 9} ${y + 7} Q ${x} ${y + 14} ${x - 9} ${y + 7} Z`} fill="#F08A9A" />
+        </g>
+      );
+    }
+    // ふだんの口：小さな「ω」寄りの笑み
+    return <path d={`M ${x - 12} ${y - 2} Q ${x - 6} ${y + 6} ${x} ${y} Q ${x + 6} ${y + 6} ${x + 12} ${y - 2}`} stroke={line} strokeWidth={3.5} fill="none" strokeLinecap="round" strokeLinejoin="round" />;
   }
-  const h = [0, 9, 16, 24][open];
-  const w = emotion === 'surprised' ? 13 : [0, 14, 17, 20][open];
+  const h = [0, 8, 14, 20][open];
+  const w = emotion === 'surprised' ? 11 : [0, 11, 14, 16][open];
   return (
     <g>
-      <path d={`M ${x - w} ${y - 4} Q ${x} ${y - 8} ${x + w} ${y - 4} Q ${x + w * 0.8} ${y + h} ${x} ${y + h + 2} Q ${x - w * 0.8} ${y + h} ${x - w} ${y - 4} Z`} fill="#9A3B47" stroke={LINE} strokeWidth={4} strokeLinejoin="round" />
-      {open >= 2 ? <ellipse cx={x} cy={y + h * 0.65} rx={w * 0.5} ry={h * 0.28} fill="#E87A8C" /> : null}
-    </g>
-  );
-};
-
-const Face: React.FC<{speaker: Speaker; emotion: Emotion; mouth: Mouth; blink: boolean}> = ({speaker, emotion, mouth, blink}) => {
-  const p = PAL[speaker];
-  return (
-    <g>
-      <path d="M 92 182 Q 90 296 200 304 Q 310 296 308 182 Q 306 92 200 88 Q 94 92 92 182 Z" fill={SKIN} stroke={LINE} strokeWidth={4} />
-      <path d="M 104 210 Q 120 250 150 262" stroke={SKIN_SHADE} strokeWidth={0} fill="none" />
-      <ellipse cx={126} cy={252} rx={20} ry={10} fill="#FF9DB0" opacity={0.55} />
-      <ellipse cx={274} cy={252} rx={20} ry={10} fill="#FF9DB0" opacity={0.55} />
-      <Eye x={152} y={216} p={p} emotion={emotion} blink={blink} id={`${speaker}-iris-l`} />
-      <Eye x={248} y={216} p={p} emotion={emotion} blink={blink} id={`${speaker}-iris-r`} />
-      <MouthShape emotion={emotion} open={mouth} />
+      <path
+        d={`M ${x - w} ${y - 3} Q ${x} ${y - 7} ${x + w} ${y - 3} Q ${x + w * 0.85} ${y + h} ${x} ${y + h + 2} Q ${x - w * 0.85} ${y + h} ${x - w} ${y - 3} Z`}
+        fill="#B5414F"
+        stroke={line}
+        strokeWidth={3}
+        strokeLinejoin="round"
+      />
+      {open >= 2 ? <ellipse cx={x} cy={y + h * 0.7} rx={w * 0.55} ry={h * 0.3} fill="#F08A9A" /> : null}
     </g>
   );
 };
@@ -84,79 +164,118 @@ const Face: React.FC<{speaker: Speaker; emotion: Emotion; mouth: Mouth; blink: b
 const Brows: React.FC<{emotion: Emotion; color: string}> = ({emotion, color}) => {
   if (emotion === 'sad') {
     return (
-      <g opacity={0.85}>
-        <path d="M 124 160 Q 150 150 172 168" stroke={color} strokeWidth={7} fill="none" strokeLinecap="round" />
-        <path d="M 276 160 Q 250 150 228 168" stroke={color} strokeWidth={7} fill="none" strokeLinecap="round" />
+      <g opacity={0.8}>
+        <path d="M 124 166 Q 150 154 172 170" stroke={color} strokeWidth={6} fill="none" strokeLinecap="round" />
+        <path d="M 276 166 Q 250 154 228 170" stroke={color} strokeWidth={6} fill="none" strokeLinecap="round" />
       </g>
     );
   }
   if (emotion === 'surprised') {
     return (
-      <g opacity={0.85}>
-        <path d="M 126 150 Q 150 138 174 150" stroke={color} strokeWidth={7} fill="none" strokeLinecap="round" />
-        <path d="M 226 150 Q 250 138 274 150" stroke={color} strokeWidth={7} fill="none" strokeLinecap="round" />
+      <g opacity={0.8}>
+        <path d="M 126 154 Q 150 142 174 154" stroke={color} strokeWidth={6} fill="none" strokeLinecap="round" />
+        <path d="M 226 154 Q 250 142 274 154" stroke={color} strokeWidth={6} fill="none" strokeLinecap="round" />
       </g>
     );
   }
   return null;
 };
 
+const Face: React.FC<{s: Speaker; p: Palette; emotion: Emotion; mouth: Mouth; blink: boolean; bangsShadow: string}> = ({s, p, emotion, mouth, blink, bangsShadow}) => (
+  <g>
+    <path d={FACE} fill={`url(#${s}-skin)`} stroke={p.skinLine} strokeWidth={3.5} />
+    {/* 前髪の落ち影 */}
+    <g clipPath={`url(#${s}-face)`}>
+      <path d={bangsShadow} fill={SKIN_SHADOW} opacity={0.85} />
+    </g>
+    <ellipse cx={128} cy={258} rx={26} ry={14} fill={`url(#${s}-blush)`} />
+    <ellipse cx={272} cy={258} rx={26} ry={14} fill={`url(#${s}-blush)`} />
+    {[118, 128, 138].map((bx) => (
+      <path key={bx} d={`M ${bx} 252 l -5 9`} stroke="#F07890" strokeWidth={2} strokeLinecap="round" opacity={0.6} />
+    ))}
+    {[262, 272, 282].map((bx) => (
+      <path key={bx} d={`M ${bx} 252 l -5 9`} stroke="#F07890" strokeWidth={2} strokeLinecap="round" opacity={0.6} />
+    ))}
+    <Eye s={s} x={150} y={222} p={p} emotion={emotion} blink={blink} />
+    <Eye s={s} x={250} y={222} p={p} emotion={emotion} blink={blink} right />
+    <MouthShape emotion={emotion} open={mouth} line={p.skinLine} />
+  </g>
+);
+
 /** 枝豆のさや（ずんだもんの頭の飾り） */
-const Pod: React.FC<{x: number; y: number; rot: number; flip?: boolean}> = ({x, y, rot, flip}) => (
-  <g transform={`translate(${x} ${y}) rotate(${rot}) scale(${flip ? -1 : 1} 1)`}>
-    <path d="M 0 0 C 18 -16 70 -34 108 -22 C 124 -16 124 4 108 10 C 72 24 24 22 0 0 Z" fill="#9BE25A" stroke={LINE} strokeWidth={4} strokeLinejoin="round" />
-    {[30, 58, 86].map((cx) => (
-      <ellipse key={cx} cx={cx} cy={-6} rx={12} ry={10} fill="#D6F79E" stroke="#6BB536" strokeWidth={2.5} />
+const Pod: React.FC<{x: number; y: number; rot: number}> = ({x, y, rot}) => (
+  <g transform={`translate(${x} ${y}) rotate(${rot})`}>
+    <path d="M 0 0 C 16 -18 70 -34 110 -20 C 128 -13 126 6 110 12 C 72 26 22 22 0 0 Z" fill="#A8E86A" stroke="#2F7419" strokeWidth={3.5} strokeLinejoin="round" />
+    <path d="M 10 4 C 40 16 80 16 108 6" stroke="#6CBF35" strokeWidth={5} fill="none" strokeLinecap="round" opacity={0.8} />
+    {[32, 60, 88].map((cx) => (
+      <g key={cx}>
+        <ellipse cx={cx} cy={-5} rx={13} ry={11} fill="#DDF8A8" stroke="#6CBF35" strokeWidth={2.5} />
+        <ellipse cx={cx - 4} cy={-9} rx={4} ry={3} fill="#fff" opacity={0.8} />
+      </g>
     ))}
   </g>
 );
 
 const ZundamonBody: React.FC = () => (
   <g>
+    <defs>
+      <linearGradient id="zunda-arrow" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stopColor="#B9F27A" />
+        <stop offset="1" stopColor="#5FBF2E" />
+      </linearGradient>
+    </defs>
     {/* ずんだアロー（後ろの緑のしずく） */}
-    <path d="M 300 330 C 330 360 372 380 372 440 A 52 52 0 1 1 300 470 C 300 430 290 380 300 330 Z" fill="#8EE04F" stroke={LINE} strokeWidth={4} />
-    <ellipse cx={330} cy={440} rx={14} ry={22} fill="#C8F58C" opacity={0.8} />
-    <rect x={182} y={290} width={36} height={34} fill={SKIN_SHADE} />
-    <path d="M 108 520 Q 110 372 152 336 L 248 336 Q 290 372 292 520 Z" fill="#fff" stroke={LINE} strokeWidth={4} />
-    <circle cx={132} cy={358} r={30} fill="#fff" stroke={LINE} strokeWidth={4} />
-    <circle cx={268} cy={358} r={30} fill="#fff" stroke={LINE} strokeWidth={4} />
-    <path d="M 172 334 L 200 366 L 228 334" fill="#fff" stroke={LINE} strokeWidth={4} strokeLinejoin="round" />
-    <path d="M 186 366 L 200 352 L 214 366 L 200 380 Z" fill="#F7A6C9" stroke={LINE} strokeWidth={3} />
-    <path d="M 138 440 L 262 440 L 272 520 L 128 520 Z" fill="#6CBF3A" stroke={LINE} strokeWidth={4} strokeLinejoin="round" />
-    <path d="M 160 338 L 164 444" stroke="#6CBF3A" strokeWidth={16} strokeLinecap="round" />
-    <path d="M 240 338 L 236 444" stroke="#6CBF3A" strokeWidth={16} strokeLinecap="round" />
-    <circle cx={164} cy={452} r={7} fill="#F9E26B" stroke={LINE} strokeWidth={2.5} />
-    <circle cx={236} cy={452} r={7} fill="#F9E26B" stroke={LINE} strokeWidth={2.5} />
+    <path d="M 296 330 C 330 362 374 384 372 442 A 52 52 0 1 1 298 468 C 298 428 286 380 296 330 Z" fill="url(#zunda-arrow)" stroke="#2F7419" strokeWidth={3.5} />
+    <ellipse cx={334} cy={430} rx={12} ry={20} fill="#fff" opacity={0.55} />
+    <path d="M 184 292 L 216 292 L 216 330 L 184 330 Z" fill={SKIN} />
+    <path d="M 184 300 Q 200 318 216 300 L 216 312 Q 200 326 184 312 Z" fill={SKIN_SHADOW} />
+    <path d="M 114 520 Q 116 376 156 340 L 244 340 Q 284 376 286 520 Z" fill="#FFFFFF" stroke="#8C7A86" strokeWidth={3.5} />
+    <path d="M 156 340 Q 200 360 244 340 L 236 360 Q 200 372 164 360 Z" fill="#E7E3F0" />
+    <circle cx={136} cy={362} r={28} fill="#fff" stroke="#8C7A86" strokeWidth={3.5} />
+    <circle cx={264} cy={362} r={28} fill="#fff" stroke="#8C7A86" strokeWidth={3.5} />
+    <path d="M 120 378 Q 136 390 152 378" stroke="#E2DDEB" strokeWidth={6} fill="none" strokeLinecap="round" />
+    <path d="M 248 378 Q 264 390 280 378" stroke="#E2DDEB" strokeWidth={6} fill="none" strokeLinecap="round" />
+    <path d="M 176 338 L 200 368 L 224 338" fill="#fff" stroke="#8C7A86" strokeWidth={3} strokeLinejoin="round" />
+    <path d="M 188 370 L 200 358 L 212 370 L 200 384 Z" fill="#FFB3D1" stroke="#B0597F" strokeWidth={2.5} />
+    <path d="M 142 444 L 258 444 L 268 520 L 132 520 Z" fill="#6DC23B" stroke="#2F7419" strokeWidth={3.5} strokeLinejoin="round" />
+    <path d="M 146 456 L 254 456" stroke="#55A62A" strokeWidth={6} />
+    <path d="M 162 342 L 166 448" stroke="#6DC23B" strokeWidth={15} strokeLinecap="round" />
+    <path d="M 238 342 L 234 448" stroke="#6DC23B" strokeWidth={15} strokeLinecap="round" />
+    <circle cx={166} cy={454} r={6.5} fill="#FFE27A" stroke="#2F7419" strokeWidth={2} />
+    <circle cx={234} cy={454} r={6.5} fill="#FFE27A" stroke="#2F7419" strokeWidth={2} />
   </g>
 );
 
 const MetanBody: React.FC = () => (
   <g>
-    <rect x={182} y={290} width={36} height={34} fill={SKIN_SHADE} />
-    <path d="M 104 520 Q 108 372 152 338 L 248 338 Q 292 372 296 520 Z" fill="#2E2833" stroke={LINE} strokeWidth={4} />
+    <path d="M 184 292 L 216 292 L 216 332 L 184 332 Z" fill={SKIN} />
+    <path d="M 184 300 Q 200 318 216 300 L 216 312 Q 200 326 184 312 Z" fill={SKIN_SHADOW} />
+    <path d="M 110 520 Q 112 376 156 342 L 244 342 Q 288 376 290 520 Z" fill="#2F2934" stroke="#1C1820" strokeWidth={3.5} />
+    <path d="M 128 520 Q 132 420 156 380" stroke="#4A4252" strokeWidth={8} fill="none" opacity={0.7} strokeLinecap="round" />
     {/* フリルの襟 */}
-    {[146, 168, 190, 210, 232, 254].map((cx, i) => (
-      <circle key={cx} cx={cx} cy={346 + (i === 0 || i === 5 ? 6 : 0)} r={16} fill="#fff" stroke={LINE} strokeWidth={3} />
+    {[150, 170, 190, 210, 230, 250].map((cx, i) => (
+      <ellipse key={cx} cx={cx} cy={350 + (i === 0 || i === 5 ? 5 : 0)} rx={15} ry={13} fill="#fff" stroke="#9A8FA3" strokeWidth={2.5} />
     ))}
-    <path d="M 180 366 L 200 380 L 220 366 L 214 392 L 200 384 L 186 392 Z" fill="#E2558F" stroke={LINE} strokeWidth={3} strokeLinejoin="round" />
-    <path d="M 200 392 L 200 520" stroke="#4A4252" strokeWidth={4} />
-    {[420, 456, 492].map((cy) => (
-      <circle key={cy} cx={200} cy={cy} r={6} fill="#D9C27A" stroke={LINE} strokeWidth={2} />
+    <path d="M 182 370 L 200 384 L 218 370 L 213 396 L 200 388 L 187 396 Z" fill="#E2558F" stroke="#8E2858" strokeWidth={2.5} strokeLinejoin="round" />
+    <path d="M 200 398 L 200 520" stroke="#4A4252" strokeWidth={3.5} />
+    {[424, 458, 492].map((cy) => (
+      <circle key={cy} cx={200} cy={cy} r={5.5} fill="#E0C985" stroke="#6E5A2E" strokeWidth={1.5} />
     ))}
   </g>
 );
 
-/** ドリルのツインテール（四国めたん） */
-const Drill: React.FC<{x: number; dir: 1 | -1; p: Palette}> = ({x, dir, p}) => (
+/** ドリルのツインテール（四国めたん）。上から細くなる巻き髪 */
+const Drill: React.FC<{x: number; p: Palette; s: Speaker}> = ({x, p, s}) => (
   <g>
     {[0, 1, 2, 3, 4].map((i) => {
-      const cy = 214 + i * 50;
-      const rx = 44 - i * 4;
+      const cy = 216 + i * 48;
+      const rx = 42 - i * 5;
+      const ry = 28 - i * 1.5;
       return (
         <g key={i}>
-          <ellipse cx={x + dir * (i % 2 === 0 ? 0 : 10)} cy={cy} rx={rx} ry={30 - i} fill={p.hair} stroke={LINE} strokeWidth={4} />
-          <path d={`M ${x - rx + 8} ${cy + 4} Q ${x} ${cy + 26} ${x + rx - 8} ${cy - 6}`} stroke={p.hairShade} strokeWidth={6} fill="none" strokeLinecap="round" />
-          <path d={`M ${x - rx * 0.4} ${cy - 16} Q ${x} ${cy - 22} ${x + rx * 0.3} ${cy - 18}`} stroke={p.hairLight} strokeWidth={5} fill="none" strokeLinecap="round" />
+          <ellipse cx={x} cy={cy} rx={rx} ry={ry} fill={`url(#${s}-hair)`} stroke={p.hairLine} strokeWidth={3.5} />
+          <path d={`M ${x - rx + 6} ${cy + 6} Q ${x} ${cy + ry + 4} ${x + rx - 6} ${cy - 4}`} stroke={p.hairShade} strokeWidth={7} fill="none" strokeLinecap="round" opacity={0.85} />
+          <path d={`M ${x - rx * 0.5} ${cy - ry * 0.55} Q ${x} ${cy - ry * 0.85} ${x + rx * 0.35} ${cy - ry * 0.6}`} stroke={p.hairLight} strokeWidth={5} fill="none" strokeLinecap="round" />
         </g>
       );
     })}
@@ -165,64 +284,66 @@ const Drill: React.FC<{x: number; dir: 1 | -1; p: Palette}> = ({x, dir, p}) => (
 
 const Ribbon: React.FC<{x: number; y: number; rot: number}> = ({x, y, rot}) => (
   <g transform={`translate(${x} ${y}) rotate(${rot})`}>
-    <path d="M 0 0 L -46 -24 L -40 22 Z" fill="#26222B" stroke={LINE} strokeWidth={3} strokeLinejoin="round" />
-    <path d="M 0 0 L 46 -24 L 40 22 Z" fill="#26222B" stroke={LINE} strokeWidth={3} strokeLinejoin="round" />
-    <path d="M 0 0 L -14 40 M 0 0 L 14 40" stroke="#26222B" strokeWidth={9} strokeLinecap="round" />
-    <circle cx={0} cy={0} r={11} fill="#3A3540" stroke={LINE} strokeWidth={3} />
+    <path d="M 0 0 Q -30 -34 -50 -20 Q -56 4 -40 20 Q -20 14 0 0 Z" fill="#2B2630" stroke="#141117" strokeWidth={3} strokeLinejoin="round" />
+    <path d="M 0 0 Q 30 -34 50 -20 Q 56 4 40 20 Q 20 14 0 0 Z" fill="#2B2630" stroke="#141117" strokeWidth={3} strokeLinejoin="round" />
+    <path d="M -36 -14 Q -24 -18 -14 -8" stroke="#5A5263" strokeWidth={4} fill="none" strokeLinecap="round" />
+    <path d="M 36 -14 Q 24 -18 14 -8" stroke="#5A5263" strokeWidth={4} fill="none" strokeLinecap="round" />
+    <path d="M -4 6 Q -14 26 -18 42 M 4 6 Q 14 26 18 42" stroke="#2B2630" strokeWidth={8} strokeLinecap="round" fill="none" />
+    <ellipse cx={0} cy={0} rx={10} ry={9} fill="#3A3442" stroke="#141117" strokeWidth={3} />
   </g>
 );
 
+// 前髪の形（落ち影は同じ形を少し下にずらして使う）
+const ZUNDA_BANGS =
+  'M 80 210 Q 70 76 200 60 Q 330 76 320 210 Q 312 186 300 172 Q 296 196 286 208 Q 280 168 266 150 Q 260 182 244 198 Q 240 156 222 138 Q 214 172 200 190 Q 186 172 178 138 Q 160 156 156 198 Q 140 182 134 150 Q 120 168 114 208 Q 104 196 100 172 Q 88 186 80 210 Z';
+const METAN_BANGS =
+  'M 82 216 Q 72 72 200 58 Q 328 72 318 216 Q 312 188 304 170 Q 292 134 244 116 Q 262 148 262 176 Q 242 144 210 130 L 200 148 L 190 130 Q 158 144 138 176 Q 138 148 156 116 Q 108 134 96 170 Q 88 188 82 216 Z';
+const shift = (d: string, dy: number) => d.replace(/(-?\d+(?:\.\d+)?) (-?\d+(?:\.\d+)?)/g, (_, a, b) => `${a} ${Number(b) + dy}`);
+
 export const ChibiFigure: React.FC<{speaker: Speaker; emotion: Emotion; mouth: Mouth; blink: boolean; width?: number}> = ({speaker, emotion, mouth, blink, width = 380}) => {
   const p = PAL[speaker];
+  const s = speaker;
   const z = speaker === 'zundamon';
+  const bangs = z ? ZUNDA_BANGS : METAN_BANGS;
   return (
     <svg width={width} height={(width * 520) / 400} viewBox="0 0 400 520" style={{overflow: 'visible'}}>
+      <Defs s={s} p={p} />
       {/* 後ろ髪 */}
       {z ? (
         <g>
-          <path d="M 70 190 Q 64 60 200 50 Q 336 60 330 190 Q 332 270 300 300 L 100 300 Q 68 270 70 190 Z" fill={p.hairShade} stroke={LINE} strokeWidth={4} />
-          <path d="M 300 240 Q 320 300 296 330 Q 286 300 284 260 Z" fill={p.hair} stroke={LINE} strokeWidth={4} />
-          <path d="M 100 240 Q 80 300 104 330 Q 114 300 116 260 Z" fill={p.hair} stroke={LINE} strokeWidth={4} />
+          <path d="M 72 196 Q 64 60 200 50 Q 336 60 328 196 Q 330 272 300 304 L 100 304 Q 70 272 72 196 Z" fill={`url(#${s}-hairBack)`} stroke={p.hairLine} strokeWidth={3.5} />
+          <path d="M 302 228 Q 326 298 298 340 Q 284 304 282 258 Z" fill={`url(#${s}-hair)`} stroke={p.hairLine} strokeWidth={3.5} />
+          <path d="M 98 228 Q 74 298 102 340 Q 116 304 118 258 Z" fill={`url(#${s}-hair)`} stroke={p.hairLine} strokeWidth={3.5} />
         </g>
       ) : (
         <g>
-          <path d="M 76 190 Q 70 58 200 48 Q 330 58 324 190 L 330 360 L 70 360 Z" fill={p.hairShade} stroke={LINE} strokeWidth={4} />
-          <Drill x={64} dir={-1} p={p} />
-          <Drill x={336} dir={1} p={p} />
+          <path d="M 78 196 Q 70 56 200 46 Q 330 56 322 196 L 326 360 L 74 360 Z" fill={`url(#${s}-hairBack)`} stroke={p.hairLine} strokeWidth={3.5} />
+          <Drill x={66} p={p} s={s} />
+          <Drill x={334} p={p} s={s} />
         </g>
       )}
       {z ? <ZundamonBody /> : <MetanBody />}
-      <Face speaker={speaker} emotion={emotion} mouth={mouth} blink={blink} />
+      <Face s={s} p={p} emotion={emotion} mouth={mouth} blink={blink} bangsShadow={shift(bangs, 14)} />
       {/* 前髪 */}
+      <path d={bangs} fill={`url(#${s}-hair)`} stroke={p.hairLine} strokeWidth={3.5} strokeLinejoin="round" />
+      {/* 髪の影の筋 */}
+      <path d={z ? 'M 120 120 Q 130 150 134 150 M 178 104 Q 180 128 178 138 M 222 104 Q 220 128 222 138 M 280 120 Q 270 150 266 150' : 'M 130 112 Q 142 130 156 116 M 270 112 Q 258 130 244 116'} stroke={p.hairShade} strokeWidth={5} fill="none" strokeLinecap="round" opacity={0.7} />
+      {/* 天使の輪（ツヤ） */}
+      <path d="M 112 112 Q 150 84 200 82 Q 250 84 288 112" stroke={p.hairLight} strokeWidth={10} fill="none" strokeLinecap="round" opacity={0.85} />
+      <path d="M 140 100 Q 150 94 160 92 M 240 92 Q 250 94 260 100" stroke="#fff" strokeWidth={5} fill="none" strokeLinecap="round" opacity={0.9} />
       {z ? (
         <g>
-          <path
-            d="M 78 206 Q 66 74 200 58 Q 334 74 322 206 L 302 168 L 286 204 L 266 146 L 244 194 L 222 136 L 202 188 L 180 136 L 160 194 L 138 146 L 116 204 L 98 166 Z"
-            fill={p.hair}
-            stroke={LINE}
-            strokeWidth={4}
-            strokeLinejoin="round"
-          />
-          <path d="M 130 92 Q 170 74 214 80" stroke={p.hairLight} strokeWidth={9} fill="none" strokeLinecap="round" />
-          <path d="M 200 58 Q 214 30 236 26 Q 222 40 214 62" fill={p.hair} stroke={LINE} strokeWidth={4} strokeLinejoin="round" />
-          <Pod x={148} y={74} rot={-118} />
-          <Pod x={252} y={74} rot={-62} />
+          <path d="M 196 60 Q 206 28 236 22 Q 220 38 214 64" fill={`url(#${s}-hair)`} stroke={p.hairLine} strokeWidth={3.5} strokeLinejoin="round" />
+          <Pod x={146} y={76} rot={-118} />
+          <Pod x={254} y={76} rot={-62} />
         </g>
       ) : (
         <g>
-          <path
-            d="M 80 214 Q 70 70 200 58 Q 330 70 320 214 L 312 178 Q 300 132 240 116 Q 262 146 264 172 Q 242 140 208 128 L 200 146 L 192 128 Q 158 140 136 172 Q 138 146 160 116 Q 100 132 88 178 Z"
-            fill={p.hair}
-            stroke={LINE}
-            strokeWidth={4}
-            strokeLinejoin="round"
-          />
-          <path d="M 120 98 Q 160 78 200 80" stroke={p.hairLight} strokeWidth={9} fill="none" strokeLinecap="round" />
-          <Ribbon x={92} y={92} rot={-25} />
-          <Ribbon x={308} y={92} rot={25} />
+          <Ribbon x={94} y={96} rot={-22} />
+          <Ribbon x={306} y={96} rot={22} />
         </g>
       )}
-      <Brows emotion={emotion} color={z ? '#3E8E22' : '#A23270'} />
+      <Brows emotion={emotion} color={p.hairLine} />
     </svg>
   );
 };
