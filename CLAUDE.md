@@ -3,6 +3,8 @@
 YouTube 向け解説動画シリーズ「やらかした会社」を作るためのリポジトリ。
 **回ごとに書き換えるのは `episodes/<回>/script.json` だけ**にする。Remotion のコンポーネントは再利用できる「シーン部品」として保つ。
 
+> **作業を引き継ぐときは、まず `docs/HANDOFF.md` を読むこと**（現状・ユーザーの判断待ち・次にやること・経緯）。
+
 > 同じリポジトリにある `地図アプリ/`、`brunch.md`、`test.md`、`.github/workflows/deploy-pinroute.yml` は別件のファイル。触らない。
 
 ## シリーズ方針
@@ -88,6 +90,7 @@ episodes/<NNN-company>/
 - 読み間違いが心配な語は `yomi` に読み（カタカナ・ひらがな）を書くと、音声だけそちらを使う。回をまたいで使う読み替えは `scripts/lib.ts` の `SERIES_READINGS`、その回だけのものは `tts.readings` に書く。合成前に `audio_query` の `kana` で全セリフの読みを点検すること
 - 事実の主張を含まない冗談（ずんだもんのおやつの数など）には `"joke": true` を付ける（数値チェックの対象外。出典表にも載らない）
 - 画面のハンコは `scene.stamp`（`{"text": "過去最高", "atLine": 1}`）。言い過ぎにならない文言にする
+- キャラクターの描き方は `characterStyle`：`chibi`＝自作 SVG の立ち絵（既定、`remotion/src/components/Chibi.tsx`）／`image`＝公式イラスト（`scripts/fetch-characters.ts` で取得、Git 管理外）／`icon`＝丸アイコン。口パクは build-timeline.ts が音声の大きさから作る
 - 章の色は `chapter.color`（省略時はシリーズ既定の色）。メーターの `level` が 100 を超えると「測定不能」で壊れる演出になる
 - 字幕は 1 セリフ 60 文字以内を目安（2 行に収まる）。長いときは分ける
 - 数値・日付を言うシーンには必ず `sourceIds` と `facts` を付ける（`check-script.ts` が検査する）
